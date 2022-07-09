@@ -27,4 +27,9 @@ class Pub extends CI_Controller
 	{
 		$this->load->view('public/form_registrasi', $this->page_data);
 	}
+
+	public function profil()
+	{
+		$this->load->view('public/profil', $this->page_data);
+	}
 }
