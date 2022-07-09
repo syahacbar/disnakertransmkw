@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pub extends CI_Controller {
+class Pub extends CI_Controller
+{
 
 	public function __construct()
 	{
@@ -16,4 +17,14 @@ class Pub extends CI_Controller {
 		$this->load->view('public/welcome', $this->page_data);
 	}
 
+
+	public function formkartu()
+	{
+		$this->load->view('public/form_kartu', $this->page_data);
+	}
+
+	public function formregistrasi()
+	{
+		$this->load->view('public/form_registrasi', $this->page_data);
+	}
 }
