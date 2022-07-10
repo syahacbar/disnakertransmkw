@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <?php include viewPath('includes/header'); ?>
 
@@ -23,34 +23,33 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <!-- Main content -->
 <section class="content">
-    <div class="container-fluid">
+  <div class="container-fluid">
     <div class="row">
-        <div class="col-12">
+      <div class="col-12">
         <div class="card">
-            <div class="card-header d-flex p-0">
+          <div class="card-header d-flex p-0">
             <h3 class="card-title p-3"><?php echo lang('blank_page') ?></h3>
             <div class="ml-auto p-2">
-                <a href="#" class="btn btn-primary btn-sm">Button</a>
+              <a href="#" class="btn btn-primary btn-sm">Button</a>
             </div>
-            </div>
-            
-            <!-- /.card-header -->
-            <div class="card-body">
+          </div>
+
+          <!-- /.card-header -->
+          <div class="card-body">
             <p>content..</p>
-            </div>
-            <!-- /.card-body -->
+          </div>
+          <!-- /.card-body -->
         </div>
         <!-- /.card -->
-        </div>
-        <!-- /.col -->
+      </div>
+      <!-- /.col -->
     </div>
     <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
+  </div>
+  <!-- /.container-fluid -->
 </section>
 <!-- /.content -->
 
 
 
 <?php include viewPath('includes/footer'); ?>
-
