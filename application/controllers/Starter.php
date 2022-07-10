@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Starter extends MY_Controller {
+class Starter extends MY_Controller
+{
 
 	public function __construct()
 	{
@@ -15,6 +16,15 @@ class Starter extends MY_Controller {
 		$this->load->view('blank_page', $this->page_data);
 	}
 
+	public function formpencaker()
+	{
+		$this->load->view('pencaker/form_pencaker', $this->page_data);
+	}
+
+	public function dokumen()
+	{
+		$this->load->view('pencaker/dokumen', $this->page_data);
+	}
 }
 
 /* End of file Starter.php */

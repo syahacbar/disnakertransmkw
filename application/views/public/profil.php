@@ -37,7 +37,8 @@
             margin-top: 120px;
         }
 
-        section.tugasfungsi {
+        section.tugasfungsi,
+        section.strukturorganisasi {
             margin-top: 0 !important;
             padding-top: 0;
         }
@@ -168,7 +169,7 @@
 
 
         <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact">
+        <section id="contact" class="contact strukturorganisasi">
             <div class="container">
 
                 <div class="section-title">
