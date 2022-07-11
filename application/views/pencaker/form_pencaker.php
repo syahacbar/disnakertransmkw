@@ -5,7 +5,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<title>Snippet - BBBootstrap</title>
+<title></title>
 <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
@@ -311,12 +311,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><?php echo lang('blank_page') ?></h1>
+                <h1><?php echo lang('form_pencaker') ?></h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="<?php echo url('/') ?>"><?php echo lang('home') ?></a></li>
-                    <li class="breadcrumb-item active"><?php echo lang('blank_page') ?></li>
+                    <li class="breadcrumb-item active"><?php echo lang('form_pencaker') ?></li>
                 </ol>
             </div>
         </div>
@@ -329,12 +329,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header d-flex p-0">
-                        <h3 class="card-title p-3"><?php echo lang('blank_page') ?></h3>
+                   <!--  <div class="card-header d-flex p-0">
+                        <h3 class="card-title p-3"><?php //echo lang('form_pencaker') ?></h3>
                         <div class="ml-auto p-2">
                             <a href="#" class="btn btn-primary btn-sm">Button</a>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -342,8 +342,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <div class="row justify-content-center mt-0">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center p-0 mt-3 mb-2">
                                     <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                                        <h2><strong>Form Pembuatan Kartu Kuning</strong></h2>
-                                        <p>Silakan lengkapi data yang diminta di bawah ini. Data yang bertanda bintang (<sup>*</sup>) wajib dilengkapi.</p>
+                                        <h2><strong>Formulir AK/I</strong></h2>
+                                        <p>Silakan lengkapi data yang di bawah ini untuk pembuatan Kartu Tanda Pencari Kerja (Kartu Kuning)</p>
                                         <div class="row">
                                             <div class="col-md-12 mx-0">
                                                 <form id="msform">

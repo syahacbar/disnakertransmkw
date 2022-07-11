@@ -14,30 +14,30 @@ defined('BASEPATH') or exit('No direct script access allowed');
     </a>
   </li>
 
-  <li class="nav-item">
-    <a href="<?php echo url('starter') ?>" class="nav-link <?php echo ($page->menu == 'starter') ? 'active' : '' ?>">
+<!--   <li class="nav-item">
+    <a href="<?php //echo url('starter') ?>" class="nav-link <?php //echo ($page->menu == 'starter') ? 'active' : '' ?>">
       <i class="nav-icon fas fa-list"></i>
       <p>
-        <?php echo lang('blank_page') ?>
+        <?php //echo lang('blank_page') ?>
       </p>
     </a>
-  </li>
+  </li> -->
 
   <!-- form pencaker -->
   <li class="nav-item">
-    <a href="<?php echo url('starter/formpencaker') ?>" class="nav-link <?php echo ($page->menu == 'dokumen') ? 'active' : '' ?>">
-      <i class="nav-icon fas fa-list"></i>
+    <a href="<?php echo url('starter/formpencaker') ?>" class="nav-link <?php echo ($page->menu == 'form_pencaker') ? 'active' : '' ?>">
+      <i class="nav-icon fas fa-list-alt"></i>
       <p>
-        <?php echo lang('blank_page') ?>
+        <?php echo lang('form_pencaker') ?>
       </p>
     </a>
   </li>
   <!-- dokumen -->
   <li class="nav-item">
-    <a href="<?php echo url('starter/dokumen') ?>" class="nav-link <?php echo ($page->menu == 'starter') ? 'active' : '' ?>">
-      <i class="nav-icon fas fa-users"></i>
+    <a href="<?php echo url('starter/dokumenpencaker') ?>" class="nav-link <?php echo ($page->menu == 'doc_pencaker') ? 'active' : '' ?>">
+      <i class="nav-icon fas fa-file"></i>
       <p>
-        <?php echo lang('blank_page') ?>
+        <?php echo lang('doc_pencaker') ?>
       </p>
     </a>
   </li>

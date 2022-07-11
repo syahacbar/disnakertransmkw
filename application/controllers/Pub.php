@@ -12,6 +12,11 @@ class Pub extends CI_Controller
 		// $this->page_data['page']->menu = 'dashboard';
 	}
 
+	public function comingsoon()
+	{
+		$this->load->view('public/comingsoon');
+	}
+
 	public function welcome()
 	{
 		$this->load->view('public/welcome', $this->page_data);

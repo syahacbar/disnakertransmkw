@@ -7,8 +7,8 @@ class Starter extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->page_data['page']->title = 'Starter (Blank Page)';
-		$this->page_data['page']->menu = 'starter';
+		// $this->page_data['page']->title = 'Starter (Blank Page)';
+		// $this->page_data['page']->menu = 'starter';
 	}
 
 	public function index()
@@ -18,11 +18,15 @@ class Starter extends MY_Controller
 
 	public function formpencaker()
 	{
+		$this->page_data['page']->title = 'Profil Pencari Kerja';
+		$this->page_data['page']->menu = 'form_pencaker';
 		$this->load->view('pencaker/form_pencaker', $this->page_data);
 	}
 
-	public function dokumen()
+	public function dokumenpencaker()
 	{
+		$this->page_data['page']->title = 'Dokumen Pencari Kerja';
+		$this->page_data['page']->menu = 'doc_pencaker';
 		$this->load->view('pencaker/dokumen', $this->page_data);
 	}
 }
