@@ -81,3 +81,6 @@
             </div>
         </div>
     </footer><!-- End Footer -->
+
+    <!-- Dropzone JS -->
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>

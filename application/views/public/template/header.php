@@ -28,6 +28,9 @@
     <!-- Template Main CSS File -->
     <link href="<?php echo base_url(); ?>/assets/frontend/assets/css/style.css" rel="stylesheet">
 
+    <!-- Dropzone CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+
     <style>
         header#header {
             background: #283a5a !important;
@@ -59,6 +62,13 @@
 
         section#contact {
             padding: 0;
+        }
+
+
+        section#about {
+            padding: 0;
+            margin-top: 120px;
+            padding-top: 60px;
         }
     </style>
 </head>

@@ -25,7 +25,7 @@ class Pub extends CI_Controller
 
 	public function formkartu()
 	{
-		$this->load->view('public/form_kartu', $this->page_data);
+		$this->load->view('public/form_registrasi', $this->page_data);
 	}
 
 	public function formregistrasi()

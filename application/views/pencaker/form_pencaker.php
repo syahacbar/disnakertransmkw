@@ -6,10 +6,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <title></title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 <style>
     .card-body {
         padding: 10px;
@@ -210,31 +211,36 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     #progressbar li {
         list-style-type: none;
         font-size: 12px;
-        width: 25%;
+        width: 20%;
         float: left;
         position: relative;
     }
 
     /*Icons in the ProgressBar*/
 
+    #progressbar #tujuan:before {
+        font-family: FontAwesome;
+        content: "\f059";
+    }
+
     #progressbar #identitas:before {
         font-family: FontAwesome;
-        content: "\f023";
+        content: "\f2c3";
     }
 
     #progressbar #pendidikan:before {
         font-family: FontAwesome;
-        content: "\f007";
+        content: "\f19d";
     }
 
     #progressbar #bahasa:before {
         font-family: FontAwesome;
-        content: "\f09d";
+        content: "\f1ab";
     }
 
     #progressbar #kerja:before {
         font-family: FontAwesome;
-        content: "\f00c";
+        content: "\f0b1";
     }
 
     /*ProgressBar before any progress*/
@@ -305,6 +311,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         width: 100%;
         object-fit: cover;
     }
+
+    .form-check-label {
+        margin-bottom: 0;
+        color: #000;
+    }
+
+    div#pilihTujuan {
+        justify-content: center;
+    }
 </style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -329,8 +344,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                   <!--  <div class="card-header d-flex p-0">
-                        <h3 class="card-title p-3"><?php //echo lang('form_pencaker') ?></h3>
+                    <!--  <div class="card-header d-flex p-0">
+                        <h3 class="card-title p-3"><?php //echo lang('form_pencaker') 
+                                                    ?></h3>
                         <div class="ml-auto p-2">
                             <a href="#" class="btn btn-primary btn-sm">Button</a>
                         </div>
@@ -349,12 +365,44 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                                 <form id="msform">
                                                     <!-- progressbar -->
                                                     <ul id="progressbar">
-                                                        <li class="active" id="identitas"><strong>Keterangan Umum</strong></li>
+                                                        <li class="active" id="tujuan"><strong>Tujuan</strong></li>
+                                                        <li id="identitas"><strong>Keterangan Umum</strong></li>
                                                         <li id="pendidikan"><strong>Pendidikan Formal</strong></li>
                                                         <li id="bahasa"><strong>Bahasa</strong></li>
                                                         <li id="kerja"><strong>Pengalaman Kerja</strong></li>
                                                     </ul>
+
                                                     <!-- fieldsets -->
+                                                    <fieldset>
+                                                        <div class="form-card">
+                                                            <h2 class="fs-title">Tujuan Pembuatan Kartu Kuning</h2>
+                                                            <div class="alert alert-success" role="alert">
+                                                                Silakan pilih tujuan Anda membuat Kartu Kuning!
+                                                            </div>
+                                                            <div class="row mt-5" id="pilihTujuan">
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                                            Mencari Pekerjaan
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                                            Melengkapi Persyaratan
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                        <input type="button" name="next" class="next action-button" value="Next Step" />
+                                                    </fieldset>
                                                     <fieldset>
                                                         <div class="form-card">
                                                             <h2 class="fs-title">Keterangan Umum</h2>
@@ -402,6 +450,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                                                 <input type="text" class="form-control" name="berat_badan" id="berat_badan" placeholder="" required placeholder="Satuan kg, misal 56" autofocus />
                                                             </div>
                                                         </div>
+                                                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                                                         <input type="button" name="next" class="next action-button" value="Next Step" />
                                                     </fieldset>
 
@@ -850,4 +899,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     });
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 <?php include viewPath('includes/footer'); ?>
