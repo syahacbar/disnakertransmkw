@@ -92,7 +92,7 @@ class Login extends CI_Controller {
 
         }
 
-        redirect('/','refresh');
+        redirect('dashboard','refresh');
 
 	}
 

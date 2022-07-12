@@ -83,6 +83,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <h5 class="modal-title" id="modalRegistrasiLabel">Formulir Pembuatan Akun</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                
                 <div class="modal-body">
                     <!-- ======= Contact Section ======= -->
                     <section id="contact" class="contact">
@@ -95,16 +96,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                             <div class="row">
                                 <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-                                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                                        <div class="row">
-                                            <div class="form-group col-md-12">
-                                                <label for="namalengkap">Nama Lengkap</label>
-                                                <input type="text" name="namalengkap" class="form-control" id="namalengkap" required>
-                                            </div>
-                                            <div class="form-group col-md-12">
-                                                <label for="email">Email</label>
-                                                <input type="email" class="form-control" name="email" id="email" required>
-                                            </div>
+                                    <form action="<?php echo site_url('pub/account_registration');?>" method="post" role="form" class="php-email-form">
+                                        
+                                        <div class="form-group col-md-12">
+                                            <label for="namalengkap">Nama Lengkap</label>
+                                            <input type="text" name="namalengkap" class="form-control" id="namalengkap" required>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="nik">NIK</label>
+                                            <input type="number" class="form-control" name="nik" id="nik" required>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" name="email" id="email" required>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="nohp">Nomor HP</label>
@@ -115,16 +119,16 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                             <input type="password" class="form-control" name="password" id="password">
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label for="password_confirm">Kata Sandi</label>
+                                            <label for="password_confirm">Konfirmasi Kata Sandi</label>
                                             <input type="password" class="form-control" name="password_confirm" id="password_confirm">
                                         </div>
                                         <div class="my-3">
                                             <div class="loading">Loading</div>
                                             <div class="error-message"></div>
-                                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                                            <div class="sent-message">Anda berhasil mendaftarkan akun. Silahkan masuk!</div>
                                         </div>
                                         <!-- <div class="text-center"><button type="submit">Daftar</button></div> -->
-                                    </form>
+                                    
                                 </div>
 
                             </div>
@@ -136,8 +140,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Understood</button> -->
                     <button type="submit" class="btn btn-primary">Daftar</button>
-
                 </div>
+                </form>
             </div>
         </div>
     </div>

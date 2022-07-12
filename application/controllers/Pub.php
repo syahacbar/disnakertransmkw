@@ -37,6 +37,7 @@ class Pub extends CI_Controller
 	{
 		$this->load->view('public/profil', $this->page_data);
 	}
+<<<<<<< Updated upstream
 	public function berita()
 	{
 		$this->load->view('public/berita', $this->page_data);
@@ -48,5 +49,52 @@ class Pub extends CI_Controller
 	public function pelatihan()
 	{
 		$this->load->view('public/pelatihan', $this->page_data);
+=======
+
+	public function account_registration()
+	{
+		// ifPermissions('users_add');
+		// postAllowed();
+
+		$id = $this->users_model->create([
+			'role' => '2',
+			'name' => post('namalengkap'),
+			'username' => post('nik'),
+			'email' => post('email'),
+			'phone' => post('nohp'),
+			//'address' => post('address'),
+			'status' => '1',
+			'password' => hash( "sha256", post('password') ),
+		]);
+
+		if (!empty($_FILES['image']['name'])) {
+
+			$path = $_FILES['image']['name'];
+			$ext = pathinfo($path, PATHINFO_EXTENSION);
+			$this->uploadlib->initialize([
+				'file_name' => $id.'.'.$ext
+			]);
+			$image = $this->uploadlib->uploadImage('image', '/users');
+
+			if($image['status']){
+				$this->users_model->update($id, ['img_type' => $ext]);
+			}else{
+				copy(FCPATH.'uploads/users/default.png', 'uploads/users/'.$id.'.png');
+			}
+
+		}else{
+
+			copy(FCPATH.'uploads/users/default.png', 'uploads/users/'.$id.'.png');
+
+		}
+
+		$this->activity_model->add('New User $'.$id.' Created by User:'.logged('name'), logged('id'));
+
+		$this->session->set_flashdata('alert-type', 'success');
+		$this->session->set_flashdata('alert', 'New User Created Successfully');
+		
+		redirect('pub/welcome');
+
+>>>>>>> Stashed changes
 	}
 }
