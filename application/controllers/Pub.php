@@ -37,4 +37,16 @@ class Pub extends CI_Controller
 	{
 		$this->load->view('public/profil', $this->page_data);
 	}
+	public function berita()
+	{
+		$this->load->view('public/berita', $this->page_data);
+	}
+	public function pengumuman()
+	{
+		$this->load->view('public/pengumuman', $this->page_data);
+	}
+	public function pelatihan()
+	{
+		$this->load->view('public/pelatihan', $this->page_data);
+	}
 }
