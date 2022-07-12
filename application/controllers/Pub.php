@@ -25,7 +25,7 @@ class Pub extends CI_Controller
 
 	public function formkartu()
 	{
-		$this->load->view('public/form_kartu', $this->page_data);
+		$this->load->view('public/form_registrasi', $this->page_data);
 	}
 
 	public function formregistrasi()
@@ -36,5 +36,17 @@ class Pub extends CI_Controller
 	public function profil()
 	{
 		$this->load->view('public/profil', $this->page_data);
+	}
+	public function berita()
+	{
+		$this->load->view('public/berita', $this->page_data);
+	}
+	public function pengumuman()
+	{
+		$this->load->view('public/pengumuman', $this->page_data);
+	}
+	public function pelatihan()
+	{
+		$this->load->view('public/pelatihan', $this->page_data);
 	}
 }

@@ -58,9 +58,9 @@
           </li>
           <li class="dropdown"><a href="#"><span>Informasi</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Berita</a></li>
-              <li><a href="#">Pengumuman</a></li>
-              <li><a href="#">Pelatihan</a></li>
+              <li><a href="<?php echo site_url(); ?>pub/berita">Berita</a></li>
+              <li><a href="<?php echo site_url(); ?>pub/pengumuman">Pengumuman</a></li>
+              <li><a href="<?php echo site_url(); ?>pub/pelatihan">Pelatihan</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#"><span>Layanan</span> <i class="bi bi-chevron-down"></i></a>
