@@ -37,7 +37,7 @@ class Pub extends CI_Controller
 	{
 		$this->load->view('public/profil', $this->page_data);
 	}
-<<<<<<< Updated upstream
+
 	public function berita()
 	{
 		$this->load->view('public/berita', $this->page_data);
@@ -49,7 +49,7 @@ class Pub extends CI_Controller
 	public function pelatihan()
 	{
 		$this->load->view('public/pelatihan', $this->page_data);
-=======
+	}
 
 	public function account_registration()
 	{
@@ -95,6 +95,6 @@ class Pub extends CI_Controller
 		
 		redirect('pub/welcome');
 
->>>>>>> Stashed changes
+
 	}
 }
