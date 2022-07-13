@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
 $lang['info'] = [
@@ -36,7 +36,7 @@ $lang['old_password'] = "Old Password";
  */
 $lang['not_allowed_403'] = "You are not allowed to access this page.";
 $lang['sorry_not_allowed_msg'] = "Sorry, you cannot access this section/webpage.
-Meanwhile, you may <a href='".url('/')."'>return to dashboard</a> or try using the search form.";
+Meanwhile, you may <a href='" . url('/') . "'>return to dashboard</a> or try using the search form.";
 
 $lang['informasi'] = "Informasi";
 $lang['berita'] = "Berita";
@@ -117,8 +117,16 @@ $lang['error_404'] = "Error 404";
 $lang['error_500'] = "Error 500";
 $lang['pace'] = "Pace";
 $lang['blank_page'] = "Blank Page";
-$lang['form_pencaker'] = "Profil Pencari Kerja";
+
+$lang['formpencaker'] = "Profil Pencari Kerja";
+$lang['tujuan'] = "Tujuan Pencaker";
+$lang['identitas'] = "Keterangan Umum";
+$lang['pendidikan'] = "Informasi Pendidikan";
+$lang['pekerjaan'] = "Informasi Pekerjaan";
+$lang['perusahan'] = "Tujuan Perusahan";
+$lang['datatambahan'] = "Keterangan Tambahan";
 $lang['doc_pencaker'] = "Dokumen Pencari Kerja";
+
 $lang['starter_page'] = "Starter Page";
 $lang['MISCELLANEOUS'] = "MISCELLANEOUS";
 $lang['documentation'] = "Documentation";
@@ -308,4 +316,3 @@ $lang['settings_timezone'] = "Timezone";
 $lang['language'] = "Language";
 $lang['default_lang'] = "Default Language";
 $lang['blank_page'] = "Blank Page";
-

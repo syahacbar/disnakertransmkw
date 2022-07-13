@@ -14,24 +14,69 @@ defined('BASEPATH') or exit('No direct script access allowed');
     </a>
   </li>
 
-<!--   <li class="nav-item">
-    <a href="<?php //echo url('starter') ?>" class="nav-link <?php //echo ($page->menu == 'starter') ? 'active' : '' ?>">
+  <!--   <li class="nav-item">
+    <a href="<?php //echo url('starter') 
+              ?>" class="nav-link <?php //echo ($page->menu == 'starter') ? 'active' : '' 
+                                  ?>">
       <i class="nav-icon fas fa-list"></i>
       <p>
-        <?php //echo lang('blank_page') ?>
+        <?php //echo lang('blank_page') 
+        ?>
       </p>
     </a>
   </li> -->
 
   <!-- form pencaker -->
-  <li class="nav-item">
-    <a href="<?php echo url('starter/formpencaker') ?>" class="nav-link <?php echo ($page->menu == 'form_pencaker') ? 'active' : '' ?>">
-      <i class="nav-icon fas fa-list-alt"></i>
+  <li class="nav-item has-treeview <?php echo ($page->menu == 'starter') ? 'menu-open' : '' ?>">
+    <a href="#" class="nav-link  <?php echo ($page->menu == 'starter') ? 'active' : '' ?>">
+      <i class="nav-icon fas fa-id-card"></i>
       <p>
-        <?php echo lang('form_pencaker') ?>
+        <?php echo lang('formpencaker') ?>
+        <i class="right fas fa-angle-left"></i>
       </p>
     </a>
+    <ul class="nav nav-treeview">
+      <li class="nav-item">
+        <a href="<?php echo url('starter/tujuan') ?>" class="nav-link <?php echo ($page->submenu == 'tujuan') ? 'active' : '' ?>">
+          <i class="far fa-circle nav-icon"></i>
+          <p> <?php echo lang('tujuan') ?> </p>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="<?php echo url('starter/identitas') ?>" class="nav-link <?php echo ($page->submenu == 'identitas') ? 'active' : '' ?>">
+          <i class="far fa-circle nav-icon"></i>
+          <p> <?php echo lang('identitas') ?> </p>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="<?php echo url('starter/pendidikan') ?>" class="nav-link <?php echo ($page->submenu == 'pendidikan') ? 'active' : '' ?>">
+          <i class="far fa-circle nav-icon"></i>
+          <p> <?php echo lang('pendidikan') ?></p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="<?php echo url('starter/pekerjaan') ?>" class="nav-link <?php echo ($page->submenu == 'pekerjaan') ? 'active' : '' ?>">
+          <i class="far fa-circle nav-icon"></i>
+          <p> <?php echo lang('pekerjaan') ?></p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="<?php echo url('starter/perusahan') ?>" class="nav-link <?php echo ($page->submenu == 'perusahan') ? 'active' : '' ?>">
+          <i class="far fa-circle nav-icon"></i>
+          <p> <?php echo lang('perusahan') ?></p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="<?php echo url('starter/datatambahan') ?>" class="nav-link <?php echo ($page->submenu == 'datatambahan') ? 'active' : '' ?>">
+          <i class="far fa-circle nav-icon"></i>
+          <p> <?php echo lang('datatambahan') ?></p>
+        </a>
+      </li>
+    </ul>
   </li>
+
   <!-- dokumen -->
   <li class="nav-item">
     <a href="<?php echo url('starter/dokumenpencaker') ?>" class="nav-link <?php echo ($page->menu == 'doc_pencaker') ? 'active' : '' ?>">
@@ -42,7 +87,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     </a>
   </li>
 
-<!-- menu informasi -->
+  <!-- menu informasi -->
   <?php if (hasPermissions('informasi')) : ?>
     <li class="nav-item has-treeview <?php echo ($page->menu == 'informasi') ? 'menu-open' : '' ?>">
       <a href="#" class="nav-link  <?php echo ($page->menu == 'informasi') ? 'active' : '' ?>">
