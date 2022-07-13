@@ -316,7 +316,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         margin-bottom: 0;
         color: #000;
     }
-
+ 
     div#pilihTujuan {
         justify-content: center;
     }
@@ -356,7 +356,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="card-body">
                         <div class="container-fluid" id="grad1">
                             <div class="row justify-content-center mt-0">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center p-0 mt-3 mb-2">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-8 text-center p-0 mt-3 mb-2">
                                     <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                                         <h2><strong>Formulir AK/I</strong></h2>
                                         <p>Silakan lengkapi data yang di bawah ini untuk pembuatan Kartu Tanda Pencari Kerja (Kartu Kuning)</p>
