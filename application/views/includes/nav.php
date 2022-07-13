@@ -42,6 +42,42 @@ defined('BASEPATH') or exit('No direct script access allowed');
     </a>
   </li>
 
+<!-- menu informasi -->
+  <?php if (hasPermissions('informasi')) : ?>
+    <li class="nav-item has-treeview <?php echo ($page->menu == 'informasi') ? 'menu-open' : '' ?>">
+      <a href="#" class="nav-link  <?php echo ($page->menu == 'informasi') ? 'active' : '' ?>">
+        <i class="nav-icon fas fa-cog"></i>
+        <p>
+          <?php echo lang('informasi') ?>
+          <i class="right fas fa-angle-left"></i>
+        </p>
+      </a>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+          <a href="<?php echo url('informasi/berita') ?>" class="nav-link <?php echo ($page->submenu == 'berita') ? 'active' : '' ?>">
+            <i class="far fa-circle nav-icon"></i>
+            <p> <?php echo lang('berita') ?> </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="<?php echo url('informasi/pengumuman') ?>" class="nav-link <?php echo ($page->submenu == 'pengumuman') ? 'active' : '' ?>">
+            <i class="far fa-circle nav-icon"></i>
+            <p> <?php echo lang('pengumuman') ?> </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="<?php echo url('informasi/pelatihan') ?>" class="nav-link <?php echo ($page->submenu == 'pelatihan') ? 'active' : '' ?>">
+            <i class="far fa-circle nav-icon"></i>
+            <p> <?php echo lang('pelatihan') ?></p>
+          </a>
+        </li>
+      </ul>
+    </li>
+  <?php endif ?>
+  <!--end menu informasi -->
+
   <?php if (hasPermissions('users_list')) : ?>
     <li class="nav-item">
       <a href="<?php echo url('users') ?>" class="nav-link <?php echo ($page->menu == 'users') ? 'active' : '' ?>">
