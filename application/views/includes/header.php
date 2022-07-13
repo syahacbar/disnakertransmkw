@@ -12,7 +12,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <meta name="csrf_token_name" content="<?php echo $this->security->get_csrf_token_name(); ?>" />
   <meta name="csrf_token_hash" content="<?php echo $this->security->get_csrf_hash(); ?>" />
-
+ <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url();?>/assets/frontend/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url();?>/assets/frontend/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url();?>/assets/frontend/favicon/favicon-16x16.png">
+  <link rel="manifest" href="<?php echo base_url();?>/assets/frontend/favicon/site.webmanifest">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo $url->assets ?>plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -86,20 +90,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <!-- <i class="far fa-bell"></i>  -->
-          <i class="fa fa-language"></i> <span><?php echo supported_languages()->{getUserlang()}->nativeName; ?></span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right text-right">
-          <?php foreach(supported_languages() as $key => $value){ ?>
-            <?php if( getUserlang()!=$key ) { ?>
-            <a href="<?php echo url('profile/change_language/'.$key.'?back='.urlencode(current_url())) ?>" class="dropdown-item"><?php echo $value->name.' <span class="text-muted">('.$value->nativeName.')</span>' ?></a>
-            <?php } ?>
-          <?php } ?>
-        </div>
-      </li>
+     
 
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
@@ -237,7 +228,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?php echo url('/') ?>" class="brand-link">
-      <img src="<?php echo $url->assets ?>/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="<?php echo base_url();?>/assets/frontend/favicon/apple-touch-icon.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light"><?php echo setting('company_name') ?></span>
     </a>
