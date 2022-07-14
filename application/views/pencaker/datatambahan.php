@@ -8,12 +8,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><?php echo lang('pekerjaan') ?></h1>
+                <h1><?php echo lang('datatambahan') ?></h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="<?php echo url('/') ?>"><?php echo lang('home') ?></a></li>
-                    <li class="breadcrumb-item active"><?php echo lang('pekerjaan') ?></li>
+                    <li class="breadcrumb-item active"><?php echo lang('datatambahan') ?></li>
                 </ol>
             </div>
         </div>
@@ -67,8 +67,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
-                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                <input type="button" name="next" class="next action-button" value="Next Step" />
+                <a class="btn btn-secondary" href="<?php echo url('starter/perusahan') ?>" role="button">Kembali</a>
+                <a class="btn btn-primary" href="" role="button">Simpan</a>
             </div>
         </div>
     </div>

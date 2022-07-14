@@ -122,6 +122,7 @@ $lang['formpencaker'] = "Profil Pencari Kerja";
 $lang['tujuan'] = "Tujuan Pencaker";
 $lang['identitas'] = "Keterangan Umum";
 $lang['pendidikan'] = "Informasi Pendidikan";
+$lang['bahasa'] = "Keterampilan Berbahasa";
 $lang['pekerjaan'] = "Informasi Pekerjaan";
 $lang['perusahan'] = "Tujuan Perusahan";
 $lang['datatambahan'] = "Keterangan Tambahan";

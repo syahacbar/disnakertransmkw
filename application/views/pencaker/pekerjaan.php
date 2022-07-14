@@ -32,20 +32,20 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
                             <div class="form-group">
-                                <label for="tahun_masuk">Tahun Masuk</label>
-                                <input type="number" class="form-control" name="tahun_masuk" id="tahun_masuk" placeholder="" required placeholder="Tahun masuk sekolah" autofocus />
+                                <label for="tahunmasuk">Tahun Masuk</label>
+                                <input type="number" class="form-control" name="tahunmasuk" id="tahunmasuk" placeholder="" required placeholder="Tahun masuk sekolah" autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
                             <div class="form-group">
-                                <label for="tahun_keluar">Tahun Keluar</label>
-                                <input type="number" class="form-control" name="tahun_keluar" id="tahun_keluar" placeholder="" required placeholder="Tahun keluar sekolah" autofocus />
+                                <label for="tahunkeluar">Tahun Keluar</label>
+                                <input type="number" class="form-control" name="tahunkeluar" id="tahunkeluar" placeholder="" required placeholder="Tahun keluar sekolah" autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-6 ">
                             <div class="form-group">
-                                <label for="nama_perusahan">Nama Perusahan/Instansi</label>
-                                <input type="text" class="form-control" name="nama_perusahan" id="nama_perusahan" placeholder="" required placeholder="Nama Perusahan/Instansi" autofocus />
+                                <label for="instansi">Nama Perusahan/Instansi</label>
+                                <input type="text" class="form-control" name="instansi" id="instansi" placeholder="" required placeholder="Nama Perusahan/Instansi" autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
@@ -58,20 +58,20 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
                             <div class="form-group">
-                                <label for="tahun_masuk">Tahun Masuk</label>
-                                <input type="number" class="form-control" name="tahun_masuk" id="tahun_masuk" placeholder="" required placeholder="Tahun masuk sekolah" autofocus />
+                                <label for="tahunmasuk">Tahun Masuk</label>
+                                <input type="number" class="form-control" name="tahunmasuk" id="tahunmasuk" placeholder="" required placeholder="Tahun masuk sekolah" autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
                             <div class="form-group">
-                                <label for="tahun_keluar">Tahun Keluar</label>
-                                <input type="number" class="form-control" name="tahun_keluar" id="tahun_keluar" placeholder="" required placeholder="Tahun keluar sekolah" autofocus />
+                                <label for="tahunkeluar">Tahun Keluar</label>
+                                <input type="number" class="form-control" name="tahunkeluar" id="tahunkeluar" placeholder="" required placeholder="Tahun keluar sekolah" autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-6 ">
                             <div class="form-group">
-                                <label for="nama_perusahan">Nama Perusahan/Instansi</label>
-                                <input type="text" class="form-control" name="nama_perusahan" id="nama_perusahan" placeholder="" required placeholder="Nama Perusahan/Instansi" autofocus />
+                                <label for="instansi">Nama Perusahan/Instansi</label>
+                                <input type="text" class="form-control" name="instansi" id="instansi" placeholder="" required placeholder="Nama Perusahan/Instansi" autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
@@ -84,20 +84,20 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
                             <div class="form-group">
-                                <label for="tahun_masuk">Tahun Masuk</label>
-                                <input type="number" class="form-control" name="tahun_masuk" id="tahun_masuk" placeholder="" required placeholder="Tahun masuk sekolah" autofocus />
+                                <label for="tahunmasuk">Tahun Masuk</label>
+                                <input type="number" class="form-control" name="tahunmasuk" id="tahunmasuk" placeholder="" required placeholder="Tahun masuk sekolah" autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
                             <div class="form-group">
-                                <label for="tahun_keluar">Tahun Keluar</label>
-                                <input type="number" class="form-control" name="tahun_keluar" id="tahun_keluar" placeholder="" required placeholder="Tahun keluar sekolah" autofocus />
+                                <label for="tahunkeluar">Tahun Keluar</label>
+                                <input type="number" class="form-control" name="tahunkeluar" id="tahunkeluar" placeholder="" required placeholder="Tahun keluar sekolah" autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-6 ">
                             <div class="form-group">
-                                <label for="nama_perusahan">Nama Perusahan/Instansi</label>
-                                <input type="text" class="form-control" name="nama_perusahan" id="nama_perusahan" placeholder="" required placeholder="Nama Perusahan/Instansi" autofocus />
+                                <label for="instansi">Nama Perusahan/Instansi</label>
+                                <input type="text" class="form-control" name="instansi" id="instansi" placeholder="" required placeholder="Nama Perusahan/Instansi" autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
@@ -110,20 +110,20 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
                             <div class="form-group">
-                                <label for="tahun_masuk">Tahun Masuk</label>
-                                <input type="number" class="form-control" name="tahun_masuk" id="tahun_masuk" placeholder="" required placeholder="" autofocus />
+                                <label for="tahunmasuk">Tahun Masuk</label>
+                                <input type="number" class="form-control" name="tahunmasuk" id="tahunmasuk" placeholder="" required placeholder="" autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
                             <div class="form-group">
-                                <label for="tahun_keluar">Tahun Keluar</label>
-                                <input type="number" class="form-control" name="tahun_keluar" id="tahun_keluar" placeholder="" required placeholder="" autofocus />
+                                <label for="tahunkeluar">Tahun Keluar</label>
+                                <input type="number" class="form-control" name="tahunkeluar" id="tahunkeluar" placeholder="" required placeholder="" autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-6 ">
                             <div class="form-group">
-                                <label for="nama_perusahan">Nama Perusahan/Instansi</label>
-                                <input type="text" class="form-control" name="nama_perusahan" id="nama_perusahan" placeholder="" required placeholder="" autofocus />
+                                <label for="instansi">Nama Perusahan/Instansi</label>
+                                <input type="text" class="form-control" name="instansi" id="instansi" placeholder="" required placeholder="" autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
@@ -137,8 +137,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
-                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                <input type="button" name="next" class="next action-button" value="Next Step" />
+                <a class="btn btn-secondary" href="<?php echo url('starter/bahasa') ?>" role="button">Kembali</a>
+                <a class="btn btn-primary" href="<?php echo url('starter/perusahan') ?>" role="button">Lanjut</a>
             </div>
         </div>
 

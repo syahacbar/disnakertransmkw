@@ -55,8 +55,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
-                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                <input type="button" name="next" class="next action-button" value="Next Step" />
+                <a class="btn btn-primary" href="<?php echo url('starter/identitas') ?>" role="button">Lanjut</a>
             </div>
         </div>
     </div>

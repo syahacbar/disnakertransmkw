@@ -27,8 +27,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
   </li> -->
 
   <!-- form pencaker -->
-  <li class="nav-item has-treeview <?php echo ($page->menu == 'starter') ? 'menu-open' : '' ?>">
-    <a href="#" class="nav-link  <?php echo ($page->menu == 'starter') ? 'active' : '' ?>">
+  <li class="nav-item has-treeview <?php echo ($page->menu == 'formpencaker') ? 'menu-open' : '' ?>">
+    <a href="#" class="nav-link  <?php echo ($page->menu == 'formpencaker') ? 'active' : '' ?>">
       <i class="nav-icon fas fa-id-card"></i>
       <p>
         <?php echo lang('formpencaker') ?>
@@ -54,6 +54,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <a href="<?php echo url('starter/pendidikan') ?>" class="nav-link <?php echo ($page->submenu == 'pendidikan') ? 'active' : '' ?>">
           <i class="far fa-circle nav-icon"></i>
           <p> <?php echo lang('pendidikan') ?></p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="<?php echo url('starter/bahasa') ?>" class="nav-link <?php echo ($page->submenu == 'bahasa') ? 'active' : '' ?>">
+          <i class="far fa-circle nav-icon"></i>
+          <p> <?php echo lang('bahasa') ?></p>
         </a>
       </li>
       <li class="nav-item">

@@ -27,36 +27,30 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="col-lg-12">
                 <div class="form-card">
                     <div class="alert alert-success" role="alert">
-                        Silakan pilih tujuan Anda membuat Kartu Kuning!
+                        Silakan tentukan tujuan perusahan dan jabatan pilihan Anda!
                     </div>
-                    <div class="row mt-5" id="pilihTujuan">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Mencari Pekerjaan
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    Melengkapi Persyaratan
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
-
             </div>
 
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 ">
+                <div class="form-group">
+                    <label for="nama_perusahan">Nama Perusahan/Instansi</label>
+                    <input type="text" class="form-control" name="nama_perusahan" id="nama_perusahan" placeholder="" required placeholder="" autofocus />
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 ">
+                <div class="form-group">
+                    <label for="jabatan">Jabatan</label>
+                    <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="" required placeholder="" autofocus />
+                </div>
+            </div>
+
+
+
+
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
-                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                <input type="button" name="next" class="next action-button" value="Next Step" />
+                <a class="btn btn-secondary" href="<?php echo url('starter/pekerjaan') ?>" role="button">Kembali</a>
+                <a class="btn btn-primary" href="<?php echo url('starter/datatambahan') ?>" role="button">Lanjut</a>
             </div>
         </div>
     </div>
