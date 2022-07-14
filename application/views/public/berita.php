@@ -35,7 +35,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         background: #eee;
     }
 
-    .snip1527 {
+    .barto {
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
         color: #ffffff;
         float: left;
@@ -48,14 +48,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         width: 100%;
     }
 
-    .snip1527 * {
+    .barto * {
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
         -webkit-transition: all 0.25s ease;
         transition: all 0.25s ease;
     }
 
-    .snip1527 img {
+    .barto img {
         width: 100%;
         vertical-align: top;
         position: relative;
@@ -63,14 +63,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         height: 400px;
     }
 
-    .snip1527 figcaption {
+    .barto figcaption {
         padding: 25px 20px 25px;
         position: absolute;
         bottom: 0;
         z-index: 1;
     }
 
-    .snip1527 figcaption:before {
+    .barto figcaption:before {
         position: absolute;
         top: 0;
         bottom: 0;
@@ -85,7 +85,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         z-index: -1;
     }
 
-    .snip1527 .date {
+    .barto .date {
         background-color: #fff;
         border-radius: 50%;
         color: #700877;
@@ -101,35 +101,35 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         top: -25px;
     }
 
-    .snip1527 .date span {
+    .barto .date span {
         display: block;
         line-height: 14px;
     }
 
-    .snip1527 .date .month {
+    .barto .date .month {
         font-size: 11px;
     }
 
-    .snip1527 h3,
-    .snip1527 p {
+    .barto h3,
+    .barto p {
         margin: 0;
         padding: 0;
     }
 
-    .snip1527 h3 {
+    .barto h3 {
         display: inline-block;
         font-weight: 700;
         letter-spacing: -0.4px;
         margin-bottom: 5px;
     }
 
-    .snip1527 p {
+    .barto p {
         font-size: 0.8em;
         line-height: 1.6em;
         margin-bottom: 0px;
     }
 
-    .snip1527 a {
+    .barto a {
         left: 0;
         right: 0;
         top: 0;
@@ -138,8 +138,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         z-index: 1;
     }
 
-    .snip1527:hover img,
-    .snip1527.hover img {
+    .barto:hover img,
+    .barto.hover img {
         -webkit-transform: scale(1.1);
         transform: scale(1.1);
     }
@@ -169,7 +169,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="snip1527">
+                    <figure class="barto">
                         <div class="image"><img src="https://i.imgur.com/sSuJsu8.jpg" alt="pr-sample23" /></div>
                         <figcaption>
                             <div class="date"><span class="day">28</span><span class="month">Nov</span></div>
@@ -182,7 +182,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </figure>
                 </div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="snip1527">
+                    <figure class="barto">
                         <div class="image"><img src="https://i.imgur.com/qNV4rMU.jpg" alt="pr-sample25" /></div>
                         <figcaption>
                             <div class="date"><span class="day">01</span><span class="month">Dec</span></div>
@@ -196,7 +196,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </figure>
                 </div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="snip1527 hover">
+                    <figure class="barto hover">
                         <div class="image"><img src="https://i.imgur.com/E0e8fLV.jpg" alt="pr-sample24" /></div>
                         <figcaption>
                             <div class="date"><span class="day">17</span><span class="month">Nov</span></div>
@@ -211,7 +211,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </figure>
                 </div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="snip1527">
+                    <figure class="barto">
                         <div class="image"><img src="https://i.imgur.com/sSuJsu8.jpg" alt="pr-sample23" /></div>
                         <figcaption>
                             <div class="date"><span class="day">28</span><span class="month">Nov</span></div>
@@ -224,7 +224,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </figure>
                 </div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="snip1527">
+                    <figure class="barto">
                         <div class="image"><img src="https://i.imgur.com/qNV4rMU.jpg" alt="pr-sample25" /></div>
                         <figcaption>
                             <div class="date"><span class="day">01</span><span class="month">Dec</span></div>
@@ -238,7 +238,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </figure>
                 </div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="snip1527 hover">
+                    <figure class="barto hover">
                         <div class="image"><img src="https://i.imgur.com/E0e8fLV.jpg" alt="pr-sample24" /></div>
                         <figcaption>
                             <div class="date"><span class="day">17</span><span class="month">Nov</span></div>
@@ -253,7 +253,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </figure>
                 </div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="snip1527">
+                    <figure class="barto">
                         <div class="image"><img src="https://i.imgur.com/qNV4rMU.jpg" alt="pr-sample25" /></div>
                         <figcaption>
                             <div class="date"><span class="day">01</span><span class="month">Dec</span></div>
@@ -267,7 +267,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </figure>
                 </div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="snip1527 hover">
+                    <figure class="barto hover">
                         <div class="image"><img src="https://i.imgur.com/E0e8fLV.jpg" alt="pr-sample24" /></div>
                         <figcaption>
                             <div class="date"><span class="day">17</span><span class="month">Nov</span></div>
