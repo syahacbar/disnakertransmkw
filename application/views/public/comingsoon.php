@@ -40,7 +40,7 @@
 
       <h1>ComingSoon</h1>
       <h2>We're working hard to improve our website and we'll ready to launch after</h2>
-      <div class="countdown d-flex justify-content-center" data-count="2022/07/16">
+      <div class="countdown d-flex justify-content-center" data-count="2022/07/18">
         <div>
           <h3>%d</h3>
           <h4>Days</h4>
