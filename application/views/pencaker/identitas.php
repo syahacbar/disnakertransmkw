@@ -58,7 +58,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="col-12 col-sm-12 col-md-4 col-lg-3">
                 <div class="form-group">
                     <label for="tgllahir">Tanggal Lahir</label>
-                    <input type="text" class="form-control" name="tgllahir" id="tgllahir" required placeholder="Tanggal Lahir Sesuai KTP" autofocus />
+                    <input type="date" class="form-control" name="tgllahir" id="tgllahir" required placeholder="Tanggal Lahir Sesuai KTP" autofocus />
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-4 col-lg-3">

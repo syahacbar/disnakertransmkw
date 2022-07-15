@@ -3,174 +3,192 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <?php include viewPath('includes/header'); ?>
 
-<!-- Dropzone JS -->
-<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<style>
-    .dropzone {
-        min-height: 94px !important;
-        border: 2px solid rgba(0, 0, 0, .3);
-        background: #fff;
-        padding: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .dz-message {
-        margin: 1rem !important;
-    }
-
-    .dz-message h6 {
-        margin: 0 !important;
-    }
-</style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Dokumen Pencari Kerja</h1>
+                <h1><?php echo lang('doc_pencaker') ?></h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="<?php echo url('/') ?>"><?php echo lang('home') ?></a></li>
-                    <li class="breadcrumb-item active">Dokumen Pencari Kerja</li>
+                    <li class="breadcrumb-item active"><?php echo lang('doc_pencaker') ?></li>
                 </ol>
             </div>
         </div>
     </div><!-- /.container-fluid -->
 </section>
+
 <!-- Main content -->
 <section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex p-0">
+                        <h3 class="card-title p-3"><?php echo lang('doc_pencaker') ?></h3>
+                        <div class="ml-auto p-2">
+                            <button data-toggle="modal" data-target="#unggahDokumen" class="btn btn-primary btn-sm"><span class="pr-1"><i class="fa fa-plus"></i></span> <?php echo lang('upload') ?></button>
+                        </div>
+                    </div>
 
-    <!-- Default card -->
-    <div class="card">
-        <div class="card-header with-border">
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="tabeldokumen" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Nama Dokumen</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-            <div class="card-tools pull-right">
-                <?php if (hasPermissions('permissions_add')) : ?>
-                    <a href="<?php echo url('permissions/add') ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> <?php echo lang('create_permission') ?></a>
-                <?php endif ?>
+                                <tr>
+                                    <td width="60">1</td>
+                                    <td>
+                                        Kartu Tanda Penduduk
+                                    </td>
+                                    <td>
+                                        Sudah Diunggah | Belum
+                                    </td>
+                                    <td>
+                                        <a href="<?php echo url('users/edit/' . $row->id) ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
+                                        <a href="<?php echo url('users/view/' . $row->id) ?>" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                        <a href="<?php echo url('users/delete/' . $row->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td width="60">1</td>
+                                    <td>
+                                        Ijazah Terakhir
+                                    </td>
+                                    <td>
+                                        Sudah Diunggah | Belum
+                                    </td>
+                                    <td>
+                                        <a href="<?php echo url('users/edit/' . $row->id) ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
+                                        <a href="<?php echo url('users/view/' . $row->id) ?>" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                        <a href="<?php echo url('users/delete/' . $row->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="60">1</td>
+                                    <td>
+                                        Transkrip Nilai
+                                    </td>
+                                    <td>
+                                        Sudah Diunggah | Belum
+                                    </td>
+                                    <td>
+                                        <a href="<?php echo url('users/edit/' . $row->id) ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
+                                        <a href="<?php echo url('users/view/' . $row->id) ?>" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                        <a href="<?php echo url('users/delete/' . $row->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="60">1</td>
+                                    <td>
+                                        Riwayat Hidup
+                                    </td>
+                                    <td>
+                                        Sudah Diunggah | Belum
+                                    </td>
+                                    <td>
+                                        <a href="<?php echo url('users/edit/' . $row->id) ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
+                                        <a href="<?php echo url('users/view/' . $row->id) ?>" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                        <a href="<?php echo url('users/delete/' . $row->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="60">1</td>
+                                    <td>
+                                        SKCK
+                                    </td>
+                                    <td>
+                                        Sudah Diunggah | Belum
+                                    </td>
+                                    <td>
+                                        <a href="<?php echo url('users/edit/' . $row->id) ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
+                                        <a href="<?php echo url('users/view/' . $row->id) ?>" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                        <a href="<?php echo url('users/delete/' . $row->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="60">1</td>
+                                    <td>
+                                        Surat Keterangan Berbadan Sehat
+                                    </td>
+                                    <td>
+                                        Sudah Diunggah | Belum
+                                    </td>
+                                    <td>
+                                        <a href="<?php echo url('users/edit/' . $row->id) ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
+                                        <a href="<?php echo url('users/view/' . $row->id) ?>" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                        <a href="<?php echo url('users/delete/' . $row->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
             </div>
-
+            <!-- /.col -->
         </div>
-        <div class="card-body">
-            <table id="dokumen" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Nama Dokumen</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <td width="60">1</td>
-                        <td>
-                            Kartu Tanda Penduduk
-                        </td>
-                        <td>
-                            Sudah Diunggah | Belum
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#unggahKTP">
-                                Unggah File
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td width="60">1</td>
-                        <td>
-                            Ijazah Terakhir
-                        </td>
-                        <td>
-                            Sudah Diunggah | Belum
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#unggahKTP">
-                                Unggah File
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="60">1</td>
-                        <td>
-                            Transkrip Nilai
-                        </td>
-                        <td>
-                            Sudah Diunggah | Belum
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#unggahKTP">
-                                Unggah File
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="60">1</td>
-                        <td>
-                            Riwayat Hidup
-                        </td>
-                        <td>
-                            Sudah Diunggah | Belum
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#unggahKTP">
-                                Unggah File
-                            </button>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="60">1</td>
-                        <td>
-                            SKCK
-                        </td>
-                        <td>
-                            Sudah Diunggah | Belum
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#unggahKTP">
-                                Unggah File
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="60">1</td>
-                        <td>
-                            Surat Keterangan Berbadan Sehat
-                        </td>
-                        <td>
-                            Sudah Diunggah | Belum
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#unggahKTP">
-                                Unggah File
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- /.card-body -->
+        <!-- /.row -->
     </div>
-    <!-- /.card -->
-
+    <!-- /.container-fluid -->
 </section>
 <!-- /.content -->
 
-
 <!-- Modal -->
-<div class="modal fade" id="unggahKTP" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="unggahKTPLabel" aria-hidden="true">
+<div class="modal fade" id="unggahDokumen" tabindex="-1" role="dialog" aria-labelledby="unggahDokumenTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="unggahDokumenTitle">Unggah Dokumen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="dropzone" id="dokumen_pekerja">
+                    <div name="userfile" class="dz-message">
+                        <h6>Klik atau drop file/dokumen ke sini</h6>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-primary">Simpan</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="unggahDokumen" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="unggahDokumenLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="unggahKTPLabel">Unggah File/Dokumen</h5>
+                <h5 class="modal-title" id="unggahDokumenLabel">Unggah File/Dokumen</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -188,8 +206,5 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         </div>
     </div>
 </div>
-<?php include viewPath('includes/footer'); ?>
 
-<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<?php include viewPath('includes/footer'); ?>
