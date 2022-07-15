@@ -23,13 +23,12 @@ class Starter extends MY_Controller
 	// 	$this->load->view('pencaker/form_pencaker', $this->page_data);
 	// }
 
-	// public function profilpencaker()
-	// {
-	// 	$this->page_data['page']->title = 'Profil Pencari Kerja';
-	// 	$this->page_data['page']->menu = 'profil_pencaker';
-	// 	$this->page_data['page']->submenu = 'form_pencaker';
-	// 	$this->load->view('pencaker/profil_pencaker', $this->page_data);
-	// }
+	public function profilpencaker()
+	{
+		$this->page_data['page']->title = 'Profil Pencari Kerja';
+		$this->page_data['page']->menu = 'profil_pencaker';
+		$this->load->view('pencaker/profil_pencaker', $this->page_data);
+	}
 
 	public function tujuan()
 	{

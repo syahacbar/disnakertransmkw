@@ -118,15 +118,17 @@ $lang['error_500'] = "Error 500";
 $lang['pace'] = "Pace";
 $lang['blank_page'] = "Blank Page";
 
-$lang['formpencaker'] = "Profil Pencari Kerja";
-$lang['tujuan'] = "Tujuan Pencaker";
-$lang['identitas'] = "Keterangan Umum";
-$lang['pendidikan'] = "Informasi Pendidikan";
-$lang['bahasa'] = "Keterampilan Berbahasa";
-$lang['pekerjaan'] = "Informasi Pekerjaan";
-$lang['perusahan'] = "Tujuan Perusahan";
-$lang['datatambahan'] = "Keterangan Tambahan";
+$lang['profil_pencaker'] = "Profil Pencari Kerja";
+$lang['tujuan_pencaker'] = "Tujuan Pencaker";
+$lang['identitas_pencaker'] = "Keterangan Umum";
+$lang['pendidikan_pencaker'] = "Informasi Pendidikan";
+$lang['bahasa_pencaker'] = "Keterampilan Berbahasa";
+$lang['pekerjaan_pencaker'] = "Informasi Pekerjaan";
+$lang['perusahaan_pencaker'] = "Tujuan Perusahaan";
+$lang['datatambahan_pencaker'] = "Keterangan Tambahan";
 $lang['doc_pencaker'] = "Dokumen Pencari Kerja";
+$lang['selanjutnya'] = "Selanjutnya";
+$lang['sebelumnya'] = "Sebelumnya";
 
 $lang['starter_page'] = "Starter Page";
 $lang['MISCELLANEOUS'] = "MISCELLANEOUS";
@@ -140,7 +142,7 @@ $lang['informational'] = "Informational";
 
 $lang['id'] = "ID";
 $lang['action'] = "Action";
-$lang['submit'] = "Submit";
+$lang['submit'] = "Simpan";
 $lang['cancel'] = "Cancel";
 
 /**
