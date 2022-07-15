@@ -143,7 +143,9 @@ $lang['informational'] = "Informational";
 $lang['id'] = "ID";
 $lang['action'] = "Action";
 $lang['submit'] = "Simpan";
+$lang['save'] = "Simpan";
 $lang['cancel'] = "Cancel";
+$lang['upload'] = "Unggah File";
 
 /**
  * layouts
