@@ -87,13 +87,7 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="<?php echo site_url(); ?>">Beranda</a></li>
-                    <li class="dropdown"><a href="<?php echo site_url(); ?>web/profil"><span>Profil</span></a>
-                        <!-- <ul>
-              <li><a href="#">Visi dan Misi</a></li>
-              <li><a href="#">Tugas dan Fungsi</a></li>
-              <li><a href="#">Struktur Organisasi</a></li>
-            </ul> -->
-                    </li>
+                    <li class="dropdown"><a href="<?php echo site_url(); ?>web/profil"><span>Profil</span></a></li>
                     <li class="dropdown"><a href="#"><span>Informasi</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="<?php echo site_url(); ?>web/berita">Berita</a></li>

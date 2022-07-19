@@ -22,33 +22,35 @@ class Web extends CI_Controller
 		];
 
 		// $this->page_data['page']->title = 'Beranda';
-		// $this->page_data['page']->site_title = 'Disnakertrans Kab. Manokwari';
+		$this->page_data['page']->site_title = 'Disnakertrans Kab. Manokwari';
 		// $this->page_data['page']->menu = 'dashboard';
 	}
 
 	public function comingsoon()
 	{
 		$this->page_data['page']->title = 'Comingsoon';
-		$this->page_data['page']->site_title = 'Disnakertrans Kab. Manokwari';
+		
 		$this->load->view('web/comingsoon');
 	}
 
 	public function index()
 	{
 		$this->page_data['page']->title = 'Beranda';
-		$this->page_data['page']->site_title = 'Disnakertrans Kab. Manokwari';
+		
 		$this->load->view('web/welcome', $this->page_data);
 	}
 
 	public function registrasi()
 	{
 		$this->page_data['page']->title = 'Registrasi';
-		$this->page_data['page']->site_title = 'Disnakertrans Kab. Manokwari';
+		
 		$this->load->view('web/form_registrasi', $this->page_data);
 	}
 
 	public function profil()
 	{
+		$this->page_data['page']->title = 'Profil';
+		
 		$this->load->view('web/profil', $this->page_data);
 	}
 

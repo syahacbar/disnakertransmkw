@@ -16,65 +16,55 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="row content">
                 <div class="col-lg-6">
                     <h4>Visi</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua.
+                    <p align="center">"Mempersiapkan Tenaga Kerja Mandiri Dan Membangun Permukiman Layak Huni Menuju Masyarakat Manokwari Sejahtera"
                     </p>
-                    <ul>
-                        <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                        <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                        <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                    </ul>
+                  
                 </div>
                 <div class="col-lg-6">
                     <h4>Misi</h4>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua.
+                        Misi Dinas Tenaga Kerja dan Transmigrasi Kabupaten Manokwari sebagai berikut:
                     </p>
                     <ul>
-                        <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                        <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                        <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                        <li><i class="ri-check-double-line"></i> Meningkatkan Mutu Pelayanan Terhadap Calon Tenaga Kerja Dan Meningkatkan Kualitas Tenaga Kerja.</li>
+                        <li><i class="ri-check-double-line"></i> Meningkatkan perlindungan Tenaga Kerja.</li>
+                        <li><i class="ri-check-double-line"></i> Meningkatkan kualitas Permukiman Transmigrasi.</li>
+                        <li><i class="ri-check-double-line"></i> Meningkatkan Taraf Hidup Transmigran Dan Masyarakat Sekitarnya.</li>
+                        <li><i class="ri-check-double-line"></i> Meningkatkan Kualitas Aparatur, Administrasi Ketenagakerjaan dan Ketransmigrasian.</li>
                     </ul>
                 </div>
-
             </div>
 
         </div>
     </section><!-- End About Us Section -->
 
+    
     <!-- ======= About Us Section ======= -->
     <section id="about" class="about tugasfungsi mt-4">
         <div class="container" data-aos="fade-up">
 
             <div class="section-title mt-4">
-                <h2>Tugas dan Fungsi</h2>
+                <h2>Tugas Pokok dan Fungsi</h2>
             </div>
 
             <div class="row content">
                 <div class="col-lg-6">
-                    <h4>Tugas</h4>
+                    <h4>Tugas Pokok</h4>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua.
+                        Melaksanakan Penyusunan Pelaksanaan Kebijakan Daerah Di Bidang Ketenagakerjaan dan Transmigrasi Serta Tugas-Tugas Lainnya Yang Diberikan Oleh Bupati
                     </p>
-                    <ul>
-                        <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                        <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                        <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                    </ul>
+                   
                 </div>
                 <div class="col-lg-6">
                     <h4>Fungsi</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua.
-                    </p>
                     <ul>
-                        <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                        <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                        <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                        <li><i class="ri-check-double-line"></i> Perumusan kebijakan teknis dibidang Tenaga Kerja dan Transmigrasi;</li>
+                        <li><i class="ri-check-double-line"></i> Pelayanan Umum Dinas Tenaga Kerja dan Transmigrasi Kab. Manokwari;</li>
+                        <li><i class="ri-check-double-line"></i> Pemberian Perpanjangan Izin Masuk Tenaga Asing (IMTA)/Rekomendasi;</li>
+                        <li><i class="ri-check-double-line"></i> Pengkoordinasian dan Pembinaan Teknis Ketenagakerjaan dan Transmigrasi;</li>
+                        <li><i class="ri-check-double-line"></i> Pelaksanaan, Perencanaan, Pembangunan dan Pengembangan Kawasan Transmigrasi;</li>
+                        <li><i class="ri-check-double-line"></i> Pelaksanaan Pendidikan dan Pelatihan Dibidang Ketenagakerjaan;</li>
+                        <li><i class="ri-check-double-line"></i> Pelaksanaan Pengawasan, Perlindungan dan Penegakan Hukum Terhadap Keselamatan dan Kesehatan Kerja;</li>
                     </ul>
                 </div>
 
@@ -90,7 +80,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
             <div class="section-title mt-4">
                 <h2>Struktur Organisasi</h2>
-                <img src="https://disnaker.palembang.go.id/uploads/struktur/struktur_organisasi.JPG" width="100%">
+                <img src="<?php echo base_url('uploads/profil/');?>STRUKTUR_DISNAKERTRANS.png" width="100%">
             </div>
 
         </div>
