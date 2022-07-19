@@ -44,12 +44,11 @@ class Pencaker extends MY_Controller
         echo json_encode($data);
     }
 
-    public function update_pencaker()
+    public function update1()
     {
         $users_id = logged('id');
-        $tujuan = $this->input->post('tujuan');
     	$data = array(
-            'tujuan' => $tujuan,
+            'tujuan' => $this->input->post('tujuan'),
         );
 
         $update = $this->pencaker_model->update_by_users_id($users_id, $data);  
@@ -57,7 +56,37 @@ class Pencaker extends MY_Controller
         {        	
 	    	$res['hasil'] = 'sukses';
 	        $res['status'] = TRUE;
-	        $res['tujuan'] = $tujuan;
+        }     
+        else
+        {        	
+	    	$res['hasil'] = 'gagal';
+	        $res['status'] = FALSE;
+        }
+
+        echo json_encode($res);
+    }
+
+    public function update2()
+    {
+        $users_id = logged('id');
+    	$data = array(
+            'nik' => $this->input->post('nik'),
+            'namalengkap' => $this->input->post('namalengkap'),
+            'jenkel' => $this->input->post('jenkel'),
+            'tempatlahir' => $this->input->post('tempatlahir'),
+            'tgllahir' => $this->input->post('tgllahir'),
+            'statusnikah' => $this->input->post('statusnikah'),
+            'tinggibadan' => $this->input->post('tinggibadan'),
+            'beratbadan' => $this->input->post('beratbadan'),
+            'alamat' => $this->input->post('alamat'),
+            'kodepos' => $this->input->post('kodepos'),
+        );
+
+        $update = $this->pencaker_model->update_by_users_id($users_id, $data);  
+        if($update)
+        {        	
+	    	$res['hasil'] = 'sukses';
+	        $res['status'] = TRUE;
         }     
         else
         {        	

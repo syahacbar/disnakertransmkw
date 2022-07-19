@@ -5,7 +5,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <style type="text/css">
     .hide {
-        display: none;
+        display: none; 
     }
 </style>
 
@@ -78,7 +78,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="card-header with-border">
                     <h3 class="card-title"><?php echo lang('identitas_pencaker') ?></h3>
                 </div>
-                <?php echo form_open_multipart('settings/generalUpdate', ['class' => 'form-validate', 'autocomplete' => 'off', 'method' => 'post']); ?>
+                <form action="#" id="formidentitaspencaker">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -113,7 +113,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <div class="row">
                                     <div class="col-6 col-sm-6 col-md-6 col-lg-6">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="jenkel" id="jenkel1">
+                                            <input class="form-check-input" type="radio" name="jenkel" id="jenkel1" value="L">
                                             <label class="form-check-label" for="jenkel1">
                                                 Laki-laki
                                             </label>
@@ -121,7 +121,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     </div>
                                     <div class="col-6 col-sm-6 col-md-6 col-lg-6">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="jenkel" id="jenkel2">
+                                            <input class="form-check-input" type="radio" name="jenkel" id="jenkel2" value="P">
                                             <label class="form-check-label" for="jenkel2">
                                                 Perempuan
                                             </label>
@@ -146,28 +146,23 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                         <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                             <label for="statusnikah">Status Menikah</label>
-                            <div class="dropdown w-100">
-                                <button class="btn dropdown-toggle w-100" type="button" id="statusnikah" data-toggle="dropdown" aria-expanded="false">
-                                    - Pilih -
-                                </button>
-                                <ul class="dropdown-menu w-100" aria-labelledby="statusnikah">
-                                    <li><a class="dropdown-item" href="#">Kawin</a></li>
-                                    <li><a class="dropdown-item" href="#">Belum Kawin</a></li>
-                                    <li><a class="dropdown-item" href="#">Janda</a></li>
-                                    <li><a class="dropdown-item" href="#">Duda</a></li>
-                                </ul>
-                            </div>
+                                <select name="statusnikah" id="statusnikah">
+                                    <option value"">Kawin</option>
+                                    <option value"">Belum Kawin</option>
+                                    <option value"">Janda</option>
+                                    <option value"">Duda</option>
+                                </select>
                         </div>
 
                         <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label for="tinggibadan">Tinggi Badan</label>
+                                <label for="tinggibadan">Tinggi Badan (cm)</label>
                                 <input type="number" class="form-control" name="tinggibadan" id="tinggibadan" placeholder="" required placeholder="Satuan cm, misal 160" autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label for="beratbadan">Berat Badan</label>
+                                <label for="beratbadan">Berat Badan (kg)</label>
                                 <input type="number" class="form-control" name="beratbadan" id="beratbadan" placeholder="" required placeholder="Satuan kg, misal 56" autofocus />
                             </div>
                         </div>
@@ -189,11 +184,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
-                    <button type="submit" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
+                    <button type="button"  class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
+                    <button type="button" id="btnSave2" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
                 </div>
-                <!-- /.card-footer-->
-                <?php echo form_close(); ?>
+                </form>
             </div>
 
             <!-- pendidikanpencaker card -->
@@ -503,7 +497,22 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                 //keterangan umum
                 $('[name="namalengkap"]').val(data.name);           
-                $('[name="nik"]').val(data.username);           
+                $('[name="nik"]').val(data.username);    
+
+                //selected jenkel
+                if (data.jenkel == 'L') 
+                    $("#jenkel1").prop("checked",true);
+                else 
+                    $("#jenkel2").prop("checked",true);  
+
+                $('[name="tempatlahir"]').val(data.tempatlahir);    
+                $('[name="tgllahir"]').val(data.tgllahir);    
+                $("#statusnikah").val(data.statusnikah).trigger("change");
+                $('[name="tinggibadan"]').val(data.tinggibadan);    
+                $('[name="beratbadan"]').val(data.beratbadan);    
+                $('[name="alamat"]').val(data.alamat);    
+                $('[name="kodepos"]').val(data.kodepos);    
+
      
             },
             error: function (jqXHR, textStatus, errorThrown)
@@ -628,7 +637,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         $('#btnSave1').click(function() {
             // ajax adding data to database
             $.ajax({
-                url : "<?php echo site_url('pencaker/update_pencaker')?>",
+                url : "<?php echo site_url('pencaker/update1')?>",
                 type: "POST",
                 data: $('#formtujuanpencaker').serialize(),
                 dataType: "JSON",
@@ -636,14 +645,57 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 {         
                     if(data.status) //if success close modal and reload ajax table
                     {
-                        // $('.tujuanpencaker').hide();
-                        // $('.identitaspencaker').hide();
-                        // $('.pendidikanpencaker').toggle("display");
-                        // $('.pekerjaanpencaker').hide();
-                        // $('.perusahaanpencaker').hide();
-                        // $('.datatambahanpencaker').hide();
-                        console.log(data.status);
-                        console.log(data.tujuan);
+                        $('.tujuanpencaker').hide();
+                        $('.identitaspencaker').toggle("display");
+                        $('.pendidikanpencaker').hide();
+                        $('.pekerjaanpencaker').hide();
+                        $('.perusahaanpencaker').hide();
+                        $('.datatambahanpencaker').hide();
+
+                        $('#tujuanpencaker').removeClass("active");
+                        $('#identitaspencaker').addClass("active");
+                        $('#pendidikanpencaker').removeClass("active");
+                        $('#pekerjaanpencaker').removeClass("active");
+                        $('#perusahaanpencaker').removeClass("active");
+                        $('#datatambahanpencaker').removeClass("active");
+                        // console.log(data.status);
+                        // console.log(data.tujuan);
+                    }       
+         
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert('Error update data');         
+                }
+            });
+        });
+
+        $('#btnSave2').click(function() {
+            // ajax adding data to database
+            $.ajax({
+                url : "<?php echo site_url('pencaker/update2')?>",
+                type: "POST",
+                data: $('#formidentitaspencaker').serialize(),
+                dataType: "JSON",
+                success: function(data)
+                {         
+                    if(data.status) //if success close modal and reload ajax table
+                    {
+                        $('.tujuanpencaker').hide();
+                        $('.identitaspencaker').hide();
+                        $('.pendidikanpencaker').toggle("display");
+                        $('.pekerjaanpencaker').hide();
+                        $('.perusahaanpencaker').hide();
+                        $('.datatambahanpencaker').hide();
+
+                        $('#tujuanpencaker').removeClass("active");
+                        $('#identitaspencaker').removeClass("active");
+                        $('#pendidikanpencaker').addClass("active");
+                        $('#pekerjaanpencaker').removeClass("active");
+                        $('#perusahaanpencaker').removeClass("active");
+                        $('#datatambahanpencaker').removeClass("active");
+                        // console.log(data.status);
+                        // console.log(data.tujuan);
                     }       
          
                 },
