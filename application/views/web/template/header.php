@@ -97,7 +97,7 @@
                     </li>
                     <li class="dropdown"><a href="#"><span>Layanan</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="<?php echo site_url(); ?>web/registrasi">Kartu Kuning (AK-1)</a></li>
+                            <li><a href="<?php echo site_url(); ?>web/registrasi">Kartu Pencari Kerja (Kartu Kuning)</a></li>
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
