@@ -86,21 +86,21 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="<?php echo site_url(); ?>">Beranda</a></li>
-                    <li class="dropdown"><a href="<?php echo site_url(); ?>web/profil"><span>Profil</span></a></li>
-                    <li class="dropdown"><a href="#"><span>Informasi</span> <i class="bi bi-chevron-down"></i></a>
+                    <li><a class="nav-link scrollto <?php echo ($page->menu == 'beranda') ? 'active' : ''?>" href="<?php echo site_url(); ?>">Beranda</a></li>
+                    <li class="dropdown"><a class="<?php echo ($page->menu == 'profil') ? 'active' : ''?>" href="<?php echo site_url(); ?>web/profil"><span>Profil</span></a></li>
+                    <li class="dropdown"><a class="<?php echo ($page->menu == 'informasi') ? 'active' : ''?>" href="#"><span>Informasi</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="<?php echo site_url(); ?>web/berita">Berita</a></li>
                             <li><a href="<?php echo site_url(); ?>web/pengumuman">Pengumuman</a></li>
                             <li><a href="<?php echo site_url(); ?>web/pelatihan">Pelatihan</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="#"><span>Layanan</span> <i class="bi bi-chevron-down"></i></a>
+                    <li class="dropdown"><a class="<?php echo ($page->menu == 'layanan') ? 'active' : ''?>" href="#"><span>Layanan</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="<?php echo site_url(); ?>web/registrasi">Kartu Pencari Kerja (Kartu Kuning)</a></li>
                         </ul>
                     </li>
-                    <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
+                    <li><a class="nav-link scrollto <?php echo ($page->menu == 'kontak') ? 'active' : ''?>" href="#">Kontak</a></li>
                     <li><a target="_blank" class="getstarted scrollto" href="<?php echo site_url('dashboard'); ?>">Masuk</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>

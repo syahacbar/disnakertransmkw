@@ -35,6 +35,7 @@ class Web extends CI_Controller
 
 	public function index()
 	{
+		$this->page_data['page']->menu = 'beranda';
 		$this->page_data['page']->title = 'Beranda';
 		
 		$this->load->view('web/welcome', $this->page_data);
@@ -42,6 +43,7 @@ class Web extends CI_Controller
 
 	public function registrasi()
 	{
+		$this->page_data['page']->menu = 'layanan';
 		$this->page_data['page']->title = 'Registrasi';
 		
 		$this->load->view('web/form_registrasi', $this->page_data);
@@ -49,6 +51,7 @@ class Web extends CI_Controller
 
 	public function profil()
 	{
+		$this->page_data['page']->menu = 'profil';
 		$this->page_data['page']->title = 'Profil';
 		
 		$this->load->view('web/profil', $this->page_data);
@@ -56,14 +59,21 @@ class Web extends CI_Controller
 
 	public function berita()
 	{
+		$this->page_data['page']->menu = 'informasi';
+		$this->page_data['page']->title = 'Berita';
 		$this->load->view('web/berita', $this->page_data);
 	}
+
 	public function pengumuman()
 	{
+		$this->page_data['page']->menu = 'informasi';
+		$this->page_data['page']->title = 'Pengumuman';
 		$this->load->view('web/pengumuman', $this->page_data);
 	}
 	public function pelatihan()
 	{
+		$this->page_data['page']->menu = 'informasi';
+		$this->page_data['page']->title = 'Pelatihan';
 		$this->load->view('web/pelatihan', $this->page_data);
 	}
 
