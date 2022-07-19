@@ -6,7 +6,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <main id="main">
 
     <!-- ======= About Us Section ======= -->
-    <section id="about" class="about visimisi">
+    <section id="visimisi" class="about visimisi">
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
@@ -40,7 +40,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
     
     <!-- ======= About Us Section ======= -->
-    <section id="about" class="about tugasfungsi mt-4">
+    <section id="tupoksi" class="about tupoksi mt-4">
         <div class="container" data-aos="fade-up">
 
             <div class="section-title mt-4">
@@ -75,7 +75,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact strukturorganisasi mt-3">
+    <section id="struktur" class="contact struktur mt-3">
         <div class="container">
 
             <div class="section-title mt-4">

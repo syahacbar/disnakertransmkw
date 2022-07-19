@@ -66,7 +66,7 @@
         }
 
 
-        section#about {
+        section#visimisi {
             padding: 0;
             margin-top: 120px;
             padding-top: 60px;
