@@ -140,4 +140,5 @@ $autoload['model'] = array(
 	'roles_model',
 	'activity_model',
 	'templates_model',
+	'pencaker_model',
 );

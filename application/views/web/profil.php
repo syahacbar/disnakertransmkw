@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
-<?php include viewPath('public/template/header'); ?>
+<?php include viewPath('web/template/header'); ?>
 
 <main id="main">
 
@@ -98,7 +98,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 </main><!-- End #main -->
 
 <!-- ======= Footer ======= -->
-<?php include viewPath('public/template/footer'); ?>
+<?php include viewPath('web/template/footer'); ?>
 <!-- End Footer -->
 
 <div id="preloader"></div>

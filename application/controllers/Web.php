@@ -1,54 +1,68 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pub extends CI_Controller
+class Web extends CI_Controller
 {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->page_data['page']->title = 'Beranda';
-		$this->page_data['page']->site_title = 'Disnakertrans Kab. Manokwari';
+		$this->page_data['url'] = (object) [
+			'assets' => assets_url().'/'
+		];
+
+		$this->page_data['app'] = (object) [
+			'site_title' => setting('company_name')
+		];
+
+		$this->page_data['page'] = (object) [
+			'title' => 'Dashboard',
+			'menu' => 'dashboard',
+			'submenu' => '',
+		];
+
+		// $this->page_data['page']->title = 'Beranda';
+		// $this->page_data['page']->site_title = 'Disnakertrans Kab. Manokwari';
 		// $this->page_data['page']->menu = 'dashboard';
 	}
 
 	public function comingsoon()
 	{
-		$this->load->view('public/comingsoon');
+		$this->page_data['page']->title = 'Comingsoon';
+		$this->page_data['page']->site_title = 'Disnakertrans Kab. Manokwari';
+		$this->load->view('web/comingsoon');
 	}
 
-	public function welcome()
+	public function index()
 	{
-		$this->load->view('public/welcome', $this->page_data);
+		$this->page_data['page']->title = 'Beranda';
+		$this->page_data['page']->site_title = 'Disnakertrans Kab. Manokwari';
+		$this->load->view('web/welcome', $this->page_data);
 	}
 
-
-	public function formkartu()
+	public function registrasi()
 	{
-		$this->load->view('public/form_registrasi', $this->page_data);
-	}
-
-	public function formregistrasi()
-	{
-		$this->load->view('public/form_registrasi', $this->page_data);
+		$this->page_data['page']->title = 'Registrasi';
+		$this->page_data['page']->site_title = 'Disnakertrans Kab. Manokwari';
+		$this->load->view('web/form_registrasi', $this->page_data);
 	}
 
 	public function profil()
 	{
-		$this->load->view('public/profil', $this->page_data);
+		$this->load->view('web/profil', $this->page_data);
 	}
 
 	public function berita()
 	{
-		$this->load->view('public/berita', $this->page_data);
+		$this->load->view('web/berita', $this->page_data);
 	}
 	public function pengumuman()
 	{
-		$this->load->view('public/pengumuman', $this->page_data);
+		$this->load->view('web/pengumuman', $this->page_data);
 	}
 	public function pelatihan()
 	{
-		$this->load->view('public/pelatihan', $this->page_data);
+		$this->load->view('web/pelatihan', $this->page_data);
 	}
 
 	public function account_registration()
@@ -65,6 +79,11 @@ class Pub extends CI_Controller
 			//'address' => post('address'),
 			'status' => '1',
 			'password' => hash( "sha256", post('password') ),
+		]);
+		
+		$this->pencaker_model->create([
+			'nik' => post('nik'),
+			'users_id' => $id,
 		]);
 
 		if (!empty($_FILES['image']['name'])) {
@@ -93,7 +112,7 @@ class Pub extends CI_Controller
 		$this->session->set_flashdata('alert-type', 'success');
 		$this->session->set_flashdata('alert', 'New User Created Successfully');
 		
-		redirect('pub/welcome');
+		redirect('login');
 
 
 	}

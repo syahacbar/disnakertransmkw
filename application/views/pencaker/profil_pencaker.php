@@ -38,7 +38,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="card-header with-border">
                     <h3 class="card-title"><?php echo lang('tujuan_pencaker') ?></h3>
                 </div>
-                <?php echo form_open_multipart('settings/generalUpdate', ['class' => 'form-validate', 'autocomplete' => 'off', 'method' => 'post']); ?>
+            <form action="#" id="formtujuanpencaker">
                 <div class="card-body">
                     <div class="form-card">
                         <div class="alert alert-success" role="alert">
@@ -48,7 +48,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-3">
                                 <label for="">Pilih Tujuan Anda</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="tujuan" id="tujuan1">
+                                    <input class="form-check-input" type="radio" name="tujuan" id="tujuan1" value="tujuan1">
                                     <label class="form-check-label" for="tujuan1">
                                         Mencari Pekerjaan
                                     </label>
@@ -56,9 +56,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             </div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="tujuan" id="tujuan2">
+                                    <input class="form-check-input" type="radio" name="tujuan" id="tujuan2" value="tujuan2">
                                     <label class="form-check-label" for="tujuan2">
-                                        Melengkapi Persyaratan
+                                        Melengkapi Persyaratan Melamar Pekerjaan
                                     </label>
                                 </div>
                             </div>
@@ -67,10 +67,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
+                    <button type="button" id="btnSave1" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
                 </div>
-                <!-- /.card-footer-->
-                <?php echo form_close(); ?>
+            </form>
             </div>
             <!-- /.card -->
 
@@ -89,17 +88,17 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="form-group"> 
+                                <label for="nopendaftaran">Nomor Pendaftaran</label>
+                                <input type="text" class="form-control" name="nopendaftaran" id="nopendaftaran" readonly/>
+                            </div>
+                        </div>
 
                         <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label for="nik">NIK</label>
                                 <input type="text" class="form-control" name="nik" id="nik" />
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label for="nopendaftaran">Nomor Pendaftaran</label>
-                                <input type="text" class="form-control" name="nopendaftaran" id="nopendaftaran" />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-4 col-lg-4">
@@ -489,6 +488,30 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <!-- /.content -->
 <script type="text/javascript">
     $(document).ready(function() {
+        //Ajax Load data from ajax
+        $.ajax({
+            url : "<?php echo site_url('pencaker/get_pencaker')?>/",
+            type: "GET",
+            dataType: "JSON",
+            success: function(data)
+            {
+                //selected tujuan
+                if (data.tujuan == 'tujuan1') 
+                    $("#tujuan1").prop("checked",true);
+                else 
+                    $("#tujuan2").prop("checked",true);
+
+                //keterangan umum
+                $('[name="namalengkap"]').val(data.name);           
+                $('[name="nik"]').val(data.username);           
+     
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                alert('Error get data from ajax');
+            }
+        });
+
         $('#tujuanpencaker').click(function() {
             $('.tujuanpencaker').toggle("display");
             $('.identitaspencaker').hide();
@@ -519,6 +542,23 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#pekerjaanpencaker').removeClass("active");
             $('#perusahaanpencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
+
+            // //Ajax Load data from ajax
+            // $.ajax({
+            //     url : "<?php //echo site_url('pencaker/get_pencaker')?>/",
+            //     type: "GET",
+            //     dataType: "JSON",
+            //     success: function(data)
+            //     {
+            //         $('[name="namalengkap"]').val(data.name);           
+            //         $('[name="nik"]').val(data.username);           
+         
+            //     },
+            //     error: function (jqXHR, textStatus, errorThrown)
+            //     {
+            //         alert('Error get data from ajax');
+            //     }
+            // });
         });
 
         $('#pendidikanpencaker').click(function() {
@@ -583,6 +623,35 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#pendidikanpencaker').removeClass("active");
             $('#perusahaanpencaker').removeClass("active");
             $('#datatambahanpencaker').addClass("active");
+        });
+
+        $('#btnSave1').click(function() {
+            // ajax adding data to database
+            $.ajax({
+                url : "<?php echo site_url('pencaker/update_pencaker')?>",
+                type: "POST",
+                data: $('#formtujuanpencaker').serialize(),
+                dataType: "JSON",
+                success: function(data)
+                {         
+                    if(data.status) //if success close modal and reload ajax table
+                    {
+                        // $('.tujuanpencaker').hide();
+                        // $('.identitaspencaker').hide();
+                        // $('.pendidikanpencaker').toggle("display");
+                        // $('.pekerjaanpencaker').hide();
+                        // $('.perusahaanpencaker').hide();
+                        // $('.datatambahanpencaker').hide();
+                        console.log(data.status);
+                        console.log(data.tujuan);
+                    }       
+         
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert('Error update data');         
+                }
+            });
         });
     });
 </script>

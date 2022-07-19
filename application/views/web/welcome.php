@@ -42,7 +42,7 @@
   <?php
 defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
-<?php include viewPath('public/template/header'); ?>
+<?php include viewPath('web/template/header'); ?>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
