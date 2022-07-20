@@ -5,7 +5,37 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <style type="text/css">
     .hide {
-        display: none; 
+        display: none;
+    }
+
+    .jenjang,
+    .statusmenikah {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        display: flex;
+    }
+
+    select#statusnikah,
+    select#jenjang {
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        display: block;
+        width: 100%;
+        height: calc(2.25rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        box-shadow: inset 0 0 0 transparent;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     }
 </style>
 
@@ -38,38 +68,38 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="card-header with-border">
                     <h3 class="card-title"><?php echo lang('tujuan_pencaker') ?></h3>
                 </div>
-            <form action="#" id="formtujuanpencaker">
-                <div class="card-body">
-                    <div class="form-card">
-                        <div class="alert alert-success" role="alert">
-                            Silakan pilih tujuan Anda membuat Kartu Kuning!
-                        </div>
-                        <div class="row mt-3" id="pilihTujuan">
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-3">
-                                <label for="">Pilih Tujuan Anda</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="tujuan" id="tujuan1" value="tujuan1">
-                                    <label class="form-check-label" for="tujuan1">
-                                        Mencari Pekerjaan
-                                    </label>
-                                </div>
+                <form action="#" id="formtujuanpencaker">
+                    <div class="card-body">
+                        <div class="form-card">
+                            <div class="alert alert-success" role="alert">
+                                Silakan pilih tujuan Anda membuat Kartu Kuning!
                             </div>
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="tujuan" id="tujuan2" value="tujuan2">
-                                    <label class="form-check-label" for="tujuan2">
-                                        Melengkapi Persyaratan Melamar Pekerjaan
-                                    </label>
+                            <div class="row mt-3" id="pilihTujuan">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-3">
+                                    <label for="">Pilih Tujuan Anda</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tujuan" id="tujuan1" value="tujuan1">
+                                        <label class="form-check-label" for="tujuan1">
+                                            Mencari Pekerjaan
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tujuan" id="tujuan2" value="tujuan2">
+                                        <label class="form-check-label" for="tujuan2">
+                                            Melengkapi Persyaratan Melamar Pekerjaan
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    <button type="button" id="btnSave1" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
-                </div>
-            </form>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <button type="button" id="btnSave1" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
+                    </div>
+                </form>
             </div>
             <!-- /.card -->
 
@@ -79,114 +109,114 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <h3 class="card-title"><?php echo lang('identitas_pencaker') ?></h3>
                 </div>
                 <form action="#" id="formidentitaspencaker">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="form-card">
-                                <div class="alert alert-success" role="alert">
-                                    Lengkapi data diri Anda di bawah ini!
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="form-group"> 
-                                <label for="nopendaftaran">Nomor Pendaftaran</label>
-                                <input type="text" class="form-control" name="nopendaftaran" id="nopendaftaran" readonly/>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label for="nik">NIK</label>
-                                <input type="text" class="form-control" name="nik" id="nik" />
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label for="namalengkap">Nama Lengkap</label>
-                                <input type="text" class="form-control" name="namalengkap" id="namalengkap" required placeholder="Nama Sesuai KTP" autofocus />
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label for="jenkel">Jenis Kelamin</label>
-                                <div class="row">
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="jenkel" id="jenkel1" value="L">
-                                            <label class="form-check-label" for="jenkel1">
-                                                Laki-laki
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="jenkel" id="jenkel2" value="P">
-                                            <label class="form-check-label" for="jenkel2">
-                                                Perempuan
-                                            </label>
-                                        </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-card">
+                                    <div class="alert alert-success" role="alert">
+                                        Lengkapi data diri Anda di bawah ini!
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label for="nopendaftaran">Nomor Pendaftaran</label>
+                                    <input type="text" class="form-control" name="nopendaftaran" id="nopendaftaran" readonly />
+                                </div>
+                            </div>
 
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label for="nik">NIK</label>
+                                    <input type="text" class="form-control" name="nik" id="nik" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label for="tempatlahir">Tempat Lahir</label>
-                                <input type="text" class="form-control" name="tempatlahir" id="tempatlahir" placeholder="Tempat Lahir Sesuai KTP" required placeholder="Nama Sesuai KTP" autofocus />
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label for="namalengkap">Nama Lengkap</label>
+                                    <input type="text" class="form-control" name="namalengkap" id="namalengkap" required placeholder="Nama Sesuai KTP" autofocus />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label for="tgllahir">Tanggal Lahir</label>
-                                <input type="date" class="form-control" name="tgllahir" id="tgllahir" required placeholder="Tanggal Lahir Sesuai KTP" autofocus />
-                            </div>
-                        </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label for="jenkel">Jenis Kelamin</label>
+                                    <div class="row">
+                                        <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="jenkel" id="jenkel1" value="L">
+                                                <label class="form-check-label" for="jenkel1">
+                                                    Laki-laki
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="jenkel" id="jenkel2" value="P">
+                                                <label class="form-check-label" for="jenkel2">
+                                                    Perempuan
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                            <label for="statusnikah">Status Menikah</label>
-                                <select name="statusnikah" id="statusnikah">
-                                    <option value"">Kawin</option>
-                                    <option value"">Belum Kawin</option>
-                                    <option value"">Janda</option>
-                                    <option value"">Duda</option>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label for="tempatlahir">Tempat Lahir</label>
+                                    <input type="text" class="form-control" name="tempatlahir" id="tempatlahir" placeholder="Tempat Lahir Sesuai KTP" required placeholder="Nama Sesuai KTP" autofocus />
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label for="tgllahir">Tanggal Lahir</label>
+                                    <input type="date" class="form-control" name="tgllahir" id="tgllahir" required placeholder="Tanggal Lahir Sesuai KTP" autofocus />
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 statusmenikah ">
+                                <label for="statusnikah">Status Menikah</label>
+                                <select name="statusnikah" id="statusnikah" class="w-100">
+                                    <option value="">Kawin</option>
+                                    <option value="">Belum Kawin</option>
+                                    <option value="">Janda</option>
+                                    <option value="">Duda</option>
                                 </select>
-                        </div>
+                            </div>
 
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label for="tinggibadan">Tinggi Badan (cm)</label>
-                                <input type="number" class="form-control" name="tinggibadan" id="tinggibadan" placeholder="" required placeholder="Satuan cm, misal 160" autofocus />
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label for="tinggibadan">Tinggi Badan (cm)</label>
+                                    <input type="number" class="form-control" name="tinggibadan" id="tinggibadan" placeholder="" required placeholder="Satuan cm, misal 160" autofocus />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label for="beratbadan">Berat Badan (kg)</label>
-                                <input type="number" class="form-control" name="beratbadan" id="beratbadan" placeholder="" required placeholder="Satuan kg, misal 56" autofocus />
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label for="beratbadan">Berat Badan (kg)</label>
+                                    <input type="number" class="form-control" name="beratbadan" id="beratbadan" placeholder="" required placeholder="Satuan kg, misal 56" autofocus />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <label for="alamat">Alamat Tinggal</label>
-                                <textarea type="text" class="form-control" name="alamat" id="alamat" required placeholder="Alamat tinggal sesuai KTP" autofocus> </textarea>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="alamat">Alamat Tinggal</label>
+                                    <textarea type="text" class="form-control" name="alamat" id="alamat" required placeholder="Alamat tinggal sesuai KTP" autofocus> </textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <label for="kodepos">Kode Pos</label>
-                                <input type="number" class="form-control" name="kodepos" id="kodepos" placeholder="" required placeholder="Ketik Kode pos di sini" autofocus />
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="kodepos">Kode Pos</label>
+                                    <input type="number" class="form-control" name="kodepos" id="kodepos" placeholder="" required placeholder="Ketik Kode pos di sini" autofocus />
+                                </div>
                             </div>
-                        </div>
 
 
+                        </div>
                     </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    <button type="button"  class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
-                    <button type="button" id="btnSave2" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
-                </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
+                        <button type="button" id="btnSave2" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
+                    </div>
                 </form>
             </div>
 
@@ -217,24 +247,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         </div>
                                     </div>
 
-                                    <div class="col-12 col-sm-12 col-md-2 col-lg-2">
+                                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 jenjang">
                                         <label for="jenjang">Jenjang</label>
-                                        <div class="dropdown">
-                                            <button class="btn dropdown-toggle w-100" type="button" id="jenjang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                - Pilih -
-                                            </button>
-                                            <ul class="dropdown-menu w-100" aria-labelledby="jenjang">
-                                                <a class="dropdown-item" href="#">SD</a>
-                                                <a class="dropdown-item" href="#">SMTP</a>
-                                                <a class="dropdown-item" href="#">SMTA</a>
-                                                <a class="dropdown-item" href="#">D1</a>
-                                                <a class="dropdown-item" href="#">D2</a>
-                                                <a class="dropdown-item" href="#">D3</a>
-                                                <a class="dropdown-item" href="#">S-1/Sarjana</a>
-                                                <a class="dropdown-item" href="#">S-2/Magister</a>
-                                                <a class="dropdown-item" href="#">S-3/Doktor</a>
-                                            </ul>
-                                        </div>
+                                        <select name="jenjang" id="jenjang" class="w-100">
+                                            <option value="">SD</option>
+                                            <option value="">SMTP</option>
+                                            <option value="">SMTA</option>
+                                            <option value="">D1</option>
+                                            <option value="">D2</option>
+                                            <option value="">D3</option>
+                                            <option value="">S-1/Sarjana</option>
+                                            <option value="">S-2/Magister</option>
+                                            <option value="">S-3/Doktor</option>
+                                        </select>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 ">
                                         <div class="form-group">
@@ -484,39 +509,37 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     $(document).ready(function() {
         //Ajax Load data from ajax
         $.ajax({
-            url : "<?php echo site_url('pencaker/get_pencaker')?>/",
+            url: "<?php echo site_url('pencaker/get_pencaker') ?>/",
             type: "GET",
             dataType: "JSON",
-            success: function(data)
-            {
+            success: function(data) {
                 //selected tujuan
-                if (data.tujuan == 'tujuan1') 
-                    $("#tujuan1").prop("checked",true);
-                else 
-                    $("#tujuan2").prop("checked",true);
+                if (data.tujuan == 'tujuan1')
+                    $("#tujuan1").prop("checked", true);
+                else
+                    $("#tujuan2").prop("checked", true);
 
                 //keterangan umum
-                $('[name="namalengkap"]').val(data.name);           
-                $('[name="nik"]').val(data.username);    
+                $('[name="namalengkap"]').val(data.name);
+                $('[name="nik"]').val(data.username);
 
                 //selected jenkel
-                if (data.jenkel == 'L') 
-                    $("#jenkel1").prop("checked",true);
-                else 
-                    $("#jenkel2").prop("checked",true);  
+                if (data.jenkel == 'L')
+                    $("#jenkel1").prop("checked", true);
+                else
+                    $("#jenkel2").prop("checked", true);
 
-                $('[name="tempatlahir"]').val(data.tempatlahir);    
-                $('[name="tgllahir"]').val(data.tgllahir);    
+                $('[name="tempatlahir"]').val(data.tempatlahir);
+                $('[name="tgllahir"]').val(data.tgllahir);
                 $("#statusnikah").val(data.statusnikah).trigger("change");
-                $('[name="tinggibadan"]').val(data.tinggibadan);    
-                $('[name="beratbadan"]').val(data.beratbadan);    
-                $('[name="alamat"]').val(data.alamat);    
-                $('[name="kodepos"]').val(data.kodepos);    
+                $('[name="tinggibadan"]').val(data.tinggibadan);
+                $('[name="beratbadan"]').val(data.beratbadan);
+                $('[name="alamat"]').val(data.alamat);
+                $('[name="kodepos"]').val(data.kodepos);
 
-     
+
             },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
+            error: function(jqXHR, textStatus, errorThrown) {
                 alert('Error get data from ajax');
             }
         });
@@ -554,14 +577,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
             // //Ajax Load data from ajax
             // $.ajax({
-            //     url : "<?php //echo site_url('pencaker/get_pencaker')?>/",
+            //     url : "<?php //echo site_url('pencaker/get_pencaker')
+                            ?>/",
             //     type: "GET",
             //     dataType: "JSON",
             //     success: function(data)
             //     {
             //         $('[name="namalengkap"]').val(data.name);           
             //         $('[name="nik"]').val(data.username);           
-         
+
             //     },
             //     error: function (jqXHR, textStatus, errorThrown)
             //     {
@@ -637,13 +661,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         $('#btnSave1').click(function() {
             // ajax adding data to database
             $.ajax({
-                url : "<?php echo site_url('pencaker/update1')?>",
+                url: "<?php echo site_url('pencaker/update1') ?>",
                 type: "POST",
                 data: $('#formtujuanpencaker').serialize(),
                 dataType: "JSON",
-                success: function(data)
-                {         
-                    if(data.status) //if success close modal and reload ajax table
+                success: function(data) {
+                    if (data.status) //if success close modal and reload ajax table
                     {
                         $('.tujuanpencaker').hide();
                         $('.identitaspencaker').toggle("display");
@@ -660,12 +683,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         $('#datatambahanpencaker').removeClass("active");
                         // console.log(data.status);
                         // console.log(data.tujuan);
-                    }       
-         
+                    }
+
                 },
-                error: function (jqXHR, textStatus, errorThrown)
-                {
-                    alert('Error update data');         
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error update data');
                 }
             });
         });
@@ -673,13 +695,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         $('#btnSave2').click(function() {
             // ajax adding data to database
             $.ajax({
-                url : "<?php echo site_url('pencaker/update2')?>",
+                url: "<?php echo site_url('pencaker/update2') ?>",
                 type: "POST",
                 data: $('#formidentitaspencaker').serialize(),
                 dataType: "JSON",
-                success: function(data)
-                {         
-                    if(data.status) //if success close modal and reload ajax table
+                success: function(data) {
+                    if (data.status) //if success close modal and reload ajax table
                     {
                         $('.tujuanpencaker').hide();
                         $('.identitaspencaker').hide();
@@ -696,12 +717,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         $('#datatambahanpencaker').removeClass("active");
                         // console.log(data.status);
                         // console.log(data.tujuan);
-                    }       
-         
+                    }
+
                 },
-                error: function (jqXHR, textStatus, errorThrown)
-                {
-                    alert('Error update data');         
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error update data');
                 }
             });
         });

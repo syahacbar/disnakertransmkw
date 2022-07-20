@@ -8,7 +8,7 @@ class Web extends CI_Controller
 	{
 		parent::__construct();
 		$this->page_data['url'] = (object) [
-			'assets' => assets_url().'/'
+			'assets' => assets_url() . '/'
 		];
 
 		$this->page_data['app'] = (object) [
@@ -29,7 +29,7 @@ class Web extends CI_Controller
 	public function comingsoon()
 	{
 		$this->page_data['page']->title = 'Comingsoon';
-		
+
 		$this->load->view('web/comingsoon');
 	}
 
@@ -37,7 +37,7 @@ class Web extends CI_Controller
 	{
 		$this->page_data['page']->menu = 'beranda';
 		$this->page_data['page']->title = 'Beranda';
-		
+
 		$this->load->view('web/welcome', $this->page_data);
 	}
 
@@ -45,7 +45,7 @@ class Web extends CI_Controller
 	{
 		$this->page_data['page']->menu = 'layanan';
 		$this->page_data['page']->title = 'Registrasi';
-		
+
 		$this->load->view('web/form_registrasi', $this->page_data);
 	}
 
@@ -53,7 +53,7 @@ class Web extends CI_Controller
 	{
 		$this->page_data['page']->menu = 'profil';
 		$this->page_data['page']->title = 'Profil';
-		
+
 		$this->load->view('web/profil', $this->page_data);
 	}
 
@@ -90,9 +90,9 @@ class Web extends CI_Controller
 			'phone' => post('nohp'),
 			//'address' => post('address'),
 			'status' => '1',
-			'password' => hash( "sha256", post('password') ),
+			'password' => hash("sha256", post('password')),
 		]);
-		
+
 		$this->pencaker_model->create([
 			'nik' => post('nik'),
 			'users_id' => $id,
@@ -103,29 +103,25 @@ class Web extends CI_Controller
 			$path = $_FILES['image']['name'];
 			$ext = pathinfo($path, PATHINFO_EXTENSION);
 			$this->uploadlib->initialize([
-				'file_name' => $id.'.'.$ext
+				'file_name' => $id . '.' . $ext
 			]);
 			$image = $this->uploadlib->uploadImage('image', '/users');
 
-			if($image['status']){
+			if ($image['status']) {
 				$this->users_model->update($id, ['img_type' => $ext]);
-			}else{
-				copy(FCPATH.'uploads/users/default.png', 'uploads/users/'.$id.'.png');
+			} else {
+				copy(FCPATH . 'uploads/users/default.png', 'uploads/users/' . $id . '.png');
 			}
+		} else {
 
-		}else{
-
-			copy(FCPATH.'uploads/users/default.png', 'uploads/users/'.$id.'.png');
-
+			copy(FCPATH . 'uploads/users/default.png', 'uploads/users/' . $id . '.png');
 		}
 
-		$this->activity_model->add('New User $'.$id.' Created by User:'.logged('name'), logged('id'));
+		$this->activity_model->add('New User $' . $id . ' Created by User:' . logged('name'), logged('id'));
 
 		$this->session->set_flashdata('alert-type', 'success');
 		$this->session->set_flashdata('alert', 'New User Created Successfully');
-		
+
 		redirect('login');
-
-
 	}
 }
