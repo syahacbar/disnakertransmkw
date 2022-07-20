@@ -9,11 +9,11 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
-   <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url();?>/assets/frontend/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url();?>/assets/frontend/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url();?>/assets/frontend/favicon/favicon-16x16.png">
-  <link rel="manifest" href="<?php echo base_url();?>/assets/frontend/favicon/site.webmanifest">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url(); ?>/assets/frontend/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url(); ?>/assets/frontend/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>/assets/frontend/favicon/favicon-16x16.png">
+    <link rel="manifest" href="<?php echo base_url(); ?>/assets/frontend/favicon/site.webmanifest">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -37,7 +37,8 @@
             background: #283a5a !important;
         }
 
-        section#pricing {
+        section#pricing,
+        section#contact {
             margin-top: 120px;
         }
 
@@ -61,9 +62,9 @@
             box-shadow: none;
         }
 
-        section#contact {
+        /* section#contact {
             padding: 0;
-        }
+        } */
 
 
         section#visimisi {
@@ -86,21 +87,21 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto <?php echo ($page->menu == 'beranda') ? 'active' : ''?>" href="<?php echo site_url(); ?>">Beranda</a></li>
-                    <li class="dropdown"><a class="<?php echo ($page->menu == 'profil') ? 'active' : ''?>" href="<?php echo site_url(); ?>web/profil"><span>Profil</span></a></li>
-                    <li class="dropdown"><a class="<?php echo ($page->menu == 'informasi') ? 'active' : ''?>" href="#"><span>Informasi</span> <i class="bi bi-chevron-down"></i></a>
+                    <li><a class="nav-link scrollto <?php echo ($page->menu == 'beranda') ? 'active' : '' ?>" href="<?php echo site_url(); ?>">Beranda</a></li>
+                    <li class="dropdown"><a class="<?php echo ($page->menu == 'profil') ? 'active' : '' ?>" href="<?php echo site_url(); ?>web/profil"><span>Profil</span></a></li>
+                    <li class="dropdown"><a class="<?php echo ($page->menu == 'informasi') ? 'active' : '' ?>" href="#"><span>Informasi</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="<?php echo site_url(); ?>web/berita">Berita</a></li>
                             <li><a href="<?php echo site_url(); ?>web/pengumuman">Pengumuman</a></li>
                             <li><a href="<?php echo site_url(); ?>web/pelatihan">Pelatihan</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a class="<?php echo ($page->menu == 'layanan') ? 'active' : ''?>" href="#"><span>Layanan</span> <i class="bi bi-chevron-down"></i></a>
+                    <li class="dropdown"><a class="<?php echo ($page->menu == 'layanan') ? 'active' : '' ?>" href="#"><span>Layanan</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="<?php echo site_url(); ?>web/registrasi">Kartu Pencari Kerja (Kartu Kuning)</a></li>
                         </ul>
                     </li>
-                    <li><a class="nav-link scrollto <?php echo ($page->menu == 'kontak') ? 'active' : ''?>" href="#">Kontak</a></li>
+                    <li><a class="nav-link scrollto <?php echo ($page->menu == 'kontak') ? 'active' : '' ?>" href="#">Kontak</a></li>
                     <li><a target="_blank" class="getstarted scrollto" href="<?php echo site_url('dashboard'); ?>">Masuk</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
