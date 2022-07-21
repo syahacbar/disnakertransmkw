@@ -79,16 +79,12 @@ class Web extends CI_Controller
 
 	public function account_registration()
 	{
-		// ifPermissions('users_add');
-		// postAllowed();
-
 		$id = $this->users_model->create([
 			'role' => '2',
 			'name' => post('namalengkap'),
 			'username' => post('nik'),
 			'email' => post('email'),
 			'phone' => post('nohp'),
-			//'address' => post('address'),
 			'status' => '1',
 			'password' => hash("sha256", post('password')),
 		]);

@@ -25,7 +25,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
       <?php echo form_open('/login/check', ['method' => 'POST', 'autocomplete' => 'off']); ?>
       <div class="input-group mb-3">
-        <input type="text" name="username" required class="form-control" placeholder="<?php echo lang('username_or_email') ?>" value="<?php echo post('username') ?>" autofocus>
+        <input type="text" name="username" required class="form-control" placeholder="<?php echo lang('username_or_email') ?>" value="<?php echo post('username') ?>">
         <div class="input-group-append">
           <div class="input-group-text">
             <span class="fas fa-user"></span>
@@ -77,7 +77,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <a href="<?php echo url('login/forget?username=' . post('username')) ?>"><?php echo lang('forget_password_?') ?></a><br>
         <br>
       </p>
-      <p>Belum Punya Akun? <a href="<?php echo site_url(); ?>web/formregistrasi">DAFTAR DI SINI</a></p>
+      <p>Belum Punya Akun? <a href="<?php echo site_url(); ?>web/registrasi">DAFTAR DI SINI</a></p>
       <p class="mb-0">
         <!-- <a href="register.html" class="text-center">Register a new membership</a> -->
       </p>

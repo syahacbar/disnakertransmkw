@@ -32,7 +32,7 @@
                                     <input type="email" class="form-control" name="email" id="email" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="nohp">Nomor HP</label>
+                                    <label for="nohp">Nomor HP (WhatsApp)</label>
                                     <input type="number" class="form-control" name="nohp" id="nohp" required>
                                 </div>
                             </div>
