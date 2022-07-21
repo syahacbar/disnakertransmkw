@@ -177,10 +177,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 statusmenikah ">
                                 <label for="statusnikah">Status Menikah</label>
                                 <select name="statusnikah" id="statusnikah" class="w-100">
-                                    <option value="">Kawin</option>
-                                    <option value="">Belum Kawin</option>
-                                    <option value="">Janda</option>
-                                    <option value="">Duda</option>
+                                    <option value="Kawin">Kawin</option>
+                                    <option value="Belum Kawin">Belum Kawin</option>
+                                    <option value="Janda">Janda</option>
+                                    <option value="Duda">Duda</option>
                                 </select>
                             </div>
 
@@ -214,7 +214,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button type="button" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
+                        <button type="button" id="btnback1" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
                         <button type="button" id="btnSave2" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
                     </div>
                 </form>
@@ -225,7 +225,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="card-header with-border">
                     <h3 class="card-title"><?php echo lang('pendidikan_pencaker') ?></h3>
                 </div>
-                <?php echo form_open_multipart('settings/generalUpdate', ['class' => 'form-validate', 'autocomplete' => 'off', 'method' => 'post']); ?>
+                
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12">
@@ -233,6 +233,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <div class="alert alert-success" role="alert">
                                     Silakan isi data terkait pendidikan Anda pada bidang-bidang di bawah ini!
                                 </div>
+
+                                <!-- form pendidikan pencaker-->                                
+                                <form action="#" id="formpendidikanpencaker">
                                 <div class="row mb-5">
                                     <div class="col-12 col-sm-12 col-md-2 col-lg-2 ">
                                         <div class="form-group">
@@ -250,26 +253,26 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     <div class="col-12 col-sm-12 col-md-2 col-lg-2 jenjang">
                                         <label for="jenjang">Jenjang</label>
                                         <select name="jenjang" id="jenjang" class="w-100">
-                                            <option value="">SD</option>
-                                            <option value="">SMTP</option>
-                                            <option value="">SMTA</option>
-                                            <option value="">D1</option>
-                                            <option value="">D2</option>
-                                            <option value="">D3</option>
-                                            <option value="">S-1/Sarjana</option>
-                                            <option value="">S-2/Magister</option>
-                                            <option value="">S-3/Doktor</option>
+                                            <option value="SD">SD</option>
+                                            <option value="SMTP">SMTP</option>
+                                            <option value="SMTA">SMTA</option>
+                                            <option value="D-I">D-I</option>
+                                            <option value="D-II">D-II</option>
+                                            <option value="D-III">D-III</option>
+                                            <option value="D-IV/S-1/Sarjana">D-IV/S-1/Sarjana</option>
+                                            <option value="S-2/Magister">S-2/Magister</option>
+                                            <option value="S-3/Doktor">S-3/Doktor</option>
                                         </select>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 ">
                                         <div class="form-group">
-                                            <label for="jenjang">Nama Sekolah</label>
-                                            <input type="text" class="form-control" name="jenjang" id="jenjang" required autofocus />
+                                            <label for="nama_sekolah">Nama Sekolah</label>
+                                            <input type="text" class="form-control" name="nama_sekolah" id="nama_sekolah" required autofocus />
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-1 col-lg-1 ">
                                         <div class="form-group">
-                                            <label for="ipk">IPK</label>
+                                            <label for="ipk">NEM/NUN/IPK</label>
                                             <input type="text" class="form-control" name="ipk" id="ipk" autofocus />
                                         </div>
                                     </div>
@@ -282,26 +285,34 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
                                         <div class="ml-auto">
-                                            <a href="" class="btn btn-primary btn-sm"><span class="pr-1"></span> <?php echo lang('save') ?></a>
+                                            <button type="button" id="btnSavePendidikan" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> <?php echo lang('save') ?></button>
+                                            <button type="button" id="btnUpdatePendidikan" class="btn btn-primary btn-sm hide"><i class="fas fa-edit"></i> <?php echo lang('update') ?></button>
+                                            <!-- hiden form untuk id pendidikan saat proses update -->
+                                            <input type="hidden" name="idpendidikan">
                                         </div>
                                     </div>
                                 </div>
+                                </form>
+                                <!-- end of formpendidikan pencaker -->
+
                                 <hr>
                                 <div class="row mt-5">
+
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                        <table id="tabelpendidikanpencaker" class="table table-bordered table-hover table-striped">
+                                        <table style="width:100%" id="tabelpendidikanpencaker" class="table table-bordered table-hover table-striped">
                                             <thead>
                                                 <tr>
+                                                    <th width="10px">No</th>
                                                     <th>Tahun Masuk</th>
                                                     <th>Tahun Lulus</th>
                                                     <th>Jenjang</th>
                                                     <th>Nama Sekolah</th>
-                                                    <th>IPK</th>
+                                                    <th>NEM/NUN/IPK</th>
                                                     <th>Keterampilan</th>
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-
                                             </tbody>
                                         </table>
                                     </div>
@@ -317,8 +328,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <button type="submit" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
                     <button type="submit" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
                 </div>
-                <!-- /.card-footer-->
-                <?php echo form_close(); ?>
             </div>
 
             <!-- pekerjaanpencaker card -->
@@ -505,11 +514,179 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     </div>
 </section>
 <!-- /.content -->
+
 <script type="text/javascript">
+    var table = null;
+    
     $(document).ready(function() {
+
+        function showtujuanpencaker()
+        {
+            $('.tujuanpencaker').toggle("display");
+            $('.identitaspencaker').hide();
+            $('.pendidikanpencaker').hide();
+            $('.pekerjaanpencaker').hide();
+            $('.perusahaanpencaker').hide();
+            $('.datatambahanpencaker').hide();
+
+            $('#tujuanpencaker').addClass("active");
+            $('#identitaspencaker').removeClass("active");
+            $('#pendidikanpencaker').removeClass("active");
+            $('#pekerjaanpencaker').removeClass("active");
+            $('#perusahaanpencaker').removeClass("active");
+            $('#datatambahanpencaker').removeClass("active");
+        }
+
+        function showidentitaspencaker()
+        {
+            $('.tujuanpencaker').hide();
+            $('.identitaspencaker').toggle("display");
+            $('.pendidikanpencaker').hide();
+            $('.pekerjaanpencaker').hide();
+            $('.perusahaanpencaker').hide();
+            $('.datatambahanpencaker').hide();
+
+            $('#tujuanpencaker').removeClass("active");
+            $('#identitaspencaker').addClass("active");
+            $('#pendidikanpencaker').removeClass("active");
+            $('#pekerjaanpencaker').removeClass("active");
+            $('#perusahaanpencaker').removeClass("active");
+            $('#datatambahanpencaker').removeClass("active");
+        }
+
+        function editpendidikanpencaker(id)
+        {
+            $.ajax({
+                url: "<?php echo site_url('pencaker/get_pendidikan_by_id') ?>/"+ id,
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    $('[name="tahunmasuk"]').val(data.tahunmasuk);
+                    $('[name="tahunlulus"]').val(data.tahunlulus);
+                    $('[name="jenjang"]').val(data.jenjang).trigger("change");
+                    $('[name="nama_sekolah"]').val(data.nama_sekolah);
+                    $('[name="ipk"]').val(data.ipk);
+                    $('[name="keterampilan"]').val(data.keterampilan);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error Get Data Pendidikan');
+                }
+            });
+        }
+
+        function showpendidikanpencaker()
+        {
+            $('.tujuanpencaker').hide();
+            $('.identitaspencaker').hide();
+            $('.pendidikanpencaker').toggle("display");
+            $('.pekerjaanpencaker').hide();
+            $('.perusahaanpencaker').hide();
+            $('.datatambahanpencaker').hide();
+
+            $('#tujuanpencaker').removeClass("active");
+            $('#identitaspencaker').removeClass("active");
+            $('#pendidikanpencaker').addClass("active");
+            $('#pekerjaanpencaker').removeClass("active");
+            $('#perusahaanpencaker').removeClass("active");
+            $('#datatambahanpencaker').removeClass("active");
+
+            tabel = $('#tabelpendidikanpencaker').DataTable({
+                //"responsive": true,
+                //"autoWidth": true,
+                "processing": true,
+                "serverSide": true,
+                "ordering": true, 
+                "order": [[ 0, 'asc' ]], 
+                "ajax":
+                {
+                    "url": "<?php echo site_url('pencaker/get_pendidikan');?>", 
+                    "type": "POST"
+                },
+                "deferRender": true,
+                "stateSave": true,
+                "bDestroy": true,
+
+                "columns": [
+                    {"data": "id","sortable": false, 
+                        render: function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }  
+                    }, 
+                    {"data": "tahunmasuk"},
+                    {"data": "tahunlulus"},
+                    {"data": "jenjang"},
+                    {"data": "nama_sekolah"},
+                    {"data": "ipk"},
+                    {"data": "keterampilan"},
+                    {"data": "id",
+                        "render": 
+                        function( data, type, row, meta ) {
+                            return '<a href="javascript:void(0)" data-id="'+data+'" class="btn btn-sm btn-primary btnEditPendidikan"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger btnHapusPendidikan" href="javascript:void(0)" data-id="'+data+'"><i class="fas fa-trash"></i></a>';
+                        }
+                    },
+                ],
+            });
+
+        }
+
+        function reload_table_pendidikan(){
+            $('#tabelpendidikanpencaker').DataTable().ajax.reload(null, false);
+        } 
+
+        function showpekerjaanpencaker()
+        {
+            $('.tujuanpencaker').hide();
+            $('.identitaspencaker').hide();
+            $('.pendidikanpencaker').hide();
+            $('.pekerjaanpencaker').toggle("display");
+            $('.perusahaanpencaker').hide();
+            $('.datatambahanpencaker').hide();
+
+            $('#tujuanpencaker').removeClass("active");
+            $('#identitaspencaker').removeClass("active");
+            $('#pendidikanpencaker').removeClass("active");
+            $('#pekerjaanpencaker').addClass("active");
+            $('#perusahaanpencaker').removeClass("active");
+            $('#datatambahanpencaker').removeClass("active");
+        }
+
+        function showperusahaanpencaker()
+        {
+            $('.tujuanpencaker').hide();
+            $('.identitaspencaker').hide();
+            $('.pendidikanpencaker').hide();
+            $('.pekerjaanpencaker').hide();
+            $('.perusahaanpencaker').toggle("display");
+            $('.datatambahanpencaker').hide();
+
+            $('#tujuanpencaker').removeClass("active");
+            $('#identitaspencaker').removeClass("active");
+            $('#pendidikanpencaker').removeClass("active");
+            $('#pekerjaanpencaker').removeClass("active");
+            $('#perusahaanpencaker').addClass("active");
+            $('#datatambahanpencaker').removeClass("active");
+        }
+
+        function showdatatambahanpencaker()
+        {
+            $('.tujuanpencaker').hide();
+            $('.identitaspencaker').hide();
+            $('.pendidikanpencaker').hide();
+            $('.pekerjaanpencaker').hide();
+            $('.perusahaanpencaker').hide();
+            $('.datatambahanpencaker').toggle("display");
+
+            $('#tujuanpencaker').removeClass("active");
+            $('#identitaspencaker').removeClass("active");
+            $('#pekerjaanpencaker').removeClass("active");
+            $('#pendidikanpencaker').removeClass("active");
+            $('#perusahaanpencaker').removeClass("active");
+            $('#datatambahanpencaker').addClass("active");
+        }
+
         //Ajax Load data from ajax
         $.ajax({
-            url: "<?php echo site_url('pencaker/get_pencaker') ?>/",
+            url: "<?php echo site_url('pencaker/get_pencaker') ?>",
             type: "GET",
             dataType: "JSON",
             success: function(data) {
@@ -531,7 +708,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                 $('[name="tempatlahir"]').val(data.tempatlahir);
                 $('[name="tgllahir"]').val(data.tgllahir);
-                $("#statusnikah").val(data.statusnikah).trigger("change");
+                $('[name="statusnikah"]').val(data.statusnikah).trigger("change");
                 $('[name="tinggibadan"]').val(data.tinggibadan);
                 $('[name="beratbadan"]').val(data.beratbadan);
                 $('[name="alamat"]').val(data.alamat);
@@ -540,122 +717,36 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                alert('Error get data from ajax');
+                alert('Error');
             }
         });
 
         $('#tujuanpencaker').click(function() {
-            $('.tujuanpencaker').toggle("display");
-            $('.identitaspencaker').hide();
-            $('.pendidikanpencaker').hide();
-            $('.pekerjaanpencaker').hide();
-            $('.perusahaanpencaker').hide();
-            $('.datatambahanpencaker').hide();
-
-            $('#tujuanpencaker').addClass("active");
-            $('#identitaspencaker').removeClass("active");
-            $('#pendidikanpencaker').removeClass("active");
-            $('#pekerjaanpencaker').removeClass("active");
-            $('#perusahaanpencaker').removeClass("active");
-            $('#datatambahanpencaker').removeClass("active");
+           showtujuanpencaker();
         });
 
         $('#identitaspencaker').click(function() {
-            $('.tujuanpencaker').hide();
-            $('.identitaspencaker').toggle("display");
-            $('.pendidikanpencaker').hide();
-            $('.pekerjaanpencaker').hide();
-            $('.perusahaanpencaker').hide();
-            $('.datatambahanpencaker').hide();
-
-            $('#tujuanpencaker').removeClass("active");
-            $('#identitaspencaker').addClass("active");
-            $('#pendidikanpencaker').removeClass("active");
-            $('#pekerjaanpencaker').removeClass("active");
-            $('#perusahaanpencaker').removeClass("active");
-            $('#datatambahanpencaker').removeClass("active");
-
-            // //Ajax Load data from ajax
-            // $.ajax({
-            //     url : "<?php //echo site_url('pencaker/get_pencaker')
-                            ?>/",
-            //     type: "GET",
-            //     dataType: "JSON",
-            //     success: function(data)
-            //     {
-            //         $('[name="namalengkap"]').val(data.name);           
-            //         $('[name="nik"]').val(data.username);           
-
-            //     },
-            //     error: function (jqXHR, textStatus, errorThrown)
-            //     {
-            //         alert('Error get data from ajax');
-            //     }
-            // });
+            showidentitaspencaker();
         });
 
         $('#pendidikanpencaker').click(function() {
-            $('.tujuanpencaker').hide();
-            $('.identitaspencaker').hide();
-            $('.pendidikanpencaker').toggle("display");
-            $('.pekerjaanpencaker').hide();
-            $('.perusahaanpencaker').hide();
-            $('.datatambahanpencaker').hide();
-
-            $('#tujuanpencaker').removeClass("active");
-            $('#identitaspencaker').removeClass("active");
-            $('#pendidikanpencaker').addClass("active");
-            $('#pekerjaanpencaker').removeClass("active");
-            $('#perusahaanpencaker').removeClass("active");
-            $('#datatambahanpencaker').removeClass("active");
+            showpendidikanpencaker();
         });
 
         $('#pekerjaanpencaker').click(function() {
-            $('.tujuanpencaker').hide();
-            $('.identitaspencaker').hide();
-            $('.pendidikanpencaker').hide();
-            $('.pekerjaanpencaker').toggle("display");
-            $('.perusahaanpencaker').hide();
-            $('.datatambahanpencaker').hide();
-
-            $('#tujuanpencaker').removeClass("active");
-            $('#identitaspencaker').removeClass("active");
-            $('#pendidikanpencaker').removeClass("active");
-            $('#pekerjaanpencaker').addClass("active");
-            $('#perusahaanpencaker').removeClass("active");
-            $('#datatambahanpencaker').removeClass("active");
+            showpekerjaanpencaker();
         });
 
         $('#perusahaanpencaker').click(function() {
-            $('.tujuanpencaker').hide();
-            $('.identitaspencaker').hide();
-            $('.pendidikanpencaker').hide();
-            $('.pekerjaanpencaker').hide();
-            $('.perusahaanpencaker').toggle("display");
-            $('.datatambahanpencaker').hide();
-
-            $('#tujuanpencaker').removeClass("active");
-            $('#identitaspencaker').removeClass("active");
-            $('#pendidikanpencaker').removeClass("active");
-            $('#pekerjaanpencaker').removeClass("active");
-            $('#perusahaanpencaker').addClass("active");
-            $('#datatambahanpencaker').removeClass("active");
+            showperusahaanpencaker();
         });
 
         $('#datatambahanpencaker').click(function() {
-            $('.tujuanpencaker').hide();
-            $('.identitaspencaker').hide();
-            $('.pendidikanpencaker').hide();
-            $('.pekerjaanpencaker').hide();
-            $('.perusahaanpencaker').hide();
-            $('.datatambahanpencaker').toggle("display");
+           showdatatambahanpencaker();
+        });
 
-            $('#tujuanpencaker').removeClass("active");
-            $('#identitaspencaker').removeClass("active");
-            $('#pekerjaanpencaker').removeClass("active");
-            $('#pendidikanpencaker').removeClass("active");
-            $('#perusahaanpencaker').removeClass("active");
-            $('#datatambahanpencaker').addClass("active");
+        $('#btnback1').click(function() {
+            showtujuanpencaker();
         });
 
         $('#btnSave1').click(function() {
@@ -668,21 +759,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 success: function(data) {
                     if (data.status) //if success close modal and reload ajax table
                     {
-                        $('.tujuanpencaker').hide();
-                        $('.identitaspencaker').toggle("display");
-                        $('.pendidikanpencaker').hide();
-                        $('.pekerjaanpencaker').hide();
-                        $('.perusahaanpencaker').hide();
-                        $('.datatambahanpencaker').hide();
-
-                        $('#tujuanpencaker').removeClass("active");
-                        $('#identitaspencaker').addClass("active");
-                        $('#pendidikanpencaker').removeClass("active");
-                        $('#pekerjaanpencaker').removeClass("active");
-                        $('#perusahaanpencaker').removeClass("active");
-                        $('#datatambahanpencaker').removeClass("active");
-                        // console.log(data.status);
-                        // console.log(data.tujuan);
+                        showidentitaspencaker();
                     }
 
                 },
@@ -702,21 +779,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 success: function(data) {
                     if (data.status) //if success close modal and reload ajax table
                     {
-                        $('.tujuanpencaker').hide();
-                        $('.identitaspencaker').hide();
-                        $('.pendidikanpencaker').toggle("display");
-                        $('.pekerjaanpencaker').hide();
-                        $('.perusahaanpencaker').hide();
-                        $('.datatambahanpencaker').hide();
-
-                        $('#tujuanpencaker').removeClass("active");
-                        $('#identitaspencaker').removeClass("active");
-                        $('#pendidikanpencaker').addClass("active");
-                        $('#pekerjaanpencaker').removeClass("active");
-                        $('#perusahaanpencaker').removeClass("active");
-                        $('#datatambahanpencaker').removeClass("active");
-                        // console.log(data.status);
-                        // console.log(data.tujuan);
+                        showinfopendidikan();
                     }
 
                 },
@@ -724,6 +787,78 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     alert('Error update data');
                 }
             });
+        });
+
+        $('#btnSavePendidikan').click(function() {
+            $.ajax({
+                url: "<?php echo site_url('pencaker/add_pendidikan') ?>",
+                type: "POST",
+                data: $('#formpendidikanpencaker').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.status) //if success close modal and reload ajax table
+                    {
+                        reload_table_pendidikan();
+                    }
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error save data');
+                }
+            });
+        });
+
+        $('#btnUpdatePendidikan').click(function() {
+            $.ajax({
+                url: "<?php echo site_url('pencaker/update_pendidikan') ?>",
+                type: "POST",
+                data: $('#formpendidikanpencaker').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.status) //if success close modal and reload ajax table
+                    {
+                        reload_table_pendidikan();
+                    }
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error update data');
+                }
+            });
+        });
+
+
+        $('#tabelpendidikanpencaker').on('click', '.btnEditPendidikan', function () {
+            //hide button simpan, show button update
+            $('#btnSavePendidikan').hide();
+            $('#btnUpdatePendidikan').removeClass("hide");
+            var idpendidikan = $(this).attr("data-id");
+            //set hidden form untuk Id pendidikan
+            $('[name="idpendidikan"]').val(idpendidikan);
+
+            editpendidikanpencaker(idpendidikan);
+        });
+
+        $('#tabelpendidikanpencaker').on('click', '.btnHapusPendidikan', function () {
+            var result = confirm("Want to delete?");
+            if (result) 
+            {
+                var idpendidikan = $(this).attr("data-id");
+                 $.ajax({
+                    url: "<?php echo site_url('pencaker/del_pendidikan_by_id') ?>/"+ idpendidikan,
+                    type: "GET",
+                    dataType: "JSON",
+                    success: function(data) {
+                        if(data.status)
+                        {
+                            reload_table_pendidikan();
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Error Delete Data Pendidikan');
+                    }
+                });
+             }
         });
     });
 </script>

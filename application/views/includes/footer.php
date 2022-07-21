@@ -89,11 +89,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
       "autoWidth": false,
     });
 
-    $("#tabelpendidikanpencaker").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-
     $("#tabelpekerjaanpencaker").DataTable({
       "responsive": true,
       "autoWidth": false,

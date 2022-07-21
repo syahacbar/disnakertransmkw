@@ -144,6 +144,7 @@ $lang['id'] = "ID";
 $lang['action'] = "Action";
 $lang['submit'] = "Simpan";
 $lang['save'] = "Simpan";
+$lang['update'] = "Update";
 $lang['cancel'] = "Cancel";
 $lang['upload'] = "Unggah File";
 

@@ -9,42 +9,71 @@ class Pencaker extends MY_Controller
 		parent::__construct();
 	}
 
-	// public function index()
-	// {
-	// 	$this->load->view('blank_page', $this->page_data);
-	// }
-
-	// public function formpencaker()
-	// {
-	// 	$this->page_data['page']->title = 'Profil Pencari Kerja';
-	// 	$this->page_data['page']->menu = 'form_pencaker';
-	// 	$this->load->view('pencaker/form_pencaker', $this->page_data);
-	// }
-
 	public function index()
 	{
 		$this->page_data['page']->title = 'Profil Pencari Kerja';
 		$this->page_data['page']->menu = 'profil_pencaker';
 
+		$users_id = logged('id');
+
 
 		$this->load->view('pencaker/profil_pencaker', $this->page_data);
 	}
 	
-	public function dokumen_pencaker()
+	function dokumen_pencaker()
 	{
 		$this->page_data['page']->title = 'Dokumen Pencari Kerja';
 		$this->page_data['page']->menu = 'doc_pencaker';
 		$this->load->view('pencaker/dokumen', $this->page_data);
 	}
 
-	public function get_pencaker()
+	function get_pencaker()
     {
     	$users_id = logged('id');
         $data = $this->pencaker_model->get_by_users_id($users_id);
         echo json_encode($data);
     }
 
-    public function update1()
+    function get_pendidikan()
+    {
+    	$users_id = logged('id');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+        
+        $query  = "SELECT p.users_id, pd.* FROM pencaker p JOIN pendidikan_pencaker pd ON pd.pencaker_id=p.id";
+        $search = array('nama_sekolah','keterampilan');
+        $where  = array('pencaker_id' => $pencaker_id->id);
+        
+        // jika memakai IS NULL pada where sql
+        $isWhere = null;
+        // $isWhere = 'artikel.deleted_at IS NULL';
+        header('Content-Type: application/json');
+        echo $this->M_Datatables->get_tables_query($query,$search,$where,$isWhere);
+    }
+
+    function get_pendidikan_by_id($idpendidikan)
+    {
+    	$data  = $this->pencaker_model->get_pendidikan_by_id($idpendidikan);
+        echo json_encode($data);
+    }
+
+    function del_pendidikan_by_id($idpendidikan)
+    {
+    	$del  = $this->pencaker_model->del_pendidikan_by_id($idpendidikan);
+    	if($del)
+    	{        	
+	    	$res['hasil'] = 'sukses';
+	        $res['status'] = TRUE;
+        }     
+        else
+        {        	
+	    	$res['hasil'] = 'gagal';
+	        $res['status'] = FALSE;
+        }
+
+        echo json_encode($res);
+    }
+
+    function update1()
     {
         $users_id = logged('id');
     	$data = array(
@@ -66,7 +95,7 @@ class Pencaker extends MY_Controller
         echo json_encode($res);
     }
 
-    public function update2()
+    function update2()
     {
         $users_id = logged('id');
     	$data = array(
@@ -95,5 +124,53 @@ class Pencaker extends MY_Controller
         }
 
         echo json_encode($res);
+    }
+
+    function add_pendidikan()
+    {
+    	$users_id = logged('id');
+    	$pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+    	$data = array(
+    		'pencaker_id' => $pencaker_id,
+            'tahunmasuk' => $this->input->post('tahunmasuk'),
+            'tahunlulus' => $this->input->post('tahunlulus'),
+            'nama_sekolah' => $this->input->post('nama_sekolah'),
+            'jenjang' => $this->input->post('jenjang'),
+            'ipk' => $this->input->post('ipk'),
+            'keterampilan' => $this->input->post('keterampilan'),
+        );
+
+       $this->pencaker_model->add_pendidikan($data);  
+       $res['hasil'] = 'sukses';
+	   $res['status'] = TRUE;
+	   echo json_encode($res);
+    }
+
+    function update_pendidikan()
+    {
+    	$idpendidikan = $this->input->post('idpendidikan');
+    	$data = array(
+    		//'pencaker_id' => $pencaker_id,
+            'tahunmasuk' => $this->input->post('tahunmasuk'),
+            'tahunlulus' => $this->input->post('tahunlulus'),
+            'nama_sekolah' => $this->input->post('nama_sekolah'),
+            'jenjang' => $this->input->post('jenjang'),
+            'ipk' => $this->input->post('ipk'),
+            'keterampilan' => $this->input->post('keterampilan'),
+        );
+
+       $update = $this->pencaker_model->update_pendidikan($idpendidikan,$data);  
+       if($update)
+       {
+	       $res['hasil'] = 'sukses';
+		   $res['status'] = TRUE;
+       }
+       else
+       {
+	       $res['hasil'] = 'gagal';
+		   $res['status'] = FALSE;
+       }
+       
+	   echo json_encode($res);
     }
 }

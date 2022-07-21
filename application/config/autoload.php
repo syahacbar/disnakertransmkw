@@ -141,4 +141,5 @@ $autoload['model'] = array(
 	'activity_model',
 	'templates_model',
 	'pencaker_model',
+	'M_Datatables',
 );
