@@ -24,6 +24,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <a id="pendidikanpencaker" class="list-group-item list-group-item-action <?php echo ($page->submenu == 'pendidikan_pencaker') ? 'active' : '' ?>">
             <i class="fas fa-graduation-cap nav-icon "></i><?php echo lang('pendidikan_pencaker') ?></a>
 
+        <a id="bahasapencaker" class="list-group-item list-group-item-action <?php echo ($page->submenu == 'bahasa_pencaker') ? 'active' : '' ?>">
+            <i class="fas fa-graduation-cap nav-icon "></i><?php echo lang('bahasa_pencaker') ?></a>
+
         <a id="pekerjaanpencaker" class="list-group-item list-group-item-action <?php echo ($page->submenu == 'pekerjaan_pencaker') ? 'active' : '' ?>">
             <i class="fas fa-briefcase nav-icon "></i><?php echo lang('pekerjaan_pencaker') ?></a>
 

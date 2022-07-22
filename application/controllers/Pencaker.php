@@ -27,6 +27,26 @@ class Pencaker extends MY_Controller
 		$this->load->view('pencaker/dokumen', $this->page_data);
 	}
 
+	function formulir_ak1()
+	{
+		$this->page_data['page']->title = 'Printout Form AK-1';
+		$this->page_data['page']->menu = 'doc_pencaker';
+		$this->load->view('printout/formulirak1', $this->page_data);
+	}
+	function kartukuning_1()
+	{
+		$this->page_data['page']->title = 'Printout Form AK-1';
+		$this->page_data['page']->menu = 'doc_pencaker';
+		$this->load->view('printout/kartukuning1', $this->page_data);
+	}
+
+	function kartukuning_2()
+	{
+		$this->page_data['page']->title = 'Printout Form AK-1';
+		$this->page_data['page']->menu = 'doc_pencaker';
+		$this->load->view('printout/kartukuning2', $this->page_data);
+	}
+
 	function get_pencaker()
     {
     	$users_id = logged('id');
