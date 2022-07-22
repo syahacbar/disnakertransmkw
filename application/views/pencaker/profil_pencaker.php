@@ -253,6 +253,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     <div class="col-12 col-sm-12 col-md-2 col-lg-2 jenjang">
                                         <label for="jenjang">Jenjang</label>
                                         <select name="jenjang" id="jenjang" class="w-100">
+                                            <option value="">-- Pilih Salah Satu --</option>
                                             <option value="SD">SD</option>
                                             <option value="SMTP">SMTP</option>
                                             <option value="SMTA">SMTA</option>
@@ -298,7 +299,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <hr>
                                 <div class="row mt-5">
 
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 table-responsive">
                                         <table style="width:100%" id="tabelpendidikanpencaker" class="table table-bordered table-hover table-striped">
                                             <thead>
                                                 <tr>
@@ -335,7 +336,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="card-header with-border">
                     <h3 class="card-title"><?php echo lang('pekerjaan_pencaker') ?></h3>
                 </div>
-                <?php echo form_open_multipart('settings/generalUpdate', ['class' => 'form-validate', 'autocomplete' => 'off', 'method' => 'post']); ?>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12">
@@ -343,17 +343,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <div class="alert alert-success" role="alert">
                                     Silakan isi data terkait pengalaman kerja Anda pada bidang-bidang di bawah ini!
                                 </div>
+                                <!-- form pekerjaan pencaker     -->                           
+                                <form action="#" id="formpekerjaanpencaker">
                                 <div class="row">
                                     <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
                                         <div class="form-group">
-                                            <label for="tahunmasuk">Tahun Masuk</label>
-                                            <input type="number" class="form-control" name="tahunmasuk" id="tahunmasuk" placeholder="" required placeholder="Tahun masuk sekolah" autofocus />
+                                            <label for="tahunmasukkerja">Tahun Masuk</label>
+                                            <input type="number" class="form-control" name="tahunmasukkerja" id="tahunmasukkerja" placeholder="" required placeholder="Tahun masuk kerja" autofocus />
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
                                         <div class="form-group">
-                                            <label for="tahunkeluar">Tahun Keluar</label>
-                                            <input type="number" class="form-control" name="tahunkeluar" id="tahunkeluar" placeholder="" required placeholder="Tahun keluar sekolah" autofocus />
+                                            <label for="tahunkeluarkerja">Tahun Keluar</label>
+                                            <input type="number" class="form-control" name="tahunkeluarkerja" id="tahunkeluarkerja" placeholder="" required placeholder="Tahun keluar kerja" autofocus />
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-3 col-lg-6 ">
@@ -370,21 +372,28 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
                                         <div class="ml-auto">
-                                            <a href="" class="btn btn-primary btn-sm"><span class="pr-1"></span> <?php echo lang('save') ?></a>
+                                            <button type="button" id="btnSavePekerjaan" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> <?php echo lang('save') ?></button>
+                                            <button type="button" id="btnUpdatePekerjaan" class="btn btn-primary btn-sm hide"><i class="fas fa-edit"></i> <?php echo lang('update') ?></button>
+                                            <!-- hiden form untuk id pendidikan saat proses update -->
+                                            <input type="hidden" name="idpekerjaan">
                                         </div>
                                     </div>
                                 </div>
+                                </form>
+                                <!-- end of formpkerjaan pencaker -->
 
                                 <hr>
                                 <div class="row mt-5">
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                        <table id="tabelpekerjaanpencaker" class="table table-bordered table-hover table-striped">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 table-responsive">
+                                        <table style="width:100%" id="tabelpekerjaanpencaker" class="table table-bordered table-hover table-striped">
                                             <thead>
                                                 <tr>
+                                                    <th width="10px">No</th>
                                                     <th>Tahun Masuk</th>
                                                     <th>Tahun Keluar</th>
                                                     <th>Nama Perusahan/Instansi</th>
                                                     <th>Jabatan</th>
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -404,8 +413,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <button type="submit" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
                     <button type="submit" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
                 </div>
-                <!-- /.card-footer-->
-                <?php echo form_close(); ?>
             </div>
 
             <!-- perusahaan card -->
@@ -516,7 +523,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <!-- /.content -->
 
 <script type="text/javascript">
-    var table = null;
+    var tabelpendidikan = null;
+    var tabelpekerjaan = null;
     
     $(document).ready(function() {
 
@@ -554,26 +562,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#datatambahanpencaker').removeClass("active");
         }
 
-        function editpendidikanpencaker(id)
-        {
-            $.ajax({
-                url: "<?php echo site_url('pencaker/get_pendidikan_by_id') ?>/"+ id,
-                type: "GET",
-                dataType: "JSON",
-                success: function(data) {
-                    $('[name="tahunmasuk"]').val(data.tahunmasuk);
-                    $('[name="tahunlulus"]').val(data.tahunlulus);
-                    $('[name="jenjang"]').val(data.jenjang).trigger("change");
-                    $('[name="nama_sekolah"]').val(data.nama_sekolah);
-                    $('[name="ipk"]').val(data.ipk);
-                    $('[name="keterampilan"]').val(data.keterampilan);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert('Error Get Data Pendidikan');
-                }
-            });
-        }
-
         function showpendidikanpencaker()
         {
             $('.tujuanpencaker').hide();
@@ -590,9 +578,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#perusahaanpencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
 
-            tabel = $('#tabelpendidikanpencaker').DataTable({
-                //"responsive": true,
-                //"autoWidth": true,
+            tabelpendidikan = $('#tabelpendidikanpencaker').DataTable({
                 "processing": true,
                 "serverSide": true,
                 "ordering": true, 
@@ -629,9 +615,114 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         }
 
-        function reload_table_pendidikan(){
+        function reload_table_pendidikan()
+        {
             $('#tabelpendidikanpencaker').DataTable().ajax.reload(null, false);
         } 
+
+        function reset_form_pendidikan()
+        {
+            $( '#formpendidikanpencaker' ).each(function(){
+                this.reset();
+            });
+            //hide button UPDATE, show button SIMPAN
+            $('#btnSavePendidikan').show();
+            $('#btnUpdatePendidikan').addClass("hide");
+        }
+
+        function editpendidikanpencaker(id)
+        {
+            $.ajax({
+                url: "<?php echo site_url('pencaker/get_pendidikan_by_id') ?>/"+ id,
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    $('[name="tahunmasuk"]').val(data.tahunmasuk);
+                    $('[name="tahunlulus"]').val(data.tahunlulus);
+                    $('[name="jenjang"]').val(data.jenjang).trigger("change");
+                    $('[name="nama_sekolah"]').val(data.nama_sekolah);
+                    $('[name="ipk"]').val(data.ipk);
+                    $('[name="keterampilan"]').val(data.keterampilan);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error Get Data Pendidikan');
+                }
+            });
+        }
+
+
+        $('#tabelpendidikanpencaker').on('click', '.btnEditPendidikan', function () {
+            //hide button simpan, show button update
+            $('#btnSavePendidikan').hide();
+            $('#btnUpdatePendidikan').removeClass("hide");
+            var idpendidikan = $(this).attr("data-id");
+            //set hidden form untuk Id pendidikan
+            $('[name="idpendidikan"]').val(idpendidikan);
+
+            editpendidikanpencaker(idpendidikan);
+        });
+
+        $('#btnSavePendidikan').click(function() {
+            $.ajax({
+                url: "<?php echo site_url('pencaker/add_pendidikan') ?>",
+                type: "POST",
+                data: $('#formpendidikanpencaker').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.status) //if success close modal and reload ajax table
+                    {
+                        reload_table_pendidikan();
+                        reset_form_pendidikan()
+                    }
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error save data');
+                }
+            });
+        });
+
+        $('#btnUpdatePendidikan').click(function() {
+            $.ajax({
+                url: "<?php echo site_url('pencaker/update_pendidikan') ?>",
+                type: "POST",
+                data: $('#formpendidikanpencaker').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.status) //if success close modal and reload ajax table
+                    {
+                        reload_table_pendidikan();
+                        reset_form_pendidikan()
+                    }
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error update data');
+                }
+            });
+        });
+
+        $('#tabelpendidikanpencaker').on('click', '.btnHapusPendidikan', function () {
+            var result = confirm("Want to delete?");
+            if (result) 
+            {
+                var idpendidikan = $(this).attr("data-id");
+                 $.ajax({
+                    url: "<?php echo site_url('pencaker/del_pendidikan_by_id') ?>/"+ idpendidikan,
+                    type: "GET",
+                    dataType: "JSON",
+                    success: function(data) {
+                        if(data.status)
+                        {
+                            reload_table_pendidikan();
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Error Delete Data Pendidikan');
+                    }
+                });
+             }
+        });
 
         function showpekerjaanpencaker()
         {
@@ -648,7 +739,147 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#pekerjaanpencaker').addClass("active");
             $('#perusahaanpencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
+
+            tabelpekerjaan = $('#tabelpekerjaanpencaker').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ordering": true, 
+                "order": [[ 0, 'asc' ]], 
+                "ajax":
+                {
+                    "url": "<?php echo site_url('pencaker/get_pekerjaan');?>", 
+                    "type": "POST"
+                },
+                "deferRender": true,
+                "stateSave": true,
+                "bDestroy": true,
+
+                "columns": [
+                    {"data": "id","sortable": false, 
+                        render: function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }  
+                    }, 
+                    {"data": "tahunmasuk"},
+                    {"data": "tahunkeluar"},
+                    {"data": "instansi"},
+                    {"data": "jabatan"},
+                    {"data": "id",
+                        "render": 
+                        function( data, type, row, meta ) {
+                            return '<a href="javascript:void(0)" data-id="'+data+'" class="btn btn-sm btn-primary btnEditPekerjaan"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger btnHapusPekerjaan" href="javascript:void(0)" data-id="'+data+'"><i class="fas fa-trash"></i></a>';
+                        }
+                    },
+                ],
+            });
         }
+
+        function reload_table_pekerjaan()
+        {
+            $('#tabelpekerjaanpencaker').DataTable().ajax.reload(null, false);
+        } 
+
+        function reset_form_pekerjaan()
+        {
+            $( '#formpekerjaanpencaker' ).each(function(){
+                this.reset();
+            });
+            //hide button UPDATE, show button SIMPAN
+            $('#btnSavePekerjaan').show();
+            $('#btnUpdatePekerjaan').addClass("hide");
+        }
+
+        function editpekerjaanpencaker(id)
+        {
+            $.ajax({
+                url: "<?php echo site_url('pencaker/get_pekerjaan_by_id') ?>/"+ id,
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    $('[name="tahunmasukkerja"]').val(data.tahunmasuk);
+                    $('[name="tahunkeluarkerja"]').val(data.tahunkeluar);
+                    $('[name="instansi"]').val(data.instansi);
+                    $('[name="jabatan"]').val(data.jabatan);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error Get Data Pekerjaan');
+                }
+            });
+        }
+
+
+        $('#tabelpekerjaanpencaker').on('click', '.btnEditPekerjaan', function () {
+            //hide button simpan, show button update
+            $('#btnSavePekerjaan').hide();
+            $('#btnUpdatePekerjaan').removeClass("hide");
+            var idpekerjaan = $(this).attr("data-id");
+            //set hidden form untuk Id pendidikan
+            $('[name="idpekerjaan"]').val(idpekerjaan);
+
+            editpekerjaanpencaker(idpekerjaan);
+        });
+
+        $('#btnSavePekerjaan').click(function() {
+            $.ajax({
+                url: "<?php echo site_url('pencaker/add_pekerjaan') ?>",
+                type: "POST",
+                data: $('#formpekerjaanpencaker').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.status) //if success close modal and reload ajax table
+                    {
+                        reload_table_pekerjaan();
+                        reset_form_pekerjaan();
+                    }
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error save data');
+                }
+            });
+        });
+
+        $('#btnUpdatePekerjaan').click(function() {
+            $.ajax({
+                url: "<?php echo site_url('pencaker/update_pekerjaan') ?>",
+                type: "POST",
+                data: $('#formpekerjaanpencaker').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.status) //if success close modal and reload ajax table
+                    {
+                        reload_table_pekerjaan();
+                        reset_form_pekerjaan();
+                    }
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error update data');
+                }
+            });
+        });
+
+        $('#tabelpekerjaanpencaker').on('click', '.btnHapusPekerjaan', function () {
+            var result = confirm("Want to delete?");
+            if (result) 
+            {
+                var idpekerjaan = $(this).attr("data-id");
+                 $.ajax({
+                    url: "<?php echo site_url('pencaker/del_pekerjaan_by_id') ?>/"+ idpekerjaan,
+                    type: "GET",
+                    dataType: "JSON",
+                    success: function(data) {
+                        if(data.status)
+                        {
+                            reload_table_pekerjaan();
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Error Delete Data Pendidikan');
+                    }
+                });
+             }
+        });
 
         function showperusahaanpencaker()
         {
@@ -684,7 +915,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#datatambahanpencaker').addClass("active");
         }
 
-        //Ajax Load data from ajax
+        //Default Get Pencaker data
         $.ajax({
             url: "<?php echo site_url('pencaker/get_pencaker') ?>",
             type: "GET",
@@ -721,6 +952,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             }
         });
 
+        //menu navigasi form
+
         $('#tujuanpencaker').click(function() {
            showtujuanpencaker();
         });
@@ -748,6 +981,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         $('#btnback1').click(function() {
             showtujuanpencaker();
         });
+
+        //TOMBOL PREV/NEXT
 
         $('#btnSave1').click(function() {
             // ajax adding data to database
@@ -787,78 +1022,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     alert('Error update data');
                 }
             });
-        });
-
-        $('#btnSavePendidikan').click(function() {
-            $.ajax({
-                url: "<?php echo site_url('pencaker/add_pendidikan') ?>",
-                type: "POST",
-                data: $('#formpendidikanpencaker').serialize(),
-                dataType: "JSON",
-                success: function(data) {
-                    if (data.status) //if success close modal and reload ajax table
-                    {
-                        reload_table_pendidikan();
-                    }
-
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert('Error save data');
-                }
-            });
-        });
-
-        $('#btnUpdatePendidikan').click(function() {
-            $.ajax({
-                url: "<?php echo site_url('pencaker/update_pendidikan') ?>",
-                type: "POST",
-                data: $('#formpendidikanpencaker').serialize(),
-                dataType: "JSON",
-                success: function(data) {
-                    if (data.status) //if success close modal and reload ajax table
-                    {
-                        reload_table_pendidikan();
-                    }
-
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert('Error update data');
-                }
-            });
-        });
-
-
-        $('#tabelpendidikanpencaker').on('click', '.btnEditPendidikan', function () {
-            //hide button simpan, show button update
-            $('#btnSavePendidikan').hide();
-            $('#btnUpdatePendidikan').removeClass("hide");
-            var idpendidikan = $(this).attr("data-id");
-            //set hidden form untuk Id pendidikan
-            $('[name="idpendidikan"]').val(idpendidikan);
-
-            editpendidikanpencaker(idpendidikan);
-        });
-
-        $('#tabelpendidikanpencaker').on('click', '.btnHapusPendidikan', function () {
-            var result = confirm("Want to delete?");
-            if (result) 
-            {
-                var idpendidikan = $(this).attr("data-id");
-                 $.ajax({
-                    url: "<?php echo site_url('pencaker/del_pendidikan_by_id') ?>/"+ idpendidikan,
-                    type: "GET",
-                    dataType: "JSON",
-                    success: function(data) {
-                        if(data.status)
-                        {
-                            reload_table_pendidikan();
-                        }
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        alert('Error Delete Data Pendidikan');
-                    }
-                });
-             }
         });
     });
 </script>
