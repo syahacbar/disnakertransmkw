@@ -3,7 +3,34 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <?php include viewPath('includes/header'); ?>
 
+<style>
+    #jenisdokumen {
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        display: block;
+        width: 100%;
+        height: calc(2.25rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        box-shadow: inset 0 0 0 transparent;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
 
+    .alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+</style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
@@ -169,11 +196,31 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="dropzone" id="dokumen_pekerja">
-                    <div name="userfile" class="dz-message">
-                        <h6>Klik atau drop file/dokumen ke sini</h6>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-5">
+                    <div class="dropzone" id="dokumen_pekerja">
+                        <div name="userfile" class="dz-message">
+                            <h6>Klik atau seret file/dokumen ke sini</h6>
+                        </div>
                     </div>
+                </div>
 
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-5">
+                    <label for="jenisdokumen">Jenis Dokumen</label>
+                    <select name="jenisdokumen" id="jenisdokumen" class="w-100">
+                        <option value="">-- Pilih Salah Satu --</option>
+                        <option value="KTP">KTP</option>
+                        <option value="Ijazah Terakhir">Ijazah Terakhir</option>
+                        <option value="Transkrip Nilai">Transkrip Nilai</option>
+                        <option value="Riwayat Hidup">Riwayat Hidup</option>
+                        <option value="SKCK">SKCK</option>
+                        <option value="Surat Keterangan Berbadan Sehat">Surat Keterangan Berbadan Sehat</option>
+                    </select>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-5">
+                    <div class="alert alert-warning" role="alert">
+                    File yang diunggah berektensi .jpg, .png, atau .jpeg dengan ukuran maksimal 2 MB.
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
