@@ -42,6 +42,7 @@ $lang['informasi'] = "Informasi";
 $lang['berita'] = "Berita";
 $lang['pengumuman'] = "Pengumuman";
 $lang['pelatihan'] = "Pelatihan";
+$lang['bidang'] = "Bidang-Bidang";
 
 
 $lang['home'] = "Home";

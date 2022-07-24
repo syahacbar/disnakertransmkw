@@ -237,20 +237,20 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <!-- form pendidikan pencaker-->                                
                                 <form action="#" id="formpendidikanpencaker">
                                 <div class="row mb-5">
-                                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 ">
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 ">
                                         <div class="form-group">
                                             <label for="tahunmasuk">Tahun Masuk</label>
                                             <input type="number" class="form-control" name="tahunmasuk" id="tahunmasuk" autofocus />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 ">
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 ">
                                         <div class="form-group">
                                             <label for="tahunlulus">Tahun Lulus</label>
                                             <input type="number" class="form-control" name="tahunlulus" id="tahunlulus" required autofocus />
                                         </div>
                                     </div>
 
-                                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 jenjang">
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3">
                                         <label for="jenjang">Jenjang</label>
                                         <select name="jenjang" id="jenjang" class="w-100">
                                             <option value="">-- Pilih Salah Satu --</option>
@@ -267,17 +267,17 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 ">
                                         <div class="form-group">
-                                            <label for="nama_sekolah">Nama Sekolah</label>
-                                            <input type="text" class="form-control" name="nama_sekolah" id="nama_sekolah" required autofocus />
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-12 col-md-1 col-lg-1 ">
-                                        <div class="form-group">
                                             <label for="ipk">NEM/NUN/IPK</label>
                                             <input type="text" class="form-control" name="ipk" id="ipk" autofocus />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-12 col-md-2 col-lg-2 ">
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 ">
+                                        <div class="form-group">
+                                            <label for="nama_sekolah">Nama Sekolah</label>
+                                            <input type="text" class="form-control" name="nama_sekolah" id="nama_sekolah" required autofocus />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 ">
                                         <div class="form-group">
                                             <label for="keterampilan">Keterampilan</label>
                                             <input type="text" class="form-control" name="keterampilan" id="keterampilan" autofocus />
@@ -319,6 +319,101 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     </div>
                                 </div>
 
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
+                    <button type="submit" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
+                </div>
+            </div>
+
+            <!-- bahasapencaker card -->
+            <div class="card bahasapencaker" style="display: none;">
+                <div class="card-header with-border">
+                    <h3 class="card-title"><?php echo lang('bahasa_pencaker') ?></h3>
+                </div>
+                
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-card">
+                                <div class="alert alert-success" role="alert">
+                                    Silakan centang salah satu atau beberapa bahasa yang Anda kuasai di bawah ini!
+                                </div>
+
+                                <!-- form bahasa pencaker-->                                
+                                <form action="#" id="formbahasapencaker">
+                                <div class="row mb-5">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="inggris">
+                                            <label class="form-check-label" for="inggris">
+                                                Inggris
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="jerman">
+                                            <label class="form-check-label" for="jerman">
+                                                Jerman
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="perancis">
+                                            <label class="form-check-label" for="perancis">
+                                                Perancis
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="mandarin">
+                                            <label class="form-check-label" for="mandarin">
+                                                Mandarin
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="arab">
+                                            <label class="form-check-label" for="arab">
+                                                Arab
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="belanda">
+                                            <label class="form-check-label" for="belanda">
+                                                Belanda
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="jepang">
+                                            <label class="form-check-label" for="jepang">
+                                                Jepang
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-4">
+                                        <div class="form-floating">
+                                            <label for="lainnya">Bahasa Lainnya</label>
+                                            <textarea class="form-control" placeholder="Deskripsikan bahasa yang Anda kuasai di sini" id="lainnya" style="height: 100px"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
+                                <!-- end of formbahasa pencaker -->
                             </div>
                         </div>
                     </div>
@@ -536,12 +631,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('.pekerjaanpencaker').hide();
             $('.perusahaanpencaker').hide();
             $('.datatambahanpencaker').hide();
+            $('.bahasapencaker').hide();
 
             $('#tujuanpencaker').addClass("active");
             $('#identitaspencaker').removeClass("active");
             $('#pendidikanpencaker').removeClass("active");
             $('#pekerjaanpencaker').removeClass("active");
             $('#perusahaanpencaker').removeClass("active");
+            $('#bahasapencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
         }
 
@@ -553,6 +650,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('.pekerjaanpencaker').hide();
             $('.perusahaanpencaker').hide();
             $('.datatambahanpencaker').hide();
+            $('.bahasapencaker').hide();
 
             $('#tujuanpencaker').removeClass("active");
             $('#identitaspencaker').addClass("active");
@@ -560,6 +658,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#pekerjaanpencaker').removeClass("active");
             $('#perusahaanpencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
+            $('#bahasapencaker').removeClass("active");
         }
 
         function showpendidikanpencaker()
@@ -570,6 +669,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('.pekerjaanpencaker').hide();
             $('.perusahaanpencaker').hide();
             $('.datatambahanpencaker').hide();
+            $('.bahasapencaker').hide();
 
             $('#tujuanpencaker').removeClass("active");
             $('#identitaspencaker').removeClass("active");
@@ -577,6 +677,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#pekerjaanpencaker').removeClass("active");
             $('#perusahaanpencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
+            $('#bahasapencaker').removeClass("active");
 
             tabelpendidikan = $('#tabelpendidikanpencaker').DataTable({
                 "processing": true,
@@ -724,6 +825,26 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
              }
         });
 
+
+        function showbahasapencaker()
+        {
+            $('.tujuanpencaker').hide();
+            $('.identitaspencaker').hide();
+            $('.bahasapencaker').toggle("display");
+            $('.pendidikanpencaker').hide();
+            $('.pekerjaanpencaker').hide();
+            $('.perusahaanpencaker').hide();
+            $('.datatambahanpencaker').hide();
+
+            $('#tujuanpencaker').removeClass("active");
+            $('#identitaspencaker').removeClass("active");
+            $('#pendidikanpencaker').removeClass("active");
+            $('#bahasapencaker').addClass("active");
+            $('#pekerjaanpencaker').removeClass("active");
+            $('#perusahaanpencaker').removeClass("active");
+            $('#datatambahanpencaker').removeClass("active");
+        }
+
         function showpekerjaanpencaker()
         {
             $('.tujuanpencaker').hide();
@@ -732,12 +853,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('.pekerjaanpencaker').toggle("display");
             $('.perusahaanpencaker').hide();
             $('.datatambahanpencaker').hide();
+            $('.bahasapencaker').hide();
 
             $('#tujuanpencaker').removeClass("active");
             $('#identitaspencaker').removeClass("active");
             $('#pendidikanpencaker').removeClass("active");
             $('#pekerjaanpencaker').addClass("active");
             $('#perusahaanpencaker').removeClass("active");
+            $('#bahasapencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
 
             tabelpekerjaan = $('#tabelpekerjaanpencaker').DataTable({
@@ -889,12 +1012,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('.pekerjaanpencaker').hide();
             $('.perusahaanpencaker').toggle("display");
             $('.datatambahanpencaker').hide();
+            $('.bahasapencaker').hide();
 
             $('#tujuanpencaker').removeClass("active");
             $('#identitaspencaker').removeClass("active");
             $('#pendidikanpencaker').removeClass("active");
             $('#pekerjaanpencaker').removeClass("active");
             $('#perusahaanpencaker').addClass("active");
+            $('#bahasapencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
         }
 
@@ -905,6 +1030,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('.pendidikanpencaker').hide();
             $('.pekerjaanpencaker').hide();
             $('.perusahaanpencaker').hide();
+            $('.bahasapencaker').hide();
             $('.datatambahanpencaker').toggle("display");
 
             $('#tujuanpencaker').removeClass("active");
@@ -912,6 +1038,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#pekerjaanpencaker').removeClass("active");
             $('#pendidikanpencaker').removeClass("active");
             $('#perusahaanpencaker').removeClass("active");
+            $('#bahasapencaker').removeClass("active");
             $('#datatambahanpencaker').addClass("active");
         }
 
@@ -964,6 +1091,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         $('#pendidikanpencaker').click(function() {
             showpendidikanpencaker();
+        });
+
+        $('#bahasapencaker').click(function() {
+            showbahasapencaker();
         });
 
         $('#pekerjaanpencaker').click(function() {
