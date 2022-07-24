@@ -80,7 +80,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
             <div class="section-title mt-4">
                 <h2>Struktur Organisasi</h2>
-                <img src="<?php echo base_url('uploads/profil/');?>STRUKTUR_DISNAKERTRANS.png" width="100%">
+                <img class="border border-info rounded" src="<?php echo base_url('uploads/profil/');?>STRUKTUR_DISNAKERTRANS.jpg" width="100%">
             </div>
 
         </div>
