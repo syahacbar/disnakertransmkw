@@ -16,7 +16,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="row content">
                 <div class="col-lg-6">
                     <h4>Visi</h4>
-                    <p align="center">"Mempersiapkan Tenaga Kerja Mandiri Dan Membangun Permukiman Layak Huni Menuju Masyarakat Manokwari Sejahtera"
+                    <p class="text-center">"Mempersiapkan Tenaga Kerja Mandiri Dan Membangun Permukiman Layak Huni Menuju Masyarakat Manokwari Sejahtera"
                     </p>
                   
                 </div>
