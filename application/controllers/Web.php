@@ -70,11 +70,25 @@ class Web extends CI_Controller
 		$this->page_data['page']->title = 'Pengumuman';
 		$this->load->view('web/pengumuman', $this->page_data);
 	}
+
 	public function pelatihan()
 	{
 		$this->page_data['page']->menu = 'informasi';
 		$this->page_data['page']->title = 'Pelatihan';
 		$this->load->view('web/pelatihan', $this->page_data);
+	}
+
+	public function transmigrasi()
+	{
+		$this->page_data['page']->menu = 'bidang';
+		$this->page_data['page']->title = 'Transmigrasi';
+		$this->load->view('web/transmigrasi', $this->page_data);
+	}
+	public function tenagakerja()
+	{
+		$this->page_data['page']->menu = 'bidang';
+		$this->page_data['page']->title = 'Tenaga Kerja';
+		$this->load->view('web/tenagakerja', $this->page_data);
 	}
 
 	public function account_registration()

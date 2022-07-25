@@ -16,7 +16,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="row content">
                 <div class="col-lg-6">
                     <h4>Visi</h4>
-                    <p align="center">"Mempersiapkan Tenaga Kerja Mandiri Dan Membangun Permukiman Layak Huni Menuju Masyarakat Manokwari Sejahtera"
+                    <p class="text-center">"Mempersiapkan Tenaga Kerja Mandiri Dan Membangun Permukiman Layak Huni Menuju Masyarakat Manokwari Sejahtera"
                     </p>
                   
                 </div>
@@ -80,7 +80,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
             <div class="section-title mt-4">
                 <h2>Struktur Organisasi</h2>
-                <img src="<?php echo base_url('uploads/profil/');?>STRUKTUR_DISNAKERTRANS.png" width="100%">
+                <img class="border border-info rounded" src="<?php echo base_url('uploads/profil/');?>STRUKTUR_DISNAKERTRANS.jpg" width="100%">
             </div>
 
         </div>
