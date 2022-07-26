@@ -44,26 +44,6 @@ class Pencaker_model extends MY_Model {
 		return $id;
 	}
 
-	// function get_pendidikan($id)
-	// {
-	// 	$this->db->select('p.users_id, pd.*');
- //        $this->db->from('pencaker p');
- //        $this->db->join('pendidikan_pencaker pd ', 'pd.pencaker_id=p.id');
- //        $this->db->where('p.users_id',$id);
- //        $query = $this->db->get();
- //        return $query->result();
-	// }
-
-	// function get_pekerjaan($id)
-	// {
-	// 	$this->db->select('p.users_id, pk.*');
- //        $this->db->from('pencaker p');
- //        $this->db->join('pekerjaan_pencaker pk ', 'pk.pencaker_id=p.id');
- //        $this->db->where('p.users_id',$id);
- //        $query = $this->db->get();
- //        return $query->result();
-	// }
-
 	function get_pendidikan_by_id($id)
 	{
 		$this->db->select('*');
@@ -122,12 +102,13 @@ class Pencaker_model extends MY_Model {
 		return true;
 	}
 
-    public function get_all_dokumen()
+	function add_berita($data)
 	{
-		$query = $this->db->get('upload');  
-		return $query->result_array();
+		$this->db->insert('informasi', $data);
+		return $this->db->insert_id();
 	}
- 
+
+
 
 }
 /* End of file Pencaker_model.php */
