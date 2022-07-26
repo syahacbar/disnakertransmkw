@@ -7,13 +7,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
   <li class="nav-item">
     <a href="<?php echo url('dashboard') ?>" class="nav-link <?php echo ($page->menu == 'dashboard') ? 'active' : '' ?>">
-      <i class="nav-icon fas fa-tachometer-alt"></i>
+      <i class="nav-icon fas fa-laptop"></i>
       <p>
         <?php echo lang('dashboard') ?>
       </p>
     </a>
   </li>
-
+<?php if (hasPermissions('profil_pencaker')) : ?>
   <li class="nav-item">
     <a href="<?php echo url('pencaker') ?>" class="nav-link <?php echo ($page->menu == 'profil_pencaker') ? 'active' : ''?>">
       <i class="nav-icon fas fa-id-card"></i>
@@ -23,7 +23,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
       </p>
     </a>
   </li>
+  <?php endif ?>
+  <!--end menu profil pencaker -->
 
+<?php if (hasPermissions('doc_pencaker')) : ?>
   
   <!-- dokumen -->
   <li class="nav-item">
@@ -34,12 +37,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
       </p>
     </a>
   </li>
+  <?php endif ?>
+  <!--end menu doc pencaker -->
 
   <!-- menu informasi -->
   <?php if (hasPermissions('informasi')) : ?>
     <li class="nav-item has-treeview <?php echo ($page->menu == 'informasi') ? 'menu-open' : '' ?>">
       <a href="#" class="nav-link  <?php echo ($page->menu == 'informasi') ? 'active' : '' ?>">
-        <i class="nav-icon fas fa-cog"></i>
+        <i class="nav-icon fas fa-newspaper"></i>
         <p>
           <?php echo lang('informasi') ?>
           <i class="right fas fa-angle-left"></i>
@@ -107,7 +112,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <?php if (hasPermissions('permissions_list')) : ?>
     <li class="nav-item">
       <a href="<?php echo url('permissions') ?>" class="nav-link <?php echo ($page->menu == 'permissions') ? 'active' : '' ?>">
-        <i class="nav-icon fas fa-user"></i>
+        <i class="nav-icon fas fa-user-lock"></i>
         <p>
           <?php echo lang('manage_permissions') ?>
         </p>
@@ -119,7 +124,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <?php if (hasPermissions('backup_db')) : ?>
     <li class="nav-item">
       <a href="<?php echo url('backup') ?>" class="nav-link <?php echo ($page->menu == 'backup') ? 'active' : '' ?>">
-        <i class="nav-icon fas fa-user"></i>
+        <i class="nav-icon fas fa-database"></i>
         <p>
           <?php echo lang('backup') ?>
         </p>

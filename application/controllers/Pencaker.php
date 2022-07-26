@@ -4,13 +4,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Pencaker extends MY_Controller
 {
 
-	public function __construct()
+	public function __construct() 
 	{
 		parent::__construct();
 	}
 
 	public function index()
 	{
+        ifPermissions('profil_pencaker');
 		$this->page_data['page']->title = 'Profil Pencari Kerja';
 		$this->page_data['page']->menu = 'profil_pencaker';
 
@@ -22,6 +23,7 @@ class Pencaker extends MY_Controller
 	
 	function dokumen_pencaker()
 	{
+        ifPermissions('doc_pencaker');
 		$this->page_data['page']->title = 'Dokumen Pencari Kerja';
 		$this->page_data['page']->menu = 'doc_pencaker';
 		$this->load->view('pencaker/dokumen', $this->page_data);
@@ -90,10 +92,19 @@ class Pencaker extends MY_Controller
             'keterampilan' => $this->input->post('keterampilan'),
         );
 
-       $this->pencaker_model->add_pendidikan($data);  
-       $res['hasil'] = 'sukses';
-	   $res['status'] = TRUE;
-	   echo json_encode($res);
+        $id = $this->pencaker_model->add_pendidikan($data);  
+
+        if($id)
+        {  
+           $res['hasil'] = 'sukses';
+    	   $res['status'] = TRUE;
+        }     
+        else
+        {           
+            $res['hasil'] = 'gagal';
+            $res['status'] = FALSE;
+        }
+        echo json_encode($res);
     }
 
     function update_pendidikan()

@@ -120,13 +120,6 @@ $lang['pace'] = "Pace";
 $lang['blank_page'] = "Blank Page";
 
 $lang['profil_pencaker'] = "Profil Pencari Kerja";
-$lang['tujuan_pencaker'] = "Tujuan Pencaker";
-$lang['identitas_pencaker'] = "Keterangan Umum";
-$lang['pendidikan_pencaker'] = "Informasi Pendidikan";
-$lang['bahasa_pencaker'] = "Keterampilan Berbahasa";
-$lang['pekerjaan_pencaker'] = "Informasi Pekerjaan";
-$lang['perusahaan_pencaker'] = "Tujuan Perusahaan";
-$lang['datatambahan_pencaker'] = "Keterangan Tambahan";
 $lang['doc_pencaker'] = "Dokumen Pencari Kerja";
 $lang['selanjutnya'] = "Selanjutnya";
 $lang['sebelumnya'] = "Sebelumnya";

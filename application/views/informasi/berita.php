@@ -30,14 +30,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="card-header d-flex p-0">
                         <h3 class="card-title p-3"><?php echo lang('berita') ?></h3>
                         <div class="ml-auto p-2">
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambahBerita"><span class="pr-1"><i class="fa fa-plus"></i></span>
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalTambahberita"><span class="pr-1"><i class="fa fa-plus"></i></span>
                                 Tambah Berita
                             </button>
                         </div>
                     </div>
 
                     <!-- /.card-header -->
-                    <div class="card-body">
+                    <div class="card-body table-responsive">
                         <table id="tabelberita" class="table table-bordered table-hover table-striped">
                             <thead>
                                 <tr>
@@ -50,18 +50,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Bonus Demografi Semakin Dekat, Kemnaker Terus Siapkan SDM Unggul</td>
-                                    <td>22 Agustus 2022</td>
-                                    <td>Bandung--Sekretaris Jenderal Kementerian Ketenagakerjaan, Anwar Sanusi menegaskan pihaknya terus menyiapkan Sumber Daya Manusia (SDM) yang unggul guna menyambut bonus demografi yang puncaknya terjadi pada 2030.
-                                    <td>Publish</td>
-                                    <td>
-                                        <a href="<?php echo url('users/edit/' . $row->id) ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
-                                        <a href="<?php echo url('users/view/' . $row->id) ?>" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                        <a href="<?php echo url('users/delete/' . $row->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -78,34 +66,22 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <!-- /.content -->
 
 <!-- Modal -->
-<div class="modal fade" id="tambahBerita" tabindex="-1" role="dialog" aria-labelledby="tambahBeritaTitle" aria-hidden="true">
+<div class="modal fade" id="modalTambahberita" tabindex="-1" role="dialog" aria-labelledby="modalTambahberitaTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tambahBeritaTitle">Tambah Artikel</h5>
+                <h5 class="modal-title">Tambah Berita</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <form id="formtambahberita">
             <div class="modal-body">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="form-group">
                             <label for="judul">Judul Artikel</label>
                             <input type="text" class="form-control" name="judul" id="judul" required autofocus />
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                        <label for="beritaCategori">Kategori Artikel</label>
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle w-100 d-flex justify-content-between align-items-center border" type="button" id="beritaCategori" data-toggle="dropdown" aria-expanded="false">
-                                - Pilih -
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="beritaCategori">
-                                <li><a class="dropdown-item" href="#">Berita</a></li>
-                                <li><a class="dropdown-item" href="#">Pengumuman</a></li>
-                                <li><a class="dropdown-item" href="#">Pelatihan</a></li>
-                            </ul>
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
@@ -138,10 +114,77 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary">Simpan</button>
+                <button id="btnSaveBerita" type="button" class="btn btn-primary">Simpan</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
 
 <?php include viewPath('includes/footer'); ?>
+
+<script type="text/javascript">
+    
+    $(document).ready(function() {
+
+        var tabelberita = null;
+        tabelberita = $('#tabelberita').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ordering": true, 
+            "order": [[ 0, 'asc' ]], 
+            "ajax":
+            {
+                "url": "<?php echo site_url('informasi/get_berita');?>", 
+                "type": "POST"
+            },
+            "deferRender": true,
+            "stateSave": true,
+            "bDestroy": true,
+
+            "columns": [
+                {"data": "id","sortable": false, 
+                    render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }  
+                }, 
+                {"data": "judul"},
+                {"data": "tgl_publikasi"},
+                {"data": "isi"},
+                {"data": "status"},
+                {"data": "id",
+                    "render": 
+                    function( data, type, row, meta ) {
+                        return '<a href="javascript:void(0)" data-id="'+data+'" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="'+data+'"><i class="fas fa-trash"></i></a>';
+                    }
+                },
+            ],
+        });
+
+        function reload_table_berita()
+        {
+            $('#tabelberita').DataTable().ajax.reload(null, false);
+
+        }
+
+        $('#btnSaveBerita').click(function() {
+            $.ajax({
+                url: "<?php echo site_url('informasi/add_berita') ?>",
+                type: "POST",
+                data: $('#formtambahberita').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.status) //if success close modal and reload ajax table
+                    {
+                        $('#modalTambahberita').modal('hide');
+                        reload_table_berita();
+                    }
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error save data');
+                }
+            });
+        });
+    });
+</script>
