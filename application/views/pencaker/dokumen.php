@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
+    <!-- Dropzone CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 <?php include viewPath('includes/header'); ?>
 
 <style>
@@ -73,6 +75,31 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 </tr>
                             </thead>
                             <tbody>
+
+                            <?php $no=1; foreach($dokumen as $dok) { ?>
+                                <tr>
+                                    
+                                    <td><?php echo $no++;?></td>
+                                    <td><?php echo $dok['nama_dokumen'];?></td>
+                                    <td><?php echo $dok['uploaded_on'];?></td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+<!-- 
+                                <tr>
+                                    <td width="60">1</td>
+                                    <td>
+                                        Pas Foto
+                                    </td>
+                                    <td>
+                                        Sudah Diunggah | Belum
+                                    </td>
+                                    <td>
+                                        <a href="<?php echo url('users/edit/') ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
+                                        <a href="<?php echo url('users/view/') ?>" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                        <a href="<?php echo url('users/delete/') ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
 
                                 <tr>
                                     <td width="60">1</td>
@@ -170,7 +197,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                                     </td>
                                 </tr>
-                            </tbody>
+                            </tbody> -->
                         </table>
                     </div>
                     <!-- /.card-body -->
@@ -196,62 +223,92 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-5">
-                    <div class="dropzone" id="dokumen_pekerja">
-                        <div name="userfile" class="dz-message">
-                            <h6>Klik atau seret file/dokumen ke sini</h6>
+                <?php echo form_open_multipart('',array('id'=>'formunggahdokumen')); ?>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-3">
+                        <label for="namadokumen">Nama Dokumen</label>
+                        <input type="text" class="form-control" name="namadokumen" id="namadokumen">
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="alert alert-warning" role="alert">
+                        Dokumen yang diunggah berektensi .jpg, .png, atau .jpeg dengan ukuran maksimal 2 MB.
                         </div>
                     </div>
-                </div>
 
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-5">
-                    <label for="jenisdokumen">Jenis Dokumen</label>
-                    <select name="jenisdokumen" id="jenisdokumen" class="w-100">
-                        <option value="">-- Pilih Salah Satu --</option>
-                        <option value="KTP">KTP</option>
-                        <option value="Ijazah Terakhir">Ijazah Terakhir</option>
-                        <option value="Transkrip Nilai">Transkrip Nilai</option>
-                        <option value="Riwayat Hidup">Riwayat Hidup</option>
-                        <option value="SKCK">SKCK</option>
-                        <option value="Surat Keterangan Berbadan Sehat">Surat Keterangan Berbadan Sehat</option>
-                    </select>
-                </div>
-
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-5">
-                    <div class="alert alert-warning" role="alert">
-                    File yang diunggah berektensi .jpg, .png, atau .jpeg dengan ukuran maksimal 2 MB.
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-5">
+                        <label for="pasfoto">Dokumen</label>
+                        <div class="dropzone pasfoto" id="pasfoto">
+                            <div class="dz-message">
+                                <h6>Klik atau seret file/dokumen ke sini</h6>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-5">
+                        <label for="jenisdokumen">Jenis Dokumen</label>
+                        <select name="jenisdokumen" id="jenisdokumen" class="w-100">
+                            <option value="">-- Pilih Salah Satu --</option>
+                            <option value="Pas Foto">Pas Foto</option>
+                            <option value="KTP">KTP</option>
+                            <option value="Ijazah Terakhir">Ijazah Terakhir</option>
+                            <option value="Transkrip Nilai">Transkrip Nilai</option>
+                            <option value="Riwayat Hidup">Riwayat Hidup</option>
+                            <option value="SKCK">SKCK</option>
+                            <option value="Surat Keterangan Berbadan Sehat">Surat Keterangan Berbadan Sehat</option>
+                        </select>
+                    </div>
+
+                    <button id="btnSubmit" name="submit" type="submit" class="btn btn-primary btn-block mb-4">Kirim File</button>
+                <?php echo form_close(); ?>
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                 <button type="button" class="btn btn-primary">Simpan</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="unggahDokumen" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="unggahDokumenLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered ">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="unggahDokumenLabel">Unggah File/Dokumen</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="dropzone" id="dokumen_pekerja">
-                    <div name="userfile" class="dz-message">
-                        <h6>Klik atau drop file/dokumen ke sini</h6>
-                    </div>
 
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="button" class="btn btn-primary">Unggah</button>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Dropzone JS -->
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+
+<script>
+    Dropzone.autoDiscover = false;
+    $(document).ready(function() {
+
+        var unggah_dokumen = new Dropzone(".dropzone", {
+            autoProcessQueue: false,
+            url: "<?php echo site_url('pencaker/pasfotopencaker') ?>",
+            maxFilesize: 50,
+            maxFiles: 1,
+            method: "post",
+            acceptedFiles: "image/*",
+            paramName: "pasfoto_pencaker",
+            dictInvalidFileType: "Type file ini tidak dizinkan",
+            addRemoveLinks: true,
+        });
+
+        unggah_dokumen.on("sending", function(a, b, c) {
+            a.token = Math.random();
+            a.inputnamadokumen = $("input[name='namadokumen']").val();
+            a.pilihjenisdokumen = $("select[name='jenisdokumen']").val();
+            c.append("token_pasfoto", a.token);
+            c.append("doc_name",a.inputnamadokumen);
+            c.append("doc_category",a.pilihjenisdokumen);
+
+        });
+
+        unggah_dokumen.on('complete', function () {
+            location.reload();
+        });
+
+        $('#formunggahdokumen').submit(function(e) {
+            e.preventDefault();
+            unggah_dokumen.processQueue();
+            //location.reload();
+        });
+    });
+
+</script>
 
 <?php include viewPath('includes/footer'); ?>

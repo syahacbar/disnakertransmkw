@@ -27,7 +27,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
   
   <!-- dokumen -->
   <li class="nav-item">
-    <a href="<?php echo url('pencaker/dokumen_pencaker') ?>" class="nav-link <?php echo ($page->menu == 'doc_pencaker') ? 'active' : '' ?>">
+    <a href="<?php echo url('pencaker/dok_pencaker') ?>" class="nav-link <?php echo ($page->menu == 'doc_pencaker') ? 'active' : '' ?>">
       <i class="nav-icon fas fa-file"></i>
       <p>
         <?php echo lang('doc_pencaker') ?>
