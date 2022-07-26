@@ -63,9 +63,6 @@ class Informasi extends MY_Controller
         echo json_encode($res);
 	}
 
-
-
-
 	public function pengumuman()
 	{
 		$this->page_data['page']->title = 'Pengumuman';
