@@ -21,7 +21,7 @@ class Pencaker extends MY_Controller
 	
 	function dok_pencaker()
 	{
-        $data['dokumen'] = $this->Pencaker_model->get_all_dokumen();
+        // $data['dokumen'] = $this->Pencaker_model->get_all_dokumen();
 
 		$this->page_data['page']->title = 'Dokumen Pencari Kerja';
 		$this->page_data['page']->menu = 'doc_pencaker';

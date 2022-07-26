@@ -76,14 +76,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             </thead>
                             <tbody>
 
-                            <?php $no=1; foreach($dokumen as $dok) { ?>
+                            <!-- <?php // $no=1; foreach($dokumen as $dok) { ?>
                                 <tr>
                                     
-                                    <td><?php echo $no++;?></td>
-                                    <td><?php echo $dok['nama_dokumen'];?></td>
-                                    <td><?php echo $dok['uploaded_on'];?></td>
+                                    <td><?php // echo $no++;?></td>
+                                    <td><?php // echo $dok['nama_dokumen'];?></td>
+                                    <td><?php // echo $dok['uploaded_on'];?></td>
                                 </tr>
-                                <?php } ?>
+                                <?php // } ?> -->
                             </tbody>
 <!-- 
                                 <tr>
