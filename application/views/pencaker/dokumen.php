@@ -117,7 +117,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 </tr>
 
                                 <tr>
-                                    <td width="60">1</td>
+                                    <td width="60">2</td>
                                     <td>
                                         Ijazah Terakhir
                                     </td>
@@ -133,7 +133,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td width="60">1</td>
+                                    <td width="60">3</td>
                                     <td>
                                         Transkrip Nilai
                                     </td>
@@ -149,7 +149,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td width="60">1</td>
+                                    <td width="60">4</td>
                                     <td>
                                         Riwayat Hidup
                                     </td>
@@ -166,7 +166,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td width="60">1</td>
+                                    <td width="60">5</td>
                                     <td>
                                         SKCK
                                     </td>
@@ -182,7 +182,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td width="60">1</td>
+                                    <td width="60">6</td>
                                     <td>
                                         Surat Keterangan Berbadan Sehat
                                     </td>

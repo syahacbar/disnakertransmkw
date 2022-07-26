@@ -15,7 +15,7 @@
 
                 <div class="row">
                     <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-                        <form action="<?php echo site_url('web/account_registration');?>" method="post" role="form">
+                        <form action="<?php echo site_url('web/account_registration');?>" method="post" role="form" class="">
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="namalengkap">Nama Lengkap</label>
@@ -46,11 +46,6 @@
                                     <input type="password" class="form-control" name="password_confirm" id="password_confirm">
                                 </div>
                             </div>
-                            <!-- <div class="my-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-                            </div> -->
                             <div class="text-center"><button type="submit">Daftar</button></div>
                         </form>
                     </div>
