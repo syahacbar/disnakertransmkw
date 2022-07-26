@@ -64,6 +64,13 @@ class Web extends CI_Controller
 		$this->load->view('web/berita', $this->page_data);
 	}
 
+	public function detailberita()
+	{
+		$this->page_data['page']->menu = 'informasi';
+		$this->page_data['page']->title = 'Detail Berita';
+		$this->load->view('web/detailberita', $this->page_data);
+	}
+
 	public function pengumuman()
 	{
 		$this->page_data['page']->menu = 'informasi';

@@ -4,10 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Pencaker extends MY_Controller
 {
 
+
 	public function __construct() 
 	{
 		parent::__construct();
 	}
+
 
 	public function index()
 	{
@@ -17,17 +19,33 @@ class Pencaker extends MY_Controller
 
 		$users_id = logged('id');
 
-
 		$this->load->view('pencaker/profil_pencaker', $this->page_data);
 	}
 	
-	function dokumen_pencaker()
+	function dok_pencaker()
 	{
-        ifPermissions('doc_pencaker');
+    ifPermissions('doc_pencaker');
 		$this->page_data['page']->title = 'Dokumen Pencari Kerja';
 		$this->page_data['page']->menu = 'doc_pencaker';
 		$this->load->view('pencaker/dokumen', $this->page_data);
 	}
+
+    function pasfotopencaker()
+    {
+            $config['upload_path']   = FCPATH.'/dokpencaker/pasfoto';
+            $config['allowed_types'] = '*';
+            $this->load->library('upload',$config);
+
+            if($this->upload->do_upload('pasfoto_pencaker')){
+                $filedokumen=$this->upload->data('file_name');
+                $namadokumen=$this->input->post('doc_name');
+                $token=$this->input->post('token_pasfoto');
+                $kategori_dokumen=$this->input->post('doc_category');
+                $kategori='pasfoto';
+                $uploaded_on=date("Y-m-d H:i:s");
+                $this->db->insert('upload',array('file_dokumen'=>$filedokumen, 'nama_dokumen'=>$namadokumen, 'token'=>$token, 'kategori'=>$kategori_dokumen, 'tanggal_upload'=>$uploaded_on));
+            }
+    }
 
 	function formulir_ak1()
 	{

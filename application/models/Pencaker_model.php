@@ -27,6 +27,16 @@ class Pencaker_model extends MY_Model {
         return $query->row();
     }
 
+    // function fileupload($users_id)
+    // {
+    //     $this->db->select('*');
+    //     $this->db->from('upload');
+    //     $this->db->where('users_id',$users_id);
+    //     $query = $this->db->get();
+ 
+    //     return $query->row();
+    // }
+
     function update_by_users_id($id, $data)
 	{
 		$this->db->where('users_id', $id);
@@ -98,8 +108,7 @@ class Pencaker_model extends MY_Model {
 		return $this->db->insert_id();
 	}
 
-	
- 
+
 
 }
 /* End of file Pencaker_model.php */
