@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
-<style>
+<style> 
     ul a i {
         margin-right: 10px;
     }
@@ -15,26 +15,26 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     <ul class="list-group">
         <a id="tujuanpencaker" class="list-group-item list-group-item-action active">
             <i class="fas fa-question-circle nav-icon"></i>
-            <?php echo lang('tujuan_pencaker') ?>
+            Tujuan
         </a>
 
         <a id="identitaspencaker" class="list-group-item list-group-item-action><?php echo ($page->submenu == 'identitas_pencaker') ? 'active' : '' ?>">
-            <i class="fas fa-id-card nav-icon "></i><?php echo lang('identitas_pencaker') ?></a>
+            <i class="fas fa-id-card nav-icon "></i>Keterangan Umum</a>
 
         <a id="pendidikanpencaker" class="list-group-item list-group-item-action <?php echo ($page->submenu == 'pendidikan_pencaker') ? 'active' : '' ?>">
-            <i class="fas fa-graduation-cap nav-icon "></i><?php echo lang('pendidikan_pencaker') ?></a>
+            <i class="fas fa-graduation-cap nav-icon "></i>Pendidikan</a>
 
         <a id="bahasapencaker" class="list-group-item list-group-item-action <?php echo ($page->submenu == 'bahasa_pencaker') ? 'active' : '' ?>">
-            <i class="fas fa-graduation-cap nav-icon "></i><?php echo lang('bahasa_pencaker') ?></a>
+            <i class="fas fa-language nav-icon "></i>Keterampilan Bahasa</a>
 
         <a id="pekerjaanpencaker" class="list-group-item list-group-item-action <?php echo ($page->submenu == 'pekerjaan_pencaker') ? 'active' : '' ?>">
-            <i class="fas fa-briefcase nav-icon "></i><?php echo lang('pekerjaan_pencaker') ?></a>
+            <i class="fas fa-briefcase nav-icon "></i>Pengalaman Kerja</a>
 
         <a id="perusahaanpencaker" class="list-group-item list-group-item-action <?php echo ($page->submenu == 'perusahaan_pencaker') ? 'active' : '' ?>">
-            <i class="fas fa-building nav-icon "></i><?php echo lang('perusahaan_pencaker') ?></a>
+            <i class="fas fa-building nav-icon "></i>Perusahaan Yang Dituju</a>
 
         <a id="datatambahanpencaker" class="list-group-item list-group-item-action <?php echo ($page->submenu == 'datatambahan_pencaker') ? 'active' : '' ?>">
-            <i class="fas fa-plus nav-icon "></i><?php echo lang('datatambahan_pencaker') ?></a>
+            <i class="fas fa-plus nav-icon "></i>Keterangan Tambahan</a>
 
     </ul>
 

@@ -96,12 +96,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <textarea name="isi" id="summernote" cols="30" rows="30"></textarea>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
-                        <div class="form-group">
-                            <label for="tanggal">Tanggal Publikasi</label>
-                            <input type="date" class="form-control" name="tanggal" id="tanggal" required autofocus />
-                        </div>
-                    </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="form-group">
                             <label for="gambar">Gambar Thumbnail</label>
