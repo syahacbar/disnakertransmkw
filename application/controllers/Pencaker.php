@@ -5,9 +5,10 @@ class Pencaker extends MY_Controller
 {
 
 	public function __construct()
-	{
-		parent::__construct();
-	}
+    {
+        parent::__construct(); 
+        $this->load->model('Pencaker_model');        
+    }
 
 	public function index()
 	{
@@ -21,7 +22,7 @@ class Pencaker extends MY_Controller
 	
 	function dok_pencaker()
 	{
-        // $data['dokumen'] = $this->Pencaker_model->get_all_dokumen();
+        $this->page_data['dokumenpencaker'] = $this->Pencaker_model->get_all_dokumen();
 
 		$this->page_data['page']->title = 'Dokumen Pencari Kerja';
 		$this->page_data['page']->menu = 'doc_pencaker';

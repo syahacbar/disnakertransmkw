@@ -76,14 +76,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             </thead>
                             <tbody>
 
-                            <!-- <?php // $no=1; foreach($dokumen as $dok) { ?>
+                            <?php $no=1; foreach($dokumenpencaker as $dok) { ?>
                                 <tr>
                                     
-                                    <td><?php // echo $no++;?></td>
-                                    <td><?php // echo $dok['nama_dokumen'];?></td>
-                                    <td><?php // echo $dok['uploaded_on'];?></td>
+                                    <td><?php echo $no++;?></td>
+                                    <td><?php echo $dok['nama_dokumen'];?></td>
+                                    <td><?php echo $dok['status'];?></td>
+                                    <td>
+                                        <a href="" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
+                                        <a href="" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
+                                        <a href="" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
+                                    </td>
                                 </tr>
-                                <?php // } ?> -->
+                                <?php } ?>
                             </tbody>
 <!-- 
                                 <tr>
