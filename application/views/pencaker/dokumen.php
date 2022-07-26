@@ -65,144 +65,20 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="tabeldokumen" class="table table-bordered table-striped">
+                        <table id="tabeldokumenpencaker" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>No.</th>
+                                    <th>Jenis Dokumen</th>
                                     <th>Nama Dokumen</th>
                                     <th>Status</th>
+                                    <th>Tanggal Upload</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                            <?php $no=1; foreach($dokumenpencaker as $dok) { ?>
-                                <tr>
-                                    
-                                    <td><?php echo $no++;?></td>
-                                    <td><?php echo $dok['nama_dokumen'];?></td>
-                                    <td><?php echo $dok['status'];?></td>
-                                    <td>
-                                        <a href="" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
-                                        <a href="" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                        <a href="" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                                <?php } ?>
                             </tbody>
-<!-- 
-                                <tr>
-                                    <td width="60">1</td>
-                                    <td>
-                                        Pas Foto
-                                    </td>
-                                    <td>
-                                        Sudah Diunggah | Belum
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo url('users/edit/') ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
-                                        <a href="<?php echo url('users/view/') ?>" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                        <a href="<?php echo url('users/delete/') ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-                                    </td>
-                                </tr>
 
-                                <tr>
-                                    <td width="60">1</td>
-                                    <td>
-                                        Kartu Tanda Penduduk
-                                    </td>
-                                    <td>
-                                        Sudah Diunggah | Belum
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo url('users/edit/') ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
-                                        <a href="<?php echo url('users/view/') ?>" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                        <a href="<?php echo url('users/delete/') ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td width="60">2</td>
-                                    <td>
-                                        Ijazah Terakhir
-                                    </td>
-                                    <td>
-                                        Sudah Diunggah | Belum
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo url('users/edit/') ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
-                                        <a href="<?php echo url('users/view/') ?>" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                        <a href="<?php echo url('users/delete/') ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="60">3</td>
-                                    <td>
-                                        Transkrip Nilai
-                                    </td>
-                                    <td>
-                                        Sudah Diunggah | Belum
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo url('users/edit/') ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
-                                        <a href="<?php echo url('users/view/') ?>" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                        <a href="<?php echo url('users/delete/') ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="60">4</td>
-                                    <td>
-                                        Riwayat Hidup
-                                    </td>
-                                    <td>
-                                        Sudah Diunggah | Belum
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo url('users/edit/') ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
-                                        <a href="<?php echo url('users/view/') ?>" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                        <a href="<?php echo url('users/delete/') ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-
-
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="60">5</td>
-                                    <td>
-                                        SKCK
-                                    </td>
-                                    <td>
-                                        Sudah Diunggah | Belum
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo url('users/edit/') ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
-                                        <a href="<?php echo url('users/view/') ?>" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                        <a href="<?php echo url('users/delete/') ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="60">6</td>
-                                    <td>
-                                        Surat Keterangan Berbadan Sehat
-                                    </td>
-                                    <td>
-                                        Sudah Diunggah | Belum
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo url('users/edit/') ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
-                                        <a href="<?php echo url('users/view/') ?>" class="btn btn-sm btn-info" title="<?php echo lang('view_user') ?>" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
-                                        <a href="<?php echo url('users/delete/') ?>" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this user ?')" title="<?php echo lang('delete_user') ?>" data-toggle="tooltip"><i class="fa fa-trash"></i></a>
-
-
-                                    </td>
-                                </tr>
-                            </tbody> -->
                         </table>
                     </div>
                     <!-- /.card-body -->
@@ -250,16 +126,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </div>
 
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-5">
-                        <label for="jenisdokumen">Jenis Dokumen</label>
+                        <label for="labeljenisdokumen">Jenis Dokumen</label>
                         <select name="jenisdokumen" id="jenisdokumen" class="w-100">
                             <option value="">-- Pilih Salah Satu --</option>
-                            <option value="Pas Foto">Pas Foto</option>
-                            <option value="KTP">KTP</option>
-                            <option value="Ijazah Terakhir">Ijazah Terakhir</option>
-                            <option value="Transkrip Nilai">Transkrip Nilai</option>
-                            <option value="Riwayat Hidup">Riwayat Hidup</option>
-                            <option value="SKCK">SKCK</option>
-                            <option value="Surat Keterangan Berbadan Sehat">Surat Keterangan Berbadan Sehat</option>
+                            <?php foreach($dokumen AS $dok) : ?>
+                                <option value="<?php echo $dok->id;?>"><?php echo $dok->jenis_dokumen; ?></option>
+                            <?php endforeach;?>
                         </select>
                     </div>
 
@@ -278,17 +150,56 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 
 <script>
+    var tabeldokumenpencaker = null;
     Dropzone.autoDiscover = false;
     $(document).ready(function() {
 
+    tabeldokumenpencaker = $('#tabeldokumenpencaker').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ordering": true, 
+        "order": [[ 0, 'asc' ]], 
+        "ajax":
+        {
+            "url": "<?php echo site_url('pencaker/get_dokumen');?>", 
+            "type": "POST"
+        },
+        "deferRender": true,
+        "stateSave": true,
+        "bDestroy": true,
+
+        "columns": [
+            {"data": "idpencakerdokumen","sortable": false, 
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                }  
+            }, 
+            {"data": "jenis_dokumen"},
+            {"data": "namadokumen"},
+            {"data": "token"},
+            {"data": "tgl_upload"},
+            {"data": "idpencakerdokumen",
+                "render": 
+                function( data, type, row, meta ) {
+                    if(data != null)
+                    {
+                        return '<a href="javascript:void(0)" data-id="'+data+'" class="btn btn-sm btn-primary btnEditDokumen"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger btnHapusDokumen" href="javascript:void(0)" data-id="'+data+'"><i class="fas fa-trash"></i></a>';
+                    } else {
+                        return '<a href="javascript:void(0)" data-id="'+data+'" class="btn btn-sm btn-success btnSaveDokumen"><i class="fas fa-upload"></i> Unggah</a>';
+                    }
+                }
+            },
+        ],
+    });
+
         var unggah_dokumen = new Dropzone(".dropzone", {
             autoProcessQueue: false,
-            url: "<?php echo site_url('pencaker/pasfotopencaker') ?>",
+            url: "<?php echo site_url('pencaker/upload_dokumen') ?>",
             maxFilesize: 50,
             maxFiles: 1,
             method: "post",
             acceptedFiles: "image/*",
-            paramName: "pasfoto_pencaker",
+            paramName: "dokumenpencaker",
             dictInvalidFileType: "Type file ini tidak dizinkan",
             addRemoveLinks: true,
         });

@@ -21,31 +21,6 @@ class Pencaker extends MY_Controller
 
 		$this->load->view('pencaker/profil_pencaker', $this->page_data);
 	}
-	
-	function dok_pencaker()
-	{
-    ifPermissions('doc_pencaker');
-		$this->page_data['page']->title = 'Dokumen Pencari Kerja';
-		$this->page_data['page']->menu = 'doc_pencaker';
-		$this->load->view('pencaker/dokumen', $this->page_data);
-	}
-
-    function pasfotopencaker()
-    {
-            $config['upload_path']   = FCPATH.'/dokpencaker/pasfoto';
-            $config['allowed_types'] = '*';
-            $this->load->library('upload',$config);
-
-            if($this->upload->do_upload('pasfoto_pencaker')){
-                $filedokumen=$this->upload->data('file_name');
-                $namadokumen=$this->input->post('doc_name');
-                $token=$this->input->post('token_pasfoto');
-                $kategori_dokumen=$this->input->post('doc_category');
-                $kategori='pasfoto';
-                $uploaded_on=date("Y-m-d H:i:s");
-                $this->db->insert('upload',array('file_dokumen'=>$filedokumen, 'nama_dokumen'=>$namadokumen, 'token'=>$token, 'kategori'=>$kategori_dokumen, 'tanggal_upload'=>$uploaded_on));
-            }
-    }
 
 	function formulir_ak1()
 	{
@@ -310,5 +285,60 @@ class Pencaker extends MY_Controller
         }
 
         echo json_encode($res);
+    }
+    
+    function dok_pencaker()
+    {
+        ifPermissions('doc_pencaker');
+        $this->page_data['page']->title = 'Dokumen Pencari Kerja';
+        $this->page_data['page']->menu = 'doc_pencaker';
+        $this->page_data['dokumen'] = $this->pencaker_model->get_dokumen();
+        $this->load->view('pencaker/dokumen', $this->page_data);
+    }
+
+    function upload_dokumen()
+    {
+        $users_id = logged('id');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+        $pencaker_nik = $this->pencaker_model->get_pencaker_nik($users_id)->nik;
+        $jenis_dokumen = $this->pencaker_model->get_jenis_dokumen($this->input->post('doc_category'))->jenis_dokumen;
+
+        $newfilename = $jenis_dokumen."_".$pencaker_nik;
+
+        // $config['upload_path']   = FCPATH.'uploads/pencaker';
+        // $config['allowed_types'] = '*';
+        // $config['file_name'] = $newfilename;
+        // $this->load->library('upload',$config);
+
+        //$this->uploadlib->uploadImage('image', '/users');
+        $this->uploadlib->initialize([
+                'file_name' => $newfilename
+            ]);
+
+        if($this->uploadlib->uploadImage('dokumenpencaker', '/pencaker')){
+            $filedokumen=$this->upload->data('file_name');
+            $namadokumen=$this->input->post('doc_name');
+            $token=$this->input->post('token_pasfoto');
+            $dokumen_id=$this->input->post('doc_category');
+            $uploaded_on=date("Y-m-d H:i:s");
+            $this->db->insert('pencaker_dokumen',array('namadokumen'=>$filedokumen, 'token'=>$token, 'dokumen_id'=>$dokumen_id, 'tgl_upload'=>$uploaded_on, 'pencaker_id'=>$pencaker_id));
+        }
+    }
+
+
+    function get_dokumen()
+    {
+        $users_id = logged('id');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+        
+        $query  = "SELECT d.id AS iddokumen, d.jenis_dokumen, pd.id AS idpencakerdokumen, pd.namadokumen, pd.tgl_upload, pd.token, pd.pencaker_id FROM dokumen d LEFT JOIN pencaker_dokumen pd ON pd.dokumen_id=d.id";
+        $search = array('pd.namadokumen','d.jenis_dokumen');
+        $where  = array('pencaker_id' => $pencaker_id->id);
+        
+        // jika memakai IS NULL pada where sql
+        $isWhere = null;
+        // $isWhere = 'artikel.deleted_at IS NULL';
+        header('Content-Type: application/json');
+        echo $this->M_Datatables->get_tables_query($query,$search,$where,$isWhere);
     }
 }

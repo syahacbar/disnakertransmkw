@@ -27,15 +27,25 @@ class Pencaker_model extends MY_Model {
         return $query->row();
     }
 
-    // function fileupload($users_id)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('upload');
-    //     $this->db->where('users_id',$users_id);
-    //     $query = $this->db->get();
+    function get_pencaker_nik($users_id)
+    {
+        $this->db->select('nik');
+        $this->db->from('pencaker');
+        $this->db->where('users_id',$users_id);
+        $query = $this->db->get();
  
-    //     return $query->row();
-    // }
+        return $query->row();
+    }
+
+    function get_jenis_dokumen($iddokumen)
+    {
+        $this->db->select('jenis_dokumen');
+        $this->db->from('dokumen');
+        $this->db->where('id',$iddokumen);
+        $query = $this->db->get();
+ 
+        return $query->row();
+    }
 
     function update_by_users_id($id, $data)
 	{
@@ -108,7 +118,10 @@ class Pencaker_model extends MY_Model {
 		return $this->db->insert_id();
 	}
 
-
+	function get_dokumen()
+	{
+		return $this->db->get('dokumen')->result();
+	}
 
 }
 /* End of file Pencaker_model.php */
