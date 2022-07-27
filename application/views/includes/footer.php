@@ -79,21 +79,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script>
   $(function() {
 
-    // $("#tabelberita").DataTable({
-    //   "responsive": true,
-    //   "autoWidth": false,
-    // });
-
-    // $("#tabeldokumen").DataTable({
-    //   "responsive": true,
-    //   "autoWidth": false,
-    // });
-
-    // $("#tabelpekerjaanpencaker").DataTable({
-    //   "responsive": true,
-    //   "autoWidth": false,
-    // });
-
     $("input[data-bootstrap-switch]").each(function() {
       $(this).bootstrapSwitch('state', $(this).prop('checked'));
     });

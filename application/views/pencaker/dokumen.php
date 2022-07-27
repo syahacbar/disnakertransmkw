@@ -58,9 +58,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="card">
                     <div class="card-header d-flex p-0">
                         <h3 class="card-title p-3"><?php echo lang('doc_pencaker') ?></h3>
-                        <div class="ml-auto p-2">
-                            <button data-toggle="modal" data-target="#unggahDokumen" class="btn btn-primary btn-sm"><span class="pr-1"><i class="fa fa-plus"></i></span> <?php echo lang('upload') ?></button>
-                        </div>
+                        
                     </div>
 
                     <!-- /.card-header -->
@@ -71,12 +69,34 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     <th>No.</th>
                                     <th>Jenis Dokumen</th>
                                     <th>Nama Dokumen</th>
-                                    <th>Status</th>
-                                    <th>Tanggal Upload</th>
+                                    <th>Tanggal Unggah</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php 
+                                $no = 1;
+                                foreach ($pencaker_dokumen AS $doc) :?>
+                                <tr>
+                                    <td><?php echo $no++;?></td>
+                                    <td><?php echo $doc->jenis_dokumen;?></td>
+                                    <td><?php echo $doc->namadokumen;?></td>
+                                    <td><?php echo $doc->tgl_upload;?></td>
+                                    <td>
+                                    <?php if($doc->pencakerdokumen_id != NULL) { ?>
+
+                                        <a target="_blank" class="btn btn-sm btn-info btnViewDokumen" href="<?php echo base_url('uploads/pencaker/').$doc->namadokumen; ?>" data-id="<?php ?>" data-placement="left" title="Hapus Dokumen"><i class="fas fa-eye"></i></a>&nbsp;
+
+                                        <a href="javascript:void(0)" data-iddokumen="<?php echo $doc->id; ?>"  data-idpencakerdokumen="<?php echo $doc->pencakerdokumen_id; ?>" data-jenisdokumen="<?php echo $doc->jenis_dokumen; ?>" class="btn btn-sm btn-primary btnEditDokumen" data-toggle="tooltip" data-placement="bottom" title="Perbarui Dokumen"><i class="fas fa-edit"></i></a>
+
+                                    <?php } else { ?>
+
+                                        <a href="javascript:void(0)" data-iddokumen="<?php echo $doc->id; ?>" data-jenisdokumen="<?php echo $doc->jenis_dokumen; ?>" class="btn btn-sm btn-success btnAddDokumen" data-placement="bottom" title="Unggah Dokumen"><i class="fas fa-upload"></i></a>
+
+                                    <?php } ?>
+                                    </td>
+                                </tr>
+                                <?php endforeach;?>
                             </tbody>
 
                         </table>
@@ -106,13 +126,16 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="modal-body">
                 <?php echo form_open_multipart('',array('id'=>'formunggahdokumen')); ?>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-3">
-                        <label for="namadokumen">Nama Dokumen</label>
-                        <input type="text" class="form-control" name="namadokumen" id="namadokumen">
+                        <label for="jenisdokumen">Jenis Dokumen</label>
+                        <input type="text" class="form-control" name="jenisdokumen" id="jenisdokumen" readonly>
+                        <input type="hidden" class="form-control" name="iddokumen" id="iddokumen">
+                        <input type="hidden" class="form-control" name="idpencakerdokumen" id="idpencakerdokumen">
+                        <input type="hidden" class="form-control" name="mode" id="mode">
                     </div>
 
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="alert alert-warning" role="alert">
-                        Dokumen yang diunggah berektensi .jpg, .png, atau .jpeg dengan ukuran maksimal 2 MB.
+                        Dokumen yang diunggah berekstensi .jpg, .png, atau .jpeg.
                         </div>
                     </div>
 
@@ -124,17 +147,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-5">
-                        <label for="labeljenisdokumen">Jenis Dokumen</label>
-                        <select name="jenisdokumen" id="jenisdokumen" class="w-100">
-                            <option value="">-- Pilih Salah Satu --</option>
-                            <?php foreach($dokumen AS $dok) : ?>
-                                <option value="<?php echo $dok->id;?>"><?php echo $dok->jenis_dokumen; ?></option>
-                            <?php endforeach;?>
-                        </select>
-                    </div>
-
                     <button id="btnSubmit" name="submit" type="submit" class="btn btn-primary btn-block mb-4">Kirim File</button>
                 <?php echo form_close(); ?>
             </div>
@@ -146,51 +158,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     </div>
 </div>
 
+<?php include viewPath('includes/footer'); ?>
 <!-- Dropzone JS -->
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-
+<!-- <script src="https://cdn.datatables.net/plug-ins/1.12.1/api/fnReloadAjax.js"></script> -->
 <script>
     var tabeldokumenpencaker = null;
     Dropzone.autoDiscover = false;
     $(document).ready(function() {
+        tabeldokumenpencaker = $("#tabeldokumenpencaker").DataTable({
+          "responsive": true,
+          "autoWidth": false,
+        });
 
-    tabeldokumenpencaker = $('#tabeldokumenpencaker').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ordering": true, 
-        "order": [[ 0, 'asc' ]], 
-        "ajax":
-        {
-            "url": "<?php echo site_url('pencaker/get_dokumen');?>", 
-            "type": "POST"
-        },
-        "deferRender": true,
-        "stateSave": true,
-        "bDestroy": true,
-
-        "columns": [
-            {"data": "id","sortable": false, 
-                render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                }  
-            }, 
-            {"data": "jenis_dokumen"},
-            {"data": "namadokumen"},
-            {"data": "tgl_upload"},
-            {"data": "tgl_upload"},
-            {"data": "id",
-                "render": 
-                function( data, type, row, meta ) {
-                    if(data != null)
-                    {
-                        return '<a href="javascript:void(0)" data-id="'+data+'" class="btn btn-sm btn-primary btnEditDokumen"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger btnHapusDokumen" href="javascript:void(0)" data-id="'+data+'"><i class="fas fa-trash"></i></a>';
-                    } else {
-                        return '<a href="javascript:void(0)" data-id="'+data+'" class="btn btn-sm btn-success btnSaveDokumen"><i class="fas fa-upload"></i> Unggah</a>';
-                    }
-                }
-            },
-        ],
-    });
 
         var unggah_dokumen = new Dropzone(".dropzone", {
             autoProcessQueue: false,
@@ -206,15 +186,18 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         unggah_dokumen.on("sending", function(a, b, c) {
             a.token = Math.random();
-            a.inputnamadokumen = $("input[name='namadokumen']").val();
-            a.pilihjenisdokumen = $("select[name='jenisdokumen']").val();
-            c.append("token_pasfoto", a.token);
-            c.append("doc_name",a.inputnamadokumen);
-            c.append("doc_category",a.pilihjenisdokumen);
+            a.iddokumen = $("input[name='iddokumen']").val();
+            a.mode = $("input[name='mode']").val();
+            a.idpencakerdokumen = $("input[name='idpencakerdokumen']").val();
+            c.append("token", a.token);
+            c.append("iddokumen",a.iddokumen);
+            c.append("mode",a.mode);
+            c.append("idpencakerdokumen",a.idpencakerdokumen);
 
         });
 
         unggah_dokumen.on('complete', function () {
+            $('#unggahDokumen').modal('hide')
             location.reload();
         });
 
@@ -223,8 +206,26 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             unggah_dokumen.processQueue();
             //location.reload();
         });
+
+        $('.btnAddDokumen').click(function() {
+            var jenisdokumen = $(this).attr("data-jenisdokumen");
+            var iddokumen = $(this).attr("data-iddokumen");
+            $('#unggahDokumen').modal('show')
+            $('[name="mode"]').val("add");
+            $('[name="jenisdokumen"]').val(jenisdokumen);
+            $('[name="iddokumen"]').val(iddokumen);
+        });
+
+        $('.btnEditDokumen').click(function() {
+            var idpencakerdokumen = $(this).attr("data-idpencakerdokumen");
+            var jenisdokumen = $(this).attr("data-jenisdokumen");
+            var iddokumen = $(this).attr("data-iddokumen");
+            $('#unggahDokumen').modal('show')
+            $('[name="mode"]').val("edit");
+            $('[name="jenisdokumen"]').val(jenisdokumen);
+            $('[name="idpencakerdokumen"]').val(idpencakerdokumen);
+            $('[name="iddokumen"]').val(iddokumen);
+        });
     });
 
 </script>
-
-<?php include viewPath('includes/footer'); ?>
