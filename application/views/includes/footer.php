@@ -117,6 +117,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
       height: 300
     });
 
+    $('#editberitasummernote').summernote({
+      placeholder: 'Tulis isi berita di sini',
+      height: 300
+    });
+
   });
 </script>
 

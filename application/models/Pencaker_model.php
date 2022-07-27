@@ -123,6 +123,12 @@ class Pencaker_model extends MY_Model {
 		return $this->db->get('dokumen')->result();
 	}
 
+    public function hapusberita($id)
+    {
+        $this->db->where("id", $id);
+        $this->db->delete("informasi");
+        return true;
+    }
 }
 /* End of file Pencaker_model.php */
 /* Location: ./application/models/Pencaker_model.php */
