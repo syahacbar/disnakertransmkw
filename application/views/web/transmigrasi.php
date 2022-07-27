@@ -256,6 +256,40 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
       </div>
     </section><!-- End Portfolio Section -->
+
+            <!-- ======= About Us Section ======= -->
+            <section id="visimisi" class="about visimisi">
+        <div class="container">
+          <div class="col-lg-12">
+                    <h4>Arsip File</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Nama File</th>
+                            <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <th scope="row">1</th>
+                            <td>File Powerpoint Bidang Tenaga Kerja - Bagian 1</td>
+                            <td>
+                              <a href="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Paparan.pptx" target="_blank" class="btn btn-info btn-icon-split ">Unduh File</a>
+                            </td>
+                            </tr>
+                            <tr>
+                            <th scope="row">2</th>
+                            <td>File Powerpoint Bidang Tenaga Kerja - Bagian 2</td>
+                            <td>
+                              <a href="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Paparan1.pptx" target="_blank" class="btn btn-info btn-icon-split ">Unduh File</a>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+          </div>
+      </div>
 </main><!-- End #main -->
 
 <!-- ======= Footer ======= -->

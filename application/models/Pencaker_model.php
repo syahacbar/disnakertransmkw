@@ -112,7 +112,7 @@ class Pencaker_model extends MY_Model {
 	{
 		return $this->db->get('dokumen')->result();
 	}
-
+  
 	function get_preview_doc($id)
 	{
 		$query = $this->db->get_where('pencaker_dokumen', array('id' => $id));
@@ -128,7 +128,6 @@ class Pencaker_model extends MY_Model {
  
         return $query->row();
     }
-
 }
 /* End of file Pencaker_model.php */
 /* Location: ./application/models/Pencaker_model.php */

@@ -64,6 +64,91 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </ul>
                 </div>
 
+                <div class="col-lg-12 mt-4">
+                  <div id="sliderIndikator" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="1" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="2" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="3" aria-label="Slide 3"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="4" aria-label="Slide 4"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="5" aria-label="Slide 5"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="6" aria-label="Slide 6"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="7" aria-label="Slide 7"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="8" aria-label="Slide 8"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="9" aria-label="Slide 9"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="10" aria-label="Slide 10"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="11" aria-label="Slide 11"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="12" aria-label="Slide 12"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="13" aria-label="Slide 13"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="14" aria-label="Slide 14"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="15" aria-label="Slide 15"></button>
+                      <button type="button" data-bs-target="#sliderIndikator" data-bs-slide-to="16" aria-label="Slide 16"></button>
+                    </div>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide1.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide2.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide3.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide4.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide5.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide6.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide7.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide8.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide9.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide10.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide11.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide12.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide13.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide14.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide15.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide16.png" class="d-block w-100 border">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Slide17.png" class="d-block w-100 border">
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#sliderIndikator" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#sliderIndikator" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                </div>
+
                 <div class="col-lg-12 mt-4 mb-4">
                     <div class="alert alert-success" role="alert">
                         <h4 class="alert-heading">Perhatian!</h4>
@@ -107,6 +192,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         </tbody>
                     </table>
                 </div>
+
 
             </div>
 
@@ -226,7 +312,42 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
       </div>
     </section><!-- End Portfolio Section -->
-</main><!-- End #main -->
+
+        <!-- ======= About Us Section ======= -->
+        <section id="visimisi" class="about visimisi">
+        <div class="container">
+          <div class="col-lg-12">
+                    <h4>Arsip File</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Nama File</th>
+                            <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <th scope="row">1</th>
+                            <td>File Powerpoint Bidang Tenaga Kerja - Bagian 1</td>
+                            <td>
+                              <a href="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Paparan.pptx" target="_blank" class="btn btn-info btn-icon-split ">Unduh File</a>
+                            </td>
+                            </tr>
+                            <tr>
+                            <th scope="row">2</th>
+                            <td>File Powerpoint Bidang Tenaga Kerja - Bagian 2</td>
+                            <td>
+                              <a href="<?php echo base_url('uploads/bidang-bidang/tenagakerja/');?>Paparan1.pptx" target="_blank" class="btn btn-info btn-icon-split ">Unduh File</a>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+          </div>
+      </div>
+
+  </main><!-- End #main -->
 
 <!-- ======= Footer ======= -->
 <?php include viewPath('web/template/footer'); ?>
