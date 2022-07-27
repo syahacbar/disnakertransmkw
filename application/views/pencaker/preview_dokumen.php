@@ -1,0 +1,1 @@
+<embed type="application/pdf" src="<?php echo $filepath;?>" width="600" height="400"></embed>

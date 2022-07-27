@@ -85,7 +85,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/client-3.png" class="img-fluid" alt="">
+            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/logopemkabmanokwari.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
@@ -429,7 +429,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Kedudukan dan Susunan</h2>
+          <h2>Team Work</h2>
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
@@ -437,15 +437,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
           <div class="col-lg-6">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
-              <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/user.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/kadis.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Yusak Dowansiba, SH.,MA</h4>
                 <span>Kepala Dinas</span>
                 <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  <a href="tel:+6281247319475"><i class="ri-phone-fill"></i></a>
+                  <a target="_blank" href="https://wa.me/6281247319475"><i class="ri-whatsapp-fill"></i></a>
+                  <a href="mailto:yusakdowansiba041975@gmail.com"><i class="ri-mail-fill"></i></a>
                 </div>
               </div>
             </div>
@@ -453,15 +452,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
           <div class="col-lg-6 mt-4 mt-lg-0">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
-              <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/user.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/sekdis.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Jolanda Herlani Kwa, SE., M.Si</h4>
                 <span>Sekretaris</span>
                 <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  <a href="tel:+6285254515133"><i class="ri-phone-fill"></i></a>
+                  <a target="_blank" href="https://wa.me/6285254515133"><i class="ri-whatsapp-fill"></i></a>
+                  <a href="mailto:jolandahkwa@gmail.com"><i class="ri-mail-fill"></i></a>
                 </div>
               </div>
             </div>
@@ -469,16 +467,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
-              <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/user.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/kabid_pentaker.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Ema Alberthina M. Rumsayor, S.STP</h4>
                 <span>Kabid. PENTAKER</span>
                 <p>Bidang Pelatihan dan Penempatan Tenaga Kerja</p>
                 <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  <a href="tel:+6281315220583"><i class="ri-phone-fill"></i></a>
+                  <a target="_blank" href="https://wa.me/6281315220583"><i class="ri-whatsapp-fill"></i></a>
+                  <a href="mailto:emarumsayor1983@gmail.com"><i class="ri-mail-fill"></i></a>
                 </div>
               </div>
             </div>
@@ -492,10 +489,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <span>Kabid. HUBIN</span>
                 <p>Bidang Hubungan Industri dan Syarat Syarat Kerja</p>
                 <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  <a href="tel:+6281344012295"><i class="ri-phone-fill"></i></a>
+                  <a target="_blank" href="https://wa.me/6281344012295"><i class="ri-whatsapp-fill"></i></a>
+                  <a href="mailto:ssambara64@gmail.com"><i class="ri-mail-fill"></i></a>
                 </div>
               </div>
             </div>
@@ -503,16 +499,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
-              <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/user.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/kabid_p2kt.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Hadi Ekaputra, SE</h4>
+                <h4>Hadi Eka Putra, SE</h4>
                 <span>Kabid. P2KT</span>
                 <p>Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi</p>
                 <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  <a href="tel:+628124864153"><i class="ri-phone-fill"></i></a>
+                  <a target="_blank" href="https://wa.me/628124864153"><i class="ri-whatsapp-fill"></i></a>
+                  <a href="mailto:hadiekaputra67@gmail.com"><i class="ri-mail-fill"></i></a>
                 </div>
               </div>
             </div>
@@ -526,10 +521,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <span>Kabid. PKT</span>
                 <p>Bidang Pengembangan Kawasan Transmigrasi</p>
                 <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  <a href="tel:+6281247083142"><i class="ri-phone-fill"></i></a>
+                  <a target="_blank" href="https://wa.me/6281247083142"><i class="ri-whatsapp-fill"></i></a>
+                  <a href="mailto:"><i class="ri-mail-fill"></i></a>
                 </div>
               </div>
             </div>

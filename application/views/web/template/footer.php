@@ -32,6 +32,7 @@
               <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://kemnaker.go.id/">Kemenaker</a></li>
               <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://papuabaratprov.go.id/">Provinsi Papua Barat</a></li>
               <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://disnakertrans.papuabaratprov.go.id/">Disnakertrans Papua Barat</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://www.manokwarikab.go.id">Pemkab. Manokwari</a></li>
             </ul>
           </div>
 

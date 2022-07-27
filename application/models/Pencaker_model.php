@@ -37,16 +37,6 @@ class Pencaker_model extends MY_Model {
         return $query->row();
     }
 
-    function get_jenis_dokumen($iddokumen)
-    {
-        $this->db->select('jenis_dokumen');
-        $this->db->from('dokumen');
-        $this->db->where('id',$iddokumen);
-        $query = $this->db->get();
- 
-        return $query->row();
-    }
-
     function update_by_users_id($id, $data)
 	{
 		$this->db->where('users_id', $id);
@@ -122,12 +112,21 @@ class Pencaker_model extends MY_Model {
 	{
 		return $this->db->get('dokumen')->result();
 	}
+  
+	function get_preview_doc($id)
+	{
+		$query = $this->db->get_where('pencaker_dokumen', array('id' => $id));
+		return $query->row();
+	}
 
-    public function hapusberita($id)
+    function get_jenis_dokumen($iddokumen)
     {
-        $this->db->where("id", $id);
-        $this->db->delete("informasi");
-        return true;
+        $this->db->select('jenis_dokumen');
+        $this->db->from('dokumen');
+        $this->db->where('id',$iddokumen);
+        $query = $this->db->get();
+ 
+        return $query->row();
     }
 }
 /* End of file Pencaker_model.php */
