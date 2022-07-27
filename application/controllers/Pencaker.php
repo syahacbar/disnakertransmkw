@@ -325,15 +325,18 @@ class Pencaker extends MY_Controller
         }
     }
 
-
+ 
     function get_dokumen()
     {
         $users_id = logged('id');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
         
-        $query  = "SELECT d.id AS iddokumen, d.jenis_dokumen, pd.id AS idpencakerdokumen, pd.namadokumen, pd.tgl_upload, pd.token, pd.pencaker_id FROM dokumen d LEFT JOIN pencaker_dokumen pd ON pd.dokumen_id=d.id";
-        $search = array('pd.namadokumen','d.jenis_dokumen');
-        $where  = array('pencaker_id' => $pencaker_id->id);
+        $query  = "SELECT d.*,
+                    (SELECT pd.namadokumen FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS namadokumen,
+                    (SELECT pd.tgl_upload FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS tgl_upload
+                    FROM dokumen d";
+        $search = array('d.jenis_dokumen');
+        $where  = NULL;
         
         // jika memakai IS NULL pada where sql
         $isWhere = null;

@@ -23,7 +23,7 @@ class Users extends MY_Controller {
 		$this->load->view('users/add', $this->page_data);
 	}
 
-	public function save()
+	public function save() 
 	{
 		ifPermissions('users_add');
 		postAllowed();

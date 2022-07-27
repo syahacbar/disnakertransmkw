@@ -91,7 +91,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     </div>
     <!-- /.container-fluid -->
 </section>
-<!-- /.content -->
+<!-- /.content --> 
 
 <!-- Modal -->
 <div class="modal fade" id="unggahDokumen" tabindex="-1" role="dialog" aria-labelledby="unggahDokumenTitle" aria-hidden="true">
@@ -169,16 +169,16 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         "bDestroy": true,
 
         "columns": [
-            {"data": "idpencakerdokumen","sortable": false, 
+            {"data": "id","sortable": false, 
                 render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }  
             }, 
             {"data": "jenis_dokumen"},
             {"data": "namadokumen"},
-            {"data": "token"},
             {"data": "tgl_upload"},
-            {"data": "idpencakerdokumen",
+            {"data": "tgl_upload"},
+            {"data": "id",
                 "render": 
                 function( data, type, row, meta ) {
                     if(data != null)
