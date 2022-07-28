@@ -178,7 +178,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             maxFilesize: 50,
             maxFiles: 1,
             method: "post",
-            acceptedFiles: "image/*",
+            acceptedFiles: "image/*,application/pdf",
             paramName: "dokumenpencaker",
             dictInvalidFileType: "Type file ini tidak dizinkan",
             addRemoveLinks: true,

@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
+ 
 class Informasi extends MY_Controller
 {
 
@@ -16,6 +16,9 @@ class Informasi extends MY_Controller
 		$this->page_data['page']->title = 'Berita';
 		$this->page_data['page']->submenu = 'berita';
 		$this->page_data['page']->menu = 'informasi';
+
+		$informasi = $this->informasi_model->get_berita();
+		$this->page_data['informasi'] = $informasi;
 		$this->load->view('informasi/berita', $this->page_data);
 	}
 
@@ -98,32 +101,46 @@ class Informasi extends MY_Controller
             $isi=$this->input->post('isi');
             $tag=$this->input->post('tag');
             $status=$this->input->post('status');
-            $tgl_publikasi=date("Y-m-d");
+            $tgl_publikasi=date("Y-m-d H:i:s");
             $users_id = $users_id;
 
 			$this->db->insert('informasi',array('gambar'=>$gambar, 'kategori'=>$kategori, 'judul'=>$judul, 'isi'=>$isi,'tag'=>$tag, 'status'=>$status, 'tgl_publikasi'=>$tgl_publikasi, 'users_id'=>$users_id));
 		}
 
-		$id = $this->pencaker_model->add_berita($data);  
-
-		if($id)
-		{  
-		$res['hasil'] = 'sukses';
-		$res['status'] = TRUE;
-		}     
-		else
-		{           
-			$res['hasil'] = 'gagal';
-			$res['status'] = FALSE;
-		}
-		echo json_encode($res);
 	}
+
+	public function updatestatusberita()
+    {
+        $id = $this->input->post('id');
+        $status = $this->input->post('status');
+
+        if($status == 'true')
+        {
+        	$statusberita = 1;
+        } else {
+        	$statusberita = 0;
+        }
+
+        if ($this->informasi_model->updatestatusberita($id,array('status'=> $statusberita))) {
+            $data = array(
+            	'status' => TRUE, 
+            	'info' => 'Berhasil ubah status berita'
+            );
+        } else {
+            $data = array(
+            	'status' => FALSE, 
+            	'info' => 'Berhasil ubah status berita'
+            );
+        }
+
+        echo json_encode($data);
+    }
 
 
 	public function deleteberita()
     {
         $id = $this->input->post('id');
-        if ($this->pencaker_model->hapusberita($id)) {
+        if ($this->informasi_model->hapusberita($id)) {
             echo json_encode(array('status' => TRUE, 'info' => 'Berhasil hapus berita'));
         } else {
             echo json_encode(array('status' => FALSE, 'info' => 'Gagal hapus berita'));

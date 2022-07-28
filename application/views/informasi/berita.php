@@ -131,15 +131,32 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         <table id="tabelberita" class="table table-bordered table-hover table-striped">
                             <thead>
                                 <tr>
-                                    <th>No.</th>
+                                    <th width="20px">No.</th>
                                     <th>Judul</th>
                                     <th>Tanggal</th>
-                                    <th>Isi Berita</th>
                                     <th>Status</th>
-                                    <th width="100px">Aksi</th>
+                                    <th width="150px">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                    $no = 1;
+                                    foreach ($informasi AS $info) :
+                                ?>
+                                <tr>
+                                    <td><?php echo $no++;?></td>
+                                    <td><?php echo $info->judul ?></td>
+                                    <td><?php echo $info->tgl_publikasi ?></td>
+                                    <td>
+                                        <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange="updateStatusberita(<?php echo $info->id;?>,$(this).is(':checked'))" <?php echo ($info->status) ? 'checked' : '';?> ><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
+                                    </td>
+                                    <td>
+                                        <a target="_blank" href="javascript:void(0)" data-id="<?php echo $info->id;?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
+                                        <a data-toggle="modal" data-target="#modalEditBerita" href="javascript:void(0)" data-id="<?php echo $info->id;?>" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
+                                        <a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="<?php echo $info->id;?>"><i class="fas fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                <?php endforeach;?>
                             </tbody>
                         </table>
                     </div>
@@ -188,7 +205,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
-                                <label for="gambar_berita">Gambar Thumbnail</label>
+                                <label for="gambar_berita">Gambar</label>
                                 <div id="gambar_berita" class="dropzone border-1 dz-clickable">
                                     <div class="dz-message">Klik atau drop gambar thumbnail ke sini</div>
                                 </div>
@@ -239,7 +256,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="form-group">
-                            <label for="edit_gambar">Gambar Thumbnail</label>
+                            <label for="edit_gambar">Gambar</label>
                             <div id="edit_gambar" class="dropzone edit_gambar border-1 dz-clickable">
                                 <div class="dz-message">Klik atau drop gambar thumbnail ke sini</div>
                             </div>
@@ -264,46 +281,72 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <script type="text/javascript">
     Dropzone.autoDiscover = false;
+
+    function updateStatusberita(id,status)
+    {
+        //var id = $(this).data("id");
+        $.ajax({
+            url: "<?php echo site_url(); ?>informasi/updatestatusberita",
+            type: "POST",
+            data: {
+                id: id,
+                status: status
+            },
+            success: function(data) {
+                var objData = jQuery.parseJSON(data);
+                console.log(objData.status);
+                // console.log(objData.info);
+                //location.reload();
+            }
+        });
+        
+    }
+
     $(document).ready(function() {
 
         var tabelberita = null;
         tabelberita = $('#tabelberita').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "ordering": true, 
-            "order": [[ 0, 'asc' ]], 
-            "ajax":
-            {
-                "url": "<?php echo site_url('informasi/get_berita');?>", 
-                "type": "POST"
-            },
-            "deferRender": true,
-            "stateSave": true,
-            "bDestroy": true,
-
-            "columns": [
-                {"data": "id","sortable": false, 
-                    render: function (data, type, row, meta) {
-                        return meta.row + meta.settings._iDisplayStart + 1;
-                    }  
-                }, 
-                {"data": "judul"},
-                {"data": "tgl_publikasi"},
-                {"data": "isi"},
-                {"data": "status",
-                    "render": 
-                    function( data, type, row, meta ) {
-                        return '  <label class="toggle"><input type="checkbox"><span class="slider"></span><span class="labels" data-on="Publis" data-off="Draf"></span></label>';
-                    }
-                },
-                {"data": "id",
-                    "render": 
-                    function( data, type, row, meta ) {
-                        return '<a data-toggle="modal" data-target="#modalEditBerita" href="javascript:void(0)" data-id="'+data+'" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="'+data+'"><i class="fas fa-trash"></i></a>';
-                    }
-                },
-            ],
+            "responsive": true,
+            "autoWidth": false,
         });
+
+        // tabelberita = $('#tabelberita').DataTable({
+        //     "processing": true,
+        //     "serverSide": true,
+        //     "ordering": true, 
+        //     "order": [[ 0, 'asc' ]], 
+        //     "ajax":
+        //     {
+        //         "url": "<?php // echo site_url('informasi/get_berita');?>", 
+        //         "type": "POST"
+        //     },
+        //     "deferRender": true,
+        //     "stateSave": true,
+        //     "bDestroy": true,
+
+        //     "columns": [
+        //         {"data": "id","sortable": false, 
+        //             render: function (data, type, row, meta) {
+        //                 return meta.row + meta.settings._iDisplayStart + 1;
+        //             }  
+        //         }, 
+        //         {"data": "judul"},
+        //         {"data": "tgl_publikasi"},
+        //         {"data": "isi"},
+        //         {"data": "id",
+        //             "render": 
+        //             function( data, type, row, meta ) {
+        //                 return '  <label class="toggle"><input type="checkbox" onchange="updateUserStatus('+data+')"><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>';
+        //             }
+        //         },
+        //         {"data": "id",
+        //             "render": 
+        //             function( data, type, row, meta ) {
+        //                 return '<a data-toggle="modal" data-target="#modalEditBerita" href="javascript:void(0)" data-id="'+data+'" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="'+data+'"><i class="fas fa-trash"></i></a>';
+        //             }
+        //         },
+        //     ],
+        // });
 
         function reload_table_berita()
         {
@@ -346,9 +389,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             a.judul = $("input[name='judul']").val();
             a.tag = $("input[name='tag']").val();
             a.isi = $("textarea[name='isi']").val();
+            a.status = 1;
             c.append("judul",a.judul);
             c.append("tag",a.tag);
             c.append("isi",a.isi);
+            c.append("status",a.status)
 
         });
 
@@ -362,6 +407,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             //location.reload();
         });
 
+        $(document).on('click', '.btnHapusBerita', function() {
+        });
 
         $(document).on('click', '.btnHapusBerita', function() {
             var id = $(this).data("id");
@@ -374,9 +421,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     },
                     success: function(data) {
                         var objData = jQuery.parseJSON(data);
-                        console.log(objData.status);
-                        console.log(objData.info);
-                        //location.reload();
+                        // console.log(objData.status);
+                        // console.log(objData.info);
+                        location.reload();
                     }
                 });
             } else {
