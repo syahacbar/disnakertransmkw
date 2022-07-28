@@ -7,93 +7,93 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 <style>
     .toggle {
-      --width: 80px;
-      --height: calc(var(--width) / 3);
+        --width: 80px;
+        --height: calc(var(--width) / 3);
 
-      position: relative;
-      display: inline-block;
-      width: var(--width);
-      height: var(--height);
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-      border-radius: var(--height);
-      cursor: pointer;
+        position: relative;
+        display: inline-block;
+        width: var(--width);
+        height: var(--height);
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+        border-radius: var(--height);
+        cursor: pointer;
     }
 
     .toggle input {
-      display: none;
+        display: none;
     }
 
     .toggle .slider {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: var(--height);
-      background-color: #ccc;
-      transition: all 0.4s ease-in-out;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--height);
+        background-color: #ccc;
+        transition: all 0.4s ease-in-out;
     }
 
     .toggle .slider::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: calc(var(--height));
-      height: calc(var(--height));
-      border-radius: calc(var(--height) / 2);
-      background-color: #fff;
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-      transition: all 0.4s ease-in-out;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(var(--height));
+        height: calc(var(--height));
+        border-radius: calc(var(--height) / 2);
+        background-color: #fff;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s ease-in-out;
     }
 
     .toggle input:checked+.slider {
-      background-color: #2196F3;
+        background-color: #2196F3;
     }
 
     .toggle input:checked+.slider::before {
-      transform: translateX(calc(var(--width) - var(--height)));
+        transform: translateX(calc(var(--width) - var(--height)));
     }
 
     .toggle .labels {
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      font-size: 12px;
-      font-family: sans-serif;
-      transition: all 0.4s ease-in-out;
-      display: flex;
-    justify-content: center;
-    align-items: center;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 12px;
+        font-family: sans-serif;
+        transition: all 0.4s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .toggle .labels::after {
-      content: attr(data-off);
-      position: absolute;
-      right: 20px;
-      color: #fff;
-      opacity: 1;
-      transition: all 0.4s ease-in-out;
+        content: attr(data-off);
+        position: absolute;
+        right: 20px;
+        color: #fff;
+        opacity: 1;
+        transition: all 0.4s ease-in-out;
     }
 
     .toggle .labels::before {
-      content: attr(data-on);
-      position: absolute;
-      left: 10px;
-      color: #fff;
-      opacity: 0;
-      transition: all 0.4s ease-in-out;
+        content: attr(data-on);
+        position: absolute;
+        left: 10px;
+        color: #fff;
+        opacity: 0;
+        transition: all 0.4s ease-in-out;
     }
 
     .toggle input:checked~.labels::after {
-      opacity: 0;
+        opacity: 0;
     }
 
     .toggle input:checked~.labels::before {
-      opacity: 1;
+        opacity: 1;
     }
-  </style>
+</style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
@@ -140,23 +140,23 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             </thead>
                             <tbody>
                                 <?php
-                                    $no = 1;
-                                    foreach ($informasi AS $info) :
+                                $no = 1;
+                                foreach ($informasi as $info) :
                                 ?>
-                                <tr>
-                                    <td><?php echo $no++;?></td>
-                                    <td><?php echo $info->judul ?></td>
-                                    <td><?php echo $info->tgl_publikasi ?></td>
-                                    <td>
-                                        <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange="updateStatusberita(<?php echo $info->id;?>,$(this).is(':checked'))" <?php echo ($info->status) ? 'checked' : '';?> ><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
-                                    </td>
-                                    <td>
-                                        <a target="_blank" href="javascript:void(0)" data-id="<?php echo $info->id;?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
-                                        <a data-toggle="modal" data-target="#modalEditBerita" href="javascript:void(0)" data-id="<?php echo $info->id;?>" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
-                                        <a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="<?php echo $info->id;?>"><i class="fas fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                                <?php endforeach;?>
+                                    <tr>
+                                        <td><?php echo $no++; ?></td>
+                                        <td><?php echo $info->judul ?></td>
+                                        <td><?php echo $info->tgl_publikasi ?></td>
+                                        <td>
+                                            <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange="updateStatusberita(<?php echo $info->id; ?>,$(this).is(':checked'))" <?php echo ($info->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
+                                        </td>
+                                        <td>
+                                            <a target="_blank" href="javascript:void(0)" data-id="<?php echo $info->id; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
+                                            <a data-toggle="modal" data-target="#modalEditBerita" href="javascript:void(0)" data-id="<?php echo $info->id; ?>" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
+                                            <a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="<?php echo $info->id; ?>"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
@@ -234,41 +234,41 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 </button>
             </div>
             <form id="formeditberita">
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="form-group">
-                            <label for="editjudul">Judul Artikel</label>
-                            <input type="text" class="form-control" name="editjudul" id="editjudul" value="" />
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label for="editjudul">Judul Artikel</label>
+                                <input type="text" class="form-control" name="editjudul" id="editjudul" value="" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                        <div class="form-group">
-                            <label for="edittag">Tag</label>
-                            <input type="text" class="form-control" name="edittag" id="edittag" value="" />
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="edittag">Tag</label>
+                                <input type="text" class="form-control" name="edittag" id="edittag" value="" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="form-group">
-                            <label for="editisi">Isi</label>
-                            <textarea name="editisi" id="editberitasummernote" cols="30" rows="30"></textarea>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label for="editisi">Isi</label>
+                                <textarea name="editisi" id="editberitasummernote" cols="30" rows="30"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="form-group">
-                            <label for="edit_gambar">Gambar</label>
-                            <div id="edit_gambar" class="dropzone edit_gambar border-1 dz-clickable">
-                                <div class="dz-message">Klik atau drop gambar thumbnail ke sini</div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label for="edit_gambar">Gambar</label>
+                                <div id="edit_gambar" class="dropzone edit_gambar border-1 dz-clickable">
+                                    <div class="dz-message">Klik atau drop gambar thumbnail ke sini</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button id="btnEditBerita" type="button" class="btn btn-primary">Simpan</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button id="btnEditBerita" type="button" class="btn btn-primary">Simpan</button>
+                </div>
             </form>
         </div>
     </div>
@@ -282,8 +282,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <script type="text/javascript">
     Dropzone.autoDiscover = false;
 
-    function updateStatusberita(id,status)
-    {
+    function updateStatusberita(id, status) {
         //var id = $(this).data("id");
         $.ajax({
             url: "<?php echo site_url(); ?>informasi/updatestatusberita",
@@ -299,7 +298,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 //location.reload();
             }
         });
-        
+
     }
 
     $(document).ready(function() {
@@ -317,7 +316,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         //     "order": [[ 0, 'asc' ]], 
         //     "ajax":
         //     {
-        //         "url": "<?php // echo site_url('informasi/get_berita');?>", 
+        //         "url": "<?php // echo site_url('informasi/get_berita');
+                            ?>", 
         //         "type": "POST"
         //     },
         //     "deferRender": true,
@@ -348,15 +348,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         //     ],
         // });
 
-        function reload_table_berita()
-        {
+        function reload_table_berita() {
             $('#tabelberita').DataTable().ajax.reload(null, false);
 
         }
 
         // $('#btnSaveBerita').click(function() {
         //    $.ajax({
-        //         url: "<?php // echo // site_url('informasi/add_berita') ?>",
+        //         url: "<?php // echo // site_url('informasi/add_berita') 
+                            ?>",
         //         type: "POST",
         //         data: $('#formtambahberita').serialize(),
         //         dataType: "JSON",
@@ -374,15 +374,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         //     });
         // });
 
-        var unggah_berita= new Dropzone(".dropzone",{
+        var unggah_berita = new Dropzone(".dropzone", {
             autoProcessQueue: false,
             url: "<?php echo site_url('informasi/thumbnail_berita') ?>",
             maxFilesize: 20,
-            method:"post",
-            acceptedFiles:"image/*",
-            paramName:"thumbnailberita",
-            dictInvalidFileType:"Type file ini tidak dizinkan",
-            addRemoveLinks:true,
+            method: "post",
+            acceptedFiles: "image/*",
+            paramName: "thumbnailberita",
+            dictInvalidFileType: "Type file ini tidak dizinkan",
+            addRemoveLinks: true,
         });
 
         unggah_berita.on("sending", function(a, b, c) {
@@ -390,14 +390,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             a.tag = $("input[name='tag']").val();
             a.isi = $("textarea[name='isi']").val();
             a.status = 1;
-            c.append("judul",a.judul);
-            c.append("tag",a.tag);
-            c.append("isi",a.isi);
-            c.append("status",a.status)
+            c.append("judul", a.judul);
+            c.append("tag", a.tag);
+            c.append("isi", a.isi);
+            c.append("status", a.status)
 
         });
 
-        unggah_berita.on('complete', function () {
+        unggah_berita.on('complete', function() {
             location.reload();
         });
 
@@ -407,8 +407,59 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             //location.reload();
         });
 
-        $(document).on('click', '.btnHapusBerita', function() {
+        $('#formInputberita').submit(function(e) {
+            e.preventDefault();
+            spinner.show();
+
+            var isiberita = document.getElementById("isiberita").value
+            var judulberita = $("input[name='judulberita']").val();
+            var slugberita = $("input[name='slugberita']").val();
+            var kategoriberita = $("select[name='kategoriberita']").val();
+            var slider = $("input[name='slider']").val();
+            var idberita = $("input[name='idberita']").val();
+
+            console.log(isiberita);
+            $.ajax({
+                url: "<?php echo site_url('admin/berita/updateberita') ?>",
+                type: "POST",
+                data: {
+                    judulberita: judulberita,
+                    isiberita: isiberita,
+                    slugberita: slugberita,
+                    kategoriberita: kategoriberita,
+                    slider: slider,
+                    idberita: idberita,
+                },
+
+                error: function() {
+                    console.log('Tidak berhasil simpan data');
+                },
+                success: function(data) {
+                    var objData = jQuery.parseJSON(data);
+
+                    if (objData.status) {
+                        alert("Berita Berhasil Diubah");
+                        spinner.hide();
+                        location.reload();
+                    } else {
+                        console.log('Gagal simpan');
+                    }
+                }
+            });
+
         });
+
+
+        $("#formeditberita").on("click", ".btnEditBerita", function() {
+            event.preventDefault();
+            $("input#editjudul").val($(this).data('editjudul'));
+            $("input#edittag").val($(this).data('edittag'));
+            $("textarea#editberitasummernote").val($(this).data('editberitasummernote'));
+            $("input#id").val($(this).data('id'));
+            $('#formeditberita').attr('action', '<?php echo site_url('informasi/editberita'); ?>');
+
+        });
+
 
         $(document).on('click', '.btnHapusBerita', function() {
             var id = $(this).data("id");
