@@ -6,6 +6,23 @@ class Pencaker_model extends MY_Model {
 
 	public $table = 'pencaker';
 
+    public function nomorpendaftaran()
+    {
+        $query = $this->db->query("SELECT RIGHT(nopendaftaran,6) AS nopendaftaran FROM pencaker ORDER BY nopendaftaran DESC LIMIT 1 ");
+        if($query->num_rows() <> 0)
+        { 
+            $data = $query->row();      
+            $nourut = intval($data->nopendaftaran) + 1; 
+        } else {      
+            $nourut = 1;  //cek jika kode belum terdapat pada table
+        }
+
+        $tgl=date('dmY'); 
+        $batas = str_pad($nourut, 6, "0", STR_PAD_LEFT);    
+        $nopendaftaran = "9202".$tgl.$batas;  //format kode
+        return $nopendaftaran;  
+    }
+
 	function get_by_users_id($id)
     {
         $this->db->select('*');

@@ -124,7 +124,7 @@ class Web extends CI_Controller
 	{
 		$this->page_data['page']->menu = 'bidang';
 		$this->page_data['page']->title = 'Transmigrasi';
-		$this->load->view('web/transmigrasi', $this->page_data);
+		$this->load->view('web/transmigrasi_new', $this->page_data);
 	}
 	public function tenagakerja()
 	{
@@ -148,6 +148,7 @@ class Web extends CI_Controller
 		$this->pencaker_model->create([
 			'nik' => post('nik'),
 			'users_id' => $id,
+			'nopendaftaran' => $this->pencaker_model->nomorpendaftaran(),
 		]);
 
 		if (!empty($_FILES['image']['name'])) {

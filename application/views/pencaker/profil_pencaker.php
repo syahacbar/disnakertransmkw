@@ -122,6 +122,17 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <div class="form-group">
                                     <label for="nopendaftaran">Nomor Pendaftaran</label>
                                     <input type="text" class="form-control" name="nopendaftaran" id="nopendaftaran" readonly />
+                                   <!--  <div class="form-row">
+                                        <div class="col">
+                                          <input type="text" name="kodewil" class="form-control" readonly>
+                                        </div>
+                                        <div class="col">
+                                          <input type="text" name="tglkartu" class="form-control" readonly>
+                                        </div>
+                                        <div class="col">
+                                          <input type="text" name="nomorurut" class="form-control" readonly>
+                                        </div>
+                                    </div> -->
                                 </div>
                             </div>
 
@@ -1055,6 +1066,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     $("#tujuan2").prop("checked", true);
 
                 //keterangan umum
+                $('[name="nopendaftaran"]').val(data.nopendaftaran);
                 $('[name="namalengkap"]').val(data.name);
                 $('[name="nik"]').val(data.username);
 
