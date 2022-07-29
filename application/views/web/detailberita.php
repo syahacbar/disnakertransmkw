@@ -60,17 +60,22 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     }
 
     .sidebar h5 {
-        background-color: #47b2e4;
+        background-color: #283a5a;
         color: #fff;
         padding: 10px;
     }
 
     .sidebar a {
         text-decoration: none;
+        color: #283a5a;
+    }
+
+    .sidebar a:hover {
+        color: #007bff;
     }
 
     .tag li a {
-        background-color: #5a5a5a;
+        background-color: #283a5a;
         padding: 5px 15px;
         color: #fff;
         text-decoration: none;

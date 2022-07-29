@@ -3,6 +3,17 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <?php include viewPath('web/template/header'); ?>
 
+<!-- Lightbox -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>/assets/plugins/lightbox-previewer/src/index.css" />
+<script src="<?php echo base_url(); ?>/assets/plugins/lightbox-previewer/dist/img-previewer.min.js"></script>
+
+<style>
+    div#image-preview-container button#prev,
+    div#image-preview-container button#next {
+        display: none;
+    }
+</style>
+
 <main id="main">
 
     <!-- ======= About Us Section ======= -->
@@ -80,44 +91,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
             <div class="section-title mt-4">
                 <h2>Struktur Organisasi</h2>
-                <a href="#" id="pop">
-                    <img data-bs-toggle="modal" data-bs-target="#imagemodal" id="imageresource" class="border border-info rounded" src="<?php echo base_url('uploads/profil/'); ?>STRUKTUR_DISNAKERTRANS.jpg" width="100%">
+                <a class="lsb-preview" href="#">
+                    <img class="w-100 lsb-preview" src="<?php echo base_url('uploads/profil/'); ?>STRUKTUR_DISNAKERTRANS.jpg" alt="Struktur Organisasi">
                 </a>
             </div>
 
         </div>
     </section><!-- End Contact Section -->
 </main><!-- End #main -->
-
-
-<!-- Creates the bootstrap modal where the image will appear -->
-<!-- <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Image preview</h4>
-            </div>
-            <div class="modal-body">
-                <img src="" id="imagepreview" style="width: 400px; height: 264px;">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<!-- Modal -->
-<div class="modal fade" id="imagemodal" tabindex="-1" aria-labelledby="imagemodalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img data-bs-toggle="modal" data-bs-target="#imagemodal" id="imageresource" class="border border-info rounded" src="<?php echo base_url('uploads/profil/'); ?>STRUKTUR_DISNAKERTRANS.jpg" width="100%">
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- ======= Footer ======= -->
 <?php include viewPath('web/template/footer'); ?>
@@ -138,11 +119,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <!-- Template Main JS File -->
 <script src="<?php echo base_url(); ?>/assets/frontend/assets/js/main.js"></script>
 
+
 <script>
-    $("#pop").on("click", function() {
-        $('#imagepreview').attr('src', $('#imageresource').attr('src'));
-        $('#imagemodal').modal('show');
-    });
+    const myViewer = new ImgPreviewer('.lsb-preview');
 </script>
 </body>
 

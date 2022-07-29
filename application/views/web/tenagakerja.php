@@ -186,6 +186,18 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     .carousel-item img {
         width: 100%;
     }
+
+    .collapse li {
+        list-style: none;
+    }
+
+    .collapse ul {
+        padding: 0 10px;
+    }
+
+    i.ri-check-double-line {
+        color: #007bff;
+    }
 </style>
 </head>
 
