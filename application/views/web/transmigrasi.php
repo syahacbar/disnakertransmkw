@@ -3,452 +3,553 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <?php include viewPath('web/template/header'); ?>
 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
-  section {
-    padding: 0;
-    background-color: transparent;
-  }
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
 
-  .section-bg {
-    background-color: transparent;
-  }
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    body {
+        background-color: #f9f9fa;
+    }
+
+    .flex {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+    }
+
+    @media (max-width: 991.98px) {
+        .padding {
+            padding: 1.5rem;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .padding {
+            padding: 1rem;
+        }
+    }
+
+    .padding {
+        padding: 5rem;
+    }
+
+    .card {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        -ms-box-shadow: none;
+    }
+
+    .pl-3,
+    .px-3 {
+        padding-left: 1rem !important;
+    }
+
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid #d2d2dc;
+        border-radius: 0;
+    }
+
+    .card .card-title {
+        color: #000000;
+        margin-bottom: 0.625rem;
+        text-transform: capitalize;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+
+    .card .card-description {
+        margin-bottom: 0.875rem;
+        font-weight: 400;
+        color: #76838f;
+    }
+
+    .accordion .card:first-of-type {
+        border-bottom: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .accordion .card {
+        margin-bottom: 0.75rem;
+        box-shadow: 0px 1px 15px 1px rgba(230, 234, 236, 0.35);
+        border-radius: 0.25rem;
+        border: none;
+    }
+
+    .accordion .card .card-header {
+        background-color: transparent;
+        border: none;
+        padding: 10px 0;
+    }
+
+    .card-header:first-child {
+        border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+    }
+
+    .accordion .card .card-header * {
+        font-weight: 400;
+        font-size: 1rem;
+    }
+
+    .mb-0,
+    .my-0 {
+        margin-bottom: 0 !important;
+    }
+
+    .accordion .card .card-header a {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        font-size: 20px;
+        position: relative;
+        -webkit-transition: color 0.5s ease;
+        -moz-transition: color 0.5s ease;
+        -ms-transition: color 0.5s ease;
+        -o-transition: color 0.5s ease;
+        transition: color 0.5s ease;
+        padding-right: 1.5rem;
+        font-weight: bold;
+    }
+
+    .accordion .card .card-header * {
+        font-weight: 400;
+        font-size: 1rem;
+    }
+
+    .accordion .card .card-header a[aria-expanded="false"]:before {
+        content: "\f067";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .accordion .card .card-header a[aria-expanded="true"]:before {
+        content: "\f068";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .accordion .card .card-header a:before {
+        position: absolute;
+        right: 7px;
+        top: 0;
+        font-size: 18px;
+        display: block;
+        font-family: FontAwesome;
+        display: inline-block;
+        padding-right: 3px;
+        font-size: 0.756em;
+        color: #405189;
+    }
+
+    .carousel-caption.d-none.d-md-block {
+        width: 100%;
+        margin: 0;
+        padding: 5px 20px;
+        left: 0;
+        background-color: rgb(0 0 0 / 46%);
+        bottom: 0;
+    }
+
+    .carousel-item img {
+        width: 100%;
+    }
 </style>
+</head>
+
 <main id="main">
 
-  <!-- ======= About Us Section ======= -->
-  <section id="visimisi" class="about visimisi">
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Bidang Transmigrasi</h2>
-        <p>
-          Dinas Tenaga Kerja dan Transmigrasi Kabupaten Manokwari telah merumuskan tujuan dan sasaran strategis yang merupakan bagian integral dalam proses Rencana Strategis Dinas Tenaga Kerja Dan Transmigrasi Kabupaten Manokwari Tahun 2021 – 2025 untuk mencapai visi.
-        </p>
-      </div>
-
-      <div class="row content">
-        <div class="col-lg-12 mb-4 mt-5">
-          <h4>Dasar Hukum</h4>
-          <p>
-            Dasar hukum dibentuknya bidang Transmigrasi adalah sebagai berikut:
-          </p>
-          <ul>
-            <li><i class="ri-check-double-line"></i> Surat Keputusan Kemendes, PDT, dan Transmigrasi RI Nomor 132 Tahun 2016.</li>
-            <li><i class="ri-check-double-line"></i> Permendagri Nomor 90 Tahun 2019.</li>
-            <li><i class="ri-check-double-line"></i> Perbup Nomor 13 Tahun 2017 tentang Kedudukan, Susunan Organisasi, Tugas dan Fungsi serta Tata Kerja Dinas Kabupaten Manokwari.</li>
-            <li><i class="ri-check-double-line"></i> Surat Keputusan Bupati Nomor 410/412 Tahun 2021</li>
-          </ul>
-        </div>
-        <div class="col-lg-12 mt-4 mb-4">
-          <h4>Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi</h4>
-          <p>
-            Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi mempunyai tugas:
-          </p>
-          <ul>
-            <li><i class="ri-check-double-line"></i>melakukan koordinasi perencanaan, pelaksanaan, pengendalian, bimbingan, konsultasi serta monitoring dan evaluasi di Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi; </li>
-            <li><i class="ri-check-double-line"></i> merumuskan sasaran kegiatan di Bidang Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi; </li>
-            <li><i class="ri-check-double-line"></i> melaksanakan penyuluhan kepada masyarakat untuk bertransmigrasi dan penduduk asli kawasan transmigrasi; </li>
-            <li><i class="ri-check-double-line"></i> melakukan pemantauan hasil seleksi calon transmigran; dan </li>
-            <li><i class="ri-check-double-line"></i> melaksanakan tugas kedinasan lain sesuai perintah atasan.</li>
-          </ul>
-          <section id="services" class="services section-bg mb-5 mt-5 ">
-            <h4>Seksi Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi</h4>
-            <p>
-              Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi terbagi atas 3 seksi, yakni:
-            </p>
-            <div class="container">
-              <div class="row">
-                <div class="col-xl-4 col-md-6 d-flex align-items-stretch">
-                  <div class="icon-box">
-                    <div class="icon"><i class="bx bx-id-card"></i></div>
-                    <h4><a href="">Seksi Perencanaan dan Pencadangan Tanah Transmigrasi</a></h4>
-                    <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                  </div>
-                </div>
-
-                <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                  <div class="icon-box">
-                    <div class="icon"><i class="bx bx-user-voice"></i></div>
-                    <h4><a href="">Seksi Pembangunan Transmigrasi</a></h4>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                  </div>
-                </div>
-
-                <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">
-                  <div class="icon-box">
-                    <div class="icon"><i class="bx bx-buildings"></i></div>
-                    <h4><a href="">Seksi Persebaran Penduduk</a></h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                  </div>
-                </div>
-              </div>
-
+    <!-- ======= About Us Section ======= -->
+    <section id="visimisi" class="about visimisi">
+        <div class="container">
+            <div class="section-title">
+                <h2>Bidang Transmigrasi</h2>
+                <p>
+                    Dinas Tenaga Kerja dan Transmigrasi Kabupaten Manokwari telah merumuskan tujuan dan sasaran strategis yang merupakan bagian integral dalam proses Rencana Strategis Dinas Tenaga Kerja Dan Transmigrasi Kabupaten Manokwari Tahun 2021 – 2025 untuk mencapai visi.
+                </p>
             </div>
-          </section>
-        </div>
-        <div class="col-lg-12 mt-4">
-          <h4>Bidang Pengembangan Kawasan Transmigrasi</h4>
-          <p>
-            Bidang Pengembangan Kawasan Transmigrasi mempunyai tugas:
-          </p>
-          <ul>
-            <li><i class="ri-check-double-line"></i> melakukan koordinasi perencanaan, pelaksanaan, pengendalian, bimbingan, konsultasi serta monitoring dan evaluasi di Bidang Pengembangan Kawasan Transmigrasi;</li>
-            <li><i class="ri-check-double-line"></i> merumuskan sasaran kegiatan di Bidang Pengembangan Kawasan Transmigrasi; </li>
-            <li><i class="ri-check-double-line"></i> melakukan perencanaan teknis tata ruang satuan pemukiman transmigrasi;</li>
-            <li><i class="ri-check-double-line"></i> melakukan pembebasan lahan transmigrasi yang meliputi status tanah, sertifikasi lahan, pengukuran dan pembagian lahan transmigrasi;</li>
-            <li><i class="ri-check-double-line"></i> melakukan koordinasi dan fasilitasipelaksanaan pekerjaan pembukaan lahan; dan </li>
-            <li><i class="ri-check-double-line"></i> melaksanakan tugas kedinasan lain sesuai perintah atasan.</li>
-          </ul>
 
-          <section id="services" class="services section-bg mb-5 mt-5">
-            <h4>Seksi Bidang Pengembangan Kawasan Transmigrasi</h4>
-            <p>
-              Bidang Pengembangan Kawasan Transmigrasi terbagi atas 3 seksi, yakni:
-            </p>
-            <div class="container">
-              <div class="row">
-                <div class="col-xl-4 col-md-6 d-flex align-items-stretch">
-                  <div class="icon-box">
-                    <div class="icon"><i class="bx bx-id-card"></i></div>
-                    <h4><a href="">Seksi Pendaftaran dan Seleksi Transmigrasi</a></h4>
-                    <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                  </div>
-                </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mt-4">
+                                <div class="accordion" id="accordion" role="tablist">
+                                    <!-- Dasar Hukum -->
+                                    <div class="card">
+                                        <div class="card-header" role="tab" id="heading-1">
+                                            <h6 class="mb-0">
+                                                <a data-toggle="collapse" href="#collapse-1" aria-expanded="false" aria-controls="collapse-1" data-abc="true" class="collapsed">
+                                                    Dasar Hukum
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapse-1" class="collapse" role="tabpanel" aria-labelledby="heading-1" data-parent="#accordion">
+                                            <div class="row">
+                                                <div class="col-lg-12 mb-2 mt-2">
+                                                    <p>
+                                                        Dasar hukum dibentuknya bidang Transmigrasi adalah sebagai berikut:
+                                                    </p>
+                                                    <ul>
+                                                        <li><i class="ri-check-double-line"></i> Surat Keputusan Kemendes, PDT, dan Transmigrasi RI Nomor 132 Tahun 2016.</li>
+                                                        <li><i class="ri-check-double-line"></i> Permendagri Nomor 90 Tahun 2019.</li>
+                                                        <li><i class="ri-check-double-line"></i> Perbup Nomor 13 Tahun 2017 tentang Kedudukan, Susunan Organisasi, Tugas dan Fungsi serta Tata Kerja Dinas Kabupaten Manokwari.</li>
+                                                        <li><i class="ri-check-double-line"></i> Surat Keputusan Bupati Nomor 410/412 Tahun 2021</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                  <div class="icon-box">
-                    <div class="icon"><i class="bx bx-user-voice"></i></div>
-                    <h4><a href="">Seksi Pengembangan Kawasan Transmigrasi</a></h4>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                  </div>
-                </div>
+                                    <div class="card">
+                                        <div class="card-header" role="tab" id="heading-2">
+                                            <h6 class="mb-0">
+                                                <a class="collapsed" data-toggle="collapse" href="#collapse-2" aria-expanded="false" aria-controls="collapse-2" data-abc="true">
+                                                    Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapse-2" class="collapse" role="tabpanel" aria-labelledby="heading-2" data-parent="#accordion">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <p>
+                                                        Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi mempunyai tugas:
+                                                    </p>
+                                                    <ul>
+                                                        <li><i class="ri-check-double-line"></i>melakukan koordinasi perencanaan, pelaksanaan, pengendalian, bimbingan, konsultasi serta monitoring dan evaluasi di Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi; </li>
+                                                        <li><i class="ri-check-double-line"></i> merumuskan sasaran kegiatan di Bidang Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi; </li>
+                                                        <li><i class="ri-check-double-line"></i> melaksanakan penyuluhan kepada masyarakat untuk bertransmigrasi dan penduduk asli kawasan transmigrasi; </li>
+                                                        <li><i class="ri-check-double-line"></i> melakukan pemantauan hasil seleksi calon transmigran; dan </li>
+                                                        <li><i class="ri-check-double-line"></i> melaksanakan tugas kedinasan lain sesuai perintah atasan.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
 
-                <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">
-                  <div class="icon-box">
-                    <div class="icon"><i class="bx bx-buildings"></i></div>
-                    <h4><a href="">Seksi Pembinaan Penduduk</a></h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                  </div>
-                </div>
-              </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 mt-3">
+                                                    <h5>Seksi Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi</h5>
+                                                    <div class="row">
+                                                        <div class="col-xl-4 col-md-6 ">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h6 class="">Seksi Perencanaan dan Pencadangan Tanah Transmigrasi</h6>
+                                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-4 col-md-6 ">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h6 class="">Seksi Pembangunan Transmigrasi</h6>
+                                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-4 col-md-6 ">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h6 class="">Seksi Persebaran Penduduk</h6>
+                                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
-            </div>
-          </section>
 
-        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-      </div>
+                                    <div class="card">
+                                        <div class="card-header" role="tab" id="heading-3">
+                                            <h6 class="mb-0">
+                                                <a class="collapsed" data-toggle="collapse" href="#collapse-3" aria-expanded="false" aria-controls="collapse-3" data-abc="true">
+                                                    Bidang Pengembangan Kawasan Transmigrasi
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapse-3" class="collapse" role="tabpanel" aria-labelledby="heading-3" data-parent="#accordion">
+                                            <div class="row">
+                                                <div class="col-lg-12 mb-2 mt-2">
+                                                    <p>
+                                                        Bidang Pengembangan Kawasan Transmigrasi mempunyai tugas:
+                                                    </p>
+                                                    <ul>
+                                                        <li><i class="ri-check-double-line"></i> melakukan koordinasi perencanaan, pelaksanaan, pengendalian, bimbingan, konsultasi serta monitoring dan evaluasi di Bidang Pengembangan Kawasan Transmigrasi;</li>
+                                                        <li><i class="ri-check-double-line"></i> merumuskan sasaran kegiatan di Bidang Pengembangan Kawasan Transmigrasi; </li>
+                                                        <li><i class="ri-check-double-line"></i> melakukan perencanaan teknis tata ruang satuan pemukiman transmigrasi;</li>
+                                                        <li><i class="ri-check-double-line"></i> melakukan pembebasan lahan transmigrasi yang meliputi status tanah, sertifikasi lahan, pengukuran dan pembagian lahan transmigrasi;</li>
+                                                        <li><i class="ri-check-double-line"></i> melakukan koordinasi dan fasilitasipelaksanaan pekerjaan pembukaan lahan; dan </li>
+                                                        <li><i class="ri-check-double-line"></i> melaksanakan tugas kedinasan lain sesuai perintah atasan.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
 
-    </div>
-  </section><!-- End About Us Section -->
+                                            <div class="row">
+                                                <div class="col-lg-12 mt-3">
+                                                    <h5>Seksi Bidang Pengembangan Kawasan Transmigrasi</h5>
+                                                    <div class="row">
+                                                        <div class="col-xl-4 col-md-6 ">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h6 class="">Seksi Pendaftaran dan Seleksi Transmigrasi</h6>
+                                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-4 col-md-6 ">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h6 class="">Seksi Pengembangan Kawasan Transmigrasi</h6>
+                                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-4 col-md-6 ">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h6 class="">Seksi Pembinaan Penduduk</h6>
+                                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
-  <!-- ======= Frequently Asked Questions Section ======= -->
-  <section id="faq" class="faq section-bg">
-    <div class="container">
-      <div class="faq-list">
-        <ul>
-          <li>
-            <a data-bs-toggle="collapse" class="collapse text-uppercase" data-bs-target="#faq-list-1">Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
 
-              <div class="row content">
-                <div class="col-lg-12 mb-4 mt-5">
-                  <h4>Dasar Hukum</h4>
-                  <p>
-                    Dasar hukum dibentuknya bidang Transmigrasi adalah sebagai berikut:
-                  </p>
-                  <ul>
-                    <li><i class="ri-check-double-line"></i> Surat Keputusan Kemendes, PDT, dan Transmigrasi RI Nomor 132 Tahun 2016.</li>
-                    <li><i class="ri-check-double-line"></i> Permendagri Nomor 90 Tahun 2019.</li>
-                    <li><i class="ri-check-double-line"></i> Perbup Nomor 13 Tahun 2017 tentang Kedudukan, Susunan Organisasi, Tugas dan Fungsi serta Tata Kerja Dinas Kabupaten Manokwari.</li>
-                    <li><i class="ri-check-double-line"></i> Surat Keputusan Bupati Nomor 410/412 Tahun 2021</li>
-                  </ul>
-                </div>
-                <div class="col-lg-12 mt-4 mb-4">
-                  <h4>Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi</h4>
-                  <p>
-                    Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi mempunyai tugas:
-                  </p>
-                  <ul>
-                    <li><i class="ri-check-double-line"></i>melakukan koordinasi perencanaan, pelaksanaan, pengendalian, bimbingan, konsultasi serta monitoring dan evaluasi di Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi; </li>
-                    <li><i class="ri-check-double-line"></i> merumuskan sasaran kegiatan di Bidang Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi; </li>
-                    <li><i class="ri-check-double-line"></i> melaksanakan penyuluhan kepada masyarakat untuk bertransmigrasi dan penduduk asli kawasan transmigrasi; </li>
-                    <li><i class="ri-check-double-line"></i> melakukan pemantauan hasil seleksi calon transmigran; dan </li>
-                    <li><i class="ri-check-double-line"></i> melaksanakan tugas kedinasan lain sesuai perintah atasan.</li>
-                  </ul>
-                  <section id="services" class="services section-bg mb-5 mt-5 ">
-                    <h4>Seksi Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi</h4>
-                    <p>
-                      Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi terbagi atas 3 seksi, yakni:
-                    </p>
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-xl-4 col-md-6 d-flex align-items-stretch">
-                          <div class="icon-box">
-                            <div class="icon"><i class="bx bx-id-card"></i></div>
-                            <h4><a href="">Seksi Perencanaan dan Pencadangan Tanah Transmigrasi</a></h4>
-                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                          </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header" role="tab" id="heading-4">
+                                            <h6 class="mb-0">
+                                                <a class="collapsed" data-toggle="collapse" href="#collapse-4" aria-expanded="false" aria-controls="collapse-4" data-abc="true">
+                                                    Galeri Bidang Transmigrasi
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapse-4" class="collapse" role="tabpanel" aria-labelledby="heading-4" data-parent="#accordion">
+                                            <div class="row">
+                                                <div id="transmigrasi" class="carousel slide" data-ride="carousel">
+                                                    <ol class="carousel-indicators">
+                                                        <li data-target="#transmigrasi" data-slide-to="0" class="active"></li>
+                                                        <li data-target="#transmigrasi" data-slide-to="1"></li>
+                                                        <li data-target="#transmigrasi" data-slide-to="2"></li>
+                                                        <li data-target="#transmigrasi" data-slide-to="2"></li>
+                                                        <li data-target="#transmigrasi" data-slide-to="2"></li>
+                                                        <li data-target="#transmigrasi" data-slide-to="2"></li>
+                                                        <li data-target="#transmigrasi" data-slide-to="2"></li>
+                                                    </ol>
+                                                    <div class="carousel-inner">
+                                                        <div class="carousel-item active">
+                                                            <img class="d-block w-100" src="<?php echo base_url(); ?>/assets/frontend/assets/img/transmigrasi/Picture1.png">
+                                                            <div class="carousel-caption d-none d-md-block">
+                                                                <h5>RAPAT SURVEY AWAL RENCANA SATUAN KAWASAN PEMUKIMAN TEKNISD DIDISTRIK MANOKWARI UTARA TAHUN 2021
+                                                                </h5>
+                                                                <p>...</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="carousel-item">
+                                                            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/transmigrasi/Picture2.png">
+                                                            <div class="carousel-caption d-none d-md-block">
+                                                                <h5>RAPAT KORDINASI TEKNIS BIDANG KETRANSMIGRASIAN TAHUN 2020
+                                                                </h5>
+                                                                <p>...</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="carousel-item">
+                                                            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/transmigrasi/Picture3.png">
+                                                            <div class="carousel-caption d-none d-md-block">
+                                                                <h5>RAPAT KORDINASI TEKNIS BIDANG KETRANSMIGRASIAN TAHUN 2020
+                                                                </h5>
+                                                                <p>...</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="carousel-item">
+                                                            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/transmigrasi/Picture4.png">
+                                                            <div class="carousel-caption d-none d-md-block">
+                                                                <h5>RAPAT KORDINASI TEKNIS BIDANG KETRANSMIGRASIAN TAHUN 2020
+                                                                </h5>
+                                                                <p>...</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="carousel-item">
+                                                            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/transmigrasi/Picture5.png">
+                                                            <div class="carousel-caption d-none d-md-block">
+                                                                <h5>KEGIATAN PENYULUHAN PERTANIAN DAN BANTUAN PERALATAN DI SP AURMIOS TAHUN 2021
+
+                                                                </h5>
+                                                                <p>...</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="carousel-item">
+                                                            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/transmigrasi/Picture6.png">
+                                                            <div class="carousel-caption d-none d-md-block">
+                                                                <h5>KEGIATAN PENYULUHAN PERTANIAN DAN BANTUAN PERALATAN DI SP AURMIOS TAHUN 2021
+
+                                                                </h5>
+                                                                <p>...</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="carousel-item">
+                                                            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/transmigrasi/Picture7.png">
+                                                            <div class="carousel-caption d-none d-md-block">
+                                                                <h5>KEGIATAN PENYULUHAN PERTANIAN DAN BANTUAN PERALATAN DI SP AURMIOS TAHUN 2021
+
+                                                                </h5>
+                                                                <p>...</p>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <a class="carousel-control-prev" href="#transmigrasi" role="button" data-slide="prev">
+                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                        <span class="sr-only">Previous</span>
+                                                    </a>
+                                                    <a class="carousel-control-next" href="#transmigrasi" role="button" data-slide="next">
+                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                        <span class="sr-only">Next</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header" role="tab" id="heading-5">
+                                            <h6 class="mb-0">
+                                                <a class="collapsed" data-toggle="collapse" href="#collapse-5" aria-expanded="false" aria-controls="collapse-5" data-abc="true">
+                                                    Arsip File
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapse-5" class="collapse" role="tabpanel" aria-labelledby="heading-5" data-parent="#accordion">
+                                            <div class="row">
+                                                <div class="col-lg-12 mb-2 mt-2">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">No.</th>
+                                                                <th scope="col">Nama File</th>
+                                                                <th scope="col">Aksi</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">1</th>
+                                                                <td>File Powerpoint Bidang Tenaga Kerja - Bagian 1</td>
+                                                                <td>
+                                                                    <a href="<?php echo base_url('uploads/bidang-bidang/tenagakerja/'); ?>Paparan.pptx" target="_blank" class="btn btn-info btn-icon-split ">Unduh File</a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">2</th>
+                                                                <td>File Powerpoint Bidang Tenaga Kerja - Bagian 2</td>
+                                                                <td>
+                                                                    <a href="<?php echo base_url('uploads/bidang-bidang/tenagakerja/'); ?>Paparan1.pptx" target="_blank" class="btn btn-info btn-icon-split ">Unduh File</a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12 mt-3">
+                                                    <h5>Seksi Bidang Pengembangan Kawasan Transmigrasi</h5>
+                                                    <div class="row">
+                                                        <div class="col-xl-4 col-md-6 ">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h6 class="">Seksi Pendaftaran dan Seleksi Transmigrasi</h6>
+                                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-4 col-md-6 ">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h6 class="">Seksi Pengembangan Kawasan Transmigrasi</h6>
+                                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-4 col-md-6 ">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h6 class="">Seksi Pembinaan Penduduk</h6>
+                                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                          <div class="icon-box">
-                            <div class="icon"><i class="bx bx-user-voice"></i></div>
-                            <h4><a href="">Seksi Pembangunan Transmigrasi</a></h4>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                          </div>
-                        </div>
-
-                        <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">
-                          <div class="icon-box">
-                            <div class="icon"><i class="bx bx-buildings"></i></div>
-                            <h4><a href="">Seksi Persebaran Penduduk</a></h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                          </div>
-                        </div>
-                      </div>
-
                     </div>
-                  </section>
                 </div>
-                <div class="col-lg-12 mt-4">
-                  <h4>Bidang Pengembangan Kawasan Transmigrasi</h4>
-                  <p>
-                    Bidang Pengembangan Kawasan Transmigrasi mempunyai tugas:
-                  </p>
-                  <ul>
-                    <li><i class="ri-check-double-line"></i> melakukan koordinasi perencanaan, pelaksanaan, pengendalian, bimbingan, konsultasi serta monitoring dan evaluasi di Bidang Pengembangan Kawasan Transmigrasi;</li>
-                    <li><i class="ri-check-double-line"></i> merumuskan sasaran kegiatan di Bidang Pengembangan Kawasan Transmigrasi; </li>
-                    <li><i class="ri-check-double-line"></i> melakukan perencanaan teknis tata ruang satuan pemukiman transmigrasi;</li>
-                    <li><i class="ri-check-double-line"></i> melakukan pembebasan lahan transmigrasi yang meliputi status tanah, sertifikasi lahan, pengukuran dan pembagian lahan transmigrasi;</li>
-                    <li><i class="ri-check-double-line"></i> melakukan koordinasi dan fasilitasipelaksanaan pekerjaan pembukaan lahan; dan </li>
-                    <li><i class="ri-check-double-line"></i> melaksanakan tugas kedinasan lain sesuai perintah atasan.</li>
-                  </ul>
-
-                  <section id="services" class="services section-bg mb-5 mt-5">
-                    <h4>Seksi Bidang Pengembangan Kawasan Transmigrasi</h4>
-                    <p>
-                      Bidang Pengembangan Kawasan Transmigrasi terbagi atas 3 seksi, yakni:
-                    </p>
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-xl-4 col-md-6 d-flex align-items-stretch">
-                          <div class="icon-box">
-                            <div class="icon"><i class="bx bx-id-card"></i></div>
-                            <h4><a href="">Seksi Pendaftaran dan Seleksi Transmigrasi</a></h4>
-                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                          </div>
-                        </div>
-
-                        <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                          <div class="icon-box">
-                            <div class="icon"><i class="bx bx-user-voice"></i></div>
-                            <h4><a href="">Seksi Pengembangan Kawasan Transmigrasi</a></h4>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                          </div>
-                        </div>
-
-                        <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">
-                          <div class="icon-box">
-                            <div class="icon"><i class="bx bx-buildings"></i></div>
-                            <h4><a href="">Seksi Pembinaan Penduduk</a></h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-                  </section>
-
-                </div>
-
-              </div>
             </div>
-          </li>
-
-          <li>
-            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Bagaimana cara memperoleh informasi terkait lowongan pekerjaan di wilayah Kab. Manokwari? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Apakah setelah mendapatkan pekerjaan, harus melapor ke Disnakertrans? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Apakah ada program pelatihan/magang yang diselenggarakan Disnakertrans? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-            <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
-              </p>
-            </div>
-          </li>
-
-
-
-        </ul>
-      </div>
-
-    </div>
-  </section><!-- End Frequently Asked Questions Section -->
-
-
-  <!-- ======= Portfolio Section ======= -->
-  <section id="portfolio" class="portfolio">
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Galeri Bidang Transmigrasi</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-      </div>
-
-      <ul id="portfolio-flters" class="d-flex justify-content-center">
-        <li data-filter="*" class="filter-active">All</li>
-        <li data-filter=".filter-app">App</li>
-        <li data-filter=".filter-card">Card</li>
-        <li data-filter=".filter-web">Web</li>
-      </ul>
-
-      <div class="row portfolio-container">
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-img"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>App 1</h4>
-            <p>App</p>
-            <a href="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
         </div>
+    </section>
+</main>
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-img"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>Web 3</h4>
-            <p>Web</p>
-            <a href="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-img"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>App 2</h4>
-            <p>App</p>
-            <a href="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-img"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>Card 2</h4>
-            <p>Card</p>
-            <a href="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-img"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>Web 2</h4>
-            <p>Web</p>
-            <a href="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-img"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>App 3</h4>
-            <p>App</p>
-            <a href="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-img"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>Card 1</h4>
-            <p>Card</p>
-            <a href="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-img"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>Card 3</h4>
-            <p>Card</p>
-            <a href="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-img"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>Web 3</h4>
-            <p>Web</p>
-            <a href="<?php echo base_url(); ?>/assets/frontend/assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section><!-- End Portfolio Section -->
-
-  <!-- ======= About Us Section ======= -->
-  <section id="visimisi" class="about visimisi">
-    <div class="container">
-      <div class="col-lg-12">
-        <h4>Arsip File</h4>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">No.</th>
-              <th scope="col">Nama File</th>
-              <th scope="col">Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>File Powerpoint Bidang Tenaga Kerja - Bagian 1</td>
-              <td>
-                <a href="<?php echo base_url('uploads/bidang-bidang/tenagakerja/'); ?>Paparan.pptx" target="_blank" class="btn btn-info btn-icon-split ">Unduh File</a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>File Powerpoint Bidang Tenaga Kerja - Bagian 2</td>
-              <td>
-                <a href="<?php echo base_url('uploads/bidang-bidang/tenagakerja/'); ?>Paparan1.pptx" target="_blank" class="btn btn-info btn-icon-split ">Unduh File</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    </div>
-</main><!-- End #main -->
 
 <!-- ======= Footer ======= -->
 <?php include viewPath('web/template/footer'); ?>
@@ -468,7 +569,18 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <!-- Template Main JS File -->
 <script src="<?php echo base_url(); ?>/assets/frontend/assets/js/main.js"></script>
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 
+<script>
+    $('.collapse').collapse()
+</script>
+
+<script type="text/javascript">
+    var myLink = document.querySelector('a[href="#"]');
+    myLink.addEventListener("click", function(e) {
+        e.preventDefault();
+    });
+</script>
 </body>
 
 </html>
