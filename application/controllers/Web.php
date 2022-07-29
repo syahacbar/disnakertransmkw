@@ -57,18 +57,53 @@ class Web extends CI_Controller
 		$this->load->view('web/profil', $this->page_data);
 	}
 
-	public function berita()
+	public function berita($slug=NULL)
 	{
-		$this->page_data['page']->menu = 'informasi';
-		$this->page_data['page']->title = 'Berita';
-		$this->load->view('web/berita', $this->page_data);
+		if($slug!=NULL)
+		{
+			//sidebar tags di halaman detail berita
+			$querytags = $this->db->query("SELECT tags FROM informasi")->result();
+			$tags_sidebar = array();
+			foreach($querytags AS $qt)
+			{
+				//array_push($tags_sidebar, $qt->tags);
+				$tagsarray = explode(",",$qt->tags);
+				foreach($tagsarray AS $tag)
+				{
+					//array_push($tags_sidebar, $tag);
+					if (!in_array($tag, $tags_sidebar)) 
+					{	
+						array_push($tags_sidebar, $tag);
+					}
+				}
+				
+			}
+
+			//end
+			$detailberita = $this->informasi_model->get_berita_by_slug($slug);
+
+			$this->page_data['detailberita'] = $detailberita;
+			$this->page_data['tags_sidebar'] = $tags_sidebar;
+			$this->page_data['page']->menu = 'informasi';
+			$this->page_data['page']->title = $detailberita->judul;
+			$this->load->view('web/detailberita', $this->page_data);
+			
+		} else {
+			$this->page_data['listberita'] = $this->informasi_model->get_berita();
+			$this->page_data['page']->menu = 'informasi';
+			$this->page_data['page']->title = 'Berita';
+			$this->load->view('web/berita', $this->page_data);
+		}		
 	}
 
-	public function detailberita()
+	public function tag($tag)
 	{
+		$this->page_data['listberita'] = $this->informasi_model->get_berita($tag);
+		$this->page_data['tag'] = $tag;
 		$this->page_data['page']->menu = 'informasi';
-		$this->page_data['page']->title = 'Detail Berita';
-		$this->load->view('web/detailberita', $this->page_data);
+		$this->page_data['page']->title = 'Berita';
+		$this->load->view('web/tags', $this->page_data);
+
 	}
 
 	public function pengumuman()
@@ -89,7 +124,7 @@ class Web extends CI_Controller
 	{
 		$this->page_data['page']->menu = 'bidang';
 		$this->page_data['page']->title = 'Transmigrasi';
-		$this->load->view('web/transmigrasi', $this->page_data);
+		$this->load->view('web/transmigrasi_new', $this->page_data);
 	}
 	public function tenagakerja()
 	{
@@ -113,6 +148,7 @@ class Web extends CI_Controller
 		$this->pencaker_model->create([
 			'nik' => post('nik'),
 			'users_id' => $id,
+			'nopendaftaran' => $this->pencaker_model->nomorpendaftaran(),
 		]);
 
 		if (!empty($_FILES['image']['name'])) {
