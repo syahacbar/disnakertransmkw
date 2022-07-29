@@ -184,6 +184,18 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     .carousel-item img {
         width: 100%;
     }
+
+    .collapse li {
+        list-style: none;
+    }
+
+    .collapse ul {
+        padding: 0 10px;
+    }
+
+    i.ri-check-double-line {
+        color: #007bff;
+    }
 </style>
 </head>
 
@@ -496,43 +508,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-lg-12 mt-3">
-                                                    <h5>Seksi Bidang Pengembangan Kawasan Transmigrasi</h5>
-                                                    <div class="row">
-                                                        <div class="col-xl-4 col-md-6 ">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <h6 class="">Seksi Pendaftaran dan Seleksi Transmigrasi</h6>
-                                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-md-6 ">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <h6 class="">Seksi Pengembangan Kawasan Transmigrasi</h6>
-                                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-md-6 ">
-                                                            <div class="card">
-                                                                <div class="card-body">
-                                                                    <h6 class="">Seksi Pembinaan Penduduk</h6>
-                                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

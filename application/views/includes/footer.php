@@ -99,12 +99,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     $('#summernote').summernote({
       placeholder: 'Tulis isi berita di sini',
-      height: 300
+      height: 200
     });
 
     $('#editberitasummernote').summernote({
       placeholder: 'Tulis isi berita di sini',
-      height: 300
+      height: 200
     });
 
   });

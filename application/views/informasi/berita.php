@@ -174,7 +174,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <!-- Modal Tambah Berita -->
 <div class="modal fade" id="modalTambahberita" tabindex="-1" role="dialog" aria-labelledby="modalTambahberitaTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Tambah Berita</h5>
@@ -185,16 +185,22 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <form id="formtambahberita">
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8">
                             <div class="form-group">
                                 <label for="judul">Judul Artikel</label>
                                 <input type="text" class="form-control" name="judul" id="judul" required autofocus />
                             </div>
                         </div>
+                        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label for="tag">Tag</label>
+                                <input type="text" class="form-control" name="tag" id="tag" required autofocus />
+                            </div>
+                        </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="isi">Isi</label>
-                                <textarea name="isi" id="summernote" cols="30" rows="30"></textarea>
+                                <textarea name="isi" id="summernote" cols="20" rows="20"></textarea>
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
@@ -246,7 +252,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="editisi">Isi</label>
-                                <textarea name="editisi" id="editberitasummernote" cols="30" rows="30"></textarea>
+                                <textarea name="editisi" id="editberitasummernote" rows="20"></textarea>
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
