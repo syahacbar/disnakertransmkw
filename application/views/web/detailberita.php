@@ -177,22 +177,18 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         background: #3b5998;
     }
 
-    .instagram {
-        background: #3f729b;
+    .twitter {
+        background: #1c96e8;
     }
 
-    .youtube {
-        background: #ff0000;
+    .envelope {
+        background: #d54338;
     }
 
     .whatsapp {
 
         background: #4dc247;
 
-    }
-
-    .pinterest {
-        background: #cb2027;
     }
 
     .thefront.text-center {
@@ -218,8 +214,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="col-sm-12 col-md-12 col-lg-9 isiberita">
                     <div class="d-flex flex-row"></div>
                     <h2 class="text-capitalize">Green plants are going to extinct about 500 times</h2>
-                    <p class="text-primary">Tanggal Publikasi: <?php $date = date_create("2-08-2022");
-                                                                echo date_format($date, "d/m/Y H:i:s"); ?></p>
+                    <p class="text-primary"><?php $date = date_create("2-08-2022");
+                                            echo date_format($date, "d/m/Y H:i:s"); ?></p>
                     <div class="row news-card mt-3">
                         <div class="col-sm-12 col-md-12 col-lg-12 mb-4 mt-3">
                             <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="https://i.imgur.com/ZKbpmaU.jpg"></div>
@@ -274,9 +270,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                                 <li>
                                                     <div class="maincard p-3">
                                                         <div class="thecard">
-                                                            <div class="thefront text-center py-4 instagram">
+                                                            <div class="thefront text-center py-4 twitter">
                                                                 <div class="social-icon">
-                                                                    <i class="fa fa-instagram"></i>
+                                                                    <i class="fa fa-twitter"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -286,9 +282,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                                 <li>
                                                     <div class="maincard p-3">
                                                         <div class="thecard">
-                                                            <div class="thefront text-center py-4 youtube">
+                                                            <div class="thefront text-center py-4 envelope">
                                                                 <div class="social-icon">
-                                                                    <i class="fa fa-youtube"></i>
+                                                                    <i class="fa fa-envelope"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -302,19 +298,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                                             <div class="thefront text-center py-4 whatsapp">
                                                                 <div class="social-icon">
                                                                     <i class="fa fa-whatsapp"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-
-                                                <li>
-                                                    <div class="maincard p-3">
-                                                        <div class="thecard">
-                                                            <div class="thefront text-center py-4 pinterest">
-                                                                <div class="social-icon">
-                                                                    <i class="fa fa-pinterest"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
