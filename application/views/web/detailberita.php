@@ -213,16 +213,17 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-9 isiberita">
                     <div class="d-flex flex-row"></div>
-                    <h2 class="text-capitalize">Green plants are going to extinct about 500 times</h2>
-                    <p class="text-primary"><?php $date = date_create("2-08-2022");
-                                            echo date_format($date, "d/m/Y H:i:s"); ?></p>
+                    <h2 class="text-capitalize"><?php echo $detailberita->judul;?></h2>
+                    <p class="text-primary">
+                        <?php echo $detailberita->tgl_publikasi;?>
+                    </p>
                     <div class="row news-card mt-3">
                         <div class="col-sm-12 col-md-12 col-lg-12 mb-4 mt-3">
                             <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="https://i.imgur.com/ZKbpmaU.jpg"></div>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
                             <div class="news-feed-text">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+                                <?php echo $detailberita->isi;?>
                             </div>
                         </div>
 
@@ -233,10 +234,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <p>Tag:</p>
                                         <ul>
                                             <li>
-                                                <a href="">Disnaker</a>
-                                                <a href="">Papua Barat</a>
-                                                <a href="">Kartu Kuning</a>
-                                                <a href="">Kerja</a>
+                                            <?php 
+                                                $tags = $detailberita->tags;
+                                                $tagsarray = explode(",",$tags);
+                                                foreach($tagsarray AS $tag) : 
+                                            ?>
+                                                <a href="<?php echo site_url('tag/').trim($tag);?>"><?php echo trim($tag);?></a>
+                                            <?php endforeach;?>
                                             </li>
                                         </ul>
                                     </div>
@@ -316,7 +320,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="row">
                         <div class="col-12 mb-3">
                             <div class="row sidebar">
-                                <h5>Kategori</span>
+                                <h5>Kategori Informasi</span>
                             </div>
                             <div class="row">
                                 <ul>
@@ -328,28 +332,17 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         </div>
                         <div class="col-12 mb-3">
                             <div class="row sidebar">
-                                <h5>Dinas Terkait</span>
+                                <h5>Tags</span>
                             </div>
                             <div class="row">
                                 <ul>
-                                    <a href="">Kemenaker</a><br>
-                                    <a href="">Provinsi Papua Barat</a><br>
-                                    <a href="">Disnakertrans Papua Barat</a><br>
+                                <?php foreach($tags_sidebar AS $x): ?>
+                                    <a href="<?php echo site_url('tag/').$x;?>"><?php echo $x;?></a>
+                                <?php endforeach;?>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-12 mb-3">
-                            <div class="row sidebar">
-                                <h5>Kategori</span>
-                            </div>
-                            <div class="row">
-                                <ul>
-                                    <a href="">Berita</a><br>
-                                    <a href="">Pengumuman</a><br>
-                                    <a href="">Pelatihan</a><br>
-                                </ul>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

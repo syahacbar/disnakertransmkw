@@ -52,6 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'web';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['tag/(:any)'] = 'web/tag/$1';
+$route['berita/(:any)'] = 'web/berita/$1';
 
 // [AdminLTE]
 // $route['adminlte/(:any)'] = 'adminlte/main/$1';
