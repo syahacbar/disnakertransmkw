@@ -10,6 +10,15 @@ class Informasi_model extends MY_Model {
 		return $q->result();
 	}
 
+	function get_berita_by_id($id)
+	{
+		$this->db->select('*');
+        $this->db->from('informasi');
+        $this->db->where('id',$id);
+        $query = $this->db->get();
+        return $query->row();
+	}
+
 	function hapusberita($id)
 	{
 		$this->db->where('id', $id);

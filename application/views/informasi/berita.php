@@ -140,8 +140,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             </thead>
                             <tbody>
                                 <?php
-                                $no = 1;
-                                foreach ($informasi as $info) :
+                                    $no = 1;
+                                    foreach ($informasi as $info) :
                                 ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
@@ -151,8 +151,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                             <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange="updateStatusberita(<?php echo $info->id; ?>,$(this).is(':checked'))" <?php echo ($info->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
                                         </td>
                                         <td>
-                                            <a target="_blank" href="javascript:void(0)" data-id="<?php echo $info->id; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
-                                            <a data-toggle="modal" data-target="#modalEditBerita" href="javascript:void(0)" data-id="<?php echo $info->id; ?>" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
+                                            <a target="_blank" href="" data-id="<?php echo $info->id; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
+                                            <a href="javascript:void(0)" data-id="<?php echo $info->id; ?>" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
                                             <a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="<?php echo $info->id; ?>"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
@@ -266,8 +266,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                 </div>
                 <div class="modal-footer">
+                    <input type="hidden" name="idberita">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <button id="btnEditBerita" type="button" class="btn btn-primary">Simpan</button>
+                    <button id="btnSimpan" type="button" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>
@@ -285,7 +286,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     function updateStatusberita(id, status) {
         //var id = $(this).data("id");
         $.ajax({
-            url: "<?php echo site_url(); ?>informasi/updatestatusberita",
+            url: "<?php echo site_url(); ?>informasi/updatestatus_berita",
             type: "POST",
             data: {
                 id: id,
@@ -294,11 +295,26 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             success: function(data) {
                 var objData = jQuery.parseJSON(data);
                 console.log(objData.status);
-                // console.log(objData.info);
-                //location.reload();
             }
         });
+    }
 
+    function editberita(id)
+    {
+        $.ajax({
+            url: "<?php echo site_url('informasi/get_berita_by_id') ?>/"+ id,
+            type: "GET",
+            dataType: "JSON",
+            success: function(data) {
+                $('[name="editjudul"]').val(data.judul);
+                $('[name="edittag"]').val(data.tag);
+                //$('[name="editisi"]').val(data.isi);
+                $('[name="editisi"]').summernote("code", data.isi);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Error Get Data Berita');
+            }
+        });
     }
 
     $(document).ready(function() {
@@ -309,74 +325,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             "autoWidth": false,
         });
 
-        // tabelberita = $('#tabelberita').DataTable({
-        //     "processing": true,
-        //     "serverSide": true,
-        //     "ordering": true, 
-        //     "order": [[ 0, 'asc' ]], 
-        //     "ajax":
-        //     {
-        //         "url": "<?php // echo site_url('informasi/get_berita');
-                            ?>", 
-        //         "type": "POST"
-        //     },
-        //     "deferRender": true,
-        //     "stateSave": true,
-        //     "bDestroy": true,
-
-        //     "columns": [
-        //         {"data": "id","sortable": false, 
-        //             render: function (data, type, row, meta) {
-        //                 return meta.row + meta.settings._iDisplayStart + 1;
-        //             }  
-        //         }, 
-        //         {"data": "judul"},
-        //         {"data": "tgl_publikasi"},
-        //         {"data": "isi"},
-        //         {"data": "id",
-        //             "render": 
-        //             function( data, type, row, meta ) {
-        //                 return '  <label class="toggle"><input type="checkbox" onchange="updateUserStatus('+data+')"><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>';
-        //             }
-        //         },
-        //         {"data": "id",
-        //             "render": 
-        //             function( data, type, row, meta ) {
-        //                 return '<a data-toggle="modal" data-target="#modalEditBerita" href="javascript:void(0)" data-id="'+data+'" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="'+data+'"><i class="fas fa-trash"></i></a>';
-        //             }
-        //         },
-        //     ],
-        // });
-
         function reload_table_berita() {
             $('#tabelberita').DataTable().ajax.reload(null, false);
 
         }
-
-        // $('#btnSaveBerita').click(function() {
-        //    $.ajax({
-        //         url: "<?php // echo // site_url('informasi/add_berita') 
-                            ?>",
-        //         type: "POST",
-        //         data: $('#formtambahberita').serialize(),
-        //         dataType: "JSON",
-        //         success: function(data) {
-        //             if (data.status) //if success close modal and reload ajax table
-        //             {
-        //                 $('#modalTambahberita').modal('hide');
-        //                 reload_table_berita();
-        //             }
-
-        //         },
-        //         error: function(jqXHR, textStatus, errorThrown) {
-        //             alert('Error save data');
-        //         }
-        //     });
-        // });
-
         var unggah_berita = new Dropzone(".dropzone", {
             autoProcessQueue: false,
-            url: "<?php echo site_url('informasi/thumbnail_berita') ?>",
+            url: "<?php echo site_url('informasi/add_berita') ?>",
             maxFilesize: 20,
             method: "post",
             acceptedFiles: "image/*",
@@ -449,15 +404,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         });
 
+        $(document).on('click', '.btnEditBerita', function() {
+            $('#modalEditBerita').modal('show');
+            var idberita = $(this).attr("data-id");
+            //set hidden form untuk Id Berita
+            $('[name="idberita"]').val(idberita);
 
-        $("#formeditberita").on("click", ".btnEditBerita", function() {
-            event.preventDefault();
-            $("input#editjudul").val($(this).data('editjudul'));
-            $("input#edittag").val($(this).data('edittag'));
-            $("textarea#editberitasummernote").val($(this).data('editberitasummernote'));
-            $("input#id").val($(this).data('id'));
-            $('#formeditberita').attr('action', '<?php echo site_url('informasi/editberita'); ?>');
-
+            editberita(idberita);
         });
 
 

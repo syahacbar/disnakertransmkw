@@ -37,56 +37,7 @@ class Informasi extends MY_Controller
         echo $this->M_Datatables->get_tables_query($query,$search,$where,$isWhere);
 	}
 
-	// public function add_berita()
-	// {
-		// $config['upload_path']   = FCPATH.'uploads/informasi/berita';
-		// $config['allowed_types'] = 'gif|jpg|png|ico';
-		// $this->load->library('upload',$config);
-
-		// $users_id = logged('id');
-    	// $data = array(
-    	// 	'kategori' => "Berita",
-    	// 	'judul' => $this->input->post('judul'),
-        //     'isi' => $this->input->post('isi'),
-        //     'tag' => $this->input->post('tag'),
-        //     'tgl_publikasi' => date("Y-m-d"),
-    	// 	// 'gambar' => $this->upload->data('gambar'),
-        //     'status' => $this->input->post('status'),
-        //     'users_id' => $users_id,
-        // );
-
-		// if($this->upload->do_upload('thumbnailberita')){
-		// 	$gambar=$this->upload->data('gambar');
-		// 	$kategori="Berita";
-		// 	// $judul=$this->upload->data('file_name');
-        //     $judul=$this->input->post('judul');
-        //     $isi=$this->input->post('isi');
-        //     $tag=$this->input->post('tag');
-        //     $status=$this->input->post('status');
-        //     $tgl_publikasi=date("Y-m-d");
-        //     $users_id = $users_id;
-
-		// 	$this->db->insert('informasi',array('gambar'=>$gambar, 'kategori'=>$kategori, 'judul'=>$judul, 'isi'=>$isi,'tag'=>$tag, 'status'=>$status, 'tgl_publikasi'=>$tgl_publikasi));
-		// }
-	
-
-
-    //     $id = $this->pencaker_model->add_berita($data);  
-
-    //     if($id)
-    //     {  
-    //        $res['hasil'] = 'sukses';
-    // 	   $res['status'] = TRUE;
-    //     }     
-    //     else
-    //     {           
-    //         $res['hasil'] = 'gagal';
-    //         $res['status'] = FALSE;
-    //     }
-    //     echo json_encode($res);
-	// }
-
-	function thumbnail_berita()
+	public function add_berita()
     {
 		$users_id = logged('id');
         // $config['upload_path']   = FCPATH.'uploads/informasi/berita';
@@ -109,7 +60,13 @@ class Informasi extends MY_Controller
 
 	}
 
-	public function updatestatusberita()
+	public function get_berita_by_id($id)
+	{
+		$data  = $this->informasi_model->get_berita_by_id($id);
+        echo json_encode($data);
+	}
+
+	public function updatestatus_berita()
     {
         $id = $this->input->post('id');
         $status = $this->input->post('status');
