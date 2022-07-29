@@ -232,6 +232,90 @@ class Pencaker extends MY_Controller
         echo json_encode($res);
     }
 
+    function get_jabatan()
+    {
+        $users_id = logged('id');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+        
+        $query  = "SELECT p.users_id, mj.* FROM pencaker p JOIN minat_jabatan mj ON mj.pencaker_id=p.id";
+        $search = array('mj.nama_jabatan');
+        $where  = array('mj.pencaker_id' => $pencaker_id->id);
+        
+        // jika memakai IS NULL pada where sql
+        $isWhere = null;
+        // $isWhere = 'artikel.deleted_at IS NULL';
+        header('Content-Type: application/json');
+        echo $this->M_Datatables->get_tables_query($query,$search,$where,$isWhere);
+    }
+
+    function get_jabatan_by_id($idjabatan)
+    {
+        $data  = $this->pencaker_model->get_jabatan_by_id($idjabatan);
+        echo json_encode($data);
+    }
+
+    function add_jabatan()
+    {
+        $users_id = logged('id');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+        $data = array(
+            'pencaker_id' => $pencaker_id,
+            'nama_jabatan' => $this->input->post('minat_jabatan'),
+        );
+
+        $id = $this->pencaker_model->add_jabatan($data);  
+        if($id)
+        {           
+            $res['hasil'] = 'sukses';
+            $res['status'] = TRUE;
+        }     
+        else
+        {           
+            $res['hasil'] = 'gagal';
+            $res['status'] = FALSE;
+        }
+        echo json_encode($res);
+    }
+
+    function update_jabatan()
+    {
+        $idjabatan = $this->input->post('idjabatan');
+        $data = array(
+            'nama_jabatan' => $this->input->post('minat_jabatan'),
+        );
+
+       $update = $this->pencaker_model->update_jabatan($idjabatan,$data);  
+       if($update)
+       {
+           $res['hasil'] = 'sukses';
+           $res['status'] = TRUE;
+       }
+       else
+       {
+           $res['hasil'] = 'gagal';
+           $res['status'] = FALSE;
+       }
+       
+       echo json_encode($res);
+    }
+
+    function del_jabatan_by_id($idjabatan)
+    {
+        $del  = $this->pencaker_model->del_jabatan_by_id($idjabatan);
+        if($del)
+        {           
+            $res['hasil'] = 'sukses';
+            $res['status'] = TRUE;
+        }     
+        else
+        {           
+            $res['hasil'] = 'gagal';
+            $res['status'] = FALSE;
+        }
+
+        echo json_encode($res);
+    }
+
     function update1()
     {
         $users_id = logged('id');
@@ -244,6 +328,7 @@ class Pencaker extends MY_Controller
         {        	
 	    	$res['hasil'] = 'sukses';
 	        $res['status'] = TRUE;
+            $res['tujuan'] = $this->input->post('tujuan');
         }     
         else
         {        	

@@ -28,8 +28,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <i class="fas fa-language nav-icon "></i>Keterampilan Bahasa</a>
 
         <a id="pekerjaanpencaker" class="list-group-item list-group-item-action <?php echo ($page->submenu == 'pekerjaan_pencaker') ? 'active' : '' ?>">
-            <i class="fas fa-briefcase nav-icon "></i>Pengalaman Kerja</a>
-
+            <i class="fas fa-briefcase nav-icon "></i>Pengalaman Kerja</a>   
+        
+        <a id="jabatanpencaker" class="list-group-item list-group-item-action <?php echo ($page->submenu == 'jabatan_pencaker') ? 'active' : '' ?>">
+            <i class="fas fa-user nav-icon "></i>Jabatan Yang Diminati</a>   
+        
         <a id="perusahaanpencaker" class="list-group-item list-group-item-action <?php echo ($page->submenu == 'perusahaan_pencaker') ? 'active' : '' ?>">
             <i class="fas fa-building nav-icon "></i>Perusahaan Yang Dituju</a>
 

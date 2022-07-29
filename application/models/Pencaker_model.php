@@ -119,6 +119,38 @@ class Pencaker_model extends MY_Model {
 		return true;
 	}
 
+	function get_jabatan_by_id($id)
+	{
+		$this->db->select('*');
+        $this->db->from('minat_jabatan');
+        $this->db->where('id',$id);
+        $query = $this->db->get();
+        return $query->row();
+	}
+
+	function add_jabatan($data)
+	{
+		$this->db->insert('minat_jabatan', $data);
+		return $this->db->insert_id();
+	}
+
+	function update_jabatan($id,$data)
+	{
+		$this->db->where('id', $id);
+		$this->db->update('minat_jabatan', $data);
+		return true;
+	}
+
+	function del_jabatan_by_id($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('minat_jabatan');
+		return true;
+	}
+
+
+
+
 	function add_berita($data)
 	{
 		$this->db->insert('informasi', $data);

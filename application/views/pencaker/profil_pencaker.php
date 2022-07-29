@@ -290,7 +290,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 ">
                                         <div class="form-group">
-                                            <label for="keterampilan">Keterampilan</label>
+                                            <label for="keterampilan">Keterampilan/Jurusan</label>
                                             <input type="text" class="form-control" name="keterampilan" id="keterampilan" autofocus />
                                         </div>
                                     </div>
@@ -337,8 +337,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
-                    <button type="submit" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
+                    <button type="button" id="btnback2" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
+                    <button type="button" id="btnSave3" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
                 </div>
             </div>
 
@@ -416,7 +416,16 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         </div>
                                     </div>
 
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-4">
+                                    <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="checkboxbahasalainnya">
+                                            <label class="form-check-label" for="lainnya">
+                                                Lainnnya
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div id="textboxbahasalainnya" class="col-12 col-sm-12 col-md-12 col-lg-12 mt-4 hide">
                                         <div class="form-floating">
                                             <label for="lainnya">Bahasa Lainnya</label>
                                             <textarea class="form-control" placeholder="Deskripsikan bahasa yang Anda kuasai di sini" id="lainnya" style="height: 100px"></textarea>
@@ -432,8 +441,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
-                    <button type="submit" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
+                    <button type="button" id="btnback3" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
+                    <button type="button" id="btnSave4" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
                 </div>
             </div>
 
@@ -464,13 +473,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                             <input type="number" class="form-control" name="tahunkeluarkerja" id="tahunkeluarkerja" placeholder="" required placeholder="Tahun keluar kerja" autofocus />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-12 col-md-3 col-lg-6 ">
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-4">
                                         <div class="form-group">
                                             <label for="instansi">Nama Perusahan/Instansi</label>
                                             <input type="text" class="form-control" name="instansi" id="instansi" placeholder="" required placeholder="Nama Perusahan/Instansi" autofocus />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-4">
                                         <div class="form-group">
                                             <label for="jabatan">Jabatan</label>
                                             <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="" required placeholder="Tahun masuk sekolah" autofocus />
@@ -516,8 +525,96 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
-                    <button type="submit" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
+                    <button type="button" id="btnback4" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
+                    <button type="button" id="btnSave5" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
+                </div>
+            </div>
+
+            <!-- jabatan card -->
+            <div class="card jabatanpencaker" style="display: none;">
+                <div class="card-header with-border">
+                    <h3 class="card-title"><?php echo lang('jabatan_pencaker') ?></h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-card">
+                                <div class="alert alert-success" role="alert">
+                                    Silakan isi data terkait Jabatan yang diminati
+                                </div>
+
+                                        <div class="row mt-3">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
+                                                <label>Lokasi jabatan yang diinginkan</label>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="lokasijabatan" id="lokasijabatan1">
+                                                    <label class="form-check-label" for="lokasijabatan1">
+                                                        Dalam Negeri
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="lokasijabatan" id="lokasijabatan2">
+                                                    <label class="form-check-label" for="lokasijabatan2">
+                                                        Luar Negeri
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <hr>
+                                <!-- form jabatan pencaker     -->                           
+                                <form action="#" id="formjabatanpencaker">
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-9 ">
+                                        <div class="form-group">
+                                            <label for="minat_jabatan">Jabatan</label>
+                                            <input type="text" class="form-control" name="minat_jabatan" id="minat_jabatan" placeholder="" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
+                                        <div class="ml-auto">
+                                            <button type="button" id="btnSaveJabatan" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> <?php echo lang('save') ?></button>
+                                            <button type="button" id="btnUpdateJabatan" class="btn btn-primary btn-sm hide"><i class="fas fa-edit"></i> <?php echo lang('update') ?></button>
+                                            <!-- hiden form untuk id pendidikan saat proses update -->
+                                            <input type="hidden" name="idjabatan">
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
+                                <!-- end of formpkerjaan pencaker -->
+
+                                <hr>
+                                <div class="row mt-5">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 table-responsive">
+                                        <table style="width:100%" id="tabeljabatanpencaker" class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th width="10px">No</th>
+                                                    <th>Jabatan</th>
+                                                    <th>Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="button" id="btnback5" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
+                    <button type="button" id="btnSave6" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
                 </div>
             </div>
 
@@ -532,21 +629,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         <div class="col-lg-12">
                             <div class="form-card">
                                 <div class="alert alert-success" role="alert">
-                                    Silakan tentukan tujuan perusahan dan jabatan pilihan Anda!
+                                    Silakan tentukan tujuan Perusahan pilihan Anda!
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 ">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-9">
                             <div class="form-group">
-                                <label for="nama_perusahan">Nama Perusahan/Instansi</label>
-                                <input type="text" class="form-control" name="nama_perusahan" id="nama_perusahan" placeholder="" required placeholder="" autofocus />
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 ">
-                            <div class="form-group">
-                                <label for="jabatan">Jabatan</label>
-                                <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="" required placeholder="" autofocus />
+                                <label for="tujuan_perusahaan">Nama Perusahan/Instansi</label>
+                                <input type="text" class="form-control" name="tujuan_perusahaan" id="tujuan_perusahaan" placeholder="" required placeholder="" autofocus />
                             </div>
                         </div>
                     </div>
@@ -554,11 +645,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
-                    <button type="submit" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
+                    <button type="button" id="btnback6" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
+                    <button type="button" id="btnSave7" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
                 </div>
                 <!-- /.card-footer-->
-                <?php echo form_close(); ?>
             </div>
 
             <!-- datatamabahan card -->
@@ -578,32 +668,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
                                         <div class="form-group">
-                                            <label for="tahun_masuk">Catatan Pencaker</label>
-                                            <textarea type="number" class="form-control" name="tahun_masuk" id="tahun_masuk" rows="3" placeholder="" required placeholder="Tahun masuk sekolah" autofocus></textarea>
-                                        </div>
-
-                                        <div class="row mt-3">
-                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
-                                                <label>Lokasi jabatan yang diinginkan</label>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                                    <label class="form-check-label" for="flexRadioDefault1">
-                                                        Dalam Negeri
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                                    <label class="form-check-label" for="flexRadioDefault2">
-                                                        Luar Negeri
-                                                    </label>
-                                                </div>
-
-                                            </div>
+                                            <label for="catatan_pengantar">Catatan Pencaker</label>
+                                            <textarea type="number" class="form-control" name="catatan_pengantar" id="catatan_pengantar" rows="3" placeholder="" required placeholder="Tahun masuk sekolah" autofocus></textarea>
                                         </div>
                                     </div>
 
@@ -616,8 +682,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
-                    <button type="submit" class="btn btn-flat btn-primary"><?php echo lang('save') ?></button>
+                    <button type="button" id="btnback7" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
+                    <button type="button" id="btnSave8" class="btn btn-flat btn-primary">Selesai</button>
                 </div>
                 <!-- /.card-footer-->
                 <?php echo form_close(); ?>
@@ -641,6 +707,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('.pendidikanpencaker').hide();
             $('.pekerjaanpencaker').hide();
             $('.perusahaanpencaker').hide();
+            $('.jabatanpencaker').hide();
             $('.datatambahanpencaker').hide();
             $('.bahasapencaker').hide();
 
@@ -648,6 +715,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#identitaspencaker').removeClass("active");
             $('#pendidikanpencaker').removeClass("active");
             $('#pekerjaanpencaker').removeClass("active");
+            $('#jabatanpencaker').removeClass("active");
             $('#perusahaanpencaker').removeClass("active");
             $('#bahasapencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
@@ -660,6 +728,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('.pendidikanpencaker').hide();
             $('.pekerjaanpencaker').hide();
             $('.perusahaanpencaker').hide();
+            $('.jabatanpencaker').hide();
             $('.datatambahanpencaker').hide();
             $('.bahasapencaker').hide();
 
@@ -667,6 +736,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#identitaspencaker').addClass("active");
             $('#pendidikanpencaker').removeClass("active");
             $('#pekerjaanpencaker').removeClass("active");
+            $('#jabatanpencaker').removeClass("active");
             $('#perusahaanpencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
             $('#bahasapencaker').removeClass("active");
@@ -679,6 +749,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('.pendidikanpencaker').toggle("display");
             $('.pekerjaanpencaker').hide();
             $('.perusahaanpencaker').hide();
+            $('.jabatanpencaker').hide();
             $('.datatambahanpencaker').hide();
             $('.bahasapencaker').hide();
 
@@ -686,6 +757,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#identitaspencaker').removeClass("active");
             $('#pendidikanpencaker').addClass("active");
             $('#pekerjaanpencaker').removeClass("active");
+            $('#jabatanpencaker').removeClass("active");
             $('#perusahaanpencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
             $('#bahasapencaker').removeClass("active");
@@ -845,6 +917,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('.pendidikanpencaker').hide();
             $('.pekerjaanpencaker').hide();
             $('.perusahaanpencaker').hide();
+            $('.jabatanpencaker').hide();
             $('.datatambahanpencaker').hide();
 
             $('#tujuanpencaker').removeClass("active");
@@ -852,6 +925,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#pendidikanpencaker').removeClass("active");
             $('#bahasapencaker').addClass("active");
             $('#pekerjaanpencaker').removeClass("active");
+            $('#jabatanpencaker').removeClass("active");
             $('#perusahaanpencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
         }
@@ -863,6 +937,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('.pendidikanpencaker').hide();
             $('.pekerjaanpencaker').toggle("display");
             $('.perusahaanpencaker').hide();
+            $('.jabatanpencaker').hide();
             $('.datatambahanpencaker').hide();
             $('.bahasapencaker').hide();
 
@@ -870,6 +945,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#identitaspencaker').removeClass("active");
             $('#pendidikanpencaker').removeClass("active");
             $('#pekerjaanpencaker').addClass("active");
+            $('#jabatanpencaker').removeClass("active");
             $('#perusahaanpencaker').removeClass("active");
             $('#bahasapencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
@@ -1015,13 +1091,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
              }
         });
 
-        function showperusahaanpencaker()
+        function showjabatanpencaker()
         {
             $('.tujuanpencaker').hide();
             $('.identitaspencaker').hide();
             $('.pendidikanpencaker').hide();
             $('.pekerjaanpencaker').hide();
-            $('.perusahaanpencaker').toggle("display");
+            $('.jabatanpencaker').toggle("display");
+            $('.perusahaanpencaker').hide();
             $('.datatambahanpencaker').hide();
             $('.bahasapencaker').hide();
 
@@ -1029,6 +1106,162 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#identitaspencaker').removeClass("active");
             $('#pendidikanpencaker').removeClass("active");
             $('#pekerjaanpencaker').removeClass("active");
+            $('#jabatanpencaker').removeClass("active");
+            $('#perusahaanpencaker').removeClass("active");
+            $('#jabatanpencaker').addClass("active");
+            $('#bahasapencaker').removeClass("active");
+            $('#datatambahanpencaker').removeClass("active");
+
+            tabeljabatan = $('#tabeljabatanpencaker').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ordering": true, 
+                "order": [[ 0, 'asc' ]], 
+                "ajax":
+                {
+                    "url": "<?php echo site_url('pencaker/get_jabatan');?>", 
+                    "type": "POST"
+                },
+                "deferRender": true,
+                "stateSave": true,
+                "bDestroy": true,
+
+                "columns": [
+                    {"data": "id","sortable": false, 
+                        render: function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }  
+                    }, 
+                    {"data": "nama_jabatan"},
+                    {"data": "id",
+                        "render": 
+                        function( data, type, row, meta ) {
+                            return '<a href="javascript:void(0)" data-id="'+data+'" class="btn btn-sm btn-primary btnEditJabatan"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger btnHapusJabatan" href="javascript:void(0)" data-id="'+data+'"><i class="fas fa-trash"></i></a>';
+                        }
+                    },
+                ],
+            });
+        }
+
+        function editjabatanpencaker(id)
+        {
+            $.ajax({
+                url: "<?php echo site_url('pencaker/get_jabatan_by_id') ?>/"+ id,
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    $('[name="minat_jabatan"]').val(data.nama_jabatan);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error Get Data Pekerjaan');
+                }
+            });
+        }
+
+         $('#tabeljabatanpencaker').on('click', '.btnEditJabatan', function () {
+            //hide button simpan, show button update
+            $('#btnSaveJabatan').hide();
+            $('#btnUpdateJabatan').removeClass("hide");
+            var idjabatan = $(this).attr("data-id");
+            //set hidden form untuk Id pendidikan
+            $('[name="idjabatan"]').val(idjabatan);
+
+            editjabatanpencaker(idjabatan);
+        });
+
+        function reload_table_jabatan()
+        {
+            $('#tabeljabatanpencaker').DataTable().ajax.reload(null, false);
+        } 
+
+        function reset_form_jabatan()
+        {
+            $( '#formjabatanpencaker' ).each(function(){
+                this.reset();
+            });
+            //hide button UPDATE, show button SIMPAN
+            $('#btnSaveJabatan').show();
+            $('#btnUpdateJabatan').addClass("hide");
+        }
+
+        $('#btnSaveJabatan').click(function() {
+            $.ajax({
+                url: "<?php echo site_url('pencaker/add_jabatan') ?>",
+                type: "POST",
+                data: $('#formjabatanpencaker').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.status) //if success close modal and reload ajax table
+                    {
+                        reload_table_jabatan();
+                        reset_form_jabatan();
+                    }
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error save data');
+                }
+            });
+        });
+
+        $('#btnUpdateJabatan').click(function() {
+            $.ajax({
+                url: "<?php echo site_url('pencaker/update_jabatan') ?>",
+                type: "POST",
+                data: $('#formjabatanpencaker').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.status) //if success close modal and reload ajax table
+                    {
+                        reload_table_jabatan();
+                        reset_form_jabatan();
+                    }
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error update data');
+                }
+            });
+        });
+
+        $('#tabeljabatanpencaker').on('click', '.btnHapusJabatan', function () {
+            var result = confirm("Want to delete?");
+            if (result) 
+            {
+                var idjabatan = $(this).attr("data-id");
+                 $.ajax({
+                    url: "<?php echo site_url('pencaker/del_jabatan_by_id') ?>/"+ idjabatan,
+                    type: "GET",
+                    dataType: "JSON",
+                    success: function(data) {
+                        if(data.status)
+                        {
+                            reload_table_jabatan();
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Error Delete Data Pendidikan');
+                    }
+                });
+             }
+        });
+
+        function showperusahaanpencaker()
+        {
+            $('.tujuanpencaker').hide();
+            $('.identitaspencaker').hide();
+            $('.pendidikanpencaker').hide();
+            $('.pekerjaanpencaker').hide();
+            $('.perusahaanpencaker').toggle("display");
+            $('.jabatanpencaker').hide();
+            $('.datatambahanpencaker').hide();
+            $('.bahasapencaker').hide();
+
+            $('#tujuanpencaker').removeClass("active");
+            $('#identitaspencaker').removeClass("active");
+            $('#pendidikanpencaker').removeClass("active");
+            $('#pekerjaanpencaker').removeClass("active");
+            $('#jabatanpencaker').removeClass("active");
             $('#perusahaanpencaker').addClass("active");
             $('#bahasapencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
@@ -1041,12 +1274,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('.pendidikanpencaker').hide();
             $('.pekerjaanpencaker').hide();
             $('.perusahaanpencaker').hide();
+            $('.jabatanpencaker').hide();
             $('.bahasapencaker').hide();
             $('.datatambahanpencaker').toggle("display");
 
             $('#tujuanpencaker').removeClass("active");
             $('#identitaspencaker').removeClass("active");
             $('#pekerjaanpencaker').removeClass("active");
+            $('#jabatanpencaker').removeClass("active");
             $('#pendidikanpencaker').removeClass("active");
             $('#perusahaanpencaker').removeClass("active");
             $('#bahasapencaker').removeClass("active");
@@ -1061,9 +1296,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             success: function(data) {
                 //selected tujuan
                 if (data.tujuan == 'tujuan1')
+                {
                     $("#tujuan1").prop("checked", true);
-                else
+                    $('#perusahaanpencaker').addClass("hide");
+                }
+                else if(data.tujuan == 'tujuan2')
+                {
                     $("#tujuan2").prop("checked", true);
+                    $('#perusahaanpencaker').removeClass("hide");
+                }
+                else
+                {
+                    $('#perusahaanpencaker').addClass("hide");
+                }
 
                 //keterangan umum
                 $('[name="nopendaftaran"]').val(data.nopendaftaran);
@@ -1073,7 +1318,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 //selected jenkel
                 if (data.jenkel == 'L')
                     $("#jenkel1").prop("checked", true);
-                else
+                else if(data.jenkel == 'P')
                     $("#jenkel2").prop("checked", true);
 
                 $('[name="tempatlahir"]').val(data.tempatlahir);
@@ -1084,6 +1329,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 $('[name="alamat"]').val(data.alamat);
                 $('[name="kodepos"]').val(data.kodepos);
 
+                //jabatan yang diminati
+                //selected lokasi
+                if (data.lokasi_jabatan == 'DN')
+                    $("#lokasijabatan1").prop("checked", true);
+                else if(data.lokasi_jabatan == 'LN')
+                    $("#lokasijabatan2").prop("checked", true);
+
+                //Perusahaan yang dituju
+                $('[name="tujuan_perusahaan"]').val(data.tujuan_perusahaan);
+
+                //Keterangan tambahan
+                $('[name="catatan_pengantar"]').val(data.catatan_pengantar);
+
 
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -1092,7 +1350,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         });
 
         //menu navigasi form
-
         $('#tujuanpencaker').click(function() {
            showtujuanpencaker();
         });
@@ -1107,10 +1364,23 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         $('#bahasapencaker').click(function() {
             showbahasapencaker();
+
+            $('input[id="checkboxbahasalainnya"]').click(function(){
+                if($(this).prop("checked") == true){
+                     $('#textboxbahasalainnya').removeClass("hide");
+                }
+                else if($(this).prop("checked") == false){
+                    $('#textboxbahasalainnya').addClass("hide");
+                }
+            });
         });
 
         $('#pekerjaanpencaker').click(function() {
             showpekerjaanpencaker();
+        });
+
+         $('#jabatanpencaker').click(function() {
+            showjabatanpencaker();
         });
 
         $('#perusahaanpencaker').click(function() {
@@ -1123,6 +1393,30 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         $('#btnback1').click(function() {
             showtujuanpencaker();
+        });
+
+        $('#btnback2').click(function() {
+            showidentitaspencaker();
+        });
+
+        $('#btnback3').click(function() {
+            showpendidikanpencaker();
+        });
+
+        $('#btnback4').click(function() {
+            showbahasapencaker();
+        });
+
+        $('#btnback5').click(function() {
+            showpekerjaanpencaker();
+        });
+
+        $('#btnback6').click(function() {
+            showjabatanpencaker();
+        });
+
+        $('#btnback7').click(function() {
+            showperusahaanpencaker();
         });
 
         //TOMBOL PREV/NEXT
@@ -1138,6 +1432,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     if (data.status) //if success close modal and reload ajax table
                     {
                         showidentitaspencaker();
+                        if(data.tujuan == 'tujuan1')                            
+                            $('#perusahaanpencaker').addClass("hide");
+                        else                           
+                            $('#perusahaanpencaker').removeClass("hide");
                     }
 
                 },
@@ -1157,7 +1455,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 success: function(data) {
                     if (data.status) //if success close modal and reload ajax table
                     {
-                        showinfopendidikan();
+                        showpendidikanpencaker();
                     }
 
                 },
@@ -1165,6 +1463,26 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     alert('Error update data');
                 }
             });
+        });
+
+        $('#btnSave3').click(function() {
+            showbahasapencaker();
+        });
+
+        $('#btnSave4').click(function() {
+            showpekerjaanpencaker();
+        });
+
+        $('#btnSave5').click(function() {
+            showjabatanpencaker();
+        });
+
+        $('#btnSave6').click(function() {
+            showperusahaanpencaker();
+        });
+
+        $('#btnSave7').click(function() {
+            showdatatambahanpencaker();
         });
     });
 </script>
