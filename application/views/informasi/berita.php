@@ -191,16 +191,16 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <input type="text" class="form-control" name="judul" id="judul" required autofocus />
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <label for="tag">Tag</label>
-                                <input type="text" class="form-control" name="tag" id="tag" required autofocus />
-                            </div>
-                        </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="isi">Isi</label>
                                 <textarea name="isi" id="summernote" cols="30" rows="30"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="tag">Tag</label>
+                                <input type="text" class="form-control" name="tag" id="tag" required autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -215,6 +215,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     <button id="btnSubmit" type="submit" name="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
@@ -242,16 +243,16 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <input type="text" class="form-control" name="editjudul" id="editjudul" value="" />
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <label for="edittag">Tag</label>
-                                <input type="text" class="form-control" name="edittag" id="edittag" value="" />
-                            </div>
-                        </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="editisi">Isi</label>
                                 <textarea name="editisi" id="editberitasummernote" cols="30" rows="30"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="edittag">Tag</label>
+                                <input type="text" class="form-control" name="edittag" id="edittag" value="" />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -362,47 +363,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             //location.reload();
         });
 
-        $('#formInputberita').submit(function(e) {
-            e.preventDefault();
-            spinner.show();
-
-            var isiberita = document.getElementById("isiberita").value
-            var judulberita = $("input[name='judulberita']").val();
-            var slugberita = $("input[name='slugberita']").val();
-            var kategoriberita = $("select[name='kategoriberita']").val();
-            var slider = $("input[name='slider']").val();
-            var idberita = $("input[name='idberita']").val();
-
-            console.log(isiberita);
-            $.ajax({
-                url: "<?php echo site_url('admin/berita/updateberita') ?>",
-                type: "POST",
-                data: {
-                    judulberita: judulberita,
-                    isiberita: isiberita,
-                    slugberita: slugberita,
-                    kategoriberita: kategoriberita,
-                    slider: slider,
-                    idberita: idberita,
-                },
-
-                error: function() {
-                    console.log('Tidak berhasil simpan data');
-                },
-                success: function(data) {
-                    var objData = jQuery.parseJSON(data);
-
-                    if (objData.status) {
-                        alert("Berita Berhasil Diubah");
-                        spinner.hide();
-                        location.reload();
-                    } else {
-                        console.log('Gagal simpan');
-                    }
-                }
-            });
-
-        });
+        
 
         $(document).on('click', '.btnEditBerita', function() {
             $('#modalEditBerita').modal('show');

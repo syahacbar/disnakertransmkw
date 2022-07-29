@@ -168,120 +168,29 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
 
             <div class="row">
+            <?php foreach($listberita AS $berita) : ?>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-3">
                     <figure class="barto">
-                        <div class="image"><img src="https://i.imgur.com/sSuJsu8.jpg" alt="pr-sample23" /></div>
+                        <div class="image">
+                            <img src="<?php echo base_url('uploads/informasi/berita/').$berita->gambar;?>" alt="pr-sample23" />
+                        </div>
                         <figcaption>
-                            <div class="date"><span class="day">28</span><span class="month">Nov</span></div>
-                            <h3>
-                                Acer Aspire 7 Gaming Laptop</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            <div class="date">
+                                <span class="day">
+                                    <?php echo substr(mediumdate_indo(substr($berita->tgl_publikasi,0,10)),0,2);?>
+                                </span>
+                                <span class="month">
+                                    <?php echo substr(mediumdate_indo(substr($berita->tgl_publikasi,0,10)),3,3);?>
+                                </span>
+                            </div>
+                            <h3><?php echo $berita->judul;?></h3>
+                            <p><?php echo word_limiter(filter_var($berita->isi, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH),15); ?>
                             </p>
                         </figcaption>
                         <a href="<?php echo site_url(); ?>web/detailberita"></a>
                     </figure>
                 </div>
-                <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="barto">
-                        <div class="image"><img src="https://i.imgur.com/qNV4rMU.jpg" alt="pr-sample25" /></div>
-                        <figcaption>
-                            <div class="date"><span class="day">01</span><span class="month">Dec</span></div>
-                            <h3>Google May Face Antitrust Case</h3>
-                            <p>
-
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
-                        </figcaption>
-                        <a href="#"></a>
-                    </figure>
-                </div>
-                <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="barto hover">
-                        <div class="image"><img src="https://i.imgur.com/E0e8fLV.jpg" alt="pr-sample24" /></div>
-                        <figcaption>
-                            <div class="date"><span class="day">17</span><span class="month">Nov</span></div>
-                            <h3>
-                                RedmiBook, Mi Laptops Launch</h3>
-                            <p>
-
-                                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            </p>
-                        </figcaption>
-                        <a href="#"></a>
-                    </figure>
-                </div>
-                <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="barto">
-                        <div class="image"><img src="https://i.imgur.com/sSuJsu8.jpg" alt="pr-sample23" /></div>
-                        <figcaption>
-                            <div class="date"><span class="day">28</span><span class="month">Nov</span></div>
-                            <h3>
-                                Acer Aspire 7 Gaming Laptop</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </p>
-                        </figcaption>
-                        <a href="#"></a>
-                    </figure>
-                </div>
-                <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="barto">
-                        <div class="image"><img src="https://i.imgur.com/qNV4rMU.jpg" alt="pr-sample25" /></div>
-                        <figcaption>
-                            <div class="date"><span class="day">01</span><span class="month">Dec</span></div>
-                            <h3>Google May Face Antitrust Case</h3>
-                            <p>
-
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
-                        </figcaption>
-                        <a href="#"></a>
-                    </figure>
-                </div>
-                <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="barto hover">
-                        <div class="image"><img src="https://i.imgur.com/E0e8fLV.jpg" alt="pr-sample24" /></div>
-                        <figcaption>
-                            <div class="date"><span class="day">17</span><span class="month">Nov</span></div>
-                            <h3>
-                                RedmiBook, Mi Laptops Launch</h3>
-                            <p>
-
-                                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            </p>
-                        </figcaption>
-                        <a href="#"></a>
-                    </figure>
-                </div>
-                <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="barto">
-                        <div class="image"><img src="https://i.imgur.com/qNV4rMU.jpg" alt="pr-sample25" /></div>
-                        <figcaption>
-                            <div class="date"><span class="day">01</span><span class="month">Dec</span></div>
-                            <h3>Google May Face Antitrust Case</h3>
-                            <p>
-
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
-                        </figcaption>
-                        <a href="#"></a>
-                    </figure>
-                </div>
-                <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="barto hover">
-                        <div class="image"><img src="https://i.imgur.com/E0e8fLV.jpg" alt="pr-sample24" /></div>
-                        <figcaption>
-                            <div class="date"><span class="day">17</span><span class="month">Nov</span></div>
-                            <h3>
-                                RedmiBook, Mi Laptops Launch</h3>
-                            <p>
-
-                                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            </p>
-                        </figcaption>
-                        <a href="#"></a>
-                    </figure>
-                </div>
-
+            <?php endforeach; ?>
             </div>
         </div>
     </section><!-- End Portfolio Section -->

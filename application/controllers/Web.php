@@ -59,6 +59,7 @@ class Web extends CI_Controller
 
 	public function berita()
 	{
+		$this->page_data['listberita'] = $this->informasi_model->get_berita();
 		$this->page_data['page']->menu = 'informasi';
 		$this->page_data['page']->title = 'Berita';
 		$this->load->view('web/berita', $this->page_data);
