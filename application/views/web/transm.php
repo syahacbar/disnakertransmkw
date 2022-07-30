@@ -129,6 +129,17 @@
             font-size: 34px;
             color: #37517e;
         }
+
+
+        .content h3 {
+            font-weight: 400;
+            font-size: 34px;
+            color: #fff !important;
+            background-color: #37517e;
+            padding: 10px 20px;
+            -webkit-clip-path: polygon(0% 0%, 95% 0, 100% 50%, 100% 100%, 0% 100%);
+            clip-path: polygon(0% 0%, 95% 0, 100% 50%, 100% 100%, 0% 100%);
+        }
     </style>
 </head>
 
@@ -225,7 +236,7 @@
 
                 <div class="row">
 
-                    <div class="col-lg-8 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+                    <div class="col-lg-8 d-flex flex-column justify-content-center align-items-stretch">
 
                         <div class="content">
                             <h3 class="mt-3">Bidang Perencanaan dan Pembangunan Kawasan Transmigrasi</h3>
@@ -250,8 +261,8 @@
 
                     </div>
 
-                    <div class="col-lg-4 d-flex align-items-center order-1 order-lg-2">
-                        <img class="img w-100" src="<?php echo base_url(); ?>/assets/frontend/assets/img/develpment-planning.png" data-aos="zoom-in" data-aos-delay="150">&nbsp;
+                    <div class="col-lg-4 d-flex align-items-center">
+                        <img class="w-100" src="<?php echo base_url(); ?>/assets/frontend/assets/img/develpment-planning.png">
                     </div>
                 </div>
 
@@ -488,7 +499,11 @@
             <div class="container-fluid" data-aos="fade-up">
 
                 <div class="row">
-                    <div class="col-lg-4 align-items-stretch img" style='background-image: url("assets/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+                    <div class="col-lg-4 d-flex align-items-center justify-content-center">
+                        <img class="w-100 align-items-stretch" src="https://cdn.dribbble.com/users/3683190/screenshots/6613666/skycap_maps_for_simulation.gif">
+                    </div>
+
+                    <!-- <div class="col-lg-4 align-items-stretch img" style='background-image: url("assets/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div> -->
                     <div class="col-lg-8 d-flex flex-column justify-content-center align-items-stretch">
 
                         <div class="content">
@@ -511,14 +526,6 @@
                                             <li>pernyiapan aparatur, peralatan dan perlengkapan serta pendanaan untuk pelaksanaan tugas dan kegiatan seksi pendaftaran, seleksi dan penempatan transmigrasi;</li>
                                             <li>pemutahiran data calon transmigran lokal dan transmigrasi umum;</li>
                                             <li>sosialisasi dan penyuluhan transmigrasi;</li>
-                                            <li>pengurusan bahan naskah kerja sama antar daerah (NSKAD) transmigrasi antar daerah dengan provinsi, kabupaten/kota tujuan penempatan transmigrasi;</li>
-                                            <li>survei lokasi calon transmigrasi kabupaten dan provinsi daerah tujuan transmigrasi;</li>
-                                            <li>penyelenggaraan urusan akomodasi, pelayanan konsumsi dan kesehatan calon transmigran selama di penampungan;</li>
-                                            <li>penyelenggaraan urusan transportasi pelayanan angkutan dari daerah asal ke penampungan di daerah dan kepenampungan Provinsi Nusa Tenggara Barat;</li>
-                                            <li>pengurusan perbekalan dan perawatan kesehatan bagi transmigran selama, di penampungan dan diperjalanan;</li>
-                                            <li>pengurusan dan pembagian pembekalan peralatan atau obat-obatan bagi calon transmigran;</li>
-                                            <li>pengawalan calon transmigran ke daerah masing-masing tujuan transmigrasi;</li>
-                                            <li>pengoordinasian tugas dan kegiatan seksi pendaftaran, seleksi dan penempatan transmigrasi di lingkup bidang transmigrasi dan melaksanakan tugas kedinasan lainnya yang diberikan atasan.</li>
                                         </ol>
                                         </p>
                                     </div>
@@ -628,7 +635,7 @@
                     <div class="col-lg-4 col-md-6 portfolio-item rapatteknis">
                         <div class="portfolio-img">
                             <a class="lsb-preview" href="#">
-                                <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/transmigrasi/Picture1.png" class="img-fluid">
+                                <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/transmigrasi/Picture1.png" class="img-fluid w-100">
                             </a>
                         </div>
                     </div>
@@ -636,7 +643,7 @@
                     <div class="col-lg-4 col-md-6 portfolio-item penyuluhan">
                         <div class="portfolio-img">
                             <a class="lsb-preview" href="#">
-                                <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture5.png" class="img-fluid">
+                                <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture5.png" class="img-fluid w-100">
                             </a>
                         </div>
                     </div>
@@ -644,7 +651,7 @@
                     <div class="col-lg-4 col-md-6 portfolio-item rapatteknis">
                         <div class="portfolio-img">
                             <a class="lsb-preview" href="#">
-                                <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture1.png" class="img-fluid">
+                                <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture1.png" class="img-fluid w-100">
                             </a>
                         </div>
                     </div>
@@ -652,7 +659,7 @@
                     <div class="col-lg-4 col-md-6 portfolio-item rapatkoordinasi">
                         <div class="portfolio-img">
                             <a class="lsb-preview" href="#">
-                                <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture4.png" class="img-fluid">
+                                <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture4.png" class="img-fluid w-100">
                             </a>
                         </div>
                     </div>
@@ -660,7 +667,7 @@
                     <div class="col-lg-4 col-md-6 portfolio-item penyuluhan">
                         <div class="portfolio-img">
                             <a class="lsb-preview" href="#">
-                                <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture6.png" class="img-fluid">
+                                <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture6.png" class="img-fluid w-100">
                             </a>
                         </div>
                     </div>
@@ -668,7 +675,7 @@
                     <div class="col-lg-4 col-md-6 portfolio-item rapatteknis">
                         <div class="portfolio-img">
                             <a class="lsb-preview" href="#">
-                                <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture1.png" class="img-fluid">
+                                <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture1.png" class="img-fluid w-100">
                             </a>
                         </div>
                     </div>
@@ -676,7 +683,7 @@
                     <div class="col-lg-4 col-md-6 portfolio-item rapatkoordinasi">
                         <div class="portfolio-img">
                             <a class="lsb-preview" href="#">
-                                <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture2.png" class="img-fluid">
+                                <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture2.png" class="img-fluid w-100">
                             </a>
                         </div>
                     </div>
@@ -685,7 +692,7 @@
                 <div class="col-lg-4 col-md-6 portfolio-item rapatkoordinasi">
                     <div class="portfolio-img">
                         <a class="lsb-preview" href="#">
-                            <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture3.png" class="img-fluid">
+                            <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture3.png" class="img-fluid w-100">
                         </a>
                     </div>
                 </div>
@@ -693,7 +700,7 @@
                 <div class="col-lg-4 col-md-6 portfolio-item penyuluhan">
                     <div class="portfolio-img">
                         <a class="lsb-preview" href="#">
-                            <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture7.png" class="img-fluid">
+                            <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture7.png" class="img-fluid w-100">
                         </a>
                     </div>
                 </div>

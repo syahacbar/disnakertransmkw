@@ -129,6 +129,16 @@
             font-size: 34px;
             color: #37517e;
         }
+
+        .content h3 {
+            font-weight: 400;
+            font-size: 34px;
+            color: #fff !important;
+            background-color: #37517e;
+            padding: 10px 20px;
+            -webkit-clip-path: polygon(0% 0%, 95% 0, 100% 50%, 100% 100%, 0% 100%);
+            clip-path: polygon(0% 0%, 95% 0, 100% 50%, 100% 100%, 0% 100%);
+        }
     </style>
 </head>
 
@@ -275,7 +285,7 @@
                 <div class="row">
                     <!-- <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("<?php // echo base_url(); 
                                                                                                                         ?>/assets/frontend/assets/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div> -->
-                    <div class="col-lg-4 align-items-stretch img" style="background-image: url(https://www.clipartmax.com/png/middle/292-2925341_our-process-web-development-vector-png.png);" data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+                    <div class="col-lg-4 align-items-stretch img" style="background-image: url(https://opensourcedworkplace.com/wp-content/uploads/2021/08/27279797news_employee_relations_background_and_featured_image-3-1024x535.png);" data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
 
                     <div class="col-lg-8 d-flex flex-column justify-content-center align-items-stretch ">
 
@@ -358,7 +368,7 @@
 
                     </div>
 
-                    <div class="col-lg-4 align-items-stretch order-1 order-lg-2 img" style='background-image: url("assets/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+                    <div class="col-lg-4 align-items-stretch order-1 order-lg-2 img" style='background-image: url("<?php echo base_url(); ?>/assets/frontend/assets/img/pekerjaasing.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
                 </div>
 
             </div>
