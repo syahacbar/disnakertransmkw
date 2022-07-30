@@ -193,14 +193,7 @@
                     </p>
                 </div>
 
-                <div class="col-lg-12 mt-4 mb-4">
-                    <div class="alert alert-success" role="alert">
-                        <h4 class="alert-heading">Perhatian!</h4>
-                        <p>Perbup Restribusi Imta telah berganti nama menjadi TPTKA sesuai Peraturan Pemerintah Nomor 34 Tahun 2021 dan Peraturan Daerah masih dibahas oleh Balegda Tingkat Provinsi Papua Barat.</p>
-                        <hr>
-                        <!-- <p class="mb-0">.</p> -->
-                    </div>
-                </div>
+               
 
             </div>
         </section>
@@ -269,9 +262,6 @@
                         </div>
 
                     </div>
-
-                    <!-- <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("<?php // echo base_url(); 
-                                                                                                                        ?>/assets/frontend/assets/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div> -->
                     <div class="col-lg-4 align-items-stretch order-1 order-lg-2 img" style="background-image: url(https://img.freepik.com/premium-vector/architects-doing-building-plan_644411-3.jpg?w=2000);" data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
                 </div>
 
@@ -283,8 +273,6 @@
             <div class="container-fluid" data-aos="fade-up">
 
                 <div class="row">
-                    <!-- <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("<?php // echo base_url(); 
-                                                                                                                        ?>/assets/frontend/assets/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div> -->
                     <div class="col-lg-4 align-items-stretch img" style="background-image: url(https://opensourcedworkplace.com/wp-content/uploads/2021/08/27279797news_employee_relations_background_and_featured_image-3-1024x535.png);" data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
 
                     <div class="col-lg-8 d-flex flex-column justify-content-center align-items-stretch ">
@@ -318,7 +306,18 @@
 
             </div>
         </section><!-- End Why Us Section -->
+ <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
 
+        <div class="row">
+          <div class="col-lg-9 text-center text-lg-start">
+            <h3> UNTUK PERBUP  RESTRIBUSI IMTA TELAH BERGANTI NAMA MENJADI RPTKA SESUAI PERATURAN PEMERINTAH NOMOR 34 TAHUN 2021, DAN UNTUK PERATURAN DAERAH MASIH DIBAHAS OLEH BALEGDA TINGKAT PROVINSI PAPUA BARAT  </h3>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
 
         <!-- ======= Why Us Section ======= -->
         <section id="why-us" class="why-us section-bg">
