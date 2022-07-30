@@ -57,26 +57,21 @@ class Web extends CI_Controller
 		$this->load->view('web/profil', $this->page_data);
 	}
 
-	public function berita($slug=NULL)
+	public function berita($slug = NULL)
 	{
-		if($slug!=NULL)
-		{
+		if ($slug != NULL) {
 			//sidebar tags di halaman detail berita
 			$querytags = $this->db->query("SELECT tags FROM informasi")->result();
 			$tags_sidebar = array();
-			foreach($querytags AS $qt)
-			{
+			foreach ($querytags as $qt) {
 				//array_push($tags_sidebar, $qt->tags);
-				$tagsarray = explode(",",$qt->tags);
-				foreach($tagsarray AS $tag)
-				{
+				$tagsarray = explode(",", $qt->tags);
+				foreach ($tagsarray as $tag) {
 					//array_push($tags_sidebar, $tag);
-					if (!in_array($tag, $tags_sidebar)) 
-					{	
+					if (!in_array($tag, $tags_sidebar)) {
 						array_push($tags_sidebar, $tag);
 					}
 				}
-				
 			}
 
 			//end
@@ -87,13 +82,12 @@ class Web extends CI_Controller
 			$this->page_data['page']->menu = 'informasi';
 			$this->page_data['page']->title = $detailberita->judul;
 			$this->load->view('web/detailberita', $this->page_data);
-			
 		} else {
 			$this->page_data['listberita'] = $this->informasi_model->get_berita();
 			$this->page_data['page']->menu = 'informasi';
 			$this->page_data['page']->title = 'Berita';
 			$this->load->view('web/berita', $this->page_data);
-		}		
+		}
 	}
 
 	public function tag($tag)
@@ -103,7 +97,6 @@ class Web extends CI_Controller
 		$this->page_data['page']->menu = 'informasi';
 		$this->page_data['page']->title = 'Berita';
 		$this->load->view('web/tags', $this->page_data);
-
 	}
 
 	public function pengumuman()
@@ -124,13 +117,21 @@ class Web extends CI_Controller
 	{
 		$this->page_data['page']->menu = 'bidang';
 		$this->page_data['page']->title = 'Transmigrasi';
-		$this->load->view('web/transmigrasi_new', $this->page_data);
+		$this->load->view('web/transm', $this->page_data);
 	}
+
+	public function transm()
+	{
+		$this->page_data['page']->menu = 'bidang';
+		$this->page_data['page']->title = 'Transmigrasi';
+		$this->load->view('web/transm', $this->page_data);
+	}
+
 	public function tenagakerja()
 	{
 		$this->page_data['page']->menu = 'bidang';
 		$this->page_data['page']->title = 'Tenaga Kerja';
-		$this->load->view('web/tenagakerja', $this->page_data);
+		$this->load->view('web/tenaker', $this->page_data);
 	}
 
 	public function account_registration()

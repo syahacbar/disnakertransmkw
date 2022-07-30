@@ -26,8 +26,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
             <div class="row content">
                 <div class="col-lg-6">
-                    <h4>Visi</h4>
-                    <p class="text-center">"Mempersiapkan Tenaga Kerja Mandiri Dan Membangun Permukiman Layak Huni Menuju Masyarakat Manokwari Sejahtera"
+                    <h4 class="text-center">Visi</h4>
+                    <p class="text-center blockquote text-right mt-4"><strong><em>"Mempersiapkan Tenaga Kerja Mandiri Dan Membangun Permukiman Layak Huni Menuju Masyarakat Manokwari Sejahtera"</em></strong>
                     </p>
 
                 </div>
@@ -51,7 +51,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 
     <!-- ======= About Us Section ======= -->
-    <section id="tupoksi" class="about tupoksi mt-4">
+    <section id="tupoksi" class="about section-bg tupoksi mt-4">
         <div class="container" data-aos="fade-up">
 
             <div class="section-title mt-4">
@@ -62,7 +62,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="col-lg-6">
                     <h4>Tugas Pokok</h4>
                     <p>
-                        Melaksanakan Penyusunan Pelaksanaan Kebijakan Daerah Di Bidang Ketenagakerjaan dan Transmigrasi Serta Tugas-Tugas Lainnya Yang Diberikan Oleh Bupati
+                        Melaksanakan Penyusunan Pelaksanaan Kebijakan Daerah di Bidang Ketenagakerjaan dan Transmigrasi Serta Tugas-Tugas Lainnya yang Diberikan Oleh Bupati.
                     </p>
 
                 </div>
@@ -92,7 +92,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="section-title mt-4">
                 <h2>Struktur Organisasi</h2>
                 <a class="lsb-preview" href="#">
-                    <img class="w-100 lsb-preview" src="<?php echo base_url('uploads/profil/'); ?>STRUKTUR_DISNAKERTRANS.jpg" alt="Struktur Organisasi">
+                    <img class="w-100 lsb-preview border rounded" src="<?php echo base_url('uploads/profil/'); ?>STRUKTUR_DISNAKERTRANS.jpg" alt="Struktur Organisasi">
                 </a>
             </div>
 
