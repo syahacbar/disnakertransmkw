@@ -51,7 +51,7 @@
 
             </div> -->
 
-            <div class="row">
+            <div class="row border p-4 rounded py-5">
                 <form action="<?php echo site_url('web/account_registration'); ?>" method="post" role="form" class="">
                     <div class="row">
                         <div class="mb-3 col-md-6">
@@ -85,7 +85,9 @@
                             <input type="password" class="form-control" id="password_confirm" name="password_confirm">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary text-center w-25">Daftar</button>
+                    <div class="d-flex justify-content-center align-items-center mt-4">
+                        <button type="submit" class="btn btn-primary text-center w-25">Daftar</button>
+                    </div>
                 </form>
             </div>
 

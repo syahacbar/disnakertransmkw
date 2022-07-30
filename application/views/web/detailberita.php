@@ -80,7 +80,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         color: #fff;
         text-decoration: none;
         margin: 10px 0;
+    }
 
+    .tag li a:hover {
+        color: #007bff;
     }
 
     .tag li {
@@ -210,6 +213,29 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     .isiberita {
         padding: 0 50px !important;
     }
+
+    .row.tagsidebar ul {
+        list-style: none;
+        display: block;
+        width: 100%;
+    }
+
+    .row.tagsidebar ul li {
+        width: auto;
+        display: inline-flex;
+        background-color: #283a5a;
+        margin: 4px 0;
+    }
+
+    .row.tagsidebar ul li a {
+        color: #fff;
+        padding: 5px 15px;
+        text-decoration: none;
+    }
+
+    .row.tagsidebar ul li a:hover {
+        color: #007bff;
+    }
 </style>
 
 <main id="main">
@@ -218,9 +244,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-9 isiberita">
                     <div class="d-flex flex-row"></div>
-                    <h2 class="text-capitalize"><?php echo $detailberita->judul;?></h2>
+                    <h2 class="text-capitalize"><?php echo $detailberita->judul; ?></h2>
                     <p class="text-primary">
-                        <?php echo $detailberita->tgl_publikasi;?>
+                        <?php echo $detailberita->tgl_publikasi; ?>
                     </p>
                     <div class="row news-card mt-3">
                         <div class="col-sm-12 col-md-12 col-lg-12 mb-4 mt-3">
@@ -228,7 +254,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
                             <div class="news-feed-text">
-                                <?php echo $detailberita->isi;?>
+                                <?php echo $detailberita->isi; ?>
                             </div>
                         </div>
 
@@ -239,13 +265,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <p>Tag:</p>
                                         <ul>
                                             <li>
-                                            <?php 
+                                                <?php
                                                 $tags = $detailberita->tags;
-                                                $tagsarray = explode(",",$tags);
-                                                foreach($tagsarray AS $tag) : 
-                                            ?>
-                                                <a href="<?php echo site_url('tag/').trim($tag);?>"><?php echo trim($tag);?></a>
-                                            <?php endforeach;?>
+                                                $tagsarray = explode(",", $tags);
+                                                foreach ($tagsarray as $tag) :
+                                                ?>
+                                                    <a href="<?php echo site_url('tag/') . trim($tag); ?>"><?php echo trim($tag); ?></a>
+                                                <?php endforeach; ?>
                                             </li>
                                         </ul>
                                     </div>
@@ -339,15 +365,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <div class="row sidebar">
                                 <h5>Tags</span>
                             </div>
-                            <div class="row">
+                            <div class="row tagsidebar">
                                 <ul>
-                                <?php foreach($tags_sidebar AS $x): ?>
-                                    <a href="<?php echo site_url('tag/').$x;?>"><?php echo $x;?></a>
-                                <?php endforeach;?>
+                                    <?php foreach ($tags_sidebar as $x) : ?>
+                                        <li><a href="<?php echo site_url('tag/') . $x; ?>"><?php echo $x; ?></a></li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
