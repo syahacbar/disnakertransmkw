@@ -140,8 +140,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             </thead>
                             <tbody>
                                 <?php
-                                    $no = 1;
-                                    foreach ($informasi as $info) :
+                                $no = 1;
+                                foreach ($informasi as $info) :
                                 ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
@@ -151,7 +151,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                             <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange="updateStatusberita(<?php echo $info->id; ?>,$(this).is(':checked'))" <?php echo ($info->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
                                         </td>
                                         <td>
-                                            <a target="_blank" href="" data-id="<?php echo $info->id; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
+                                            <a target="_blank" href="<?php site_url() . '/berita/' . $info->slug; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
                                             <a href="javascript:void(0)" data-id="<?php echo $info->id; ?>" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
                                             <a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="<?php echo $info->id; ?>"><i class="fas fa-trash"></i></a>
                                         </td>
@@ -189,12 +189,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <div class="form-group">
                                 <label for="judul">Judul Artikel</label>
                                 <input type="text" class="form-control" name="judul" id="judul" required autofocus />
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label for="tag">Tag</label>
-                                <input type="text" class="form-control" name="tag" id="tag" required autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -282,9 +276,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     </div>
 </div>
 
-<!-- Dropzone JS -->
-<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-
 <?php include viewPath('includes/footer'); ?>
 
 <script type="text/javascript">
@@ -306,15 +297,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         });
     }
 
-    function editberita(id)
-    {
+    function editberita(id) {
         $.ajax({
-            url: "<?php echo site_url('informasi/get_berita_by_id') ?>/"+ id,
+            url: "<?php echo site_url('informasi/get_berita_by_id') ?>/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
                 $('[name="editjudul"]').val(data.judul);
-                $('[name="edittag"]').val(data.tag);
+                $('[name="edittag"]').val(data.tags);
                 //$('[name="editisi"]').val(data.isi);
                 $('[name="editisi"]').summernote("code", data.isi);
             },
@@ -369,7 +359,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             //location.reload();
         });
 
-        
+
 
         $(document).on('click', '.btnEditBerita', function() {
             $('#modalEditBerita').modal('show');
