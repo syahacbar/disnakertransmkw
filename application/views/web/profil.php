@@ -23,6 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="row content">
                 <div class="col-lg-6">
                     <h4 class="text-center">Visi</h4>
+                    <i class="fa fa-quote-left"></i>
                     <p class="text-center blockquote text-right mt-4"><strong><em>"Mempersiapkan Tenaga Kerja Mandiri dan Membangun Permukiman Layak Huni Menuju Masyarakat Manokwari Sejahtera"</em></strong>
                     </p>
 

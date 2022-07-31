@@ -204,7 +204,7 @@
           <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
             <h3>Statistik Pencari Kerja</h3>
             <p class="fst-italic">
-              Berikut ini ditampilkan statistik pencari kerja di Kab.  Manokwari berdasarkan pendidikan terakhir.
+              Berikut ini ditampilkan statistik pencari kerja di Kab. Manokwari berdasarkan pendidikan terakhir.
             </p>
 
             <div class="skills-content">
@@ -316,8 +316,8 @@
           <h2>Galeri</h2>
         </div>
         <?php
-          $tenaker = directory_map('./assets/frontend/assets/img/tenagakerja',1);
-          $trans = directory_map('./assets/frontend/assets/img/transmigrasi',1);
+        $tenaker = directory_map('./assets/frontend/assets/img/tenagakerja', 1);
+        $trans = directory_map('./assets/frontend/assets/img/transmigrasi', 1);
         ?>
 
         <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
@@ -327,31 +327,28 @@
         </ul>
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-          <?php foreach($tenaker AS $ten) : ?>
-          <div class="col-lg-4 col-md-6 portfolio-item filter-tenaker">
-            <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/tenagakerja/').$ten; ?>" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4></h4>
-              <p></p>
-              <a href="<?php echo base_url('assets/frontend/assets/img/tenagakerja/').$ten; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          <?php foreach ($tenaker as $ten) : ?>
+            <div class="col-lg-4 col-md-6 portfolio-item filter-tenaker">
+              <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/tenagakerja/') . $ten; ?>" class="img-fluid" alt=""></div>
+              <div class="portfolio-info">
+                <h4></h4>
+                <p></p>
+                <a href="<?php echo base_url('assets/frontend/assets/img/tenagakerja/') . $ten; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bx bx-plus"></i></a>
+                <a href="#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
             </div>
-          </div>
-        <?php endforeach; ?>
-          <?php foreach($trans AS $tra) : ?>
-          <div class="col-lg-4 col-md-6 portfolio-item filter-trans">
-            <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/').$tra?>" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4></h4>
-              <p></p>
-              <a href="<?php echo base_url('assets/frontend/assets/img/transmigrasi/').$tra?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          <?php endforeach; ?>
+          <?php foreach ($trans as $tra) : ?>
+            <div class="col-lg-4 col-md-6 portfolio-item filter-trans">
+              <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/') . $tra ?>" class="img-fluid" alt=""></div>
+              <div class="portfolio-info">
+                <h4></h4>
+                <p></p>
+                <a href="<?php echo base_url('assets/frontend/assets/img/transmigrasi/') . $tra ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bx bx-plus"></i></a>
+                <a href="#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              </div>
             </div>
-          </div>
-        <?php endforeach; ?>
-        
-
-          
+          <?php endforeach; ?>
 
         </div>
 

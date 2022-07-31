@@ -37,6 +37,8 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/plugins/lightbox-previewer/src/index.css" />
     <script src="<?php echo base_url(); ?>/assets/plugins/lightbox-previewer/dist/img-previewer.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome-ie7.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.1/css/font-awesome-ie7.css"></script>
     <style>
         header#header {
             background: #283a5a !important;
