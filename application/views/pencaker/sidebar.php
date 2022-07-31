@@ -22,7 +22,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <i class="fas fa-id-card nav-icon "></i>Keterangan Umum</a>
 
         <a id="pendidikanpencaker" class="list-group-item list-group-item-action <?php echo ($page->submenu == 'pendidikan_pencaker') ? 'active' : '' ?>">
-            <i class="fas fa-graduation-cap nav-icon "></i>Pendidikan</a>
+            <i class="fas fa-graduation-cap nav-icon "></i>Pendidikan Formal </a>
 
         <a id="bahasapencaker" class="list-group-item list-group-item-action <?php echo ($page->submenu == 'bahasa_pencaker') ? 'active' : '' ?>">
             <i class="fas fa-language nav-icon "></i>Keterampilan Bahasa</a>

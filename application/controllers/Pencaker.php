@@ -26,8 +26,14 @@ class Pencaker extends MY_Controller
 		$this->page_data['page']->menu = 'doc_pencaker';
 		$this->load->view('printout/formulirak1', $this->page_data);
 	}
-	function kartukuning_1()
+
+    
+	function kartukuning_1($users_id)
 	{
+        $users_id = logged('id');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+
+        $this->page_data['pencaker'] = $this->pencaker_model->get_by_users_id($users_id);
 		$this->page_data['page']->title = 'Printout Form AK-1';
 		$this->page_data['page']->menu = 'doc_pencaker';
 		$this->load->view('printout/kartukuning1', $this->page_data);
@@ -316,6 +322,18 @@ class Pencaker extends MY_Controller
         echo json_encode($res);
     }
 
+    function get_bahasa_pencaker()
+    {
+        $users_id = logged('id');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+
+        $query  = $this->db->query("SELECT * FROM keterampilan_bahasa WHERE pencaker_id='$pencaker_id'");
+        $bahasa = $query->result();
+        $data['bahasa'] = $bahasa;
+        $data['hasil'] = "sukses";
+        echo json_encode($data);
+    }
+
     function update1()
     {
         $users_id = logged('id');
@@ -328,7 +346,6 @@ class Pencaker extends MY_Controller
         {        	
 	    	$res['hasil'] = 'sukses';
 	        $res['status'] = TRUE;
-            $res['tujuan'] = $this->input->post('tujuan');
         }     
         else
         {        	
@@ -369,6 +386,103 @@ class Pencaker extends MY_Controller
 
         echo json_encode($res);
     }
+
+    function update4()
+    {
+        $users_id = logged('id');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+
+        $ket_bahasa = $this->input->post('ket_bahasa');
+        for($i=0;$i<count($ket_bahasa);$i++){
+            $bahasa = $ket_bahasa[$i];
+            $this->db->insert('keterampilan_bahasa',array('bahasa'=>$bahasa,'pencaker_id'=>$pencaker_id));
+        }
+
+        $cb_bhslain = $this->input->post('checkboxbahasalainnya');
+        $txt_bhslain = $this->input->post('txt_bahasa_lainnya');
+        if($cb_bhslain == 'bahasa_lain')
+        {
+            $this->pencaker_model->update_by_users_id($users_id, array('bahasa_lainnya'=>$txt_bhslain));
+        }
+        else
+        {
+            $this->pencaker_model->update_by_users_id($users_id, array('bahasa_lainnya'=>''));
+        }
+
+        
+        $res['hasil'] = 'sukses';
+        $res['status'] = TRUE;
+        
+        echo json_encode($res);
+    }
+
+    function update6()
+    {
+        $users_id = logged('id');
+        $data = array(
+            'lokasi_jabatan' => $this->input->post('lokasi_jabatan'),
+        );
+
+        $update = $this->pencaker_model->update_by_users_id($users_id, $data);  
+        if($update)
+        {           
+            $res['hasil'] = 'sukses';
+            $res['status'] = TRUE;
+        }     
+        else
+        {           
+            $res['hasil'] = 'gagal';
+            $res['status'] = FALSE;
+        }
+
+        echo json_encode($res);
+    }
+
+    function update7()
+    {
+        $users_id = logged('id');
+        $data = array(
+            'tujuan_perusahaan' => $this->input->post('tujuan_perusahaan'),
+        );
+
+        $update = $this->pencaker_model->update_by_users_id($users_id, $data);  
+        if($update)
+        {           
+            $res['hasil'] = 'sukses';
+            $res['status'] = TRUE;
+        }     
+        else
+        {           
+            $res['hasil'] = 'gagal';
+            $res['status'] = FALSE;
+        }
+
+        echo json_encode($res);
+    }
+
+    function update8()
+    {
+        $users_id = logged('id');
+        $data = array(
+            'catatan_pengantar' => $this->input->post('catatan_pengantar'),
+        );
+
+        $update = $this->pencaker_model->update_by_users_id($users_id, $data);  
+        if($update)
+        {           
+            $res['hasil'] = 'sukses';
+            $res['status'] = TRUE;
+            $this->session->set_flashdata('alert-type', 'success');
+            $this->session->set_flashdata('alert', 'Profile has been Updated Successfully');
+        }     
+        else
+        {           
+            $res['hasil'] = 'gagal';
+            $res['status'] = FALSE;
+        }
+
+        echo json_encode($res);
+    }
     
     function dok_pencaker()
     {
@@ -376,13 +490,9 @@ class Pencaker extends MY_Controller
 
         $users_id = logged('id');
         $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
-        $query  = $this->db->query("SELECT d.*,
-                    (SELECT pd.namadokumen FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS namadokumen,
-                    (SELECT pd.tgl_upload FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS tgl_upload,
-                    (SELECT pd.id FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS pencakerdokumen_id
-                    FROM dokumen d");
+        
 
-        $pencaker_dokumen = $query->result();
+        $pencaker_dokumen =  $this->pencaker_model->pencaker_doc($pencaker_id);
         $this->page_data['pencaker_dokumen'] = $pencaker_dokumen;
         $this->page_data['page']->title = 'Dokumen Pencari Kerja';
         $this->page_data['page']->menu = 'doc_pencaker';

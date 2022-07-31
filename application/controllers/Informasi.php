@@ -11,6 +11,12 @@ class Informasi extends MY_Controller
 		// $this->page_data['page']->menu = 'starter';
 	}
 
+	public function slug($title)
+	{
+		$slug = url_title($title, 'dash', true);
+		return $slug;
+	}
+
 	public function berita()
 	{
 		$this->page_data['page']->title = 'Berita';
@@ -54,8 +60,9 @@ class Informasi extends MY_Controller
 			$status = $this->input->post('status');
 			$tgl_publikasi = date("Y-m-d H:i:s");
 			$users_id = $users_id;
+			$slug = $this->slug($judul);
 
-			$this->db->insert('informasi', array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'status' => $status, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id));
+			$this->db->insert('informasi', array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'status' => $status, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
 		}
 	}
 
@@ -76,7 +83,7 @@ class Informasi extends MY_Controller
 			$statusberita = 0;
 		}
 
-		if ($this->informasi_model->updatestatusberita($id, array('status' => $statusberita))) {
+		if ($this->informasi_model->updateberita($id, array('status' => $statusberita))) {
 			$data = array(
 				'status' => TRUE,
 				'info' => 'Berhasil ubah status berita'
@@ -91,6 +98,30 @@ class Informasi extends MY_Controller
 		echo json_encode($data);
 	}
 
+	public function update_berita()
+	{
+		$id = $this->input->post('idberita');
+
+		$users_id = logged('id');
+		// $config['upload_path']   = FCPATH.'uploads/informasi/berita';
+		$config['allowed_types'] = 'gif|jpg|png|ico';
+		$this->load->library('upload', $config);
+
+		// if($this->upload->do_upload('thumbnailberita')){
+		if ($this->uploadlib->uploadImage('thumbnailberita', '/informasi/berita')) {
+			$gambar = $this->upload->data('file_name');
+			$kategori = "Berita";
+			$judul = $this->input->post('judul');
+			$isi = $this->input->post('isi');
+			$tag = $this->input->post('tag');
+			$status = $this->input->post('status');
+			$tgl_publikasi = date("Y-m-d H:i:s");
+			$users_id = $users_id;
+			$slug = $this->slug($judul);
+
+			$this->informasi_model->updateberita($id, array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
+		}
+	}
 
 	public function deleteberita()
 	{
@@ -141,8 +172,9 @@ class Informasi extends MY_Controller
 			$status = $this->input->post('status');
 			$tgl_publikasi = date("Y-m-d H:i:s");
 			$users_id = $users_id;
+			$slug = $this->slug($judul);
 
-			$this->db->insert('informasi', array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'status' => $status, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id));
+			$this->db->insert('informasi', array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'status' => $status, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
 		}
 	}
 
@@ -177,6 +209,30 @@ class Informasi extends MY_Controller
 
 		echo json_encode($data);
 	}
+
+	public function update_pengumuman()
+	{
+		$id = $this->input->post('idpengumuman');
+
+		$users_id = logged('id');
+		$config['allowed_types'] = 'gif|jpg|png|ico';
+		$this->load->library('upload', $config);
+
+		if ($this->uploadlib->uploadImage('thumbnailpengumuman', '/informasi/pengumuman')) {
+			$gambar = $this->upload->data('file_name');
+			$kategori = "Pengumuman";
+			$judul = $this->input->post('judul');
+			$isi = $this->input->post('isi');
+			$tag = $this->input->post('tag');
+			$status = $this->input->post('status');
+			$tgl_publikasi = date("Y-m-d H:i:s");
+			$users_id = $users_id;
+			$slug = $this->slug($judul);
+
+			$this->informasi_model->updatepengumuman($id, array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
+		}
+	}
+
 
 	public function deletepengumuman()
 	{

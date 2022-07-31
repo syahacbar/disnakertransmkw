@@ -12,7 +12,21 @@ class Dashboard extends MY_Controller {
 
 	public function index()
 	{
-		$this->load->view('dashboard', $this->page_data);
+		if (hasPermissions('dash_user'))
+		{
+			$users_id = logged('id');
+        	$pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+			$this->page_data['dokumen'] = $this->pencaker_model->pencaker_doc($pencaker_id);
+			$this->load->view('dashboard_new', $this->page_data);
+		}
+		elseif (hasPermissions('dash_admin'))
+		{
+			$this->load->view('dashboard', $this->page_data);
+		}
+		else
+		{
+			$this->load->view('errors/html/error_403_permission', $this->page_data);
+		}
 	}
 
 }

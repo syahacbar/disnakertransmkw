@@ -177,6 +177,16 @@ class Pencaker_model extends MY_Model {
  
         return $query->row();
     }
+
+    function pencaker_doc($pencaker_id)
+    {
+    	$query  = $this->db->query("SELECT d.*,
+                    (SELECT pd.namadokumen FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS namadokumen,
+                    (SELECT pd.tgl_upload FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS tgl_upload,
+                    (SELECT pd.id FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS pencakerdokumen_id
+                    FROM dokumen d");
+    	return $query->result();
+    }
 }
 /* End of file Pencaker_model.php */
 /* Location: ./application/models/Pencaker_model.php */

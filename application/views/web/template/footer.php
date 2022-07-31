@@ -79,9 +79,6 @@
     <!-- Template Main JS File -->
     <script src="<?php echo base_url(); ?>/assets/frontend/assets/js/main.js"></script>
 
-    <script>
-      $('.collapse').collapse()
-    </script>
 
     <script type="text/javascript">
       var myLink = document.querySelector('a[href="#"]');

@@ -99,8 +99,8 @@
                         <tbody>
                             <tr>
                                 <td class="text-center"  width="2%">1</td>
-                                <td>Tukang Cukur Rambut - Barto Barbershop</td>
-                                <td class="text-center">2012</td>
+                                <td></td>
+                                <td class="text-center"></td>
                             </tr>
                             <tr>
                                 <td class="text-center" >2</td>
@@ -119,8 +119,8 @@
                     <div class="col-12 mt-0">
                         <div class="text-center">
                             <strong>Pengantar Kerja/Petugas Antarkerja</strong>
-                            <br><br><br>
-                            <p>BARTO SENIOR, S.H.<br>NIP: 89179378947489</p>
+                            <br><br><br><br>
+                            <p><strong><u>Ema Alberthina M. Rumsayor, S.STP</u></strong><br>NIP. 19830225 200312 2 001</p>
                             <p></p>
                         </div>
                     </div>
@@ -162,14 +162,14 @@
                         <table class="table table-borderless table-sm">
                             <tbody>
                                 <tr>
-                                    <td width="30%">No. Pendaftar Pencaker</td>
+                                    <td width="30%">No. Pendaf. Pencari Kerja</td>
                                     <td>:</td>
-                                    <td class="border-bottom">1253788892624</td>
+                                    <td class="border-bottom"><?php echo $pencaker->nopendaftaran;?></td>
                                 </tr>
                                 <tr>
                                     <td>NIK</td>
                                     <td>:</td>
-                                    <td class="border-bottom">986927849047903002</td>
+                                    <td class="border-bottom"><?php echo $pencaker->nik;?></td>
                                 </tr>
                                 <tr>
                                     <td>Nama Lengkap</td>

@@ -18,7 +18,7 @@ class Informasi_model extends MY_Model
 	}
 
 	function get_berita_by_id($id)
-	{
+	{ 
 		$this->db->select('*');
 		$this->db->from('informasi');
 		$this->db->where('id', $id);
@@ -39,7 +39,7 @@ class Informasi_model extends MY_Model
 		return true;
 	}
 
-	function updatestatusberita($id, $data)
+	function updateberita($id, $data)
 	{
 		$this->db->where('id', $id);
 		$this->db->update('informasi', $data);
