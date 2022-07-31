@@ -71,7 +71,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script src="<?php echo $url->assets ?>js/demo.js"></script>
 
 <!-- Dropzone JS -->
-<!-- <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script> -->
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 
 <!-- Summernote -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
