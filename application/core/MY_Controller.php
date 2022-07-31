@@ -53,6 +53,8 @@ class MY_Controller extends CI_Controller {
 		// die(var_dump('test_func'));
 	}
 
+	
+
 }
 
 /* End of file My_Controller.php */
