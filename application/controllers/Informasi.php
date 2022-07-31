@@ -33,7 +33,7 @@ class Informasi extends MY_Controller
 		// $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
 
 		$query  = "SELECT * FROM informasi";
-		$search = array('judul', 'isi', 'tag');
+		$search = array('judul', 'isi', 'tags');
 		$where  = null;
 
 		// jika memakai IS NULL pada where sql
@@ -62,7 +62,7 @@ class Informasi extends MY_Controller
 			$users_id = $users_id;
 			$slug = $this->slug($judul);
 
-			$this->db->insert('informasi', array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'status' => $status, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id,'slug'=>$slug));
+			$this->db->insert('informasi', array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'status' => $status, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
 		}
 	}
 
@@ -110,13 +110,16 @@ class Informasi extends MY_Controller
 		// if($this->upload->do_upload('thumbnailberita')){
 		if ($this->uploadlib->uploadImage('thumbnailberita', '/informasi/berita')) {
 			$gambar = $this->upload->data('file_name');
+			$kategori = "Berita";
 			$judul = $this->input->post('judul');
 			$isi = $this->input->post('isi');
 			$tag = $this->input->post('tag');
+			$status = $this->input->post('status');
 			$tgl_publikasi = date("Y-m-d H:i:s");
 			$users_id = $users_id;
+			$slug = $this->slug($judul);
 
-			$this->informasi_model->updateberita($id, array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'tgl_publikasi' => $tgl_publikasi));
+			$this->informasi_model->updateberita($id, array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
 		}
 	}
 
@@ -135,9 +138,110 @@ class Informasi extends MY_Controller
 		$this->page_data['page']->title = 'Pengumuman';
 		$this->page_data['page']->submenu = 'pengumuman';
 		$this->page_data['page']->menu = 'informasi';
+
+		$informasi = $this->informasi_model->get_pengumuman();
+		$this->page_data['informasi'] = $informasi;
 		$this->load->view('informasi/pengumuman', $this->page_data);
-		// $informasi = $this->informasi_model->get_berita();
-		// $this->page_data['informasi'] = $informasi;
+	}
+
+	public function get_pengumuman()
+	{
+		$query  = "SELECT * FROM informasi";
+		$search = array('judul', 'isi', 'tags');
+		$where  = null;
+
+		// jika memakai IS NULL pada where sql
+		$isWhere = null;
+		header('Content-Type: application/json');
+		echo $this->M_Datatables->get_tables_query($query, $search, $where, $isWhere);
+	}
+
+
+	public function add_pengumuman()
+	{
+		$users_id = logged('id');
+		$config['allowed_types'] = 'gif|jpg|png|ico';
+		$this->load->library('upload', $config);
+
+		if ($this->uploadlib->uploadImage('thumbnailpengumuman', '/informasi/pengumuman')) {
+			$gambar = $this->upload->data('file_name');
+			$kategori = "Pengumuman";
+			$judul = $this->input->post('judul');
+			$isi = $this->input->post('isi');
+			$tag = $this->input->post('tag');
+			$status = $this->input->post('status');
+			$tgl_publikasi = date("Y-m-d H:i:s");
+			$users_id = $users_id;
+			$slug = $this->slug($judul);
+
+			$this->db->insert('informasi', array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'status' => $status, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
+		}
+	}
+
+	public function get_pengumuman_by_id($id)
+	{
+		$data  = $this->informasi_model->get_pengumuman_by_id($id);
+		echo json_encode($data);
+	}
+
+	public function updatestatus_pengumuman()
+	{
+		$id = $this->input->post('id');
+		$status = $this->input->post('status');
+
+		if ($status == 'true') {
+			$statuspengumuman = 1;
+		} else {
+			$statuspengumuman = 0;
+		}
+
+		if ($this->informasi_model->updatestatuspengumuman($id, array('status' => $statuspengumuman))) {
+			$data = array(
+				'status' => TRUE,
+				'info' => 'Berhasil ubah status pengumuman'
+			);
+		} else {
+			$data = array(
+				'status' => FALSE,
+				'info' => 'Berhasil ubah status pengumuman'
+			);
+		}
+
+		echo json_encode($data);
+	}
+
+	public function update_pengumuman()
+	{
+		$id = $this->input->post('idpengumuman');
+
+		$users_id = logged('id');
+		$config['allowed_types'] = 'gif|jpg|png|ico';
+		$this->load->library('upload', $config);
+
+		if ($this->uploadlib->uploadImage('thumbnailpengumuman', '/informasi/pengumuman')) {
+			$gambar = $this->upload->data('file_name');
+			$kategori = "Pengumuman";
+			$judul = $this->input->post('judul');
+			$isi = $this->input->post('isi');
+			$tag = $this->input->post('tag');
+			$status = $this->input->post('status');
+			$tgl_publikasi = date("Y-m-d H:i:s");
+			$users_id = $users_id;
+			$slug = $this->slug($judul);
+
+			$this->informasi_model->updatepengumuman($id, array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
+		}
+	}
+
+
+	public function deletepengumuman()
+	{
+		$id = $this->input->post('id');
+		if ($this->informasi_model->hapuspengumuman($id)) {
+			echo json_encode(array('status' => TRUE, 'info' => 'Berhasil hapus pengumuman'));
+		} else {
+			echo json_encode(array('status' => FALSE, 'info' => 'Gagal hapus pengumuman'));
+		}
 	}
 
 	public function pelatihan()

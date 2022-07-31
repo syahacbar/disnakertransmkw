@@ -5,6 +5,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <!-- Dropzone CSS -->
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+
+<!-- Dropzone JS -->
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+
 <style>
     .toggle {
         --width: 80px;
@@ -241,7 +245,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <div class="form-group">
                                 <label for="editjudul">Judul Artikel</label>
                                 <input type="text" class="form-control" name="editjudul" id="editjudul" value="" />
-                            </div> 
+                            </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
@@ -269,7 +273,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="modal-footer">
                     <input type="hidden" name="idberita">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <button id="btnSimpan" type="button" class="btn btn-primary">Simpan</button>
+                    <button id="btnSimpan" type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>

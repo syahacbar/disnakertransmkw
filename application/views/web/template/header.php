@@ -37,8 +37,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/plugins/lightbox-previewer/src/index.css" />
     <script src="<?php echo base_url(); ?>/assets/plugins/lightbox-previewer/dist/img-previewer.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome-ie7.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.1/css/font-awesome-ie7.css"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <style>
         header#header {
             background: #283a5a !important;
@@ -73,6 +72,42 @@
             padding: 0;
             margin-top: 120px;
             padding-top: 60px;
+        }
+
+        .portfolio .portfolio-item .portfolio-info {
+            position: absolute;
+            right: 0;
+            font-size: 42px;
+            top: 0;
+            color: #fff;
+            transition: 0.3s;
+            display: flex;
+            left: 0;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .portfolio .portfolio-item .portfolio-info i {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .portfolio .portfolio-item .portfolio-info .preview-link,
+        .portfolio .portfolio-item .portfolio-info .details-link {
+            position: absolute;
+            right: 0;
+            font-size: 40px;
+            top: 0;
+            color: #fff;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
         }
     </style>
 </head>

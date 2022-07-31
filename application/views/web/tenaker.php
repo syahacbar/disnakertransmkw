@@ -294,62 +294,35 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <p>Berikut ini adalah beberapa galeri kegiatan bidang transmigrasi.</p>
             </div>
 
+            <?php
+            // $tenaker = directory_map('./assets/frontend/assets/img/tenagakerja', 1);
+            $pelatihan = directory_map('./assets/frontend/assets/img/tenagakerja/pelatihankerja', 1);
+            $bantuan = directory_map('./assets/frontend/assets/img/tenagakerja/bantuan', 1);
+            ?>
+
             <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
                 <li data-filter="*" class="filter-active">Semua</li>
                 <li data-filter=".pelatihankerja">Pelatihan Kerja</li>
                 <li data-filter=".bantuan">Bantuan</li>
             </ul>
 
-            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-                <div class="col-lg-4 col-md-6 portfolio-item pelatihankerja">
-                    <div class="portfolio-img">
-                        <a class="lsb-preview" href="#">
-                            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/tenagakerja/Picture1.png" class="img-fluid">
-                        </a>
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+                <?php foreach ($pelatihan as $pel) : ?>
+                    <div class="col-lg-4 col-md-6 portfolio-item pelatihankerja">
+                        <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/tenagakerja/pelatihankerja/') . $pel; ?>" class="img-fluid" alt=""></div>
+                        <div class="portfolio-info">
+                            <a href="<?php echo base_url('assets/frontend/assets/img/tenagakerja/pelatihankerja/') . $pel; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item pelatihankerja">
-                    <a class="lsb-preview" href="#">
-                        <div class="portfolio-img"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/tenagakerja/Picture2.png" class="img-fluid"></div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item pelatihankerja">
-                    <a class="lsb-preview" href="#">
-                        <div class="portfolio-img"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/tenagakerja/Picture6.png" class="img-fluid"></div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item pelatihankerja">
-                    <a class="lsb-preview" href="#">
-                        <div class="portfolio-img"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/tenagakerja/Picture7.png" class="img-fluid"></div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item pelatihankerja">
-                    <a class="lsb-preview" href="#">
-                        <div class="portfolio-img"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/tenagakerja/Picture8.png" class="img-fluid"></div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item bantuan">
-                    <a class="lsb-preview" href="#">
-                        <div class="portfolio-img"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/tenagakerja/Picture3.png" class="img-fluid"></div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item pelatihankerja">
-                    <div class="portfolio-img"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/tenagakerja/Picture1.png" class="img-fluid" alt=""></div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item bantuan">
-                    <div class="portfolio-img"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/tenagakerja/Picture4.png" class="img-fluid" alt=""></div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item bantuan">
-                    <div class="portfolio-img"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/tenagakerja/Picture5.png" class="img-fluid" alt=""></div>
-                </div>
-
+                <?php endforeach; ?>
+                <?php foreach ($bantuan as $ban) : ?>
+                    <div class="col-lg-4 col-md-6 portfolio-item bantuan">
+                        <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/tenagakerja/bantuan/') . $ban; ?>" class="img-fluid" alt=""></div>
+                        <div class="portfolio-info">
+                            <a href="<?php echo base_url('assets/frontend/assets/img/tenagakerja/bantuan/') . $ban; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
 
         </div>
