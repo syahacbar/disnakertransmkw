@@ -167,30 +167,30 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
 
             <div class="row">
-            <?php foreach($listberita AS $berita) : ?>
-                <div class="col-12 col-sm-12 col-md-4 col-lg-3">
-                    <figure class="barto">
-                        <div class="image">
-                            <img src="<?php echo base_url('uploads/informasi/berita/').$berita->gambar;?>" alt="pr-sample23" />
-                        </div>
-                        <figcaption>
-                            <div class="date">
-                                <span class="day">
-                                    <?php echo substr(mediumdate_indo(substr($berita->tgl_publikasi,0,10)),0,2);?>
-                                </span>
-                                <span class="month">
-                                    <?php echo substr(mediumdate_indo(substr($berita->tgl_publikasi,0,10)),3,3);?>
-                                </span>
+                <?php foreach ($listberita as $berita) : ?>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+                        <figure class="barto">
+                            <div class="image">
+                                <img src="<?php echo base_url('uploads/informasi/berita/') . $berita->gambar; ?>" alt="pr-sample23" />
                             </div>
-                            <h3><?php echo $berita->judul;?></h3>
-                            <p><?php echo word_limiter(filter_var($berita->isi, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH),15); ?>
-                            </p>
-                        </figcaption>
-                        <?php $slug = url_title($berita->judul, 'dash', true);?>
-                        <a href="<?php echo site_url('berita/').$slug; ?>"></a>
-                    </figure>
-                </div>
-            <?php endforeach; ?>
+                            <figcaption>
+                                <div class="date">
+                                    <span class="day">
+                                        <?php echo substr(mediumdate_indo(substr($berita->tgl_publikasi, 0, 10)), 0, 2); ?>
+                                    </span>
+                                    <span class="month">
+                                        <?php echo substr(mediumdate_indo(substr($berita->tgl_publikasi, 0, 10)), 3, 3); ?>
+                                    </span>
+                                </div>
+                                <h3><?php echo $berita->judul; ?></h3>
+                                <p><?php echo word_limiter(filter_var($berita->isi, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), 15); ?>
+                                </p>
+                            </figcaption>
+                            <?php $slug = url_title($berita->judul, 'dash', true); ?>
+                            <a href="<?php echo site_url('berita/') . $slug; ?>"></a>
+                        </figure>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section><!-- End Portfolio Section -->
@@ -200,22 +200,3 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <!-- ======= Footer ======= -->
 <?php include viewPath('web/template/footer'); ?>
 <!-- End Footer -->
-
-<div id="preloader"></div>
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-<!-- Vendor JS Files -->
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/aos/aos.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/waypoints/noframework.waypoints.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/php-email-form/validate.js"></script>
-
-<!-- Template Main JS File -->
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/js/main.js"></script>
-
-</body>
-
-</html>

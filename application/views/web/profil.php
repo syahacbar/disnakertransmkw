@@ -3,10 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <?php include viewPath('web/template/header'); ?>
 
-<!-- Lightbox -->
-<link rel="stylesheet" href="<?php echo base_url(); ?>/assets/plugins/lightbox-previewer/src/index.css" />
-<script src="<?php echo base_url(); ?>/assets/plugins/lightbox-previewer/dist/img-previewer.min.js"></script>
-
 <style>
     div#image-preview-container button#prev,
     div#image-preview-container button#next {
@@ -27,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="row content">
                 <div class="col-lg-6">
                     <h4 class="text-center">Visi</h4>
-                    <p class="text-center blockquote text-right mt-4"><strong><em>"Mempersiapkan Tenaga Kerja Mandiri Dan Membangun Permukiman Layak Huni Menuju Masyarakat Manokwari Sejahtera"</em></strong>
+                    <p class="text-center blockquote text-right mt-4"><strong><em>"Mempersiapkan Tenaga Kerja Mandiri dan Membangun Permukiman Layak Huni Menuju Masyarakat Manokwari Sejahtera"</em></strong>
                     </p>
 
                 </div>
@@ -37,10 +33,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         Misi Dinas Tenaga Kerja dan Transmigrasi Kabupaten Manokwari sebagai berikut:
                     </p>
                     <ul>
-                        <li><i class="ri-check-double-line"></i> Meningkatkan Mutu Pelayanan Terhadap Calon Tenaga Kerja Dan Meningkatkan Kualitas Tenaga Kerja.</li>
+                        <li><i class="ri-check-double-line"></i> Meningkatkan Mutu Pelayanan Terhadap Calon Tenaga Kerja dan Meningkatkan Kualitas Tenaga Kerja.</li>
                         <li><i class="ri-check-double-line"></i> Meningkatkan perlindungan Tenaga Kerja.</li>
                         <li><i class="ri-check-double-line"></i> Meningkatkan kualitas Permukiman Transmigrasi.</li>
-                        <li><i class="ri-check-double-line"></i> Meningkatkan Taraf Hidup Transmigran Dan Masyarakat Sekitarnya.</li>
+                        <li><i class="ri-check-double-line"></i> Meningkatkan Taraf Hidup Transmigran dan Masyarakat Sekitarnya.</li>
                         <li><i class="ri-check-double-line"></i> Meningkatkan Kualitas Aparatur, Administrasi Ketenagakerjaan dan Ketransmigrasian.</li>
                     </ul>
                 </div>
@@ -103,26 +99,3 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <!-- ======= Footer ======= -->
 <?php include viewPath('web/template/footer'); ?>
 <!-- End Footer -->
-
-<div id="preloader"></div>
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-<!-- Vendor JS Files -->
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/aos/aos.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/waypoints/noframework.waypoints.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/php-email-form/validate.js"></script>
-
-<!-- Template Main JS File -->
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/js/main.js"></script>
-
-
-<script>
-    const myViewer = new ImgPreviewer('.lsb-preview');
-</script>
-</body>
-
-</html>

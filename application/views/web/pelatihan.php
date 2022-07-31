@@ -1,99 +1,94 @@
+<!-- ======= Header ======= -->
 <?php
 defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <?php include viewPath('web/template/header'); ?>
-
+<!-- End Header -->
 <style>
-    section#faq {
-        margin-top: 120px;
-        padding-top: 60px !important;
+    li.py-1::marker {
+        color: #47b2e4;
+    }
+
+    .card-img,
+    .card-img-bottom,
+    .card-img-top {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
     }
 </style>
-<main id="main">
-
-    <!-- ======= Frequently Asked Questions Section ======= -->
-    <section id="faq" class="faq section-bg">
-        <div class="container" data-aos="fade-up">
-
+<main id="main" class="mt-3 py-3">
+    <!-- ======= Cta Section ======= -->
+    <section id="portfolio" class="portfolio mt-5">
+        <div class="container mt-5">
             <div class="section-title">
                 <h2>Pelatihan</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <p>Silakan pilih pelatihan yang ingin Anda ikuti dan dapatkan sertifikat keahliannya. Layanan ini diharapkan dapat memberikan bekal keterampilan profesional bagi angkatan kerja sehingga dapat membuka peluang kerja sendiri dan berwirausaha secara mandiri.</p>
             </div>
+            <ul id="portfolio-flters" class="d-flex justify-content-center">
+                <li data-filter="*" class="filter-active">Semua Kejuruan</li>
+                <li data-filter=".tkj">Teknologi Informasi dan Komunikasi</li>
+                <li data-filter=".bismen">Bisnis dan Manajemen</li>
+                <li data-filter=".filter-web">Tata Kecantikan</li>
+                <li data-filter=".filter-web">Pariwisata</li>
+            </ul>
 
-            <div class="faq-list">
-                <ul>
-                    <li data-aos="fade-up" data-aos-delay="100">
-                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                            <p>
-                                Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                            </p>
+            <div class="row portfolio-container">
+                <div class="col-sm-12 col-md-4 col-lg-3 portfolio-item tkj">
+                    <div class="card">
+                        <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/pelatihan/jarkom.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Dasar-Dasar Jaringan Komputer</h5>
+                            <!-- <p class="card-text">Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.</p> -->
                         </div>
-                    </li>
-
-                    <li data-aos="fade-up" data-aos-delay="200">
-                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-                            <p>
-                                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                            </p>
+                        <div class="card-footer">
+                            <small class="text-muted">Teknik Komputer</small>
                         </div>
-                    </li>
-
-                    <li data-aos="fade-up" data-aos-delay="300">
-                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-                            <p>
-                                Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-                            </p>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-3 portfolio-item tkj">
+                    <div class="card">
+                        <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/pelatihan/jarkom.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Dasar-Dasar Jaringan Komputer</h5>
+                            <!-- <p class="card-text">Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.</p> -->
                         </div>
-                    </li>
-
-                    <li data-aos="fade-up" data-aos-delay="400">
-                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-                            <p>
-                                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
-                            </p>
+                        <div class="card-footer">
+                            <small class="text-muted">Teknik Komputer</small>
                         </div>
-                    </li>
-
-                    <li data-aos="fade-up" data-aos-delay="500">
-                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-                            <p>
-                                Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
-                            </p>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-3 portfolio-item bismen">
+                    <div class="card">
+                        <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/pelatihan/bismen.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Apa itu Bisnis dan Manajemen?</h5>
+                            <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p> -->
                         </div>
-                    </li>
-
-                </ul>
+                        <div class="card-footer">
+                            <small class="text-muted">Bisnis dan Manajemen</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-3 portfolio-item bismen">
+                    <div class="card">
+                        <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/pelatihan/bismen.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Apa itu Bisnis dan Manajemen?</h5>
+                            <!-- <p class="card-text">Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.</p> -->
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Bisnis dan Manajemen</small>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
-    </section><!-- End Frequently Asked Questions Section -->
+    </section><!-- End Cta Section -->
 
 </main><!-- End #main -->
 
 <!-- ======= Footer ======= -->
 <?php include viewPath('web/template/footer'); ?>
 <!-- End Footer -->
-
-<div id="preloader"></div>
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-<!-- Vendor JS Files -->
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/aos/aos.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/waypoints/noframework.waypoints.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/php-email-form/validate.js"></script>
-
-<!-- Template Main JS File -->
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/js/main.js"></script>
-
-</body>
-
-</html>

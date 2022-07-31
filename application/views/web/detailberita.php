@@ -3,11 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <?php include viewPath('web/template/header'); ?>
 
-<title>Snippet - BBBootstrap</title>
-<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
-<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
-<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-
 <style>
     ::-webkit-scrollbar {
         width: 8px;
@@ -122,6 +117,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         list-style: none;
         margin-right: 10px;
+    }
+
+    .social-list li a {
+        text-decoration: none;
+    }
+
+    .social-list li a:hover {
+        background-color: #007bff;
+        color: #888;
     }
 
     .maincard {
@@ -290,53 +294,61 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                                             <ul class="social-list">
                                                 <li>
-                                                    <div class="maincard p-3">
-                                                        <div class="thecard">
-                                                            <div class="thefront text-center facebook">
-                                                                <div class="social-icon">
-                                                                    <i class="fa fa-facebook"></i>
+                                                    <a href="#">
+                                                        <div class="maincard p-3">
+                                                            <div class="thecard">
+                                                                <div class="thefront text-center facebook">
+                                                                    <div class="social-icon">
+                                                                        <i class="fa fa-facebook"></i>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
                                                 </li>
 
 
                                                 <li>
-                                                    <div class="maincard p-3">
-                                                        <div class="thecard">
-                                                            <div class="thefront text-center py-4 twitter">
-                                                                <div class="social-icon">
-                                                                    <i class="fa fa-twitter"></i>
+                                                    <a href="#">
+                                                        <div class="maincard p-3">
+                                                            <div class="thecard">
+                                                                <div class="thefront text-center py-4 twitter">
+                                                                    <div class="social-icon">
+                                                                        <i class="fa fa-twitter"></i>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
                                                 </li>
 
                                                 <li>
-                                                    <div class="maincard p-3">
-                                                        <div class="thecard">
-                                                            <div class="thefront text-center py-4 envelope">
-                                                                <div class="social-icon">
-                                                                    <i class="fa fa-envelope"></i>
+                                                    <a href="#">
+                                                        <div class="maincard p-3">
+                                                            <div class="thecard">
+                                                                <div class="thefront text-center py-4 envelope">
+                                                                    <div class="social-icon">
+                                                                        <i class="fa fa-envelope"></i>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
                                                 </li>
 
 
                                                 <li>
-                                                    <div class="maincard p-3">
-                                                        <div class="thecard">
-                                                            <div class="thefront text-center py-4 whatsapp">
-                                                                <div class="social-icon">
-                                                                    <i class="fa fa-whatsapp"></i>
+                                                    <a href="#">
+                                                        <div class="maincard p-3">
+                                                            <div class="thecard">
+                                                                <div class="thefront text-center py-4 whatsapp">
+                                                                    <div class="social-icon">
+                                                                        <i class="fa fa-whatsapp"></i>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -383,24 +395,3 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 </main>
 
 <?php include viewPath('web/template/footer'); ?>
-
-<div id="preloader"></div>
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/aos/aos.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/waypoints/noframework.waypoints.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/php-email-form/validate.js"></script>
-
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/js/main.js"></script>
-
-<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js'></script>
-<script type='text/javascript'>
-    var myLink = document.querySelector('a[href="#"]');
-    myLink.addEventListener('click', function(e) {
-        e.preventDefault();
-    });
-</script>

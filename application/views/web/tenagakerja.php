@@ -3,9 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <?php include viewPath('web/template/header'); ?>
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
     ::-webkit-scrollbar {
         width: 8px;
@@ -202,7 +199,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 </head>
 
 <main id="main">
-
     <!-- ======= About Us Section ======= -->
     <section id="visimisi" class="about visimisi">
         <div class="container">
@@ -218,10 +214,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <h4 class="alert-heading">Perhatian!</h4>
                     <p>Perbup Restribusi Imta telah berganti nama menjadi TPTKA sesuai Peraturan Pemerintah Nomor 34 Tahun 2021 dan Peraturan Daerah masih dibahas oleh Balegda Tingkat Provinsi Papua Barat.</p>
                     <hr>
-                    <!-- <p class="mb-0">.</p> -->
                 </div>
             </div>
-
 
             <div class="row">
                 <div class="col-12">
@@ -313,8 +307,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                                                 </div>
                                                             </div>
                                                         </div>
-
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -380,8 +372,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                                                 </div>
                                                             </div>
                                                         </div>
-
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -611,8 +601,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
@@ -623,28 +611,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     </section>
 </main>
 
-
-
-
 <!-- ======= Footer ======= -->
 <?php include viewPath('web/template/footer'); ?>
 <!-- End Footer -->
-
-<div id="preloader"></div>
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-<!-- Vendor JS Files -->
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/aos/aos.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/waypoints/noframework.waypoints.js"></script>
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/vendor/php-email-form/validate.js"></script>
-
-<!-- Template Main JS File -->
-<script src="<?php echo base_url(); ?>/assets/frontend/assets/js/main.js"></script>
-<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 
 <script>
     $('.collapse').collapse()
@@ -656,6 +625,3 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         e.preventDefault();
     });
 </script>
-</body>
-
-</html>
