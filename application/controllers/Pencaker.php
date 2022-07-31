@@ -466,6 +466,8 @@ class Pencaker extends MY_Controller
         {           
             $res['hasil'] = 'sukses';
             $res['status'] = TRUE;
+            $this->session->set_flashdata('alert-type', 'success');
+            $this->session->set_flashdata('alert', 'Profile has been Updated Successfully');
         }     
         else
         {           

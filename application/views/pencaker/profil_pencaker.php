@@ -1578,7 +1578,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 success: function(data) {
                     if (data.status) 
                     {
-                        showtujuanpencaker();
+                         window.location.href = 'dashboard/';
                     }
 
                 },
