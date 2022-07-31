@@ -26,8 +26,14 @@ class Pencaker extends MY_Controller
 		$this->page_data['page']->menu = 'doc_pencaker';
 		$this->load->view('printout/formulirak1', $this->page_data);
 	}
-	function kartukuning_1()
+
+    
+	function kartukuning_1($users_id)
 	{
+        $users_id = logged('id');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+
+        $this->page_data['pencaker'] = $this->pencaker_model->get_by_users_id($users_id);
 		$this->page_data['page']->title = 'Printout Form AK-1';
 		$this->page_data['page']->menu = 'doc_pencaker';
 		$this->load->view('printout/kartukuning1', $this->page_data);

@@ -74,6 +74,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                       </td>
                       <td>
                         <?php if (hasPermissions('users_edit')): ?>
+                          <a target="_blank" href="<?php echo url('pencaker/kartukuning_1/'.$row->id) ?>" class="btn btn-sm btn-warning" title="Cetak Kartu Kuning" data-toggle="tooltip"><i class="fas fa-print"></i></a>
+                        <?php endif ?>
+                        <?php if (hasPermissions('users_edit')): ?>
                           <a href="<?php echo url('users/edit/'.$row->id) ?>" class="btn btn-sm btn-primary" title="<?php echo lang('edit_user') ?>" data-toggle="tooltip"><i class="fas fa-edit"></i></a>
                         <?php endif ?>
                         <?php if (hasPermissions('users_view')): ?>

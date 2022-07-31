@@ -151,7 +151,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                             <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange="updateStatusberita(<?php echo $info->id; ?>,$(this).is(':checked'))" <?php echo ($info->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
                                         </td>
                                         <td>
-                                            <a target="_blank" href="<?php site_url() . '/berita/' . $info->slug; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
+                                            <a target="_blank" href="<?php echo site_url() . 'berita/' . $info->slug; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
                                             <a href="javascript:void(0)" data-id="<?php echo $info->id; ?>" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
                                             <a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="<?php echo $info->id; ?>"><i class="fas fa-trash"></i></a>
                                         </td>
@@ -241,7 +241,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <div class="form-group">
                                 <label for="editjudul">Judul Artikel</label>
                                 <input type="text" class="form-control" name="editjudul" id="editjudul" value="" />
-                            </div>
+                            </div> 
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
@@ -258,7 +258,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="edit_gambar">Gambar</label>
-                                <div id="edit_gambar" class="dropzone edit_gambar border-1 dz-clickable">
+                                <div id="edit_gambar" class="dropzone border-1 dz-clickable">
                                     <div class="dz-message">Klik atau drop gambar thumbnail ke sini</div>
                                 </div>
                             </div>
@@ -326,9 +326,21 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#tabelberita').DataTable().ajax.reload(null, false);
 
         }
-        var unggah_berita = new Dropzone(".dropzone", {
+
+        var unggah_berita = new Dropzone("#gambar_berita", {
             autoProcessQueue: false,
             url: "<?php echo site_url('informasi/add_berita') ?>",
+            maxFilesize: 20,
+            method: "post",
+            acceptedFiles: "image/*",
+            paramName: "thumbnailberita",
+            dictInvalidFileType: "Type file ini tidak dizinkan",
+            addRemoveLinks: true,
+        });
+
+        var edit_berita = new Dropzone("#edit_gambar", {
+            autoProcessQueue: false,
+            url: "<?php echo site_url('informasi/update_berita') ?>",
             maxFilesize: 20,
             method: "post",
             acceptedFiles: "image/*",
@@ -346,10 +358,24 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             c.append("tag", a.tag);
             c.append("isi", a.isi);
             c.append("status", a.status)
+        });
 
+        edit_berita.on("sending", function(a, b, c) {
+            a.judul = $("input[name='judul']").val();
+            a.tag = $("input[name='tag']").val();
+            a.isi = $("textarea[name='isi']").val();
+            a.idberita = $("input[name='idberita']").val();
+            c.append("judul", a.judul);
+            c.append("tag", a.tag);
+            c.append("isi", a.isi);
+            c.append("idberita", a.idberita)
         });
 
         unggah_berita.on('complete', function() {
+            location.reload();
+        });
+
+        edit_berita.on('complete', function() {
             location.reload();
         });
 
