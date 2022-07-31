@@ -145,6 +145,7 @@ class Web extends CI_Controller
 				}
 			}
 
+
 			//end
 			$detailpengumuman = $this->informasi_model->get_pengumuman_by_slug($slug);
 

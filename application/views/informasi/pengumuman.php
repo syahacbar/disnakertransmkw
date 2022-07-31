@@ -154,7 +154,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                             <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange="updateStatusberita(<?php echo $info->id; ?>,$(this).is(':checked'))" <?php echo ($info->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
                                         </td>
                                         <td>
-                                            <a target="_blank" href="<?php echo site_url() . '/pengumuman/' . $info->slug; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
+                                            <a target="_blank" href="<?php echo site_url() . 'pengumuman/' . $info->slug; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
                                             <a href="javascript:void(0)" data-id="<?php echo $info->id; ?>" class="btn btn-sm btn-primary ubahPengumuman"><i class="fas fa-edit"></i></a>&nbsp;
                                             <a class="btn btn-sm btn-danger hapusPengumuman" href="javascript:void(0)" data-id="<?php echo $info->id; ?>"><i class="fas fa-trash"></i></a>
                                         </td>
@@ -185,7 +185,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="formaAddPengumuman">
+            <form id="formAddPengumuman">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -261,7 +261,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="edit_gambar">Gambar</label>
-                                <div id="edit_gambar" class="dropzone  border-1 dz-clickable">
+                                <div id="edit_gambar" class="dropzone edit_gambarPengumuman  border-1 dz-clickable">
                                     <div class="dz-message">Klik atau drop gambar thumbnail ke sini</div>
                                 </div>
                             </div>
@@ -272,7 +272,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="modal-footer">
                     <input type="hidden" name="idpengumuman">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <button id="btnSimpan" type="button" class="btn btn-primary">Simpan</button>
+                    <button id="btnSimpan" type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>
@@ -340,7 +340,30 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             addRemoveLinks: true,
         });
 
+        var ubah_pengumuman = new Dropzone(".edit_gambarPengumuman", {
+            autoProcessQueue: false,
+            url: "<?php echo site_url('informasi/update_pengumuman') ?>",
+            maxFilesize: 20,
+            method: "post",
+            acceptedFiles: "image/*",
+            paramName: "thumbnailpengumuman",
+            dictInvalidFileType: "Type file ini tidak dizinkan",
+            addRemoveLinks: true,
+        });
+
         upload_pengumuman.on("sending", function(a, b, c) {
+            a.judul = $("input[name='judul']").val();
+            a.tag = $("input[name='tag']").val();
+            a.isi = $("textarea[name='isi']").val();
+            a.status = 1;
+            c.append("judul", a.judul);
+            c.append("tag", a.tag);
+            c.append("isi", a.isi);
+            c.append("status", a.status)
+
+        });
+
+        ubah_pengumuman.on("sending", function(a, b, c) {
             a.judul = $("input[name='judul']").val();
             a.tag = $("input[name='tag']").val();
             a.isi = $("textarea[name='isi']").val();
@@ -356,7 +379,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             location.reload();
         });
 
-        $('#formaAddPengumuman').submit(function(e) {
+        ubah_pengumuman.on('complete', function() {
+            location.reload();
+        });
+
+        $('#formAddPengumuman').submit(function(e) {
             e.preventDefault();
             upload_pengumuman.processQueue();
             //location.reload();

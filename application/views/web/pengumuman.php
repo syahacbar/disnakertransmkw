@@ -184,6 +184,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <h3 class="card-title"><?php echo $pengumuman->judul; ?></h3>
 
                             </div>
+                            <?php $slug = url_title($pengumuman->judul, 'dash', true); ?>
+                            <a href="<?php echo site_url('pengumuman/') . $slug; ?>"></a>
                         </div>
                     </div>
                 <?php endforeach ?>
