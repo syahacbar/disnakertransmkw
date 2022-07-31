@@ -316,6 +316,18 @@ class Pencaker extends MY_Controller
         echo json_encode($res);
     }
 
+    function get_bahasa_pencaker()
+    {
+        $users_id = logged('id');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+
+        $query  = $this->db->query("SELECT * FROM keterampilan_bahasa WHERE pencaker_id='$pencaker_id'");
+        $bahasa = $query->result();
+        $data['bahasa'] = $bahasa;
+        $data['hasil'] = "sukses";
+        echo json_encode($data);
+    }
+
     function update1()
     {
         $users_id = logged('id');
@@ -328,7 +340,6 @@ class Pencaker extends MY_Controller
         {        	
 	    	$res['hasil'] = 'sukses';
 	        $res['status'] = TRUE;
-            $res['tujuan'] = $this->input->post('tujuan');
         }     
         else
         {        	
@@ -365,6 +376,101 @@ class Pencaker extends MY_Controller
         {        	
 	    	$res['hasil'] = 'gagal';
 	        $res['status'] = FALSE;
+        }
+
+        echo json_encode($res);
+    }
+
+    function update4()
+    {
+        $users_id = logged('id');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+
+        $ket_bahasa = $this->input->post('ket_bahasa');
+        for($i=0;$i<count($ket_bahasa);$i++){
+            $bahasa = $ket_bahasa[$i];
+            $this->db->insert('keterampilan_bahasa',array('bahasa'=>$bahasa,'pencaker_id'=>$pencaker_id));
+        }
+
+        $cb_bhslain = $this->input->post('checkboxbahasalainnya');
+        $txt_bhslain = $this->input->post('txt_bahasa_lainnya');
+        if($cb_bhslain == 'bahasa_lain')
+        {
+            $this->pencaker_model->update_by_users_id($users_id, array('bahasa_lainnya'=>$txt_bhslain));
+        }
+        else
+        {
+            $this->pencaker_model->update_by_users_id($users_id, array('bahasa_lainnya'=>''));
+        }
+
+        
+        $res['hasil'] = 'sukses';
+        $res['status'] = TRUE;
+        
+        echo json_encode($res);
+    }
+
+    function update6()
+    {
+        $users_id = logged('id');
+        $data = array(
+            'lokasi_jabatan' => $this->input->post('lokasi_jabatan'),
+        );
+
+        $update = $this->pencaker_model->update_by_users_id($users_id, $data);  
+        if($update)
+        {           
+            $res['hasil'] = 'sukses';
+            $res['status'] = TRUE;
+        }     
+        else
+        {           
+            $res['hasil'] = 'gagal';
+            $res['status'] = FALSE;
+        }
+
+        echo json_encode($res);
+    }
+
+    function update7()
+    {
+        $users_id = logged('id');
+        $data = array(
+            'tujuan_perusahaan' => $this->input->post('tujuan_perusahaan'),
+        );
+
+        $update = $this->pencaker_model->update_by_users_id($users_id, $data);  
+        if($update)
+        {           
+            $res['hasil'] = 'sukses';
+            $res['status'] = TRUE;
+        }     
+        else
+        {           
+            $res['hasil'] = 'gagal';
+            $res['status'] = FALSE;
+        }
+
+        echo json_encode($res);
+    }
+
+    function update8()
+    {
+        $users_id = logged('id');
+        $data = array(
+            'catatan_pengantar' => $this->input->post('catatan_pengantar'),
+        );
+
+        $update = $this->pencaker_model->update_by_users_id($users_id, $data);  
+        if($update)
+        {           
+            $res['hasil'] = 'sukses';
+            $res['status'] = TRUE;
+        }     
+        else
+        {           
+            $res['hasil'] = 'gagal';
+            $res['status'] = FALSE;
         }
 
         echo json_encode($res);

@@ -38,6 +38,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -66,7 +69,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <!-- tujuanpencaker card -->
             <div class="card tujuanpencaker">
                 <div class="card-header with-border">
-                    <h3 class="card-title"><?php echo lang('tujuan_pencaker') ?></h3>
+                    <h3 class="card-title">Tujuan Pembuatan Kartu Pencaker</h3>
                 </div>
                 <form action="#" id="formtujuanpencaker">
                     <div class="card-body">
@@ -106,7 +109,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <!-- identitaspencaker card -->
             <div class="card identitaspencaker" style="display: none;">
                 <div class="card-header with-border">
-                    <h3 class="card-title"><?php echo lang('identitas_pencaker') ?></h3>
+                    <h3 class="card-title">Keterangan Umum Identitas Pencaker</h3>
                 </div>
                 <form action="#" id="formidentitaspencaker">
                     <div class="card-body">
@@ -181,7 +184,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                                 <div class="form-group">
                                     <label for="tgllahir">Tanggal Lahir</label>
-                                    <input type="date" class="form-control" name="tgllahir" id="tgllahir" required placeholder="Tanggal Lahir Sesuai KTP" autofocus />
+                                    <input type="text" class="form-control date" name="tgllahir" id="tgllahir" required placeholder="Tanggal Lahir Sesuai KTP" autofocus />
                                 </div>
                             </div>
 
@@ -234,7 +237,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <!-- pendidikanpencaker card -->
             <div class="card pendidikanpencaker" style="display: none;">
                 <div class="card-header with-border">
-                    <h3 class="card-title"><?php echo lang('pendidikan_pencaker') ?></h3>
+                    <h3 class="card-title">Pendidikan Formal</h3>
                 </div>
 
                 <div class="card-body">
@@ -251,13 +254,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 ">
                                             <div class="form-group">
                                                 <label for="tahunmasuk">Tahun Masuk</label>
-                                                <input type="date" class="form-control" name="tahunmasuk" id="tahunmasuk" autofocus />
+                                                <input type="text" class="form-control year" name="tahunmasuk" id="tahunmasuk" autofocus />
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 ">
                                             <div class="form-group">
                                                 <label for="tahunlulus">Tahun Lulus</label>
-                                                <input type="date" class="form-control" name="tahunlulus" id="tahunlulus" required autofocus />
+                                                <input type="text" class="form-control year" name="tahunlulus" id="tahunlulus" required autofocus />
                                             </div>
                                         </div>
 
@@ -345,7 +348,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <!-- bahasapencaker card -->
             <div class="card bahasapencaker" style="display: none;">
                 <div class="card-header with-border">
-                    <h3 class="card-title"><?php echo lang('bahasa_pencaker') ?></h3>
+                    <h3 class="card-title">Keterampilan Bahasa</h3>
                 </div>
 
                 <div class="card-body">
@@ -361,7 +364,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     <div class="row mb-5">
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="inggris">
+                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="bahasa_Inggris" value="Inggris">
                                                 <label class="form-check-label" for="inggris">
                                                     Inggris
                                                 </label>
@@ -369,7 +372,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="jerman">
+                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="bahasa_Jerman" value="Jerman">
                                                 <label class="form-check-label" for="jerman">
                                                     Jerman
                                                 </label>
@@ -377,7 +380,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="perancis">
+                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="bahasa_Perancis" value="Perancis">
                                                 <label class="form-check-label" for="perancis">
                                                     Perancis
                                                 </label>
@@ -385,7 +388,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="mandarin">
+                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="bahasa_Mandarin" value="Mandarin">
                                                 <label class="form-check-label" for="mandarin">
                                                     Mandarin
                                                 </label>
@@ -393,7 +396,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="arab">
+                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="bahasa_Arab" value="Arab">
                                                 <label class="form-check-label" for="arab">
                                                     Arab
                                                 </label>
@@ -401,7 +404,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="belanda">
+                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="bahasa_Belanda" value="Belanda">
                                                 <label class="form-check-label" for="belanda">
                                                     Belanda
                                                 </label>
@@ -409,7 +412,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="jepang">
+                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="bahasa_Jepang" value="Jepang">
                                                 <label class="form-check-label" for="jepang">
                                                     Jepang
                                                 </label>
@@ -418,7 +421,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="checkboxbahasalainnya">
+                                                <input class="form-check-input" type="checkbox" value="bahasa_lain" name="checkboxbahasalainnya" id="checkboxbahasalainnya">
                                                 <label class="form-check-label" for="lainnya">
                                                     Lainnnya
                                                 </label>
@@ -428,11 +431,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <div id="textboxbahasalainnya" class="col-12 col-sm-12 col-md-12 col-lg-12 mt-4 hide">
                                             <div class="form-floating">
                                                 <label for="lainnya">Bahasa Lainnya</label>
-                                                <textarea class="form-control" placeholder="Deskripsikan bahasa yang Anda kuasai di sini" id="lainnya" style="height: 100px"></textarea>
+                                                <textarea class="form-control" placeholder="Deskripsikan bahasa yang Anda kuasai di sini" name="txt_bahasa_lainnya" id="txt_bahasa_lainnya" style="height: 100px"></textarea>
                                             </div>
                                         </div>
+                                        </form>
                                     </div>
-                                </form>
                                 <!-- end of formbahasa pencaker -->
                             </div>
                         </div>
@@ -449,7 +452,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <!-- pekerjaanpencaker card -->
             <div class="card pekerjaanpencaker" style="display: none;">
                 <div class="card-header with-border">
-                    <h3 class="card-title"><?php echo lang('pekerjaan_pencaker') ?></h3>
+                    <h3 class="card-title">Pengalaman Kerja</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -464,13 +467,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
                                             <div class="form-group">
                                                 <label for="tahunmasukkerja">Tahun Masuk</label>
-                                                <input type="date" class="form-control" name="tahunmasukkerja" id="tahunmasukkerja" placeholder="" required placeholder="Tahun masuk kerja" autofocus />
+                                                <input type="text" class="form-control year" name="tahunmasukkerja" id="tahunmasukkerja" placeholder="" required placeholder="Tahun masuk kerja" autofocus />
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
                                             <div class="form-group">
                                                 <label for="tahunkeluarkerja">Tahun Keluar</label>
-                                                <input type="date" class="form-control" name="tahunkeluarkerja" id="tahunkeluarkerja" placeholder="" required placeholder="Tahun keluar kerja" autofocus />
+                                                <input type="text" class="form-control year" name="tahunkeluarkerja" id="tahunkeluarkerja" placeholder="" required placeholder="Tahun keluar kerja" autofocus />
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-3 col-lg-4">
@@ -533,7 +536,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <!-- jabatan card -->
             <div class="card jabatanpencaker" style="display: none;">
                 <div class="card-header with-border">
-                    <h3 class="card-title"><?php echo lang('jabatan_pencaker') ?></h3>
+                    <h3 class="card-title">Jabatan Yang Diminati</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -542,31 +545,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <div class="alert alert-success" role="alert">
                                     Silakan isi data terkait Jabatan yang diminati
                                 </div>
-
-                                <div class="row mt-3">
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
-                                        <label>Lokasi jabatan yang diinginkan</label>
-                                    </div>
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="lokasijabatan" id="lokasijabatan1">
-                                            <label class="form-check-label" for="lokasijabatan1">
-                                                Dalam Negeri
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="lokasijabatan" id="lokasijabatan2">
-                                            <label class="form-check-label" for="lokasijabatan2">
-                                                Luar Negeri
-                                            </label>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <hr>
                                 <!-- form jabatan pencaker     -->
                                 <form action="#" id="formjabatanpencaker">
                                     <div class="row">
@@ -588,7 +566,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 </form>
                                 <!-- end of formpkerjaan pencaker -->
 
-                                <hr>
                                 <div class="row mt-5">
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 table-responsive">
                                         <table style="width:100%" id="tabeljabatanpencaker" class="table table-bordered table-hover table-striped">
@@ -604,6 +581,32 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                             </tbody>
                                         </table>
                                     </div>
+                                </div>
+
+                                <hr>
+                                <br>
+                                <div class="row mt-3">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
+                                        <label>Lokasi jabatan yang diinginkan</label>
+                                    </div>
+                                    <form action="#" id="formlokasijabatan">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="lokasi_jabatan" id="lokasijabatan1" value="DN">
+                                            <label class="form-check-label" for="lokasijabatan1">
+                                                Dalam Negeri
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="lokasi_jabatan" id="lokasijabatan2" value="LN">
+                                            <label class="form-check-label" for="lokasijabatan2">
+                                                Luar Negeri
+                                            </label>
+                                        </div>
+                                    </div>
+                                    </form>
                                 </div>
                             </div>
 
@@ -621,9 +624,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <!-- perusahaan card -->
             <div class="card perusahaanpencaker" style="display: none;">
                 <div class="card-header with-border">
-                    <h3 class="card-title"><?php echo lang('perusahaan_pencaker') ?></h3>
+                    <h3 class="card-title">Perusahaan Yang Dituju</h3>
                 </div>
-                <?php echo form_open_multipart('settings/generalUpdate', ['class' => 'form-validate', 'autocomplete' => 'off', 'method' => 'post']); ?>
+                <form action="#" id="formtujuanperusahaan">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12">
@@ -650,13 +653,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 </div>
                 <!-- /.card-footer-->
             </div>
-
+            </form>
             <!-- datatamabahan card -->
             <div class="card datatambahanpencaker" style="display: none;">
                 <div class="card-header with-border">
-                    <h3 class="card-title"><?php echo lang('datatambahan_pencaker') ?></h3>
+                    <h3 class="card-title">Keterangan Tambahan</h3>
                 </div>
-                <?php echo form_open_multipart('settings/generalUpdate', ['class' => 'form-validate', 'autocomplete' => 'off', 'method' => 'post']); ?>
+                <form action="#" id="formcatatanpengantar">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12">
@@ -697,6 +700,16 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <script type="text/javascript">
     var tabelpendidikan = null;
     var tabelpekerjaan = null;
+
+    $(".year").datepicker({
+        format: "yyyy",
+        viewMode: "years", 
+        minViewMode: "years"
+    });
+
+    $(".date").datepicker({
+        format: "yyyy-mm-dd",
+    });
 
     $(document).ready(function() {
 
@@ -933,6 +946,32 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#jabatanpencaker').removeClass("active");
             $('#perusahaanpencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
+
+
+
+            $('input[id="checkboxbahasalainnya"]').click(function() {
+                if ($(this).prop("checked") == true) {
+                    $('#textboxbahasalainnya').removeClass("hide");
+                } else if ($(this).prop("checked") == false) {
+                    $('#textboxbahasalainnya').addClass("hide");
+                }
+            });
+
+            $.ajax({
+                url: "<?php echo site_url('pencaker/get_bahasa_pencaker') ?>",
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    //console.log(data.bahasa);
+                    for (const element of data.bahasa) { 
+                        $('[id="bahasa_'+element.bahasa+'"]').prop("checked", true);
+
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error Get Data Keterampilan Bahasa');
+                }
+            });
         }
 
         function showpekerjaanpencaker() {
@@ -1314,6 +1353,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 $('[name="nopendaftaran"]').val(data.nopendaftaran);
                 $('[name="namalengkap"]').val(data.name);
                 $('[name="nik"]').val(data.username);
+                $('[name="tgllahir"]').datepicker('setDate', data.tgllahir);
 
                 //selected jenkel
                 if (data.jenkel == 'L')
@@ -1329,8 +1369,16 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 $('[name="alamat"]').val(data.alamat);
                 $('[name="kodepos"]').val(data.kodepos);
 
-                //jabatan yang diminati
-                //selected lokasi
+                //keterampilan bahasa 
+                if(data.bahasa_lainnya != '')
+                {
+                    $('#checkboxbahasalainnya').prop("checked",true);
+                    $('#textboxbahasalainnya').removeClass("hide");
+
+                    $('[name="txt_bahasa_lainnya"]').val(data.bahasa_lainnya);
+                }
+                
+                //selected lokasi jabatan
                 if (data.lokasi_jabatan == 'DN')
                     $("#lokasijabatan1").prop("checked", true);
                 else if (data.lokasi_jabatan == 'LN')
@@ -1364,14 +1412,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         $('#bahasapencaker').click(function() {
             showbahasapencaker();
-
-            $('input[id="checkboxbahasalainnya"]').click(function() {
-                if ($(this).prop("checked") == true) {
-                    $('#textboxbahasalainnya').removeClass("hide");
-                } else if ($(this).prop("checked") == false) {
-                    $('#textboxbahasalainnya').addClass("hide");
-                }
-            });
         });
 
         $('#pekerjaanpencaker').click(function() {
@@ -1445,14 +1485,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         });
 
         $('#btnSave2').click(function() {
-            // ajax adding data to database
             $.ajax({
                 url: "<?php echo site_url('pencaker/update2') ?>",
                 type: "POST",
                 data: $('#formidentitaspencaker').serialize(),
                 dataType: "JSON",
                 success: function(data) {
-                    if (data.status) //if success close modal and reload ajax table
+                    if (data.status) 
                     {
                         showpendidikanpencaker();
                     }
@@ -1469,19 +1508,84 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         });
 
         $('#btnSave4').click(function() {
-            showpekerjaanpencaker();
+            $.ajax({
+                url: "<?php echo site_url('pencaker/update4') ?>",
+                type: "POST",
+                data: $('#formbahasapencaker').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.status) 
+                    {
+                        showpekerjaanpencaker();
+                    }
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error update data');
+                }
+            });
+            
         });
 
         $('#btnSave5').click(function() {
             showjabatanpencaker();
         });
 
-        $('#btnSave6').click(function() {
-            showperusahaanpencaker();
+        $('#btnSave6').click(function() {            
+            $.ajax({
+                url: "<?php echo site_url('pencaker/update6') ?>",
+                type: "POST",
+                data: $('#formlokasijabatan').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.status) 
+                    {
+                        showperusahaanpencaker();
+                    }
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error update data');
+                }
+            });
         });
 
         $('#btnSave7').click(function() {
-            showdatatambahanpencaker();
+            $.ajax({
+                url: "<?php echo site_url('pencaker/update7') ?>",
+                type: "POST",
+                data: $('#formtujuanperusahaan').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.status) 
+                    {
+                        showdatatambahanpencaker();
+                    }
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error update data');
+                }
+            });
+        });
+
+        $('#btnSave8').click(function() {
+            $.ajax({
+                url: "<?php echo site_url('pencaker/update8') ?>",
+                type: "POST",
+                data: $('#formcatatanpengantar').serialize(),
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.status) 
+                    {
+                        showtujuanpencaker();
+                    }
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error update data');
+                }
+            });
         });
     });
 </script>
