@@ -26,6 +26,31 @@ class Web extends CI_Controller
 		// $this->page_data['page']->menu = 'dashboard';
 	}
 
+	public function notifWA($nohp,$pesan)
+	{
+		$userkey = 'a39a7fbff392';
+		$passkey = '7eb931d25b0fa3ee6d55980b';
+		$telepon = $nohp;
+		$message = $pesan;
+		$url = 'https://console.zenziva.net/wareguler/api/sendWA/';
+		$curlHandle = curl_init();
+		curl_setopt($curlHandle, CURLOPT_URL, $url);
+		curl_setopt($curlHandle, CURLOPT_HEADER, 0);
+		curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
+		curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($curlHandle, CURLOPT_TIMEOUT,30);
+		curl_setopt($curlHandle, CURLOPT_POST, 1);
+		curl_setopt($curlHandle, CURLOPT_POSTFIELDS, array(
+		    'userkey' => $userkey,
+		    'passkey' => $passkey,
+		    'to' => $telepon,
+		    'message' => $message
+		));
+		$results = json_decode(curl_exec($curlHandle), true);
+		curl_close($curlHandle);
+	}
+
 	public function comingsoon()
 	{
 		$this->page_data['page']->title = 'Comingsoon';
@@ -136,12 +161,14 @@ class Web extends CI_Controller
 
 	public function account_registration()
 	{
+		$name = $this->input->post('namalengkap');
+		$phone = $this->input->post('nohp');
 		$id = $this->users_model->create([
 			'role' => '2',
 			'name' => post('namalengkap'),
 			'username' => post('nik'),
 			'email' => post('email'),
-			'phone' => post('nohp'),
+			'phone' => $phone,
 			'status' => '1',
 			'password' => hash("sha256", post('password')),
 		]);
@@ -172,7 +199,8 @@ class Web extends CI_Controller
 		}
 
 		$this->activity_model->add('New User $' . $id . ' Created by User:' . logged('name'), logged('id'));
-
+		$pesan = 'Hai...'.$name.', anda berhasil membuat akun di website Disnakertrans Manokwari.'.PHP_EOL.'Silahkan kembali ke halaman website disnakertransmkw.com untuk melakukan login dan melengkapi formulir pembuatan Kartu Pencari Kerja (Form AK-1).'.PHP_EOL.PHP_EOL.'Terima Kasih...'
+		$this->notifWA($phone,$pesan);
 		$this->session->set_flashdata('alert-type', 'success');
 		$this->session->set_flashdata('alert', 'New User Created Successfully');
 
