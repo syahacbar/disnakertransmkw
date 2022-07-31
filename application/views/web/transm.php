@@ -515,6 +515,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <p>Berikut ini adalah beberapa galeri kegiatan bidang transmigrasi.</p>
             </div>
 
+            <?php
+            // $tenaker = directory_map('./assets/frontend/assets/img/tenagakerja', 1);
+            $teknis = directory_map('./assets/frontend/assets/img/transmigrasi/rapatteknis', 1);
+            $koordinasi = directory_map('./assets/frontend/assets/img/transmigrasi/rapatkoordinasi', 1);
+            $penyuluhan = directory_map('./assets/frontend/assets/img/transmigrasi/penyuluhan', 1);
+            ?>
+
             <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
                 <li data-filter="*" class="filter-active">Semua</li>
                 <li data-filter=".rapatteknis">Rapat Teknis</li>
@@ -523,78 +530,33 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </ul>
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-                <div class="col-lg-4 col-md-6 portfolio-item rapatteknis">
-                    <div class="portfolio-img">
-                        <a class="lsb-preview" href="#">
-                            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/transmigrasi/Picture1.png" class="img-fluid w-100">
-                        </a>
+                <?php foreach ($teknis as $tek) : ?>
+                    <div class="col-lg-4 col-md-6 portfolio-item rapatteknis">
+                        <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/rapatteknis/') . $tek; ?>" class="img-fluid" alt=""></div>
+                        <div class="portfolio-info">
+                            <a href="<?php echo base_url('assets/frontend/assets/img/transmigrasi/rapatteknis/') . $tek; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item penyuluhan">
-                    <div class="portfolio-img">
-                        <a class="lsb-preview" href="#">
-                            <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture5.png" class="img-fluid w-100">
-                        </a>
+                <?php endforeach; ?>
+                <?php foreach ($koordinasi as $kor) : ?>
+                    <div class="col-lg-4 col-md-6 portfolio-item rapatkoordinasi">
+                        <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/rapatkoordinasi/') . $kor; ?>" class="img-fluid" alt=""></div>
+                        <div class="portfolio-info">
+                            <a href="<?php echo base_url('assets/frontend/assets/img/transmigrasi/rapatkoordinasi/') . $kor; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link">
+                                <i class="bi bi-zoom-in"></i>
+                            </a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item rapatteknis">
-                    <div class="portfolio-img">
-                        <a class="lsb-preview" href="#">
-                            <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture1.png" class="img-fluid w-100">
-                        </a>
+                <?php endforeach; ?>
+                <?php foreach ($penyuluhan as $suluh) : ?>
+                    <div class="col-lg-4 col-md-6 portfolio-item penyuluhan">
+                        <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/penyuluhan/') . $suluh; ?>" class="img-fluid" alt=""></div>
+                        <div class="portfolio-info">
+                            <a href="<?php echo base_url('assets/frontend/assets/img/transmigrasi/penyuluhan/') . $suluh; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        </div>
                     </div>
-                </div>
+                <?php endforeach; ?>
 
-                <div class="col-lg-4 col-md-6 portfolio-item rapatkoordinasi">
-                    <div class="portfolio-img">
-                        <a class="lsb-preview" href="#">
-                            <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture4.png" class="img-fluid w-100">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item penyuluhan">
-                    <div class="portfolio-img">
-                        <a class="lsb-preview" href="#">
-                            <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture6.png" class="img-fluid w-100">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item rapatteknis">
-                    <div class="portfolio-img">
-                        <a class="lsb-preview" href="#">
-                            <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture1.png" class="img-fluid w-100">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item rapatkoordinasi">
-                    <div class="portfolio-img">
-                        <a class="lsb-preview" href="#">
-                            <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture2.png" class="img-fluid w-100">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item rapatkoordinasi">
-                <div class="portfolio-img">
-                    <a class="lsb-preview" href="#">
-                        <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture3.png" class="img-fluid w-100">
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item penyuluhan">
-                <div class="portfolio-img">
-                    <a class="lsb-preview" href="#">
-                        <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/Picture7.png" class="img-fluid w-100">
-                    </a>
-                </div>
             </div>
 
         </div>

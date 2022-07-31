@@ -5,6 +5,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <!-- Dropzone CSS -->
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+
+<!-- Dropzone JS -->
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+
 <style>
     .toggle {
         --width: 80px;
@@ -151,7 +155,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                             <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange="updateStatusberita(<?php echo $info->id; ?>,$(this).is(':checked'))" <?php echo ($info->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
                                         </td>
                                         <td>
-                                            <a target="_blank" href="<?php site_url() . '/berita/' . $info->slug; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
+                                            <a target="_blank" href="<?php echo site_url() . '/berita/' . $info->slug; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
                                             <a href="javascript:void(0)" data-id="<?php echo $info->id; ?>" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
                                             <a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="<?php echo $info->id; ?>"><i class="fas fa-trash"></i></a>
                                         </td>

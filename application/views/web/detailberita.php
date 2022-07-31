@@ -250,7 +250,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="d-flex flex-row"></div>
                     <h2 class="text-capitalize"><?php echo $detailberita->judul; ?></h2>
                     <p class="text-primary">
-                        <?php echo $detailberita->tgl_publikasi; ?>
+                        <i class="bx bxl-calendar text-secondary"></i> <?php echo $detailberita->tgl_publikasi; ?>
                     </p>
                     <div class="row news-card mt-3">
                         <div class="col-sm-12 col-md-12 col-lg-12 mb-4 mt-3">
@@ -262,9 +262,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             </div>
                         </div>
 
-                        <div class="col-sm-12 col-md-12 col-lg-8 mb-5">
+                        <div class="col-12">
                             <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="col-sm-12 col-md-6 col-lg-6 m-0">
                                     <div class="tag">
                                         <p>Tag:</p>
                                         <ul>
@@ -280,78 +280,68 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-md-12 col-lg-12 mt-3">
+
+                                <div class="col-sm-12 col-md-6 col-lg-6 m-0">
                                     <div class="row">
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                                            <div class="mt-2">
-                                                <div class="d-flex creator-profile"><img class="rounded-circle" src="https://i.imgur.com/uSlStch.jpg" width="50" height="50">
-                                                    <div class="d-flex flex-column ml-2">
-                                                        <h6 class="username">Alexendor patriot</h6><span class="date">Jan 20,2020</span>
+                                        <ul class="social-list">
+                                            <li>
+                                                <a href="#">
+                                                    <div class="maincard p-3">
+                                                        <div class="thecard">
+                                                            <div class="thefront text-center facebook">
+                                                                <div class="social-icon">
+                                                                    <i class="bx bxl-facebook"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                                            <ul class="social-list">
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="maincard p-3">
-                                                            <div class="thecard">
-                                                                <div class="thefront text-center facebook">
-                                                                    <div class="social-icon">
-                                                                        <i class="fa fa-facebook"></i>
-                                                                    </div>
+                                                </a>
+                                            </li>
+
+
+                                            <li>
+                                                <a href="#">
+                                                    <div class="maincard p-3">
+                                                        <div class="thecard">
+                                                            <div class="thefront text-center py-4 twitter">
+                                                                <div class="social-icon">
+                                                                    <i class="bx bxl-twitter"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                </li>
+                                                    </div>
+                                                </a>
+                                            </li>
 
-
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="maincard p-3">
-                                                            <div class="thecard">
-                                                                <div class="thefront text-center py-4 twitter">
-                                                                    <div class="social-icon">
-                                                                        <i class="fa fa-twitter"></i>
-                                                                    </div>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="maincard p-3">
+                                                        <div class="thecard">
+                                                            <div class="thefront text-center py-4 envelope">
+                                                                <div class="social-icon">
+                                                                <i class="bi bi-envelope"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                </li>
+                                                    </div>
+                                                </a>
+                                            </li>
 
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="maincard p-3">
-                                                            <div class="thecard">
-                                                                <div class="thefront text-center py-4 envelope">
-                                                                    <div class="social-icon">
-                                                                        <i class="fa fa-envelope"></i>
-                                                                    </div>
+
+                                            <li>
+                                                <a href="#">
+                                                    <div class="maincard p-3">
+                                                        <div class="thecard">
+                                                            <div class="thefront text-center py-4 whatsapp">
+                                                                <div class="social-icon">
+                                                                    <i class="bx bxl-whatsapp"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                </li>
-
-
-                                                <li>
-                                                    <a href="#">
-                                                        <div class="maincard p-3">
-                                                            <div class="thecard">
-                                                                <div class="thefront text-center py-4 whatsapp">
-                                                                    <div class="social-icon">
-                                                                        <i class="fa fa-whatsapp"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
 
                                 </div>

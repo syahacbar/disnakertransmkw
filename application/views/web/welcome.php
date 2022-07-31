@@ -95,7 +95,7 @@
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/sdic.png" class="img-fluid" alt="">
+            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/client-4.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
@@ -331,10 +331,7 @@
             <div class="col-lg-4 col-md-6 portfolio-item filter-tenaker">
               <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/tenagakerja/') . $ten; ?>" class="img-fluid" alt=""></div>
               <div class="portfolio-info">
-                <h4></h4>
-                <p></p>
-                <a href="<?php echo base_url('assets/frontend/assets/img/tenagakerja/') . $ten; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bx bx-plus"></i></a>
-                <a href="#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                <a href="<?php echo base_url('assets/frontend/assets/img/tenagakerja/') . $ten; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bi bi-zoom-in"></i></a>
               </div>
             </div>
           <?php endforeach; ?>
@@ -342,14 +339,10 @@
             <div class="col-lg-4 col-md-6 portfolio-item filter-trans">
               <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/') . $tra ?>" class="img-fluid" alt=""></div>
               <div class="portfolio-info">
-                <h4></h4>
-                <p></p>
-                <a href="<?php echo base_url('assets/frontend/assets/img/transmigrasi/') . $tra ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bx bx-plus"></i></a>
-                <a href="#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                <a href="<?php echo base_url('assets/frontend/assets/img/transmigrasi/') . $tra ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bi bi-zoom-in"></i></a>
               </div>
             </div>
           <?php endforeach; ?>
-
         </div>
 
       </div>

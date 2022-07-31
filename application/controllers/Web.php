@@ -26,7 +26,7 @@ class Web extends CI_Controller
 		// $this->page_data['page']->menu = 'dashboard';
 	}
 
-	public function notifWA($nohp,$pesan)
+	public function notifWA($nohp, $pesan)
 	{
 		$userkey = 'a39a7fbff392';
 		$passkey = '7eb931d25b0fa3ee6d55980b';
@@ -39,13 +39,13 @@ class Web extends CI_Controller
 		curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
 		curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
-		curl_setopt($curlHandle, CURLOPT_TIMEOUT,30);
+		curl_setopt($curlHandle, CURLOPT_TIMEOUT, 30);
 		curl_setopt($curlHandle, CURLOPT_POST, 1);
 		curl_setopt($curlHandle, CURLOPT_POSTFIELDS, array(
-		    'userkey' => $userkey,
-		    'passkey' => $passkey,
-		    'to' => $telepon,
-		    'message' => $message
+			'userkey' => $userkey,
+			'passkey' => $passkey,
+			'to' => $telepon,
+			'message' => $message
 		));
 		$results = json_decode(curl_exec($curlHandle), true);
 		curl_close($curlHandle);
@@ -124,11 +124,50 @@ class Web extends CI_Controller
 		$this->load->view('web/tags', $this->page_data);
 	}
 
-	public function pengumuman()
+	// public function pengumuman()
+	// {
+	// 	$this->page_data['page']->menu = 'informasi';
+	// 	$this->page_data['page']->title = 'Pengumuman';
+	// 	$this->load->view('web/pengumuman', $this->page_data);
+	// }
+
+	public function pengumuman($slug = NULL)
 	{
+		if ($slug != NULL) {
+			$querytags = $this->db->query("SELECT tags FROM informasi")->result();
+			$tags_sidebar = array();
+			foreach ($querytags as $qt) {
+				$tagsarray = explode(",", $qt->tags);
+				foreach ($tagsarray as $tag) {
+					if (!in_array($tag, $tags_sidebar)) {
+						array_push($tags_sidebar, $tag);
+					}
+				}
+			}
+
+			//end
+			$detailpengumuman = $this->informasi_model->get_pengumuman_by_slug($slug);
+
+			$this->page_data['detailpengumuman'] = $detailpengumuman;
+			$this->page_data['tags_sidebar'] = $tags_sidebar;
+			$this->page_data['page']->menu = 'informasi';
+			$this->page_data['page']->title = $detailpengumuman->judul;
+			$this->load->view('web/detailpengumuman', $this->page_data);
+		} else {
+			$this->page_data['listpengumuman'] = $this->informasi_model->get_pengumuman();
+			$this->page_data['page']->menu = 'informasi';
+			$this->page_data['page']->title = 'Pengumuman';
+			$this->load->view('web/pengumuman', $this->page_data);
+		}
+	}
+
+	public function tag_pengumuman($tag)
+	{
+		$this->page_data['listpengumuman'] = $this->informasi_model->get_pengumuman($tag);
+		$this->page_data['tag'] = $tag;
 		$this->page_data['page']->menu = 'informasi';
 		$this->page_data['page']->title = 'Pengumuman';
-		$this->load->view('web/pengumuman', $this->page_data);
+		$this->load->view('web/tags', $this->page_data);
 	}
 
 	public function pelatihan()
@@ -199,8 +238,8 @@ class Web extends CI_Controller
 		}
 
 		$this->activity_model->add('New User $' . $id . ' Created by User:' . logged('name'), logged('id'));
-		$pesan = 'Hai...'.$name.', anda berhasil membuat akun di website Disnakertrans Manokwari.'.PHP_EOL.'Silahkan kembali ke halaman website disnakertransmkw.com untuk melakukan login dan melengkapi formulir pembuatan Kartu Pencari Kerja (Form AK-1).'.PHP_EOL.PHP_EOL.'Terima Kasih...';
-		$this->notifWA($phone,$pesan);
+		$pesan = 'Hai...' . $name . ', anda berhasil membuat akun di website Disnakertrans Manokwari.' . PHP_EOL . 'Silahkan kembali ke halaman website disnakertransmkw.com untuk melakukan login dan melengkapi formulir pembuatan Kartu Pencari Kerja (Form AK-1).' . PHP_EOL . PHP_EOL . 'Terima Kasih...';
+		$this->notifWA($phone, $pesan);
 		$this->session->set_flashdata('alert-type', 'success');
 		$this->session->set_flashdata('alert', 'New User Created Successfully');
 
