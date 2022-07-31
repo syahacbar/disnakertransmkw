@@ -331,10 +331,10 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-tenaker">
             <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/tenagakerja/').$ten; ?>" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
-              <h4>App 1</h4>
-              <p>App</p>
+              <h4></h4>
+              <p></p>
               <a href="<?php echo base_url('assets/frontend/assets/img/tenagakerja/').$ten; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
         <?php endforeach; ?>
@@ -342,10 +342,10 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-trans">
             <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/').$tra?>" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
-              <h4>App 1</h4>
-              <p>App</p>
+              <h4></h4>
+              <p></p>
               <a href="<?php echo base_url('assets/frontend/assets/img/transmigrasi/').$tra?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
         <?php endforeach; ?>
