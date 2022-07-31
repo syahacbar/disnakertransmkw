@@ -220,37 +220,50 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
             <h3>Statistik Pencari Kerja</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              Berikut ini ditampilkan statistik pencari kerja di Kab.  Manokwari berdasarkan pendidikan terakhir.
             </p>
 
             <div class="skills-content">
 
               <div class="progress">
-                <span class="skill">HTML <i class="val">100%</i></span>
+                <span class="skill">SD <i class="val">10%</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
 
               <div class="progress">
-                <span class="skill">CSS <i class="val">90%</i></span>
+                <span class="skill">SMP <i class="val">15%</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
 
               <div class="progress">
-                <span class="skill">JavaScript <i class="val">75%</i></span>
+                <span class="skill">SMA <i class="val">40%</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
 
               <div class="progress">
-                <span class="skill">Photoshop <i class="val">55%</i></span>
+                <span class="skill">Diploma <i class="val">15%</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">Sarjana <i class="val">10%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">Magister <i class="val">5%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
 
@@ -268,7 +281,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         <div class="section-title">
           <h2>Layanan</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+
         </div>
 
         <div class="row">
@@ -276,7 +289,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="icon-box">
               <div class="icon"><i class="bx bx-id-card"></i></div>
               <h4><a href="">Kartu Pencari Kerja</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <p>Kartu AK1 adalah kartu tanda pencari kerja yang sering disebut pula dengan kartu kuning. Kartu ini dikeluarkan oleh lembaga pemerintah, Dinas Ketenagakerjaan atau Disnaker, yang dibuat dengan tujuan untuk pendataan para pencari kerja.</p>
             </div>
           </div>
 
@@ -284,7 +297,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="icon-box">
               <div class="icon"><i class="bx bx-user-voice"></i></div>
               <h4><a href="">Pengaduan</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <p>Layanan ini diperuntukkan bagi anda pekerja/buruh/karyawan yang mendapati terjadinya pelanggaran terkait masalah ketenagakerjaan, seperti Upah, Pesangon, Jaminan Kesehatan, PHK dan masalah terkait lainnya di instansi/perusahaan tempat bekerja.</p>
             </div>
           </div>
 
@@ -292,7 +305,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="icon-box">
               <div class="icon"><i class="bx bx-buildings"></i></div>
               <h4><a href="">Pemagangan</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <p>Melalui program pemagangan, pemerintah berupaya agar angkatan kerja bisa memiliki keterampilan dan mudah terserap dunia kerja. </p>
             </div>
           </div>
 
@@ -300,7 +313,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="icon-box">
               <div class="icon"><i class="bx bx-certification"></i></div>
               <h4><a href="">Pelatihan & Sertifikasi</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+              <p>Layanan ini diharapkan dapat memberikan bekal keterampilan profesional bagi angkatan kerja sehingga dapat membuka peluang kerja sendiri dan berwirausaha secara mandiri</p>
             </div>
           </div>
 
@@ -317,7 +330,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         <div class="section-title">
           <h2>Galeri</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
         <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
@@ -430,7 +442,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         <div class="section-title">
           <h2>Team Work</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
         <div class="row">
