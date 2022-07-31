@@ -77,7 +77,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <a href="<?php echo url('login/forget?username=' . post('username')) ?>"><?php echo lang('forget_password_?') ?></a><br>
         <br>
       </p>
-      <p>Belum Punya Akun? <a href="<?php echo site_url(); ?>web/registrasi">DAFTAR DI SINI</a></p>
+      <p>Kembali ke halaman utama <a href="<?php echo site_url(); ?>">Klik Disini</a></p>
       <p class="mb-0">
         <!-- <a href="register.html" class="text-center">Register a new membership</a> -->
       </p>
