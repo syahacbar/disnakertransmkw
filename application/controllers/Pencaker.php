@@ -484,13 +484,9 @@ class Pencaker extends MY_Controller
 
         $users_id = logged('id');
         $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
-        $query  = $this->db->query("SELECT d.*,
-                    (SELECT pd.namadokumen FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS namadokumen,
-                    (SELECT pd.tgl_upload FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS tgl_upload,
-                    (SELECT pd.id FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS pencakerdokumen_id
-                    FROM dokumen d");
+        
 
-        $pencaker_dokumen = $query->result();
+        $pencaker_dokumen =  $this->pencaker_model->pencaker_doc($pencaker_id);
         $this->page_data['pencaker_dokumen'] = $pencaker_dokumen;
         $this->page_data['page']->title = 'Dokumen Pencari Kerja';
         $this->page_data['page']->menu = 'doc_pencaker';
