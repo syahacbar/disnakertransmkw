@@ -14,6 +14,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url(); ?>/assets/frontend/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>/assets/frontend/favicon/favicon-16x16.png">
     <link rel="manifest" href="<?php echo base_url(); ?>/assets/frontend/favicon/site.webmanifest">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -31,6 +32,10 @@
 
     <!-- Dropzone CSS -->
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+
+    <!-- Lightbox -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/plugins/lightbox-previewer/src/index.css" />
+    <script src="<?php echo base_url(); ?>/assets/plugins/lightbox-previewer/dist/img-previewer.min.js"></script>
 
     <style>
         header#header {
@@ -62,11 +67,6 @@
             box-shadow: none;
         }
 
-        /* section#contact {
-            padding: 0;
-        } */
-
-
         section#visimisi {
             padding: 0;
             margin-top: 120px;
@@ -80,11 +80,7 @@
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
-
             <h1 class="logo me-auto"><a href="<?php echo site_url(); ?>">Disnakertrans Manokwari</a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto <?php echo ($page->menu == 'beranda') ? 'active' : '' ?>" href="<?php echo site_url(); ?>">Beranda</a></li>

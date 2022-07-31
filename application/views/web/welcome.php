@@ -10,10 +10,10 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url();?>/assets/frontend/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url();?>/assets/frontend/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url();?>/assets/frontend/favicon/favicon-16x16.png">
-  <link rel="manifest" href="<?php echo base_url();?>/assets/frontend/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url(); ?>/assets/frontend/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url(); ?>/assets/frontend/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>/assets/frontend/favicon/favicon-16x16.png">
+  <link rel="manifest" href="<?php echo base_url(); ?>/assets/frontend/favicon/site.webmanifest">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -36,15 +36,21 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+  <style>
+    li.py-1::marker {
+      color: #47b2e4;
+    }
+  </style>
 </head>
 
 <body>
 
   <!-- ======= Header ======= -->
   <?php
-defined('BASEPATH') or exit('No direct script access allowed'); ?>
+  defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
-<?php include viewPath('web/template/header'); ?>
+  <?php include viewPath('web/template/header'); ?>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -105,93 +111,71 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       </div>
     </section><!-- End Cliens Section -->
 
-    <!-- ======= About Us Section ======= -->
-    <section id="about" class="about">
+    <section id="skills" class="skills section-bg">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>Tujuan dan Sasaran Strategis</h2>
-        </div>
-
-        <div class="row content">
-          <div class="col-lg-6">
-            <p>
-              Dinas Tenaga Kerja dan Transmigrasi Kabupaten Manokwari telah merumuskan tujuan dan sasaran strategis yang merupakan bagian integral dalam proses Rencana Strategis Dinas Tenaga Kerja Dan Transmigrasi Kabupaten Manokwari Tahun 2021 – 2025 untuk mencapai visi.
-            </p>
-            <ul>
-              <li><i class="ri-check-double-line"></i> Mendidik dan melatih para pencari kerja agar dapat mencari nafkahnya sendiri sehingga dapat mengurangi angka pengangguran dan mengurangi angka kemiskinan;</li>
-              <li><i class="ri-check-double-line"></i> Meningkatkan kerja sama hubungan industrial dan perlindungan Tenaga Kerja dengan pihak terkait;</li>
-              <li><i class="ri-check-double-line"></i> Meningkatnya Kualitas pemukiman yang layak huni, layak usaha, layak berkembang serta layak lingkungan;</li>
-              <li><i class="ri-check-double-line"></i> Meningkatkan kualitas Aparatur Dinas Nakertrans;</li>
-              <li><i class="ri-check-double-line"></i> Meningkatkan kualitas dan Kuantitas administrasi keuangan, perencanaan serta pelaporan Program dan Data.</li>
-
-            </ul>
+        <div class="row">
+          <div class="col-lg-5 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
+            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/tujuan.png" class="img-fluid" alt="">
           </div>
-          <div class="col-lg-6 pt-4 pt-lg-0">
-            <p>
-             Dengan berpedoman pada Visi dan Misi tersebut di atas maka Tujuan Dinas Tenaga Kerja Dan Transmigrasi Kabupaten Manokwari dapat dirumuskan sebagai berikut :
+          <div class="col-lg-7 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+            <h3>Tujuan</h3>
+            <p class="fst">
+              Dengan berpedoman pada Visi dan Misi tersebut di atas maka Tujuan Dinas Tenaga Kerja dan Transmigrasi Kabupaten Manokwari dapat dirumuskan sebagai berikut:
             </p>
-            <ul>
-              <li><i class="ri-check-double-line"></i> Meningkatkan perluasan dan kesempatan kerja;</li>
-              <li><i class="ri-check-double-line"></i> Meningkatkan kerjasama hubungan industrial dan Perlindungn tenaga kerja dengan pihak terkait;</li>
-              <li><i class="ri-check-double-line"></i> Terbangunnya rumah layak huni bagi transmigrasi lokal;</li>
-              <li><i class="ri-check-double-line"></i> Meningkatkan infrastruktur lokasi transmigrasi;</li>
-              <li><i class="ri-check-double-line"></i> Meingkatkan profesionalisme aparatur;</li>
-              <li><i class="ri-check-double-line"></i> Meningkatkan sarana dan prasarana aparat;
-              <li><i class="ri-check-double-line"></i> Meningkatkan kualitas administrasi keuangan, teknis perencanaan dan pelaporan.</li>
-<!-- 
-            <a href="#" class="btn-learn-more">Learn More</a> -->
+
+            <div class="skills-content">
+              <ol type="a">
+                <li class="py-1">Meningkatkan perluasan dan kesempatan kerja;</li>
+                <li class="py-1">Meningkatkan kerjasama hubungan industrial dan Perlindungn tenaga kerja dengan pihak terkait;</li>
+                <li class="py-1">Terbangunnya rumah layak huni bagi transmigrasi lokal;</li>
+                <li class="py-1">Meningkatkan infrastruktur lokasi transmigrasi;</li>
+                <li class="py-1">Meingkatkan profesionalisme aparatur;</li>
+                <li class="py-1">Meningkatkan sarana dan prasarana aparat;</li>
+                <li class="py-1">Meningkatkan kualitas administrasi keuangan, teknis perencanaan dan pelaporan.</li>
+              </ol type="a">
+            </div>
+
           </div>
         </div>
 
       </div>
-    </section><!-- End About Us Section -->
+    </section><!-- End Skills Section -->
 
-    <!-- ======= Why Us Section ======= -->
-   <!--  <section id="why-us" class="why-us section-bg">
-      <div class="container-fluid" data-aos="fade-up">
+    <section id="skills" class="skills">
+      <div class="container" data-aos="fade-up">
 
         <div class="row">
 
-          <div class="col-lg-8 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+          <div class="col-lg-7 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+            <h3>Sasaran Strategis</h3>
+            <p class="fst">
+              Dinas Tenaga Kerja dan Transmigrasi Kabupaten Manokwari telah merumuskan tujuan yang merupakan bagian integral dalam proses Rencana Strategis Dinas Tenaga Kerja Dan Transmigrasi Kabupaten Manokwari Tahun 2021 – 2025 untuk mencapai visi.
+            </p>
 
-            <div class="content">
-              <h3><strong>Tujuan</strong></h3>
-              <p>
-                Dinas Tenaga Kerja dan Transmigrasi Kabupaten Manokwari telah merumuskan tujuan dan sasaran strategis yang merupakan bagian integral dalam proses Rencana Strategis Dinas Tenaga Kerja Dan Transmigrasi Kabupaten Manokwari Tahun 2021 – 2025 untuk mencapai visi.
-              </p>
-            </div>
+            <div class="skills-content">
+              <ol type="a">
+                <li class="py-1">Mendidik dan melatih para pencari kerja agar dapat mencari nafkahnya sendiri sehingga dapat mengurangi angka pengangguran dan mengurangi angka kemiskinan;</li>
+                <li class="py-1">Meningkatkan kerja sama hubungan industrial dan perlindungan Tenaga Kerja dengan pihak terkait;</li>
+                <li class="py-1">Meningkatnya Kualitas pemukiman yang layak huni, layak usaha, layak berkembang serta layak lingkungan;</li>
+                <li class="py-1">Meningkatkan kualitas Aparatur Dinas Nakertrans;</li>
+                <li class="py-1">Meningkatkan kualitas dan Kuantitas administrasi keuangan, perencanaan serta pelaporan Program dan Data.</li>
+              </ol>
 
-            <div class="accordion-list">
-              <ul>
-                <li>
-                  <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>01</span> Mendidik dan melatih para pencari kerja agar dapat mencari nafkahnya sendiri sehingga dapat mengurangi angka pengangguran dan mengurangi angka kemiskinan </a>
-                </li>
-                <li>
-                  <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>02</span> Meningkatkan kerja sama hubungan industrial dan perlindungan Tenaga Kerja dengan pihak terkait </a>
-                </li>
-                <li>
-                  <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Meningkatnya Kualitas pemukiman yang layak huni, layak usaha, layak berkembang serta layak lingkungan </a>
-                </li>
-                <li>
-                  <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>04</span> Meningkatkan kualitas Aparatur Dinas Nakertrans </a>
-                </li>
-                <li>
-                  <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>05</span> Meningkatkan kualitas dan Kuantitas administrasi keuangan, perencanaan serta pelaporan Program dan Data </a>
-                </li>
-
-              </ul>
             </div>
 
           </div>
 
-          <div class="col-lg-4 align-items-stretch order-1 order-lg-2 img" style='background-image: url("<?php echo base_url(); ?>/assets/frontend/assets/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
-        </div>
+          <div class="col-lg-5 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
+            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/sasaran.webp" class="img-fluid">
+          </div>
 
-      </div>
-    </section> -->
-    <!-- End Why Us Section -->
-     <!-- ======= Cta Section ======= -->
+        </div>
+    </section><!-- End Skills Section -->
+
+
+
+    <!-- ======= Cta Section ======= -->
     <section id="cta" class="cta">
       <div class="container" data-aos="zoom-in">
 
@@ -436,7 +420,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       </div>
     </section><!-- End Portfolio Section -->
 
-     <!-- ======= Team Section ======= -->
+    <!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg">
       <div class="container" data-aos="fade-up">
 
@@ -448,7 +432,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
           <div class="col-lg-6">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
-              <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/kadis.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/team/kadis.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Yusak Dowansiba, SH.,MA</h4>
                 <span>Kepala Dinas</span>
@@ -463,7 +447,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
           <div class="col-lg-6 mt-4 mt-lg-0">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
-              <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/sekdis.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/team/sekdis.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Jolanda Herlani Kwa, SE., M.Si</h4>
                 <span>Sekretaris</span>
@@ -478,7 +462,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
-              <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/kabid_pentaker.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/team/kabid_pentaker.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Ema Alberthina M. Rumsayor, S.STP</h4>
                 <span>Kabid. PENTAKER</span>
@@ -494,7 +478,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
-              <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/user.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/team/user.png" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Dra. Sarah Sambara</h4>
                 <span>Kabid. HUBIN</span>
@@ -510,7 +494,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
-              <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/kabid_p2kt.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/team/kabid_p2kt.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Hadi Eka Putra, SE</h4>
                 <span>Kabid. P2KT</span>
@@ -526,7 +510,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
-              <div class="pic"><img src="<?php echo base_url();?>assets/frontend/assets/img/team/user.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/team/user.png" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Willem Ramhat Jaya Rumbrawer, S.Ip</h4>
                 <span>Kabid. PKT</span>
@@ -593,7 +577,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               </div>
             </li>
 
-            
+
 
           </ul>
         </div>
@@ -677,7 +661,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-        Copyright  &copy; 2022 <strong><span>Disnakertrans Manokwari</span></strong>
+        Copyright &copy; 2022 <strong><span>Disnakertrans Manokwari</span></strong>
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
