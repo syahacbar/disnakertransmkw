@@ -53,6 +53,9 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
+ define('PATHDIR1', 'D:\xampp-win32-5.6.36-0-VC11\htdocs\disnakertransmkw\assets\frontend\assets\img\tenagakerja');
+ define('PATHDIR2', 'D:\xampp-win32-5.6.36-0-VC11\htdocs\disnakertransmkw\assets\frontend\assets\img\transmigrasi');
+
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
