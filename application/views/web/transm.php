@@ -266,87 +266,87 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <div class="carousel-inner">
                                             <div class="carousel-item active" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide1.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide1.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide2.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide2.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide3.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide3.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide4.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide4.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide5.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide5.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide6.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide6.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide7.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide7.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide8.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide8.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide9.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide9.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide10.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide10.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide11.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide11.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide12.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide12.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide13.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide13.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide14.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide14.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide15.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide15.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide16.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide16.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                             <div class="carousel-item" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide17.png" class="d-block w-100">
+                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide17.PNG" class="d-block w-100">
                                                 </a>
                                             </div>
                                         </div>
