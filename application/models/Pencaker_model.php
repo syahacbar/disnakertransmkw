@@ -17,10 +17,16 @@ class Pencaker_model extends MY_Model {
             $nourut = 1;  //cek jika kode belum terdapat pada table
         }
 
-        $tgl=date('dmY'); 
+        $tgl=date('dmY');  
         $batas = str_pad($nourut, 6, "0", STR_PAD_LEFT);    
         $nopendaftaran = "9202".$tgl.$batas;  //format kode
         return $nopendaftaran;  
+    }
+
+    function get_kartu_kuning($iduser)
+    {
+    	$query = $this->db->query("SELECT * FROM pencaker p WHERE p.users_id=$iduser");
+    	return $query->result();
     }
 
 	function get_by_users_id($id)

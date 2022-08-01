@@ -51,36 +51,17 @@
                         </thead>
 
                         <tbody>
+                        <?php
+                            $no=1;
+                            foreach($pendidikan_pencaker AS $pd) : 
+                        ?>
                             <tr>
-                                <td class="text-center" width="2%">1</td>
-                                <td>SD/SEDERAJAT</td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
+                                <td class="text-center" width="2%"><?php echo $no++;?></td>
+                                <td><?php echo $pd->jenjang;?></td>
+                                <td><?php echo $pd->keterampilan;?></td>
+                                <td class="text-center"><?php echo $pd->tahunlulus;?></td>
                             </tr>
-                            <tr>
-                                <td class="text-center" >2</td>
-                                <td>SMTP/SEDERAJAT</td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
-                            </tr>
-                            <tr>
-                                <td class="text-center" >3</td>
-                                <td>SMTA/SEDERAJAT</td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
-                            </tr>
-                            <tr>
-                                <td class="text-center" >4</td>
-                                <td>DIPLOMA</td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
-                            </tr>
-                            <tr>
-                                <td class="text-center" >5</td>
-                                <td>SARJANA</td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
-                            </tr>
+                        <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
@@ -91,27 +72,23 @@
                         <thead>
                             <tr>
                             <th scope="col">No.</th>
-                            <th class="text-center" scope="col">Jabatan</th>
+                            <th class="text-center" scope="col">Jabatan/Instansi</th>
                             <th class="text-center" scope="col">Tahun</th>
                             </tr>
                         </thead>
 
                         <tbody>
+                        <?php
+                            $no=1;
+                            foreach($pekerjaan_pencaker AS $pk) : 
+                        ?>
                             <tr>
-                                <td class="text-center"  width="2%">1</td>
-                                <td></td>
-                                <td class="text-center"></td>
+                                <td class="text-center" width="2%"><?php echo $no++;?></td>
+                                <td><?php echo $pk->jabatan." (".$pk->instansi.")";?></td>
+                                <td class="text-center"><?php echo $pk->tahunmasuk;?></td>
                             </tr>
-                            <tr>
-                                <td class="text-center" >2</td>
-                                <td></td>
-                                <td class="text-center"></td>
-                            </tr>
-                            <tr>
-                                <td class="text-center" >3</td>
-                                <td></td>
-                                <td class="text-center"></td>
-                            </tr>
+                        <?php endforeach; ?>
+
                             </tbody>
                         </table>
                     </div>
@@ -162,7 +139,7 @@
                         <table class="table table-borderless table-sm">
                             <tbody>
                                 <tr>
-                                    <td width="30%">No. Pendaf. Pencari Kerja</td>
+                                    <td width="30%">No. Pendaf. Pencari Kerja</td> 
                                     <td>:</td>
                                     <td class="border-bottom"><?php echo $pencaker->nopendaftaran;?></td>
                                 </tr>
@@ -174,32 +151,32 @@
                                 <tr>
                                     <td>Nama Lengkap</td>
                                     <td>:</td>
-                                    <td class="border-bottom">Bartolomeus Appa</td>
+                                    <td class="border-bottom"><?php echo $pencaker->namalengkap;?></td>
                                 </tr>
                                 <tr>
                                     <td>Tempat, Tanggal Lahir</td>
                                     <td>:</td>
-                                    <td class="border-bottom">Kongo, Abad ke-4 SM</td>
+                                    <td class="border-bottom"><?php echo $pencaker->tempatlahir.", ".date_indo($pencaker->tgllahir);?></td>
                                 </tr>
                                 <tr>
                                     <td>Jenis Kelamin</td>
                                     <td>:</td>
-                                    <td class="border-bottom">Laki-Laki</td>
+                                    <td class="border-bottom"><?php echo ($pencaker->jenkel=="L") ? "Laki-laki" : "Perempuan";?></td>
                                 </tr>
                                 <tr>
                                     <td>Status Perkawinan</td>
                                     <td>:</td>
-                                    <td class="border-bottom"></td>
+                                    <td class="border-bottom"><?php echo $pencaker->statusnikah;?></td>
                                 </tr>
                                 <tr>
                                     <td>Agama</td>
                                     <td>:</td>
-                                    <td class="border-bottom">Kristen</td>
+                                    <td class="border-bottom"><?php echo $pencaker->agama;?></td>
                                 </tr>
                                 <tr>
                                     <td>Alamat</td>
                                     <td>:</td>
-                                    <td class="border-bottom">Kongo Timur Laut</td>
+                                    <td class="border-bottom"><?php echo $pencaker->alamat;?></td>
                                 </tr>
                             </tbody>
                         </table>

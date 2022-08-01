@@ -26,14 +26,18 @@ class Pencaker extends MY_Controller
 		$this->page_data['page']->menu = 'doc_pencaker';
 		$this->load->view('printout/formulirak1', $this->page_data);
 	}
-
+ 
     
-	function kartukuning_1($users_id)
+	function kartukuning_1($iduser)
 	{
-        $users_id = logged('id');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($iduser);
 
-        $this->page_data['pencaker'] = $this->pencaker_model->get_by_users_id($users_id);
+        $q_pendidikan = $this->db->query("SELECT p.users_id, pd.* FROM pencaker p JOIN pendidikan_pencaker pd ON pd.pencaker_id=p.id WHERE pd.pencaker_id = $pencaker_id->id");
+        $q_pekerjaan = $this->db->query("SELECT p.users_id, pk.* FROM pencaker p JOIN pengalaman_kerja pk ON pk.pencaker_id=p.id WHERE pk.pencaker_id = $pencaker_id->id");
+
+        $this->page_data['pencaker'] = $this->pencaker_model->get_by_users_id($iduser);
+        $this->page_data['pendidikan_pencaker'] = $q_pendidikan->result();
+        $this->page_data['pekerjaan_pencaker'] = $q_pekerjaan->result();
 		$this->page_data['page']->title = 'Printout Form AK-1';
 		$this->page_data['page']->menu = 'doc_pencaker';
 		$this->load->view('printout/kartukuning1', $this->page_data);
