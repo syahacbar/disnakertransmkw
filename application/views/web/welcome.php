@@ -67,7 +67,7 @@
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-          <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/hero-img.png" class="img-fluid animated" alt="">
+          <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/manpower.png" class="img-fluid animated" alt="">
         </div>
       </div>
     </div>
@@ -83,27 +83,27 @@
         <div class="row" data-aos="zoom-in">
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a target="_blank" href="https://kemnaker.go.id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/logokemenaker.png" class="img-fluid" alt=""></a>
+            <a target="_blank" href="https://kemnaker.go.id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/logokemenaker.png" class="img-fluid" alt="Kementerian Ketenagakerjaan RI"></a>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a target="_blank" href="https://papuabaratprov.go.id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/logoprovpabar.png" class="img-fluid" alt=""></a>
+            <a target="_blank" href="https://papuabaratprov.go.id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/logoprovpabar.png" class="img-fluid" alt="Pemerintah Provinsi Papua Barat"></a>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a target="_blank" href="https://www.manokwarikab.go.id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/logopemkabmanokwari.png" class="img-fluid" alt=""></a>
+            <a target="_blank" href="https://www.manokwarikab.go.id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/logopemkabmanokwari.png" class="img-fluid" alt="Pemerintah Kabupaten Manokwari"></a>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a target="_blank" href="https://lpse.kemnaker.go.id/eproc4"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/lpse-logo.png" class="img-fluid" alt=""></a>
+            <a target="_blank" href="https://lpse.kemnaker.go.id/eproc4"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/lpse-logo.png" class="img-fluid" alt="LPSE Kementerian Ketenagakerjaan RI"></a>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/sdic.png" class="img-fluid" alt="">
+            <a target="_blank" href="https://jdih.kemnaker.go.id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/jdih-logo.png" class="img-fluid" alt="JDIH Kementerian Ketenagakerjaan RI"></a>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/client-6.png" class="img-fluid" alt="">
+            <a target="_blank" href="http://www.conch-skc.com/id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/sdic.png" class="img-fluid" alt="SDIC Semen CONCH Indonesia"></a>
           </div>
 
         </div>
@@ -272,7 +272,7 @@
           <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-id-card"></i></div>
-              <h4><a href="">Kartu Pencari Kerja</a></h4>
+              <h4>Kartu Pencari Kerja</h4>
               <p>Kartu AK1 adalah kartu tanda pencari kerja yang sering disebut pula dengan kartu kuning. Kartu ini dikeluarkan oleh lembaga pemerintah, Dinas Ketenagakerjaan atau Disnaker, yang dibuat dengan tujuan untuk pendataan para pencari kerja.</p>
             </div>
           </div>
@@ -280,7 +280,7 @@
           <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-user-voice"></i></div>
-              <h4><a href="">Pengaduan</a></h4>
+              <h4>Pengaduan</h4>
               <p>Layanan ini diperuntukkan bagi anda pekerja/buruh/karyawan yang mendapati terjadinya pelanggaran terkait masalah ketenagakerjaan, seperti Upah, Pesangon, Jaminan Kesehatan, PHK dan masalah terkait lainnya di instansi/perusahaan tempat bekerja.</p>
             </div>
           </div>
@@ -288,7 +288,7 @@
           <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-buildings"></i></div>
-              <h4><a href="">Pemagangan</a></h4>
+              <h4>Pemagangan</h4>
               <p>Melalui program pemagangan, pemerintah berupaya agar angkatan kerja bisa memiliki keterampilan dan mudah terserap dunia kerja. </p>
             </div>
           </div>
@@ -296,7 +296,7 @@
           <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-certification"></i></div>
-              <h4><a href="">Pelatihan & Sertifikasi</a></h4>
+              <h4>Pelatihan & Sertifikasi</h4>
               <p>Layanan ini diharapkan dapat memberikan bekal keterampilan profesional bagi angkatan kerja sehingga dapat membuka peluang kerja sendiri dan berwirausaha secara mandiri</p>
             </div>
           </div>

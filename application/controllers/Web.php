@@ -102,6 +102,7 @@ class Web extends CI_Controller
 			//end
 			$detailberita = $this->informasi_model->get_berita_by_slug($slug);
 
+
 			$this->page_data['detailberita'] = $detailberita;
 			$this->page_data['tags_sidebar'] = $tags_sidebar;
 			$this->page_data['page']->menu = 'informasi';
@@ -246,4 +247,5 @@ class Web extends CI_Controller
 
 		redirect('login');
 	}
+
 }

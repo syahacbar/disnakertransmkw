@@ -99,12 +99,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><?php echo lang('berita') ?></h1>
+                <h1><?php echo lang('pelatihan') ?></h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="<?php echo url('/') ?>"><?php echo lang('home') ?></a></li>
-                    <li class="breadcrumb-item active"><?php echo lang('berita') ?></li>
+                    <li class="breadcrumb-item active"><?php echo lang('pelatihan') ?></li>
                 </ol>
             </div>
         </div>
@@ -118,21 +118,21 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex p-0">
-                        <h3 class="card-title p-3"><?php echo lang('berita') ?></h3>
+                        <h3 class="card-title p-3"><?php echo lang('pelatihan') ?></h3>
                         <div class="ml-auto p-2">
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalTambahberita"><span class="pr-1"><i class="fa fa-plus"></i></span>
-                                Tambah Berita
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalTambahpelatihan"><span class="pr-1"><i class="fa fa-plus"></i></span>
+                                Tambah Pelatihan
                             </button>
                         </div>
                     </div>
 
                     <!-- /.card-header -->
                     <div class="card-body table-responsive">
-                        <table id="tabelberita" class="table table-bordered table-hover table-striped">
+                        <table id="tabelpelatihan" class="table table-bordered table-hover table-striped">
                             <thead>
                                 <tr>
                                     <th width="20px">No.</th>
-                                    <th>Judul</th>
+                                    <th>Nama Pelatihan</th>
                                     <th>Tanggal</th>
                                     <th>Status</th>
                                     <th width="150px">Aksi</th>
@@ -141,19 +141,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <tbody>
                                 <?php
                                     $no = 1;
-                                    foreach ($informasi as $info) :
+                                    foreach ($pelatihan as $p) :
                                 ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
-                                        <td><?php echo $info->judul ?></td>
-                                        <td><?php echo $info->tgl_publikasi ?></td>
+                                        <td><?php echo $p->judul ?></td>
+                                        <td><?php echo $p->tanggal ?></td>
                                         <td>
-                                            <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange="updateStatusberita(<?php echo $info->id; ?>,$(this).is(':checked'))" <?php echo ($info->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
+                                            <label class="toggle"><input class="cbStatusPelatihan" type="checkbox" onchange="updateStatuspelatihan(<?php echo $p->id; ?>,$(this).is(':checked'))" <?php echo ($p->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
                                         </td>
                                         <td>
-                                            <a target="_blank" href="" data-id="<?php echo $info->id; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
-                                            <a href="javascript:void(0)" data-id="<?php echo $info->id; ?>" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
-                                            <a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="<?php echo $info->id; ?>"><i class="fas fa-trash"></i></a>
+                                            <a target="_blank" href="" data-id="<?php echo $p->id; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
+                                            <a href="javascript:void(0)" data-id="<?php echo $p->id; ?>" class="btn btn-sm btn-primary btnEditPelatihan"><i class="fas fa-edit"></i></a>&nbsp;
+                                            <a class="btn btn-sm btn-danger btnHapusPelatihan" href="javascript:void(0)" data-id="<?php echo $p->id; ?>"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -173,46 +173,34 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <!-- /.content -->
 
 <!-- Modal Tambah Berita -->
-<div class="modal fade" id="modalTambahberita" tabindex="-1" role="dialog" aria-labelledby="modalTambahberitaTitle" aria-hidden="true">
+<div class="modal fade" id="modalTambahpelatihan" tabindex="-1" role="dialog" aria-labelledby="modalTambahpelatihanTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg modal-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Tambah Berita</h5>
+                <h5 class="modal-title">Tambah Pelatihan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="formtambahberita">
+            <form id="formtambahpelatihan">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-8 col-lg-8">
                             <div class="form-group">
-                                <label for="judul">Judul Artikel</label>
+                                <label for="judul">Nama Pelatihan</label>
                                 <input type="text" class="form-control" name="judul" id="judul" required autofocus />
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label for="tag">Tag</label>
-                                <input type="text" class="form-control" name="tag" id="tag" required autofocus />
-                            </div>
-                        </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
-                                <label for="isi">Isi</label>
+                                <label for="isi">Deskripsi Pelatihan</label>
                                 <textarea name="isi" id="summernote" cols="20" rows="20"></textarea>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <label for="tag">Tag</label>
-                                <input type="text" class="form-control" name="tag" id="tag" required autofocus />
-                            </div>
-                        </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
-                                <label for="gambar_berita">Gambar</label>
-                                <div id="gambar_berita" class="dropzone border-1 dz-clickable">
+                                <label for="gambar_pelatihan">Gambar</label>
+                                <div id="gambar_pelatihan" class="dropzone border-1 dz-clickable">
                                     <div class="dz-message">Klik atau drop gambar thumbnail ke sini</div>
                                 </div>
                             </div>
@@ -230,29 +218,29 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 </div>
 
 
-<!-- Modal Edit Berita -->
-<div class="modal fade" id="modalEditBerita" tabindex="-1" role="dialog" aria-labelledby="modalEditBeritaTitle" aria-hidden="true">
+<!-- Modal Edit Pelatihan -->
+<div class="modal fade" id="modalEditPelatihan" tabindex="-1" role="dialog" aria-labelledby="modalEditPelatihanTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit Berita</h5>
+                <h5 class="modal-title">Edit Pelatihan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="formeditberita">
+            <form id="formeditpelatihan">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
-                                <label for="editjudul">Judul Artikel</label>
+                                <label for="editjudul">Deskripsi Pelatihan</label>
                                 <input type="text" class="form-control" name="editjudul" id="editjudul" value="" />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="editisi">Isi</label>
-                                <textarea name="editisi" id="editberitasummernote" rows="20"></textarea>
+                                <textarea name="editisi" id="editpelatihansummernote" rows="20"></textarea>
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
@@ -273,7 +261,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" name="idberita">
+                    <input type="hidden" name="idpelatihan">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     <button id="btnSimpan" type="button" class="btn btn-primary">Simpan</button>
                 </div>
@@ -287,10 +275,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <script type="text/javascript">
     Dropzone.autoDiscover = false;
 
-    function updateStatusberita(id, status) {
+    function updateStatuspelatihan(id, status) {
         //var id = $(this).data("id");
         $.ajax({
-            url: "<?php echo site_url(); ?>informasi/updatestatus_berita",
+            url: "<?php echo site_url(); ?>informasi/updatestatus_pelatihan",
             type: "POST",
             data: {
                 id: id,
@@ -303,10 +291,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         });
     }
 
-    function editberita(id)
+    function editpelatihan(id)
     {
         $.ajax({
-            url: "<?php echo site_url('informasi/get_berita_by_id') ?>/"+ id,
+            url: "<?php echo site_url('informasi/get_pelatihan_by_id') ?>/"+ id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
@@ -316,35 +304,35 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 $('[name="editisi"]').summernote("code", data.isi);
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                alert('Error Get Data Berita');
+                alert('Error Get Data Pelatihan');
             }
         });
     }
 
     $(document).ready(function() {
 
-        var tabelberita = null;
-        tabelberita = $('#tabelberita').DataTable({
+        var tabelpelatihan = null;
+        tabelpelatihan = $('#tabelpelatihan').DataTable({
             "responsive": true,
             "autoWidth": false,
         });
 
-        function reload_table_berita() {
-            $('#tabelberita').DataTable().ajax.reload(null, false);
+        function reload_table_pelatihan() {
+            $('#tabelpelatihan').DataTable().ajax.reload(null, false);
 
         }
-        var unggah_berita = new Dropzone(".dropzone", {
+        var unggah_pelatihan = new Dropzone(".dropzone", {
             autoProcessQueue: false,
-            url: "<?php echo site_url('informasi/add_berita') ?>",
+            url: "<?php echo site_url('informasi/add_pelatihan') ?>",
             maxFilesize: 20,
             method: "post",
             acceptedFiles: "image/*",
-            paramName: "thumbnailberita",
+            paramName: "thumbnailpelatihan",
             dictInvalidFileType: "Type file ini tidak dizinkan",
             addRemoveLinks: true,
         });
 
-        unggah_berita.on("sending", function(a, b, c) {
+        unggah_pelatihan.on("sending", function(a, b, c) {
             a.judul = $("input[name='judul']").val();
             a.tag = $("input[name='tag']").val();
             a.isi = $("textarea[name='isi']").val();
@@ -356,13 +344,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         });
 
-        unggah_berita.on('complete', function() {
+        unggah_pelatihan.on('complete', function() {
             location.reload();
         });
 
-        $('#formtambahberita').submit(function(e) {
+        $('#formtambahpelatihan').submit(function(e) {
             e.preventDefault();
-            unggah_berita.processQueue();
+            unggah_pelatihan.processQueue();
             //location.reload();
         });
 
@@ -370,11 +358,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         $(document).on('click', '.btnEditBerita', function() {
             $('#modalEditBerita').modal('show');
-            var idberita = $(this).attr("data-id");
+            var idpelatihan = $(this).attr("data-id");
             //set hidden form untuk Id Berita
-            $('[name="idberita"]').val(idberita);
+            $('[name="idpelatihan"]').val(idpelatihan);
 
-            editberita(idberita);
+            editpelatihan(idpelatihan);
         });
 
 
@@ -382,7 +370,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             var id = $(this).data("id");
             if (confirm("Are you sure you want to delete this?")) {
                 $.ajax({
-                    url: "<?php echo site_url(); ?>informasi/deleteberita",
+                    url: "<?php echo site_url(); ?>informasi/deletepelatihan",
                     type: "POST",
                     data: {
                         id: id

@@ -249,6 +249,10 @@ class Informasi extends MY_Controller
 		$this->page_data['page']->title = 'Pelatihan';
 		$this->page_data['page']->submenu = 'pelatihan';
 		$this->page_data['page']->menu = 'informasi';
+
+		$pelatihan = $this->informasi_model->get_pelatihan();
+		$this->page_data['pelatihan'] = $pelatihan;
+
 		$this->load->view('informasi/pelatihan', $this->page_data);
 	}
 }

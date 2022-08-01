@@ -28,7 +28,7 @@ class Informasi_model extends MY_Model
 
 	function get_berita_by_slug($slug)
 	{
-		$query = $this->db->get_where('informasi', array('slug' => $slug), 1);
+		$query = $this->db->get_where('informasi', array('slug' => $slug, 'kategori' => 'Berita'), 1);
 		return $query->row();
 	}
 
@@ -71,7 +71,7 @@ class Informasi_model extends MY_Model
 
 	function get_pengumuman_by_slug($slug)
 	{
-		$query = $this->db->get_where('informasi', array('slug' => $slug), 1);
+		$query = $this->db->get_where('informasi', array('slug' => $slug, 'kategori' => 'Pengumuman'), 1);
 		return $query->row();
 	}
 
@@ -93,5 +93,17 @@ class Informasi_model extends MY_Model
 		$this->db->where('id', $id);
 		$this->db->update('informasi', $data);
 		return $id;
+	}
+
+	function get_pelatihan()
+	{
+		$q = $this->db->get('pelatihan');
+		return $q->result();
+	}
+
+	function get_pelatihan_by_slug($slug)
+	{
+		$query = $this->db->get_where('informasi', array('slug' => $slug, 'kategori' => 'Pengumuman'), 1);
+		return $query->row();
 	}
 }
