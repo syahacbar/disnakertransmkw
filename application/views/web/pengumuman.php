@@ -169,15 +169,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <?php foreach ($listpengumuman as $pengumuman) : ?>
                     <div class="col">
+                        <a href="<?php echo site_url('pengumuman/') . $pengumuman->slug; ?>">
                         <div class="card">
+
+
                             <img src="<?php echo base_url('uploads/informasi/pengumuman/') . $pengumuman->gambar; ?>">
 
                             <div class="card-footer">
                                 <span class="day">
-                                    <?php echo substr(mediumdate_indo(substr($pengumuman->tgl_publikasi, 0, 10)), 0, 2); ?>
-                                </span>
-                                <span class="month">
-                                    <?php echo substr(mediumdate_indo(substr($pengumuman->tgl_publikasi, 0, 10)), 3, 3); ?>
+                                    <?php echo longdate_indo(substr($pengumuman->tgl_publikasi, 0, 10)); ?>
                                 </span>
                             </div>
                             <div class="card-body">
@@ -185,8 +185,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                             </div>
                             <?php $slug = url_title($pengumuman->judul, 'dash', true); ?>
-                            <a href="<?php echo site_url('pengumuman/') . $slug; ?>"></a>
+                           
                         </div>
+                         </a>
                     </div>
                 <?php endforeach ?>
             </div>

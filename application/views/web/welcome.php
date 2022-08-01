@@ -83,23 +83,23 @@
         <div class="row" data-aos="zoom-in">
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/logokemenaker.png" class="img-fluid" alt="">
+            <a target="_blank" href="https://kemnaker.go.id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/logokemenaker.png" class="img-fluid" alt=""></a>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/logoprovpabar.png" class="img-fluid" alt="">
+            <a target="_blank" href="https://papuabaratprov.go.id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/logoprovpabar.png" class="img-fluid" alt=""></a>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/logopemkabmanokwari.png" class="img-fluid" alt="">
+            <a target="_blank" href="https://www.manokwarikab.go.id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/logopemkabmanokwari.png" class="img-fluid" alt=""></a>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/client-4.png" class="img-fluid" alt="">
+            <a target="_blank" href="https://lpse.kemnaker.go.id/eproc4"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/lpse-logo.png" class="img-fluid" alt=""></a>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/client-5.png" class="img-fluid" alt="">
+            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/sdic.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
@@ -406,7 +406,7 @@
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
-              <div class="pic"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/team/user.png" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="<?php echo base_url(); ?>assets/frontend/assets/img/team/kabid_hubin.jpeg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Dra. Sarah Sambara</h4>
                 <span>Kabid. HUBIN</span>

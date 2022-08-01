@@ -250,11 +250,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="d-flex flex-row"></div>
                     <h2 class="text-capitalize"><?php echo $detailberita->judul; ?></h2>
                     <p class="text-primary">
-                        <i class="bx bxl-calendar text-secondary"></i> <?php echo $detailberita->tgl_publikasi; ?>
+                        <i class="bx bxl-calendar text-secondary"></i>  <?php echo longdate_indo(substr($detailberita->tgl_publikasi, 0, 10));; ?>
                     </p>
                     <div class="row news-card mt-3">
                         <div class="col-sm-12 col-md-12 col-lg-12 mb-4 mt-3">
-                            <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="https://i.imgur.com/ZKbpmaU.jpg"></div>
+                            <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="<?php echo base_url('uploads/informasi/berita/'.$detailberita->gambar); ?>"></div>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
                             <div class="news-feed-text">
