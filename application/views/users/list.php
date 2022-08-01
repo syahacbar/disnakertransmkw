@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                     <th><?php echo lang('user_last_login') ?></th>
                     <th><?php echo lang('user_status') ?></th>
                     <th><?php echo lang('action') ?></th>
-                  </tr>
+                  </tr> 
                   </thead>
                   <tbody>
                   <?php foreach ($users as $row): ?>

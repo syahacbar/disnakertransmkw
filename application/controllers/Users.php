@@ -13,7 +13,7 @@ class Users extends MY_Controller {
 	public function index()
 	{
 		ifPermissions('users_list');
-		$this->page_data['users'] = $this->users_model->get();
+		$this->page_data['users'] = $this->users_model->get(); 
 		$this->load->view('users/list', $this->page_data);
 	}
 
