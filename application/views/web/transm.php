@@ -239,116 +239,32 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </div>
 
                     <div class="accordion-list">
+                        <?php
+                            $transp2kt = directory_map('./assets/frontend/assets/img/transmigrasi/p2kt/', 1);
+                            $x = 1;
+                            $y = 1;
+                            $z = 0;
+                            $w = 0;
+                        ?>
                         <ul>
                             <li>
                                 <a data-bs-toggle="collapse" class="collapse mt-3" data-bs-target="#p2kt-1"><span>01</span>Seksi Perencanaan dan Pencadangan Tanah Transmigrasi<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                 <div id="p2kt-1" class="collapse show" data-bs-parent=".accordion-list">
                                     <div id="p2kt" class="carousel carousel-dark slide mt-3" data-bs-ride="carousel">
                                         <div class="carousel-indicators">
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="5" aria-label="Slide 6"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="6" aria-label="Slide 7"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="7" aria-label="Slide 8"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="8" aria-label="Slide 9"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="9" aria-label="Slide 10"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="10" aria-label="Slide 11"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="11" aria-label="Slide 12"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="12" aria-label="Slide 13"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="13" aria-label="Slide 14"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="14" aria-label="Slide 15"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="15" aria-label="Slide 16"></button>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="16" aria-label="Slide 17"></button>
+                                        <?php foreach ($transp2kt as $tp) : $z++?>
+                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="<?php echo $x++;?>" <?php echo ($z=='1') ? 'class="active" aria-current="true"' : '';?> aria-label="Slide <?php echo $y++ ;?>"></button>
+                                        <?php endforeach; ?>
                                         </div>
                                         <div class="carousel-inner">
-                                            <div class="carousel-item active" data-bs-interval="2000">
+                                            <?php foreach ($transp2kt as $tp) : $w++?>
+                                            <div class="carousel-item <?php echo ($w=='1') ? 'active':'';?>" data-bs-interval="2000">
                                                 <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide1.PNG" class="d-block w-100">
+                                                    <img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/p2kt/').$tp; ?>" class="d-block w-100">
                                                 </a>
                                             </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide2.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide3.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide4.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide5.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide6.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide7.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide8.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide9.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide10.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide11.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide12.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide13.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide14.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide15.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide16.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
-                                            <div class="carousel-item" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url(); ?>assets/frontend/assets/img/transmigrasi/p2kt/Slide17.PNG" class="d-block w-100">
-                                                </a>
-                                            </div>
+                                            <?php endforeach; ?>
+
                                         </div>
                                         <button class="carousel-control-prev" type="button" data-bs-target="#p2kt" data-bs-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
