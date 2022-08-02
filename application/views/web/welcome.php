@@ -316,8 +316,8 @@
           <h2>Galeri</h2>
         </div>
         <?php
-        $tenaker = directory_map('./assets/frontend/assets/img/tenagakerja', 1);
-        $trans = directory_map('./assets/frontend/assets/img/transmigrasi', 1);
+        $tenaker = directory_map('./assets/frontend/assets/img/tenagakerja', 1,FALSE);
+        $trans = directory_map('./assets/frontend/assets/img/transmigrasi', 1,FALSE);
         ?>
 
         <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">

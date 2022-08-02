@@ -124,7 +124,7 @@
                     <li class="dropdown"><a class="<?php echo ($page->menu == 'profil') ? 'active' : '' ?>" href="<?php echo site_url(); ?>web/profil"><span>Profil</span></a></li>
                     <li class="dropdown"><a class="<?php echo ($page->menu == 'bidang') ? 'active' : '' ?>" href="#"><span>Bidang-Bidang</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="<?php echo site_url(); ?>web/transm">Bidang Transmigrasi</a></li>
+                            <li><a href="<?php echo site_url(); ?>web/transmigrasi">Bidang Transmigrasi</a></li>
                             <li><a href="<?php echo site_url(); ?>web/tenagakerja">Bidang Tenaga Kerja</a></li>
                         </ul>
                     </li>

@@ -110,16 +110,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     Informasi mengenai dasar hukum, bidang-bidang, seksi-seksi, dan informasi lainnya terkait bidang tenaga kerja.
                 </p>
             </div>
-
-            <div class="col-lg-12 mt-4 mb-4">
-                <div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Perhatian!</h4>
-                    <p>Perbup Restribusi Imta telah berganti nama menjadi TPTKA sesuai Peraturan Pemerintah Nomor 34 Tahun 2021 dan Peraturan Daerah masih dibahas oleh Balegda Tingkat Provinsi Papua Barat.</p>
-                    <hr>
-                    <!-- <p class="mb-0">.</p> -->
-                </div>
-            </div>
-
         </div>
     </section>
 
@@ -145,6 +135,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <li>Peraturan Menteri Ketenagakerjaan Nomor 28 Tahun 2014 tentang Pembuatan dan Pengesahan Peraturan Perusahaan, Pembuatan Dan Pendaftaran Perjanjian Kerja Bersama.</li>
                                 <li>Peraturan Bupati Manokwari Nomor 73 Tahun 2017 tentang Retribusi Perpanjangan Izin Mempekerjakan Tenaga Kerja Asing.</li>
                                 <li>Peraturan Bupati Nomor 13 Tahun 2017</li>
+                                <li>PP No.35 Tahun 2021 Tentang Perjanjian Kerja Waktu Tertentu, Alih Daya, Waktu Kerja dan Waktu Istirahat, dan Pemutusan Hubungan Kerja</li>
                             </ol>
                         </div>
 
@@ -230,6 +221,20 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         </div>
     </section><!-- End Why Us Section -->
 
+     <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="row">
+          <div class="col-lg-9 text-center text-lg-start">
+            <h3>PERBUP  RESTRIBUSI IMTA </h3>
+            <p>UNTUK PERBUP  RESTRIBUSI IMTA TELAH BERGANTI NAMA MENJADI RPTKA SESUAI PERATURAN PEMERINTAH NOMOR 34 TAHUN 2021, DAN UNTUK PERATURAN DAERAH MASIH DIBAHAS OLEH BALEGDA TINGKAT PROVINSI PAPUA BARAT  
+</p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
 
     <!-- ======= Why Us Section ======= -->
     <section id="why-us" class="why-us section-bg">

@@ -23,7 +23,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <div class="container mt-5">
             <div class="section-title">
                 <h2>Pelatihan</h2>
-                <p>Silakan pilih pelatihan yang ingin Anda ikuti dan dapatkan sertifikat keahliannya. Layanan ini diharapkan dapat memberikan bekal keterampilan profesional bagi angkatan kerja sehingga dapat membuka peluang kerja sendiri dan berwirausaha secara mandiri.</p>
             </div>
             <ul id="portfolio-flters" class="d-flex justify-content-center">
                 <li data-filter="*" class="filter-active">Semua Kejuruan</li>

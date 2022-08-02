@@ -186,13 +186,6 @@ class Web extends CI_Controller
 		$this->load->view('web/transm', $this->page_data);
 	}
 
-	public function transm()
-	{
-		$this->page_data['page']->menu = 'bidang';
-		$this->page_data['page']->title = 'Transmigrasi';
-		$this->load->view('web/transm', $this->page_data);
-	}
-
 	public function tenagakerja()
 	{
 		$this->page_data['page']->menu = 'bidang';
