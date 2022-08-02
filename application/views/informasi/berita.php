@@ -137,7 +137,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <tr>
                                     <th width="20px">No.</th>
                                     <th>Judul</th>
-                                    <th>Tanggal</th>
+                                    <th>Tanggal Publikasi</th>
+                                    <th>Tags</th>
                                     <th>Status</th>
                                     <th width="150px">Aksi</th>
                                 </tr>
@@ -151,6 +152,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <td><?php echo $no++; ?></td>
                                         <td><?php echo $info->judul ?></td>
                                         <td><?php echo $info->tgl_publikasi ?></td>
+                                        <td><?php echo $info->tags ?></td>
                                         <td>
                                             <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange="updateStatusberita(<?php echo $info->id; ?>,$(this).is(':checked'))" <?php echo ($info->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
                                         </td>
@@ -203,8 +205,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <label for="tag">Tag</label>
-                                <input type="text" class="form-control" name="tag" id="tag" required autofocus />
+                                <label for="tag">Tags</label>
+                                <input type="text" class="form-control" name="tags" id="tags" required autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -255,8 +257,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <label for="edittag">Tag</label>
-                                <input type="text" class="form-control" name="edittag" id="edittag" value="" />
+                                <label for="edittags">Tag</label>
+                                <input type="text" class="form-control" name="edittags" id="edittags" value="" />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -309,7 +311,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             success: function(data) {
                 $('[name="editjudul"]').val(data.judul);
                 $('[name="edittag"]').val(data.tags);
-                //$('[name="editisi"]').val(data.isi);
                 $('[name="editisi"]').summernote("code", data.isi);
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -342,6 +343,26 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             addRemoveLinks: true,
         });
 
+        unggah_berita.on("sending", function(a, b, c) {
+            a.judul = $("input[name='judul']").val();
+            a.tags = $("input[name='tags']").val();
+            a.isi = $("textarea[name='isi']").val();
+            a.status = 1;
+            c.append("judul", a.judul);
+            c.append("tags", a.tags);
+            c.append("isi", a.isi);
+            c.append("status", a.status)
+        });
+
+        unggah_berita.on('complete', function() {
+            location.reload();
+        });
+
+        $('#formtambahberita').submit(function(e) {
+            e.preventDefault();
+            unggah_berita.processQueue();
+        });
+
         var edit_berita = new Dropzone("#edit_gambar", {
             autoProcessQueue: false,
             url: "<?php echo site_url('informasi/update_berita') ?>",
@@ -353,40 +374,24 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             addRemoveLinks: true,
         });
 
-        unggah_berita.on("sending", function(a, b, c) {
-            a.judul = $("input[name='judul']").val();
-            a.tag = $("input[name='tag']").val();
-            a.isi = $("textarea[name='isi']").val();
-            a.status = 1;
-            c.append("judul", a.judul);
-            c.append("tag", a.tag);
-            c.append("isi", a.isi);
-            c.append("status", a.status)
-        });
-
         edit_berita.on("sending", function(a, b, c) {
-            a.judul = $("input[name='judul']").val();
-            a.tag = $("input[name='tag']").val();
-            a.isi = $("textarea[name='isi']").val();
+            a.judul = $("input[name='editjudul']").val();
+            a.tags = $("input[name='edittags']").val();
+            a.isi = $("textarea[name='editisi']").val();
             a.idberita = $("input[name='idberita']").val();
             c.append("judul", a.judul);
-            c.append("tag", a.tag);
+            c.append("tags", a.tags);
             c.append("isi", a.isi);
-            c.append("idberita", a.idberita)
-        });
-
-        unggah_berita.on('complete', function() {
-            location.reload();
+            c.append("idberita", a.idberita);
         });
 
         edit_berita.on('complete', function() {
             location.reload();
         });
 
-        $('#formtambahberita').submit(function(e) {
+        $('#formeditberita').submit(function(e) {
             e.preventDefault();
-            unggah_berita.processQueue();
-            //location.reload();
+            edit_berita.processQueue();
         });
 
 

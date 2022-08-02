@@ -432,7 +432,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
 
             <?php
-            // $tenaker = directory_map('./assets/frontend/assets/img/tenagakerja', 1);
+            // $all = directory_map('./assets/frontend/assets/img/transmigrasi/all', 1);
             $teknis = directory_map('./assets/frontend/assets/img/transmigrasi/rapatteknis', 1);
             $koordinasi = directory_map('./assets/frontend/assets/img/transmigrasi/rapatkoordinasi', 1);
             $penyuluhan = directory_map('./assets/frontend/assets/img/transmigrasi/penyuluhan', 1);
@@ -446,7 +446,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </ul>
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                <?php foreach ($teknis as $tek) : ?>
+               
+                 <?php foreach ($teknis as $tek) : ?>
                     <div class="col-lg-4 col-md-6 portfolio-item rapatteknis">
                         <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/rapatteknis/') . $tek; ?>" class="img-fluid" alt=""></div>
                         <div class="portfolio-info">

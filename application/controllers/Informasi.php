@@ -56,13 +56,13 @@ class Informasi extends MY_Controller
 			$kategori = "Berita";
 			$judul = $this->input->post('judul');
 			$isi = $this->input->post('isi');
-			$tag = $this->input->post('tag');
+			$tags = $this->input->post('tags');
 			$status = $this->input->post('status');
 			$tgl_publikasi = date("Y-m-d H:i:s");
 			$users_id = $users_id;
 			$slug = $this->slug($judul);
 
-			$this->db->insert('informasi', array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'status' => $status, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
+			$this->db->insert('informasi', array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tags, 'status' => $status, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
 		}
 	}
 
@@ -97,7 +97,7 @@ class Informasi extends MY_Controller
 
 		echo json_encode($data);
 	}
-
+ 
 	public function update_berita()
 	{
 		$id = $this->input->post('idberita');
@@ -110,17 +110,28 @@ class Informasi extends MY_Controller
 		// if($this->upload->do_upload('thumbnailberita')){
 		if ($this->uploadlib->uploadImage('thumbnailberita', '/informasi/berita')) {
 			$gambar = $this->upload->data('file_name');
-			$kategori = "Berita";
 			$judul = $this->input->post('judul');
 			$isi = $this->input->post('isi');
-			$tag = $this->input->post('tag');
-			$status = $this->input->post('status');
+			$tags = $this->input->post('tags');
 			$tgl_publikasi = date("Y-m-d H:i:s");
-			$users_id = $users_id;
 			$slug = $this->slug($judul);
 
-			$this->informasi_model->updateberita($id, array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
+			$result = $this->informasi_model->updateberita($id, array('gambar' => $gambar, 'judul' => $judul, 'isi' => $isi, 'tags' => $tags, 'tgl_publikasi' => $tgl_publikasi, 'slug' => $slug));
+
+			if($result)
+			{
+				$data = array(
+					'status' => TRUE,
+					'info' => 'Berhasil ubah  berita'
+				);
+			} else {
+				$data = array(
+					'status' => FALSE,
+					'info' => 'Berhasil ubah  berita'
+				);
+			}
 		}
+		echo json_encode($data);
 	}
 
 	public function deleteberita()

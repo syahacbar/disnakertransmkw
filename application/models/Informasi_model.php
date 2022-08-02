@@ -1,19 +1,35 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
+ 
 class Informasi_model extends MY_Model
 {
 
-	function get_berita($tag = NULL)
+	function get_informasi($tag)
 	{
-		if ($tag != NULL) {
-			$this->db->where('kategori', 'Berita');
-			$this->db->like('tags', $tag);
-			$q = $this->db->get('informasi');
-		} else {
-			$this->db->where('kategori', 'Berita');
-			$q = $this->db->get('informasi');
-		}
+		$this->db->like('tags', $tag);
+		$q = $this->db->get('informasi');
+
+		return $q->result();
+	}
+
+	function get_count_informasi($kategori)
+	{
+		$this->db->where('kategori', $kategori);
+		$q = $this->db->get('informasi');
+		return $q->num_rows();
+	}
+
+	function get_count_pelatihan()
+	{
+		$q = $this->db->get('pelatihan');
+		return $q->num_rows();
+	}
+
+	function get_berita()
+	{
+		$this->db->where('kategori', 'Berita');
+		$q = $this->db->get('informasi');
+		
 		return $q->result();
 	}
 
@@ -39,24 +55,19 @@ class Informasi_model extends MY_Model
 		return true;
 	}
 
-	function updateberita($id, $data)
+	function updateberita($idberita, $data)
 	{
-		$this->db->where('id', $id);
+		$this->db->where('id', $idberita);
 		$this->db->update('informasi', $data);
-		return $id;
+		return $idberita;
 	}
 
 
-	function get_pengumuman($tag = NULL)
+	function get_pengumuman()
 	{
-		if ($tag != NULL) {
-			$this->db->where('kategori', 'Pengumuman');
-			$this->db->like('tags', $tag);
-			$q = $this->db->get('informasi');
-		} else {
-			$this->db->where('kategori', 'Pengumuman');
-			$q = $this->db->get('informasi');
-		}
+		$this->db->where('kategori', 'Pengumuman');
+		$q = $this->db->get('informasi');
+
 		return $q->result();
 	}
 

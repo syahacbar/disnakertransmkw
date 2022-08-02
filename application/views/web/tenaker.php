@@ -300,7 +300,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
 
             <?php
-            // $tenaker = directory_map('./assets/frontend/assets/img/tenagakerja', 1);
+            $all = directory_map('./assets/frontend/assets/img/tenagakerja/all',1);
             $pelatihan = directory_map('./assets/frontend/assets/img/tenagakerja/pelatihankerja', 1);
             $bantuan = directory_map('./assets/frontend/assets/img/tenagakerja/bantuan', 1);
             ?>
@@ -312,6 +312,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </ul>
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+                 <?php foreach ($all as $a) : ?>
+                    <div class="col-lg-4 col-md-6 portfolio-item all">
+                        <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/tenagakerja/all/') . $a; ?>" class="img-fluid" alt=""></div>
+                        <div class="portfolio-info">
+                            <a href="<?php echo base_url('assets/frontend/assets/img/tenagakerja/') . $a; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
                 <?php foreach ($pelatihan as $pel) : ?>
                     <div class="col-lg-4 col-md-6 portfolio-item pelatihankerja">
                         <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/tenagakerja/pelatihankerja/') . $pel; ?>" class="img-fluid" alt=""></div>

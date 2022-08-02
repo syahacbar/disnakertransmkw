@@ -53,8 +53,11 @@ $route['default_controller'] = 'web';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['tag/(:any)'] = 'web/tag/$1';
+$route['berita'] = 'web/berita';
 $route['berita/(:any)'] = 'web/berita/$1';
+$route['pengumuman'] = 'web/pengumuman';
 $route['pengumuman/(:any)'] = 'web/pengumuman/$1';
+$route['pelatihan'] = 'web/pelatihan';
 
 // [AdminLTE]
 // $route['adminlte/(:any)'] = 'adminlte/main/$1';

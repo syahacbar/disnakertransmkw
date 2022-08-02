@@ -103,6 +103,9 @@ class Web extends CI_Controller
 			$detailberita = $this->informasi_model->get_berita_by_slug($slug);
 
 
+			$this->page_data['count_berita'] = $this->informasi_model->get_count_informasi('Berita');
+			$this->page_data['count_pengumuman'] = $this->informasi_model->get_count_informasi('Pengumuman');
+			$this->page_data['count_pelatihan'] = $this->informasi_model->get_count_pelatihan();
 			$this->page_data['detailberita'] = $detailberita;
 			$this->page_data['tags_sidebar'] = $tags_sidebar;
 			$this->page_data['page']->menu = 'informasi';
@@ -118,10 +121,10 @@ class Web extends CI_Controller
 
 	public function tag($tag)
 	{
-		$this->page_data['listberita'] = $this->informasi_model->get_berita($tag);
+		$this->page_data['listinformasi'] = $this->informasi_model->get_informasi($tag);
 		$this->page_data['tag'] = $tag;
 		$this->page_data['page']->menu = 'informasi';
-		$this->page_data['page']->title = 'Berita';
+		$this->page_data['page']->title = 'Tags';
 		$this->load->view('web/tags', $this->page_data);
 	}
 
@@ -149,6 +152,9 @@ class Web extends CI_Controller
 
 			//end
 			$detailpengumuman = $this->informasi_model->get_pengumuman_by_slug($slug);
+			$this->page_data['count_berita'] = $this->informasi_model->get_count_informasi('Berita');
+			$this->page_data['count_pengumuman'] = $this->informasi_model->get_count_informasi('Pengumuman');
+			$this->page_data['count_pelatihan'] = $this->informasi_model->get_count_pelatihan();
 
 			$this->page_data['detailpengumuman'] = $detailpengumuman;
 			$this->page_data['tags_sidebar'] = $tags_sidebar;
@@ -161,15 +167,6 @@ class Web extends CI_Controller
 			$this->page_data['page']->title = 'Pengumuman';
 			$this->load->view('web/pengumuman', $this->page_data);
 		}
-	}
-
-	public function tag_pengumuman($tag)
-	{
-		$this->page_data['listpengumuman'] = $this->informasi_model->get_pengumuman($tag);
-		$this->page_data['tag'] = $tag;
-		$this->page_data['page']->menu = 'informasi';
-		$this->page_data['page']->title = 'Pengumuman';
-		$this->load->view('web/tags', $this->page_data);
 	}
 
 	public function pelatihan()

@@ -138,6 +138,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     <th width="20px">No.</th>
                                     <th>Judul</th>
                                     <th>Tanggal</th>
+                                    <th>Tags</th>
                                     <th>Status</th>
                                     <th width="150px">Aksi</th>
                                 </tr>
@@ -150,6 +151,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <td><?php echo $no++; ?></td>
                                         <td><?php echo $info->judul; ?></td>
                                         <td><?php echo $info->tgl_publikasi; ?></td>
+                                        <td><?php echo $info->tags; ?></td>
                                         <td>
                                             <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange="updateStatusberita(<?php echo $info->id; ?>,$(this).is(':checked'))" <?php echo ($info->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
                                         </td>

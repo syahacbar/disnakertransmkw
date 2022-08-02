@@ -357,9 +357,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             </div>
                             <div class="row">
                                 <ul>
-                                    <a href="">Berita<span> (20)</span></a><br>
-                                    <a href="">Pengumuman<span> (10)</span></a><br>
-                                    <a href="">Pelatihan<span> (20)</span></a><br>
+                                    <a href="<?php echo site_url('berita');?>">Berita<span> (<?php echo $count_berita;?>)</span></a><br>
+                                    <a href="<?php echo site_url('pengumuman');?>">Pengumuman<span> (<?php echo $count_pengumuman;?>)</span></a><br>
+                                    <a href="<?php echo site_url('pelatihan');?>">Pelatihan<span> (<?php echo $count_pelatihan;?>)</span></a><br>
                                 </ul>
                             </div>
                         </div>

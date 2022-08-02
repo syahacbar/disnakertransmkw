@@ -87,6 +87,4 @@
       });
     </script>
 
-    <script>
-      const myViewer = new ImgPreviewer('.lsb-preview');
-    </script>
+    
