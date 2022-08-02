@@ -97,7 +97,7 @@ class Informasi extends MY_Controller
 
 		echo json_encode($data);
 	}
- 
+
 	public function update_berita()
 	{
 		$id = $this->input->post('idberita');
@@ -118,8 +118,7 @@ class Informasi extends MY_Controller
 
 			$result = $this->informasi_model->updateberita($id, array('gambar' => $gambar, 'judul' => $judul, 'isi' => $isi, 'tags' => $tags, 'tgl_publikasi' => $tgl_publikasi, 'slug' => $slug));
 
-			if($result)
-			{
+			if ($result) {
 				$data = array(
 					'status' => TRUE,
 					'info' => 'Berhasil ubah  berita'
@@ -206,7 +205,7 @@ class Informasi extends MY_Controller
 			$statuspengumuman = 0;
 		}
 
-		if ($this->informasi_model->updatestatuspengumuman($id, array('status' => $statuspengumuman))) {
+		if ($this->informasi_model->updatepengumuman($id, array('status' => $statuspengumuman))) {
 			$data = array(
 				'status' => TRUE,
 				'info' => 'Berhasil ubah status pengumuman'
@@ -231,16 +230,13 @@ class Informasi extends MY_Controller
 
 		if ($this->uploadlib->uploadImage('thumbnailpengumuman', '/informasi/pengumuman')) {
 			$gambar = $this->upload->data('file_name');
-			$kategori = "Pengumuman";
 			$judul = $this->input->post('judul');
 			$isi = $this->input->post('isi');
-			$tag = $this->input->post('tag');
-			$status = $this->input->post('status');
+			$tags = $this->input->post('tags');
 			$tgl_publikasi = date("Y-m-d H:i:s");
-			$users_id = $users_id;
 			$slug = $this->slug($judul);
 
-			$this->informasi_model->updatepengumuman($id, array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
+			$this->informasi_model->updatepengumuman($id, array('gambar' => $gambar, 'judul' => $judul, 'isi' => $isi, 'tags' => $tags, 'tgl_publikasi' => $tgl_publikasi, 'slug' => $slug));
 		}
 	}
 
@@ -265,5 +261,103 @@ class Informasi extends MY_Controller
 		$this->page_data['pelatihan'] = $pelatihan;
 
 		$this->load->view('informasi/pelatihan', $this->page_data);
+	}
+
+	public function get_pelatihan()
+	{
+		$query  = "SELECT * FROM pelatihan";
+		$search = array('judul', 'isi');
+		$where  = null;
+
+		// jika memakai IS NULL pada where sql
+		$isWhere = null;
+		header('Content-Type: application/json');
+		echo $this->M_Datatables->get_tables_query($query, $search, $where, $isWhere);
+	}
+
+
+	public function add_pelatihan()
+	{
+		$users_id = logged('id');
+		// $jenis_pelatihan_kode = $this->informasi_model->jenis_pelatihan_kode();
+		$config['allowed_types'] = 'gif|jpg|png|ico';
+		$this->load->library('upload', $config);
+
+		if ($this->uploadlib->uploadImage('thumbnailpelatihan', '/informasi/pelatihan')) {
+			$judul = $this->input->post('judul');
+			$isi = $this->input->post('isi');
+			$tgl_publikasi = date("Y-m-d H:i:s");
+			$gambar = $this->upload->data('file_name');
+			$status = $this->input->post('status');
+			$users_id = $users_id;
+			$slug = $this->slug($judul);
+			$jenis_pelatihan_kode = 1;
+
+
+			$this->db->insert('pelatihan', array('judul' => $judul, 'isi' => $isi, 'tanggal' => $tgl_publikasi, 'gambar' => $gambar, 'status' => $status, 'users_id' => $users_id, 'slug' => $slug, 'jenis_pelatihan_kode' => $jenis_pelatihan_kode));
+		}
+	}
+
+	public function get_pelatihan_by_id($id)
+	{
+		$data  = $this->informasi_model->get_pelatihan_by_id($id);
+		echo json_encode($data);
+	}
+
+	public function updatestatus_pelatihan()
+	{
+		$id = $this->input->post('id');
+		$status = $this->input->post('status');
+
+		if ($status == 'true') {
+			$statuspelatihan = 1;
+		} else {
+			$statuspelatihan = 0;
+		}
+
+		if ($this->informasi_model->updatepelatihan($id, array('status' => $statuspelatihan))) {
+			$data = array(
+				'status' => TRUE,
+				'info' => 'Berhasil ubah status pelatihan'
+			);
+		} else {
+			$data = array(
+				'status' => FALSE,
+				'info' => 'Berhasil ubah status pelatihan'
+			);
+		}
+
+		echo json_encode($data);
+	}
+
+	public function update_pelatihan()
+	{
+		$id = $this->input->post('idpelatihan');
+
+		$users_id = logged('id');
+		$config['allowed_types'] = 'gif|jpg|png|ico';
+		$this->load->library('upload', $config);
+
+		if ($this->uploadlib->uploadImage('thumbnailpelatihan', '/informasi/pelatihan')) {
+			$gambar = $this->upload->data('file_name');
+			$judul = $this->input->post('judul');
+			$isi = $this->input->post('isi');
+			$tags = $this->input->post('tags');
+			$tgl_publikasi = date("Y-m-d H:i:s");
+			$slug = $this->slug($judul);
+
+			$this->informasi_model->updatepelatihan($id, array('gambar' => $gambar, 'judul' => $judul, 'isi' => $isi, 'tags' => $tags, 'tgl_publikasi' => $tgl_publikasi, 'slug' => $slug));
+		}
+	}
+
+
+	public function deletepelatihan()
+	{
+		$id = $this->input->post('id');
+		if ($this->informasi_model->hapuspelatihan($id)) {
+			echo json_encode(array('status' => TRUE, 'info' => 'Berhasil hapus pelatihan'));
+		} else {
+			echo json_encode(array('status' => FALSE, 'info' => 'Gagal hapus pelatihan'));
+		}
 	}
 }

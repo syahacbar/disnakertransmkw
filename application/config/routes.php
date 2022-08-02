@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -58,6 +58,7 @@ $route['berita/(:any)'] = 'web/berita/$1';
 $route['pengumuman'] = 'web/pengumuman';
 $route['pengumuman/(:any)'] = 'web/pengumuman/$1';
 $route['pelatihan'] = 'web/pelatihan';
+$route['pelatihan/(:any)'] = 'web/pelatihan/$1';
 
 // [AdminLTE]
 // $route['adminlte/(:any)'] = 'adminlte/main/$1';

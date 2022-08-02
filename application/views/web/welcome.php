@@ -316,8 +316,8 @@
           <h2>Galeri</h2>
         </div>
         <?php
-        $tenaker = directory_map('./assets/frontend/assets/img/tenagakerja', 1,FALSE);
-        $trans = directory_map('./assets/frontend/assets/img/transmigrasi', 1,FALSE);
+        $tenaker = directory_map('./assets/frontend/assets/img/tenagakerja', 1, FALSE);
+        $trans = directory_map('./assets/frontend/assets/img/transmigrasi', 1, FALSE);
         ?>
 
         <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
@@ -552,20 +552,20 @@
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
+                  <label for="name">Nama Lengkap</label>
                   <input type="text" name="name" class="form-control" id="name" required>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
+                  <label for="name">Email</label>
                   <input type="email" class="form-control" name="email" id="email" required>
                 </div>
               </div>
               <div class="form-group">
-                <label for="name">Subject</label>
+                <label for="name">Judul Pesan</label>
                 <input type="text" class="form-control" name="subject" id="subject" required>
               </div>
               <div class="form-group">
-                <label for="name">Message</label>
+                <label for="name">Isi Pesan</label>
                 <textarea class="form-control" name="message" rows="10" required></textarea>
               </div>
               <div class="my-3">
@@ -573,7 +573,7 @@
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center"><button type="submit">Kirim</button></div>
             </form>
           </div>
 

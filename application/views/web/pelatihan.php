@@ -33,54 +33,22 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </ul>
 
             <div class="row portfolio-container">
-                <div class="col-sm-12 col-md-4 col-lg-3 portfolio-item tkj">
-                    <div class="card">
-                        <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/pelatihan/jarkom.jpg" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Dasar-Dasar Jaringan Komputer</h5>
-                            <!-- <p class="card-text">Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.</p> -->
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Teknik Komputer</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-3 portfolio-item tkj">
-                    <div class="card">
-                        <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/pelatihan/jarkom.jpg" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Dasar-Dasar Jaringan Komputer</h5>
-                            <!-- <p class="card-text">Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.</p> -->
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Teknik Komputer</small>
+                <?php foreach ($listpelatihan as $pelatihan) : ?>
+                    <div class="col-sm-12 col-md-4 col-lg-3 portfolio-item tkj">
+                        <div class="card">
+                            <img src="<?php echo base_url('uploads/informasi/pelatihan/') . $pelatihan->gambar; ?>" class="card-img-top">
+                            <div class="card-body">
+                                <?php $slug = url_title($pelatihan->judul, 'dash', true); ?>
+                                <a href="<?php echo site_url('pelatihan/') . $slug; ?>">
+                                    <h5 class="card-title"><?php echo $pelatihan->judul; ?></h5>
+                                </a>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Teknik Komputer</small>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-3 portfolio-item bismen">
-                    <div class="card">
-                        <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/pelatihan/bismen.jpg" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Apa itu Bisnis dan Manajemen?</h5>
-                            <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p> -->
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Bisnis dan Manajemen</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-3 portfolio-item bismen">
-                    <div class="card">
-                        <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/pelatihan/bismen.jpg" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">Apa itu Bisnis dan Manajemen?</h5>
-                            <!-- <p class="card-text">Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak.</p> -->
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Bisnis dan Manajemen</small>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
 
         </div>
