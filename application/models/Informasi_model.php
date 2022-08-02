@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
- 
+
 class Informasi_model extends MY_Model
 {
 
@@ -29,7 +29,7 @@ class Informasi_model extends MY_Model
 	{
 		$this->db->where('kategori', 'Berita');
 		$q = $this->db->get('informasi');
-		
+
 		return $q->result();
 	}
 
@@ -46,6 +46,14 @@ class Informasi_model extends MY_Model
 	{
 		$query = $this->db->get_where('informasi', array('slug' => $slug, 'kategori' => 'Berita'), 1);
 		return $query->row();
+	}
+
+	function get_berita_by_status()
+	{
+		$this->db->where('status', 1);
+		$q = $this->db->get('informasi');
+
+		return $q->result();
 	}
 
 	function hapusberita($id)
@@ -92,11 +100,12 @@ class Informasi_model extends MY_Model
 		$this->db->delete('informasi');
 		return true;
 	}
-	function updatepengumuman($id, $data)
+
+	function updatepengumuman($idpengumuman, $data)
 	{
-		$this->db->where('id', $id);
+		$this->db->where('id', $idpengumuman);
 		$this->db->update('informasi', $data);
-		return $id;
+		return $idpengumuman;
 	}
 
 	function updatestatuspengumuman($id, $data)
@@ -115,6 +124,12 @@ class Informasi_model extends MY_Model
 	function get_pelatihan_by_slug($slug)
 	{
 		$query = $this->db->get_where('informasi', array('slug' => $slug, 'kategori' => 'Pengumuman'), 1);
+		return $query->row();
+	}
+
+	function get_jenis_pelatihan_kode($jp)
+	{
+		$query = $this->db->get_where('pelatihan', array('jenis_pelatihan_kode' => $jp, 'kategori' => 'Pengumuman'), 1);
 		return $query->row();
 	}
 }

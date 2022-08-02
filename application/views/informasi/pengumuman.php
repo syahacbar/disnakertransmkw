@@ -153,7 +153,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <td><?php echo $info->tgl_publikasi; ?></td>
                                         <td><?php echo $info->tags; ?></td>
                                         <td>
-                                            <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange="updateStatusberita(<?php echo $info->id; ?>,$(this).is(':checked'))" <?php echo ($info->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
+                                            <label class="toggle"><input class="cbStatuspengumuman" type="checkbox" onchange="updateStatuspengumuman(<?php echo $info->id; ?>,$(this).is(':checked'))" <?php echo ($info->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
                                         </td>
                                         <td>
                                             <a target="_blank" href="<?php echo site_url() . 'pengumuman/' . $info->slug; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
@@ -256,8 +256,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <label for="edittag">Tag</label>
-                                <input type="text" class="form-control" name="edittag" id="edittag" value="" />
+                                <label for="edittags">Tags</label>
+                                <input type="text" class="form-control" name="edittags" id="edittags" value="" />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -342,17 +342,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             addRemoveLinks: true,
         });
 
-        var ubah_pengumuman = new Dropzone(".edit_gambarPengumuman", {
-            autoProcessQueue: false,
-            url: "<?php echo site_url('informasi/update_pengumuman') ?>",
-            maxFilesize: 20,
-            method: "post",
-            acceptedFiles: "image/*",
-            paramName: "thumbnailpengumuman",
-            dictInvalidFileType: "Type file ini tidak dizinkan",
-            addRemoveLinks: true,
-        });
-
         upload_pengumuman.on("sending", function(a, b, c) {
             a.judul = $("input[name='judul']").val();
             a.tag = $("input[name='tag']").val();
@@ -365,29 +354,53 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         });
 
-        ubah_pengumuman.on("sending", function(a, b, c) {
-            a.judul = $("input[name='judul']").val();
-            a.tag = $("input[name='tag']").val();
-            a.isi = $("textarea[name='isi']").val();
-            a.status = 1;
-            c.append("judul", a.judul);
-            c.append("tag", a.tag);
-            c.append("isi", a.isi);
-            c.append("status", a.status)
-
-        });
 
         upload_pengumuman.on('complete', function() {
             location.reload();
+        });
+
+
+        $('#formAddPengumuman').submit(function(e) {
+            e.preventDefault();
+            upload_pengumuman.processQueue();
+            //location.reload();
+        });
+
+
+        // Ubah Pengumuman di sini
+        var ubah_pengumuman = new Dropzone(".edit_gambarPengumuman", {
+            autoProcessQueue: false,
+            url: "<?php echo site_url('informasi/update_pengumuman') ?>",
+            maxFilesize: 20,
+            method: "post",
+            acceptedFiles: "image/*",
+            paramName: "thumbnailpengumuman",
+            dictInvalidFileType: "Type file ini tidak dizinkan",
+            addRemoveLinks: true,
+        });
+
+        ubah_pengumuman.on("sending", function(a, b, c) {
+            a.judul = $("input[name='editjudul']").val();
+            a.tags = $("input[name='edittags']").val();
+            a.isi = $("textarea[name='editisi']").val();
+            a.idpengumuman = $("input[name='idpengumuman']").val();
+            a.status = 1;
+            c.append("judul", a.judul);
+            c.append("tags", a.tags);
+            c.append("isi", a.isi);
+            c.append("status", a.status)
+            c.append("idpengumuman", a.idpengumuman)
+
         });
 
         ubah_pengumuman.on('complete', function() {
             location.reload();
         });
 
-        $('#formAddPengumuman').submit(function(e) {
+
+        $('#formUbahPengumuman').submit(function(e) {
             e.preventDefault();
-            upload_pengumuman.processQueue();
+            ubah_pengumuman.processQueue();
             //location.reload();
         });
 

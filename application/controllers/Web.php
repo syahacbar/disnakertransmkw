@@ -112,7 +112,8 @@ class Web extends CI_Controller
 			$this->page_data['page']->title = $detailberita->judul;
 			$this->load->view('web/detailberita', $this->page_data);
 		} else {
-			$this->page_data['listberita'] = $this->informasi_model->get_berita();
+			$this->page_data['listberita'] = $this->informasi_model->get_berita_by_status();
+			// $this->page_data['listberita'] = $this->informasi_model->get_berita();
 			$this->page_data['page']->menu = 'informasi';
 			$this->page_data['page']->title = 'Berita';
 			$this->load->view('web/berita', $this->page_data);
@@ -169,11 +170,38 @@ class Web extends CI_Controller
 		}
 	}
 
-	public function pelatihan()
+	public function pelatihan($slug = NULL)
 	{
-		$this->page_data['page']->menu = 'informasi';
-		$this->page_data['page']->title = 'Pelatihan';
-		$this->load->view('web/pelatihan', $this->page_data);
+		if ($slug != NULL) {
+			$querytags = $this->db->query("SELECT tags FROM informasi")->result();
+			$tags_sidebar = array();
+			foreach ($querytags as $qt) {
+				$tagsarray = explode(",", $qt->tags);
+				foreach ($tagsarray as $tag) {
+					if (!in_array($tag, $tags_sidebar)) {
+						array_push($tags_sidebar, $tag);
+					}
+				}
+			}
+
+
+			//end
+			$detailpelatihan = $this->informasi_model->get_pelatihan_by_slug($slug);
+			$this->page_data['count_berita'] = $this->informasi_model->get_count_informasi('Berita');
+			$this->page_data['count_pengumuman'] = $this->informasi_model->get_count_informasi('Pengumuman');
+			$this->page_data['count_pelatihan'] = $this->informasi_model->get_count_pelatihan();
+
+			$this->page_data['detailpelatihan'] = $detailpelatihan;
+			$this->page_data['tags_sidebar'] = $tags_sidebar;
+			$this->page_data['page']->menu = 'informasi';
+			$this->page_data['page']->title = $detailpelatihan->judul;
+			$this->load->view('web/detailpelatihan', $this->page_data);
+		} else {
+			$this->page_data['listpelatihan'] = $this->informasi_model->get_pelatihan();
+			$this->page_data['page']->menu = 'informasi';
+			$this->page_data['page']->title = 'Pelatihan';
+			$this->load->view('web/pelatihan', $this->page_data);
+		}
 	}
 
 	public function transmigrasi()
@@ -237,5 +265,4 @@ class Web extends CI_Controller
 
 		redirect('login');
 	}
-
 }
