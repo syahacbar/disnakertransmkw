@@ -254,51 +254,78 @@
           <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">    
             <div class="skills-content">
             <h4>Berdasarkan rentang umur</h4>
+            <?php 
+              $u1 = 0;
+              $u2 = 0;
+              $u3 = 0;
+              $u4 = 0;
+              $u5 = 0;
+              $u6 = 0;
+              foreach($c_umur AS $u) :
+                if($u->umur < 15) {
+                  $u1 += $u->jumlah;
+                }
+                if($u->umur >= 15 && $u->umur<24) {
+                  $u2 += $u->jumlah;
+                }
+                if($u->umur >= 25 && $u->umur<34) {
+                  $u3 += $u->jumlah;
+                }
+                if($u->umur >= 35 && $u->umur<44) {
+                  $u4 += $u->jumlah;
+                }
+                if($u->umur >= 45 && $u->umur<54) {
+                  $u5 += $u->jumlah;
+                }
+                if($u->umur >54) {
+                  $u6 += $u->jumlah;
+                }
+              endforeach;
+            ?>
 
               <div class="progress">
-                <span class="skill">< 15 th <i class="val"></i></span>
+                <span class="skill">< 15 th <i class="val"><?php echo $u1;?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u1;?>" aria-valuemin="0" aria-valuemax="8"></div>
                 </div>
               </div>
 
               <div class="progress">
-                <span class="skill">15 - 24 th <i class="val"></i></span>
+                <span class="skill">15 - 24 th <i class="val"><?php echo $u2;?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u2;?>" aria-valuemin="0" aria-valuemax="8"></div>
                 </div>
               </div>
 
               <div class="progress">
-                <span class="skill">25 - 34 th<i class="val"></i></span>
+                <span class="skill">25 - 34 th<i class="val"><?php echo $u3;?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u3;?>" aria-valuemin="0" aria-valuemax="8"></div>
                 </div>
               </div>
 
               <div class="progress">
-                <span class="skill">35 - 44 th<i class="val"></i></span>
+                <span class="skill">35 - 44 th<i class="val"><?php echo $u4;?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u4;?>" aria-valuemin="0" aria-valuemax="8"></div>
                 </div>
               </div>
 
               <div class="progress">
-                <span class="skill">45 - 54 th <i class="val"></i></span>
+                <span class="skill">45 - 54 th <i class="val"><?php echo $u5;?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u5;?>" aria-valuemin="0" aria-valuemax="8"></div>
                 </div>
               </div>
 
               <div class="progress">
-                <span class="skill">> 54 th<i class="val"></i></span>
+                <span class="skill">> 54 th<i class="val"><?php echo $u6;?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u6;?>" aria-valuemin="0" aria-valuemax="8"></div>
                 </div>
               </div>
 
             </div>
-
           </div>
         </div>
 
