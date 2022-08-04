@@ -23,6 +23,13 @@ class Starter extends MY_Controller
 	// 	$this->load->view('pencaker/form_pencaker', $this->page_data);
 	// }
 
+	public function pencari_kerja()
+	{
+		$this->page_data['page']->title = 'Data Pencari Kerja';
+		$this->page_data['page']->menu = 'pencari_kerja';
+		$this->load->view('pencaker/pencari_kerja', $this->page_data);
+	}
+
 	public function profilpencaker()
 	{
 		$this->page_data['page']->title = 'Profil Pencari Kerja';

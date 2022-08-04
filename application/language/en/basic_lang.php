@@ -120,6 +120,7 @@ $lang['error_500'] = "Error 500";
 $lang['pace'] = "Pace";
 $lang['blank_page'] = "Blank Page";
 
+$lang['pencari_kerja'] = "Pencari Kerja";
 $lang['profil_pencaker'] = "Profil Pencari Kerja";
 $lang['doc_pencaker'] = "Dokumen Pencari Kerja";
 $lang['selanjutnya'] = "Selanjutnya";

@@ -159,7 +159,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <td>
                                             <a target="_blank" href="<?php echo site_url() . 'berita/' . $b->slug; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
                                             <a href="javascript:void(0)" data-id="<?php echo $b->id; ?>" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
-                                            <a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="<?php echo $b->id; ?>"><i class="fas fa-trash"></i></a>
+                                            <a class="btn btn-sm btn-danger" id="btnHapusBerita" href="javascript:void(0)" data-idberita="<?php echo $b->id; ?>"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -353,7 +353,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             c.append("isi", a.isi);
             c.append("status", a.status)
         });
- 
+
         unggah_berita.on('complete', function() {
             location.reload();
         });
@@ -365,7 +365,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         // var edit_berita = new Dropzone("#edit_gambar", {
         //     autoProcessQueue: false,
-        //     url: "<?php //echo site_url('informasi/update_berita') ?>",
+        //     url: "<?php //echo site_url('informasi/update_berita') 
+                        ?>",
         //     maxFilesize: 20,
         //     method: "post",
         //     acceptedFiles: "image/*",
@@ -409,12 +410,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 
             // var form = $(this).closest('#edit_gambar'); 
-            if (edit_berita.files.length > 0) {                        
-                edit_berita.processQueue(); 
-            } else {                       
+            if (edit_berita.files.length > 0) {
+                edit_berita.processQueue();
+            } else {
                 edit_berita.uploadFiles([]); //send empty 
-            }                                    
-             
+            }
+
 
             // if (edit_berita.getQueuedFiles().length > 0) {
             //     edit_berita.processQueue();
@@ -436,25 +437,57 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         });
 
 
-        $(document).on('click', '.btnHapusBerita', function() {
-            var id = $(this).data("id");
-            if (confirm("Are you sure you want to delete this?")) {
-                $.ajax({
-                    url: "<?php echo site_url(); ?>informasi/delete_berita",
-                    type: "POST",
-                    data: {
-                        id: id
-                    },
-                    success: function(data) {
-                        var objData = jQuery.parseJSON(data);
-                        // console.log(objData.status);
-                        // console.log(objData.info);
-                        location.reload();
-                    }
-                });
-            } else {
-                return false;
-            }
+        $(document).on('click', '#btnHapusBerita', function() {
+
+            // e.preventDefault();
+            // var url = $(this).attr('href');
+
+            Swal.fire({
+                title: 'Apakah yakin akan menghapus berita ini?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var idberita = $(this).data("idberitaberita");
+                    $.ajax({
+                        url: "<?php echo site_url(); ?>informasi/delete_berita",
+                        method: "POST",
+                        data: {
+                            idberita: idberita
+                        },
+                        success: function(data) {
+                            var hasil = JSON.parse(data);
+                            if (hasil.statusCode == 1) {
+                                Swal.fire({
+                                    title: "Berhasil",
+                                    text: "Menghapus berita!",
+                                    icon: "success"
+                                }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        location.reload();
+                                    }
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: "Gagal",
+                                    text: "Menghapus berita!",
+                                    icon: "error"
+                                }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        location.reload();
+                                    }
+                                });
+                            }
+                        }
+                    });
+
+                };
+
+            })
         });
     });
 </script>

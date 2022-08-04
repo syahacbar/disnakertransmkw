@@ -13,30 +13,43 @@ defined('BASEPATH') or exit('No direct script access allowed');
       </p>
     </a>
   </li>
-<?php if (hasPermissions('profil_pencaker')) : ?>
-  <li class="nav-item">
-    <a href="<?php echo url('pencaker') ?>" class="nav-link <?php echo ($page->menu == 'profil_pencaker') ? 'active' : ''?>">
-      <i class="nav-icon fas fa-id-card"></i>
-      <p>
-        <?php echo lang('profil_pencaker') 
-        ?>
-      </p>
-    </a>
-  </li>
+
+  <?php if (hasPermissions('pencari_kerja')) : ?>
+    <li class="nav-item">
+      <a href="<?php echo url('pencaker/pencari_kerja') ?>" class="nav-link <?php echo ($page->menu == 'pencari_kerja') ? 'active' : '' ?>">
+        <i class="nav-icon fas fa-id-card"></i>
+        <p>
+          <?php echo lang('pencari_kerja')
+          ?>
+        </p>
+      </a>
+    </li>
+  <?php endif ?>
+
+  <?php if (hasPermissions('profil_pencaker')) : ?>
+    <li class="nav-item">
+      <a href="<?php echo url('pencaker') ?>" class="nav-link <?php echo ($page->menu == 'profil_pencaker') ? 'active' : '' ?>">
+        <i class="nav-icon fas fa-id-card"></i>
+        <p>
+          <?php echo lang('profil_pencaker')
+          ?>
+        </p>
+      </a>
+    </li>
   <?php endif ?>
   <!--end menu profil pencaker -->
 
-<?php if (hasPermissions('doc_pencaker')) : ?>
-  
-  <!-- dokumen -->
-  <li class="nav-item">
-    <a href="<?php echo url('pencaker/dok_pencaker') ?>" class="nav-link <?php echo ($page->menu == 'doc_pencaker') ? 'active' : '' ?>">
-      <i class="nav-icon fas fa-file"></i>
-      <p>
-        <?php echo lang('doc_pencaker') ?>
-      </p>
-    </a>
-  </li>
+  <?php if (hasPermissions('doc_pencaker')) : ?>
+
+    <!-- dokumen -->
+    <li class="nav-item">
+      <a href="<?php echo url('pencaker/dok_pencaker') ?>" class="nav-link <?php echo ($page->menu == 'doc_pencaker') ? 'active' : '' ?>">
+        <i class="nav-icon fas fa-file"></i>
+        <p>
+          <?php echo lang('doc_pencaker') ?>
+        </p>
+      </a>
+    </li>
   <?php endif ?>
   <!--end menu doc pencaker -->
 

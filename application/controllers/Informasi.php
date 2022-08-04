@@ -9,6 +9,7 @@ class Informasi extends MY_Controller
 		parent::__construct();
 		// $this->page_data['page']->title = 'Starter (Blank Page)';
 		// $this->page_data['page']->menu = 'starter';
+		$this->load->model('Informasi_model');
 	}
 
 	public function slug($title)
@@ -63,7 +64,7 @@ class Informasi extends MY_Controller
 			$slug = $this->slug($judul);
 
 			$this->db->insert('informasi', array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tags, 'status' => $status, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
-        $this->activity_model->add("User #$id menambah berita");
+			$this->activity_model->add("User #$id menambah berita");
 		}
 	}
 
@@ -85,7 +86,7 @@ class Informasi extends MY_Controller
 			$statusberita = 0;
 		}
 
-		if ($this->informasi_model->update_berita($id, array('status' => $statusberita))) {
+		if ($this->informasi_model->update_informasi($id, array('status' => $statusberita))) {
 			$data = array(
 				'status' => TRUE,
 				'info' => 'Berhasil ubah status berita'
@@ -98,7 +99,7 @@ class Informasi extends MY_Controller
 		}
 
 		echo json_encode($data);
-        $this->activity_model->add("User #$id memperbarui status berita");
+		$this->activity_model->add("User #$id memperbarui status berita");
 	}
 
 	public function update_berita()
@@ -121,7 +122,7 @@ class Informasi extends MY_Controller
 
 			$result = $this->informasi_model->update_informasi($id, array('gambar' => $gambar, 'judul' => $judul, 'isi' => $isi, 'tags' => $tags, 'tgl_publikasi' => $tgl_publikasi, 'slug' => $slug));
 
-			if ($result) { 
+			if ($result) {
 				$data = array(
 					'status' => TRUE,
 					'info' => 'Berhasil ubah  berita'
@@ -133,19 +134,18 @@ class Informasi extends MY_Controller
 				);
 			}
 		}
-        $this->activity_model->add("User #$id memperbarui berita");
+		$this->activity_model->add("User #$id memperbarui berita");
 		echo json_encode($data);
 	}
 
 	public function delete_berita()
 	{
-		$id = $this->input->post('id');
-		if ($this->informasi_model->delete_informasi($id)) {
-			echo json_encode(array('status' => TRUE, 'info' => 'Berhasil hapus berita'));
-		} else {
-			echo json_encode(array('status' => FALSE, 'info' => 'Gagal hapus berita'));
-		}
-        $this->activity_model->add("User #$id menghapus berita");
+
+		$idberita = $this->input->post('idberita');
+		$this->Informasi_model->delete_informasi($idberita);
+		echo json_encode(array("statusCode" => 1));
+
+		$this->activity_model->add("User #$idberita menghapus berita");
 	}
 
 	public function pengumuman()
@@ -192,7 +192,7 @@ class Informasi extends MY_Controller
 			$this->db->insert('informasi', array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'status' => $status, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
 		}
 
-        $this->activity_model->add("User #$id menambah pengumuman");
+		$this->activity_model->add("User #$id menambah pengumuman");
 	}
 
 	public function get_pengumuman_by_id($id)
@@ -225,7 +225,7 @@ class Informasi extends MY_Controller
 		}
 
 		echo json_encode($data);
-        $this->activity_model->add("User #$id memperbarui status pengumuman");
+		$this->activity_model->add("User #$id memperbarui status pengumuman");
 	}
 
 	public function update_pengumuman()
@@ -246,7 +246,7 @@ class Informasi extends MY_Controller
 
 			$this->informasi_model->update_informasi($id, array('gambar' => $gambar, 'judul' => $judul, 'isi' => $isi, 'tags' => $tags, 'tgl_publikasi' => $tgl_publikasi, 'slug' => $slug));
 		}
-        $this->activity_model->add("User #$id memperbarui pengumuman");
+		$this->activity_model->add("User #$id memperbarui pengumuman");
 	}
 
 
@@ -258,7 +258,7 @@ class Informasi extends MY_Controller
 		} else {
 			echo json_encode(array('status' => FALSE, 'info' => 'Gagal hapus pengumuman'));
 		}
-        $this->activity_model->add("User #$id menghapus pengumuman");
+		$this->activity_model->add("User #$id menghapus pengumuman");
 	}
 
 	public function pelatihan()
@@ -309,7 +309,7 @@ class Informasi extends MY_Controller
 
 			$this->db->insert('pelatihan', array('judul' => $judul, 'isi' => $isi, 'tanggal' => $tgl_publikasi, 'gambar' => $gambar, 'status' => $status, 'users_id' => $users_id, 'slug' => $slug, 'jenis_pelatihan_kode' => $jenis_pelatihan_kode));
 		}
-        $this->activity_model->add("User #$id menambah pelatihan");
+		$this->activity_model->add("User #$id menambah pelatihan");
 	}
 
 	public function get_pelatihan_by_id($id)
@@ -342,10 +342,10 @@ class Informasi extends MY_Controller
 		}
 
 		echo json_encode($data);
-        $this->activity_model->add("User #$id memperbarui status pengumuman");
+		$this->activity_model->add("User #$id memperbarui status pengumuman");
 	}
 
-	public function update_pelatihan()
+	public function ubah_pelatihan()
 	{
 		$id = $this->input->post('idpelatihan');
 
@@ -353,17 +353,17 @@ class Informasi extends MY_Controller
 		$config['allowed_types'] = 'gif|jpg|png|ico';
 		$this->load->library('upload', $config);
 
-		if ($this->uploadlib->uploadImage('thumbnailpelatihan', '/informasi/pelatihan')) {
-			$gambar = $this->upload->data('file_name');
-			$judul = $this->input->post('judul');
-			$isi = $this->input->post('isi');
+		if ($this->uploadlib->uploadImage('editthumbnailpelatihan', '/informasi/pelatihan')) {
+			$judulpelatihan = $this->input->post('judul');
+			$isipelatihan = $this->input->post('isi');
 			$tgl_publikasi = date("Y-m-d H:i:s");
-			$slug = $this->slug($judul);
-			$jenis_pelatihan_kode = $this->input->post('jenis_pelatihan');
+			$gbrpelatihan = $this->upload->data('file_name');
+			$slugpelatihan = $this->slug($judulpelatihan);
+			$jenis_pelatihan_kode = $this->input->post('editjenis_pelatihan');
 
-			$this->informasi_model->update_pelatihan($id, array('gambar' => $gambar, 'judul' => $judul, 'isi' => $isi, 'jenis_pelatihan' => $jenis_pelatihan_kode, 'tgl_publikasi' => $tgl_publikasi, 'slug' => $slug));
+			$this->informasi_model->update_pelatihan($id, array('gambar' => $gbrpelatihan, 'judul' => $judulpelatihan, 'isi' => $isipelatihan, 'jenis_pelatihan_kode' => $jenis_pelatihan_kode, 'tanggal' => $tgl_publikasi, 'slug' => $slugpelatihan));
 		}
-        $this->activity_model->add("User #$id memperbarui pengumuman");
+		$this->activity_model->add("User #$id memperbarui pelatihan");
 	}
 
 
@@ -375,6 +375,6 @@ class Informasi extends MY_Controller
 		} else {
 			echo json_encode(array('status' => FALSE, 'info' => 'Gagal hapus pelatihan'));
 		}
-        $this->activity_model->add("User #$id menghapus pengumuman");
+		$this->activity_model->add("User #$id menghapus pelatihan");
 	}
 }

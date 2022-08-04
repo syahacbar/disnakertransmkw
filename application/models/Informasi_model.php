@@ -2,15 +2,14 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Informasi_model extends MY_Model
-{	
+{
 
-	function get_informasi($kategori,$status=NULL)
+	function get_informasi($kategori, $status = NULL)
 	{
-		if($status != NULL)
-		{
-			$this->db->where('status',$status);
-		} 
-		
+		if ($status != NULL) {
+			$this->db->where('status', $status);
+		}
+
 		$this->db->where('kategori', $kategori);
 		$q = $this->db->get('informasi');
 
@@ -18,13 +17,12 @@ class Informasi_model extends MY_Model
 	}
 
 
-	function get_informasi_by_tag($tag,$status=NULL)
+	function get_informasi_by_tag($tag, $status = NULL)
 	{
-		if($status != NULL)
-		{
-			$this->db->where('status',$status);
-		} 
-		
+		if ($status != NULL) {
+			$this->db->where('status', $status);
+		}
+
 		$this->db->like('tags', $tag);
 		$q = $this->db->get('informasi');
 
@@ -66,11 +64,11 @@ class Informasi_model extends MY_Model
 		return $id;
 	}
 
-	function delete_informasi($id)
+	function delete_informasi($idberita)
 	{
-		$this->db->where('id', $id);
+		$this->db->where('id', $idberita);
 		$this->db->delete('informasi');
-		return true;
+		return $idberita;
 	}
 
 	// function get_berita_by_slug($slug)
@@ -151,14 +149,13 @@ class Informasi_model extends MY_Model
 		return $q->result();
 	}
 
-	function get_pelatihan($status=NULL)
+	function get_pelatihan($status = NULL)
 	{
 		$this->db->from('pelatihan p');
-		if($status != NULL)
-		{
-			$this->db->where('status',$status);
-		} 
-		$this->db->join('jenis_pelatihan jp','jp.kode=p.jenis_pelatihan_kode');
+		if ($status != NULL) {
+			$this->db->where('status', $status);
+		}
+		$this->db->join('jenis_pelatihan jp', 'jp.kode=p.jenis_pelatihan_kode');
 		$q = $this->db->get();
 		return $q->result();
 	}
@@ -184,11 +181,18 @@ class Informasi_model extends MY_Model
 		return $query->row();
 	}
 
-	function update_pelatihan($id, $data)
+	// function update_pelatihan($id, $data)
+	// {
+	// 	$this->db->where('id', $id);
+	// 	$this->db->update('pelatihan', $data);
+	// 	return $id;
+	// }
+
+	function update_pelatihan($idpelatihan, $data)
 	{
-		$this->db->where('id', $id);
+		$this->db->where('id', $idpelatihan);
 		$this->db->update('pelatihan', $data);
-		return $id;
+		return $idpelatihan;
 	}
 
 	function delete_pelatihan($id)

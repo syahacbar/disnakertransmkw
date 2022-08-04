@@ -26,6 +26,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo $url->assets ?>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="<?php echo $url->assets ?>plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <link rel="stylesheet" href="<?php echo $url->assets ?>plugins/sweetalert2/sweetalert2.min.css">
   <!-- Toastr -->
   <link rel="stylesheet" href="<?php echo $url->assets ?>plugins/toastr/toastr.min.css">
   <!-- iCheck -->
