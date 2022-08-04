@@ -59,6 +59,7 @@ $route['pengumuman'] = 'web/pengumuman';
 $route['pengumuman/(:any)'] = 'web/pengumuman/$1';
 $route['pelatihan'] = 'web/pelatihan';
 $route['pelatihan/(:any)'] = 'web/pelatihan/$1';
+$route['kontak'] = 'web/kontak';
 
 // [AdminLTE]
 // $route['adminlte/(:any)'] = 'adminlte/main/$1';

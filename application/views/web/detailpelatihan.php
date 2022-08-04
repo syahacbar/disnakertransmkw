@@ -250,7 +250,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="d-flex flex-row"></div>
                     <h2 class="text-capitalize"><?php echo $detailpelatihan->judul; ?></h2>
                     <p class="text-primary">
-                        <i class="bx bxl-calendar text-secondary"></i> <?php echo longdate_indo(substr($detailpelatihan->tgl_publikasi, 0, 10));; ?>
+                        <i class="bx bxl-calendar text-secondary"></i> <?php echo longdate_indo(substr($detailpelatihan->tanggal, 0, 10));; ?>
                     </p>
                     <div class="row news-card mt-3">
                         <div class="col-sm-12 col-md-12 col-lg-12 mb-4 mt-3">
@@ -264,23 +264,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                         <div class="col-12">
                             <div class="row">
-                                <div class="col-sm-12 col-md-6 col-lg-6 m-0">
-                                    <div class="tag">
-                                        <p>Tag:</p>
-                                        <ul>
-                                            <li>
-                                                <?php
-                                                $tags = $detailpelatihan->tags;
-                                                $tagsarray = explode(",", $tags);
-                                                foreach ($tagsarray as $tag) :
-                                                ?>
-                                                    <a href="<?php echo site_url('tag/') . trim($tag); ?>"><?php echo trim($tag); ?></a>
-                                                <?php endforeach; ?>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
                                 <div class="col-sm-12 col-md-6 col-lg-6 m-0">
                                     <div class="row">
                                         <ul class="social-list">
@@ -360,18 +343,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     <a href="<?php echo site_url('berita'); ?>">Berita<span> (<?php echo $count_berita; ?>)</span></a><br>
                                     <a href="<?php echo site_url('pelatihan'); ?>">pelatihan<span> (<?php echo $count_pelatihan; ?>)</span></a><br>
                                     <a href="<?php echo site_url('pelatihan'); ?>">Pelatihan<span> (<?php echo $count_pelatihan; ?>)</span></a><br>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-3">
-                            <div class="row sidebar">
-                                <h5>Tags</span>
-                            </div>
-                            <div class="row tagsidebar">
-                                <ul>
-                                    <?php foreach ($tags_sidebar as $x) : ?>
-                                        <li><a href="<?php echo site_url('tag/') . $x; ?>"><?php echo $x; ?></a></li>
-                                    <?php endforeach; ?>
                                 </ul>
                             </div>
                         </div>

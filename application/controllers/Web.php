@@ -60,6 +60,7 @@ class Web extends CI_Controller
 
 	public function index()
 	{
+		$this->page_data['c_jenjang'] = $this->pencaker_model->get_count_pendidikan($jenjang);
 		$this->page_data['page']->menu = 'beranda';
 		$this->page_data['page']->title = 'Beranda';
 
@@ -82,6 +83,14 @@ class Web extends CI_Controller
 		$this->load->view('web/profil', $this->page_data);
 	}
 
+	public function kontak()
+	{
+		$this->page_data['page']->menu = 'kontak';
+		$this->page_data['page']->title = 'Kontak';
+
+		$this->load->view('web/kontak', $this->page_data);
+	}
+
 	public function berita($slug = NULL)
 	{
 		if ($slug != NULL) {
@@ -100,7 +109,7 @@ class Web extends CI_Controller
 			}
 
 			//end
-			$detailberita = $this->informasi_model->get_berita_by_slug($slug);
+			$detailberita = $this->informasi_model->get_informasi_by_slug($slug);
 
 
 			$this->page_data['count_berita'] = $this->informasi_model->get_count_informasi('Berita');
@@ -112,8 +121,7 @@ class Web extends CI_Controller
 			$this->page_data['page']->title = $detailberita->judul;
 			$this->load->view('web/detailberita', $this->page_data);
 		} else {
-			$this->page_data['listberita'] = $this->informasi_model->get_berita_by_status();
-			// $this->page_data['listberita'] = $this->informasi_model->get_berita();
+			$this->page_data['listberita'] = $this->informasi_model->get_informasi('Berita','1');
 			$this->page_data['page']->menu = 'informasi';
 			$this->page_data['page']->title = 'Berita';
 			$this->load->view('web/berita', $this->page_data);
@@ -122,7 +130,7 @@ class Web extends CI_Controller
 
 	public function tag($tag)
 	{
-		$this->page_data['listinformasi'] = $this->informasi_model->get_informasi($tag);
+		$this->page_data['listinformasi'] = $this->informasi_model->get_informasi_by_tag($tag,1);
 		$this->page_data['tag'] = $tag;
 		$this->page_data['page']->menu = 'informasi';
 		$this->page_data['page']->title = 'Tags';
@@ -150,9 +158,9 @@ class Web extends CI_Controller
 				}
 			}
 
-
+ 
 			//end
-			$detailpengumuman = $this->informasi_model->get_pengumuman_by_slug($slug);
+			$detailpengumuman = $this->informasi_model->get_informasi_by_slug($slug);
 			$this->page_data['count_berita'] = $this->informasi_model->get_count_informasi('Berita');
 			$this->page_data['count_pengumuman'] = $this->informasi_model->get_count_informasi('Pengumuman');
 			$this->page_data['count_pelatihan'] = $this->informasi_model->get_count_pelatihan();
@@ -163,7 +171,7 @@ class Web extends CI_Controller
 			$this->page_data['page']->title = $detailpengumuman->judul;
 			$this->load->view('web/detailpengumuman', $this->page_data);
 		} else {
-			$this->page_data['listpengumuman'] = $this->informasi_model->get_pengumuman();
+			$this->page_data['listpengumuman'] = $this->informasi_model->get_informasi('Pengumuman','1');
 			$this->page_data['page']->menu = 'informasi';
 			$this->page_data['page']->title = 'Pengumuman';
 			$this->load->view('web/pengumuman', $this->page_data);
@@ -173,36 +181,25 @@ class Web extends CI_Controller
 	public function pelatihan($slug = NULL)
 	{
 		if ($slug != NULL) {
-			$querytags = $this->db->query("SELECT tags FROM informasi")->result();
-			$tags_sidebar = array();
-			foreach ($querytags as $qt) {
-				$tagsarray = explode(",", $qt->tags);
-				foreach ($tagsarray as $tag) {
-					if (!in_array($tag, $tags_sidebar)) {
-						array_push($tags_sidebar, $tag);
-					}
-				}
-			}
-
-
-			//end
 			$detailpelatihan = $this->informasi_model->get_pelatihan_by_slug($slug);
 			$this->page_data['count_berita'] = $this->informasi_model->get_count_informasi('Berita');
 			$this->page_data['count_pengumuman'] = $this->informasi_model->get_count_informasi('Pengumuman');
 			$this->page_data['count_pelatihan'] = $this->informasi_model->get_count_pelatihan();
 
 			$this->page_data['detailpelatihan'] = $detailpelatihan;
-			$this->page_data['tags_sidebar'] = $tags_sidebar;
 			$this->page_data['page']->menu = 'informasi';
 			$this->page_data['page']->title = $detailpelatihan->judul;
 			$this->load->view('web/detailpelatihan', $this->page_data);
 		} else {
-			$this->page_data['listpelatihan'] = $this->informasi_model->get_pelatihan();
+
+			$this->page_data['jenis_pelatihan'] = $this->informasi_model->get_jenis_pelatihan();
+			$this->page_data['listpelatihan'] = $this->informasi_model->get_pelatihan('1');
 			$this->page_data['page']->menu = 'informasi';
 			$this->page_data['page']->title = 'Pelatihan';
 			$this->load->view('web/pelatihan', $this->page_data);
 		}
 	}
+		
 
 	public function transmigrasi()
 	{

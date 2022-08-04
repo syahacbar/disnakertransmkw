@@ -186,8 +186,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <p><?php echo word_limiter(filter_var($berita->isi, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH), 15); ?>
                                 </p>
                             </figcaption>
-                            <?php $slug = url_title($berita->judul, 'dash', true); ?>
-                            <a href="<?php echo site_url('berita/') . $slug; ?>"></a>
+                            <a href="<?php echo site_url('berita/') . $berita->slug; ?>"></a>
                         </figure>
                     </div>
                 <?php endforeach; ?>

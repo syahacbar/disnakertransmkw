@@ -196,19 +196,16 @@
 
     <section id="skills" class="skills">
       <div class="container" data-aos="fade-up">
-
-        <div class="row">
-          <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
-            <img src="<?php echo base_url(); ?>/assets/frontend/assets/img/skills.png" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
-            <h3>Statistik Pencari Kerja</h3>
+        <div class="section-title">
+        <h2>Statistik Pencari Kerja</h2>
             <p class="fst-italic">
-              Berikut ini ditampilkan statistik pencari kerja di Kab. Manokwari berdasarkan pendidikan terakhir.
+              Berikut ini ditampilkan statistik pencari kerja di Kab. Manokwari.
             </p>
-
+          </div>
+        <div class="row">
+          <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">    
             <div class="skills-content">
-
+        <h4>Berdasarkan Jenjang Pendidikan Terakhir</h4>
               <div class="progress">
                 <span class="skill">SD <i class="val">10%</i></span>
                 <div class="progress-bar-wrap">
@@ -248,6 +245,55 @@
                 <span class="skill">Magister <i class="val">5%</i></span>
                 <div class="progress-bar-wrap">
                   <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">    
+            <div class="skills-content">
+            <h4>Berdasarkan rentang umur</h4>
+
+              <div class="progress">
+                <span class="skill">< 15 th <i class="val"></i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">15 - 24 th <i class="val"></i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">25 - 34 th<i class="val"></i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">35 - 44 th<i class="val"></i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">45 - 54 th <i class="val"></i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="progress">
+                <span class="skill">> 54 th<i class="val"></i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
 

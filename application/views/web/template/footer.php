@@ -19,9 +19,9 @@
             <div class="col-lg-3 col-md-6 footer-links">
               <h4>Informasi</h4>
               <ul>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Berita</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Pengumuman</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#">Pelatihan</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="<?php echo site_url('berita');?>">Berita</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="<?php echo site_url('pengumuman');?>">Pengumuman</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="<?php echo site_url('pelatihan');?>">Pelatihan</a></li>
               </ul>
             </div>
 
@@ -32,6 +32,8 @@
                 <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://papuabaratprov.go.id/">Provinsi Papua Barat</a></li>
                 <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://disnakertrans.papuabaratprov.go.id/">Disnakertrans Papua Barat</a></li>
                 <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://www.manokwarikab.go.id">Pemkab. Manokwari</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://lpse.kemnaker.go.id/eproc4">LPSE Kemnaker</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://jdih.kemnaker.go.id/">JDIH Kemnaker</a></li>
               </ul>
             </div>
 

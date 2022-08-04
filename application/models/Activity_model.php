@@ -7,7 +7,7 @@ class Activity_model extends MY_Model {
 
 	public function __construct()
 	{
-		parent::__construct();
+		parent::__construct(); 
 	}
 
 	public function add($message, $user_id = 0, $ip_address = false)

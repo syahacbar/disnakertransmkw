@@ -146,20 +146,20 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <tbody>
                                 <?php
                                 $no = 1;
-                                foreach ($informasi as $info) :
+                                foreach ($berita as $b) :
                                 ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
-                                        <td><?php echo $info->judul ?></td>
-                                        <td><?php echo $info->tgl_publikasi ?></td>
-                                        <td><?php echo $info->tags ?></td>
+                                        <td><?php echo $b->judul ?></td>
+                                        <td><?php echo $b->tgl_publikasi ?></td>
+                                        <td><?php echo $b->tags ?></td>
                                         <td>
-                                            <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange="updateStatusberita(<?php echo $info->id; ?>,$(this).is(':checked'))" <?php echo ($info->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
+                                            <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange="updateStatusberita(<?php echo $b->id; ?>,$(this).is(':checked'))" <?php echo ($b->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
                                         </td>
                                         <td>
-                                            <a target="_blank" href="<?php echo site_url() . 'berita/' . $info->slug; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
-                                            <a href="javascript:void(0)" data-id="<?php echo $info->id; ?>" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
-                                            <a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="<?php echo $info->id; ?>"><i class="fas fa-trash"></i></a>
+                                            <a target="_blank" href="<?php echo site_url() . 'berita/' . $b->slug; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
+                                            <a href="javascript:void(0)" data-id="<?php echo $b->id; ?>" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
+                                            <a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="<?php echo $b->id; ?>"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -310,7 +310,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             dataType: "JSON",
             success: function(data) {
                 $('[name="editjudul"]').val(data.judul);
-                $('[name="edittag"]').val(data.tags);
+                $('[name="edittags"]').val(data.tags);
                 $('[name="editisi"]').summernote("code", data.isi);
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -353,7 +353,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             c.append("isi", a.isi);
             c.append("status", a.status)
         });
-
+ 
         unggah_berita.on('complete', function() {
             location.reload();
         });
@@ -363,35 +363,65 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             unggah_berita.processQueue();
         });
 
-        var edit_berita = new Dropzone("#edit_gambar", {
-            autoProcessQueue: false,
-            url: "<?php echo site_url('informasi/update_berita') ?>",
-            maxFilesize: 20,
-            method: "post",
-            acceptedFiles: "image/*",
-            paramName: "thumbnailberita",
-            dictInvalidFileType: "Type file ini tidak dizinkan",
-            addRemoveLinks: true,
-        });
+        // var edit_berita = new Dropzone("#edit_gambar", {
+        //     autoProcessQueue: false,
+        //     url: "<?php //echo site_url('informasi/update_berita') ?>",
+        //     maxFilesize: 20,
+        //     method: "post",
+        //     acceptedFiles: "image/*",
+        //     paramName: "thumbnailberita",
+        //     dictInvalidFileType: "Type file ini tidak dizinkan",
+        //     addRemoveLinks: true,
+        // });
 
-        edit_berita.on("sending", function(a, b, c) {
-            a.judul = $("input[name='editjudul']").val();
-            a.tags = $("input[name='edittags']").val();
-            a.isi = $("textarea[name='editisi']").val();
-            a.idberita = $("input[name='idberita']").val();
-            c.append("judul", a.judul);
-            c.append("tags", a.tags);
-            c.append("isi", a.isi);
-            c.append("idberita", a.idberita);
-        });
+        // edit_berita.on("sending", function(a, b, c) {
+        //     a.judul = $("input[name='editjudul']").val();
+        //     a.tags = $("input[name='edittags']").val();
+        //     a.isi = $("textarea[name='editisi']").val();
+        //     a.idberita = $("input[name='idberita']").val();
+        //     c.append("judul", a.judul);
+        //     c.append("tags", a.tags);
+        //     c.append("isi", a.isi);
+        //     c.append("idberita", a.idberita);
+        // });
 
-        edit_berita.on('complete', function() {
-            location.reload();
-        });
+        // edit_berita.on('complete', function() {
+        //     location.reload();
+        // });
+
+
+
 
         $('#formeditberita').submit(function(e) {
             e.preventDefault();
-            edit_berita.processQueue();
+            // edit_berita.processQueue();
+
+            var edit_berita = new Dropzone("#edit_gambar", {
+                autoProcessQueue: false,
+                url: "<?php echo site_url('informasi/update_berita') ?>",
+                maxFilesize: 20,
+                method: "post",
+                acceptedFiles: "image/*",
+                paramName: "thumbnailberita",
+                dictInvalidFileType: "Type file ini tidak dizinkan",
+                addRemoveLinks: true,
+            });
+
+
+            // var form = $(this).closest('#edit_gambar'); 
+            if (edit_berita.files.length > 0) {                        
+                edit_berita.processQueue(); 
+            } else {                       
+                edit_berita.uploadFiles([]); //send empty 
+            }                                    
+             
+
+            // if (edit_berita.getQueuedFiles().length > 0) {
+            //     edit_berita.processQueue();
+            // } else {
+            //     edit_berita.uploadFiles([{ name: 'nofiles' }]); //send empty
+            // }
+
         });
 
 
@@ -410,7 +440,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             var id = $(this).data("id");
             if (confirm("Are you sure you want to delete this?")) {
                 $.ajax({
-                    url: "<?php echo site_url(); ?>informasi/deleteberita",
+                    url: "<?php echo site_url(); ?>informasi/delete_berita",
                     type: "POST",
                     data: {
                         id: id

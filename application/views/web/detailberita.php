@@ -353,7 +353,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="row">
                         <div class="col-12 mb-3">
                             <div class="row sidebar">
-                                <h5>Kategori Informasi</span>
+                                <h5>Kategori Informasi</h5>
                             </div>
                             <div class="row">
                                 <ul>
@@ -365,7 +365,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         </div>
                         <div class="col-12 mb-3">
                             <div class="row sidebar">
-                                <h5>Tags</span>
+                                <h5>Tags</h5>
                             </div>
                             <div class="row tagsidebar">
                                 <ul>

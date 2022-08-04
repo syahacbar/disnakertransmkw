@@ -50,15 +50,25 @@ class Pencaker_model extends MY_Model {
         return $query->row();
     }
 
-    function get_pencaker_nik($users_id)
-    {
-        $this->db->select('nik');
-        $this->db->from('pencaker');
-        $this->db->where('users_id',$users_id);
-        $query = $this->db->get();
+    // function get_pencaker_nik($users_id)
+    // {
+    //     $this->db->select('nik');
+    //     $this->db->from('pencaker');
+    //     $this->db->where('users_id',$users_id);
+    //     $query = $this->db->get();
  
-        return $query->row();
-    }
+    //     return $query->row();
+    // }
+
+    // function get_pencaker_nopendaftaran($users_id)
+    // {
+    //     $this->db->select('opendaftaran');
+    //     $this->db->from('pencaker');
+    //     $this->db->where('users_id',$users_id);
+    //     $query = $this->db->get();
+ 
+    //     return $query->row();
+    // }
 
     function update_by_users_id($id, $data)
 	{
@@ -170,7 +180,7 @@ class Pencaker_model extends MY_Model {
   
 	function get_preview_doc($id)
 	{
-		$query = $this->db->get_where('pencaker_dokumen', array('id' => $id));
+		$query = $this->db->query("SELECT * FROM pencaker_dokumen pd JOIN pencaker p ON p.id=pd.pencaker_id WHERE pd.id='$id'");
 		return $query->row();
 	}
 

@@ -3,11 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Pencaker extends MY_Controller
 {
-	public function __construct() 
+	public function __construct()  
 	{
 		parent::__construct();
 	}
-
+ 
 
 	public function index()
 	{
@@ -105,6 +105,7 @@ class Pencaker extends MY_Controller
             $res['hasil'] = 'gagal';
             $res['status'] = FALSE;
         }
+        $this->activity_model->add("User #$id menambah data Pendidikan Pencaker");
         echo json_encode($res);
     }
 
@@ -131,7 +132,7 @@ class Pencaker extends MY_Controller
 	       $res['hasil'] = 'gagal';
 		   $res['status'] = FALSE;
        }
-       
+       $this->activity_model->add("User #$id memperbarui data Pendidikan Pencaker");
 	   echo json_encode($res);
     }
 
@@ -148,7 +149,7 @@ class Pencaker extends MY_Controller
 	    	$res['hasil'] = 'gagal';
 	        $res['status'] = FALSE;
         }
-
+        $this->activity_model->add("User #$id menghapus data Pendidikan Pencaker");
         echo json_encode($res);
     }
 
@@ -197,6 +198,7 @@ class Pencaker extends MY_Controller
 	    	$res['hasil'] = 'gagal';
 	        $res['status'] = FALSE;
         }
+        $this->activity_model->add("User #$id menambah data Pekerjaan Pencaker");
 	    echo json_encode($res);
     }
 
@@ -222,7 +224,8 @@ class Pencaker extends MY_Controller
 		   $res['status'] = FALSE;
        }
        
-	   echo json_encode($res);
+        $this->activity_model->add("User #$id memperbarui data Pekerjaan Pencaker");
+        echo json_encode($res);
     }
 
     function del_pekerjaan_by_id($idpekerjaan)
@@ -239,6 +242,7 @@ class Pencaker extends MY_Controller
 	        $res['status'] = FALSE;
         }
 
+        $this->activity_model->add("User #$id menghapus data Pekerjaan Pencaker");
         echo json_encode($res);
     }
 
@@ -284,6 +288,7 @@ class Pencaker extends MY_Controller
             $res['hasil'] = 'gagal';
             $res['status'] = FALSE;
         }
+        $this->activity_model->add("User #$id menambah data Jabatan Pencaker");
         echo json_encode($res);
     }
 
@@ -306,6 +311,7 @@ class Pencaker extends MY_Controller
            $res['status'] = FALSE;
        }
        
+       $this->activity_model->add("User #$id memperbarui data Jabatan Pencaker");
        echo json_encode($res);
     }
 
@@ -323,6 +329,7 @@ class Pencaker extends MY_Controller
             $res['status'] = FALSE;
         }
 
+        $this->activity_model->add("User #$id menghapus data Jabatan Pencaker");
         echo json_encode($res);
     }
 
@@ -357,6 +364,7 @@ class Pencaker extends MY_Controller
 	        $res['status'] = FALSE;
         }
 
+        $this->activity_model->add("User #$id memperbarui data tujuan pembuatan kartu kuning");
         echo json_encode($res);
     }
 
@@ -388,6 +396,7 @@ class Pencaker extends MY_Controller
 	        $res['status'] = FALSE;
         }
 
+        $this->activity_model->add("User #$id memperbarui data identitas/ket. umum Pencaker");
         echo json_encode($res);
     }
 
@@ -417,6 +426,7 @@ class Pencaker extends MY_Controller
         $res['hasil'] = 'sukses';
         $res['status'] = TRUE;
         
+        $this->activity_model->add("User #$id memperbarui data keterampilan bahasa");
         echo json_encode($res);
     }
 
@@ -439,6 +449,7 @@ class Pencaker extends MY_Controller
             $res['status'] = FALSE;
         }
 
+        $this->activity_model->add("User #$id memperbarui data lokasi jabatan");
         echo json_encode($res);
     }
 
@@ -461,6 +472,7 @@ class Pencaker extends MY_Controller
             $res['status'] = FALSE;
         }
 
+        $this->activity_model->add("User #$id memperbarui data tujuan perusahaan");
         echo json_encode($res);
     }
 
@@ -485,6 +497,7 @@ class Pencaker extends MY_Controller
             $res['status'] = FALSE;
         }
 
+        $this->activity_model->add("User #$id memperbarui data catatan pengantar");
         echo json_encode($res);
     }
     
@@ -510,16 +523,21 @@ class Pencaker extends MY_Controller
         $users_id = logged('id');
         $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
         $iddokumen = $this->input->post('iddokumen');
-        $pencaker_nik = $this->pencaker_model->get_pencaker_nik($users_id)->nik;
+        $pencaker_nopendaftaran = $this->pencaker_model->get_by_users_id($users_id)->nopendaftaran;
         $jenisdokumen = $this->pencaker_model->get_jenis_dokumen($iddokumen)->jenis_dokumen;
 
-        $newfilename = $pencaker_nik."_".$jenisdokumen;
+
+        if (!is_dir('uploads/pencaker/'.$pencaker_nopendaftaran)) {
+            mkdir('./uploads/pencaker/'.$pencaker_nopendaftaran, 0777, TRUE);
+        }
+
+        $newfilename = $pencaker_nopendaftaran."_".$jenisdokumen;
 
         $this->uploadlib->initialize([
                 'file_name' => $newfilename
             ]);
 
-        if($this->uploadlib->uploadImage('dokumenpencaker', '/pencaker')){
+        if($this->uploadlib->uploadImage('dokumenpencaker', '/pencaker/'.$pencaker_nopendaftaran)){
             $namadokumen = $this->upload->data('file_name');
             $token = $this->input->post('token');
             $uploaded_on = date("Y-m-d H:i:s");
@@ -535,6 +553,8 @@ class Pencaker extends MY_Controller
                 $this->db->update('pencaker_dokumen', array('namadokumen'=>$namadokumen,'tgl_upload'=>$uploaded_on));
             }
         }
+        $this->activity_model->add("User #$id mengunggah dokumen Pencaker");
+
     }
 
  
@@ -545,6 +565,7 @@ class Pencaker extends MY_Controller
         
         $query  = "SELECT d.*,
                     (SELECT pd.namadokumen FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS namadokumen,
+                    (SELECT p.nopendaftaran FROM pencaker p WHERE p.id='$pencaker_id') AS nopendaftaran,
                     (SELECT pd.tgl_upload FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS tgl_upload,
                     (SELECT pd.id FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS pencakerdokumen_id
                     FROM dokumen d";
@@ -561,8 +582,10 @@ class Pencaker extends MY_Controller
 
     function preview_doc($id)
     {
-        $namadokumen = $this->pencaker_model->get_preview_doc($id)->namadokumen;
-        $filepath = base_url()."uploads/pencaker/".$namadokumen;
+        $dokumen = $this->pencaker_model->get_preview_doc($id);
+        $namadokumen = $dokumen->namadokumen;
+        $folder = $dokumen->nopendaftaran;
+        $filepath = $folder.$namadokumen;
         $this->page_data['filepath'] = $filepath;
         $this->load->view('pencaker/preview_dokumen', $this->page_data);
     }

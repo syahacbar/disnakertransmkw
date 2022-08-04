@@ -146,19 +146,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <tbody>
                                 <?php
                                 $no = 1;
-                                foreach ($informasi as $info) : ?>
+                                foreach ($pengumuman as $p) : ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
-                                        <td><?php echo $info->judul; ?></td>
-                                        <td><?php echo $info->tgl_publikasi; ?></td>
-                                        <td><?php echo $info->tags; ?></td>
+                                        <td><?php echo $p->judul; ?></td>
+                                        <td><?php echo $p->tgl_publikasi; ?></td>
+                                        <td><?php echo $p->tags; ?></td>
                                         <td>
-                                            <label class="toggle"><input class="cbStatuspengumuman" type="checkbox" onchange="updateStatuspengumuman(<?php echo $info->id; ?>,$(this).is(':checked'))" <?php echo ($info->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
+                                            <label class="toggle"><input class="cbStatuspengumuman" type="checkbox" onchange="updateStatuspengumuman(<?php echo $p->id; ?>,$(this).is(':checked'))" <?php echo ($p->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
                                         </td>
                                         <td>
-                                            <a target="_blank" href="<?php echo site_url() . 'pengumuman/' . $info->slug; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
-                                            <a href="javascript:void(0)" data-id="<?php echo $info->id; ?>" class="btn btn-sm btn-primary ubahPengumuman"><i class="fas fa-edit"></i></a>&nbsp;
-                                            <a class="btn btn-sm btn-danger hapusPengumuman" href="javascript:void(0)" data-id="<?php echo $info->id; ?>"><i class="fas fa-trash"></i></a>
+                                            <a target="_blank" href="<?php echo site_url() . 'pengumuman/' . $p->slug; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
+                                            <a href="javascript:void(0)" data-id="<?php echo $p->id; ?>" class="btn btn-sm btn-primary ubahPengumuman"><i class="fas fa-edit"></i></a>&nbsp;
+                                            <a class="btn btn-sm btn-danger hapusPengumuman" href="javascript:void(0)" data-id="<?php echo $p->id; ?>"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -309,7 +309,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             dataType: "JSON",
             success: function(data) {
                 $('[name="editjudul"]').val(data.judul);
-                $('[name="edittag"]').val(data.tags);
+                $('[name="edittags"]').val(data.tags);
                 $('[name="editisi"]').summernote("code", data.isi);
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -419,7 +419,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             var id = $(this).data("id");
             if (confirm("Are you sure you want to delete this?")) {
                 $.ajax({
-                    url: "<?php echo site_url(); ?>informasi/deletepengumuman",
+                    url: "<?php echo site_url(); ?>informasi/delete_pengumuman",
                     type: "POST",
                     data: {
                         id: id

@@ -33,7 +33,7 @@ class Activity_logs extends MY_Controller {
 
 	}
 
-	public function view($id)
+	public function view($id) 
 	{
 		ifPermissions('activity_log_view');
 		$this->page_data['activity'] = $this->activity_model->getById($id);

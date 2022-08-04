@@ -176,7 +176,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 </section>
 <!-- /.content -->
 
-<!-- Modal Tambah Berita -->
+<!-- Modal Tambah Pelatihan -->
 <div class="modal fade" id="modalTambahpelatihan" tabindex="-1" role="dialog" aria-labelledby="modalTambahpelatihanTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg modal-scrollable" role="document">
         <div class="modal-content">
@@ -193,6 +193,17 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <div class="form-group">
                                 <label for="judul">Nama Pelatihan</label>
                                 <input type="text" class="form-control" name="judul" id="judul" required autofocus />
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                            <div class="form-group">
+                                <label for="judul">Bidang Pelatihan</label>
+                                <select class="form-control" name="jenis_pelatihan" id="jenis_pelatihan">
+                                    <option>-- Pilih Salah Satu --</option>
+                                <?php foreach($jenis_pelatihan AS $jp) : ?>
+                                    <option value="<?php echo $jp->kode; ?>"><?php echo $jp->pelatihan; ?></option>
+                                <?php endforeach;?>
+                                </select>
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -237,20 +248,25 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
-                                <label for="editjudul">Deskripsi Pelatihan</label>
+                                <label for="editjudul">Nama Pelatihan</label>
                                 <input type="text" class="form-control" name="editjudul" id="editjudul" value="" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                            <div class="form-group">
+                                <label for="judul">Bidang Pelatihan</label>
+                                <select class="form-control" name="jenis_pelatihan" id="jenis_pelatihan">
+                                    <option>-- Pilih Salah Satu --</option>
+                                <?php foreach($jenis_pelatihan AS $jp) : ?>
+                                    <option value="<?php echo $jp->kode; ?>"><?php echo $jp->pelatihan; ?></option>
+                                <?php endforeach;?>
+                                </select>
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
-                                <label for="editisi">Isi</label>
+                                <label for="editisi">Deskripsi Pelatihan</label>
                                 <textarea name="editisi" id="editpelatihansummernote" rows="20"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                            <div class="form-group">
-                                <label for="edittag">Tag</label>
-                                <input type="text" class="form-control" name="edittag" id="edittag" value="" />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -337,11 +353,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         unggah_pelatihan.on("sending", function(a, b, c) {
             a.judul = $("input[name='judul']").val();
-            a.tag = $("input[name='tag']").val();
+            a.jenis_pelatihan = $("select[name='jenis_pelatihan']").val();
             a.isi = $("textarea[name='isi']").val();
             a.status = 1;
             c.append("judul", a.judul);
-            c.append("tag", a.tag);
+            c.append("jenis_pelatihan", a.jenis_pelatihan);
             c.append("isi", a.isi);
             c.append("status", a.status)
 
@@ -359,21 +375,21 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 
 
-        $(document).on('click', '.btnEditBerita', function() {
-            $('#modalEditBerita').modal('show');
+        $(document).on('click', '.btnEditPelatihan', function() {
+            $('#modalEditPelatihan').modal('show');
             var idpelatihan = $(this).attr("data-id");
-            //set hidden form untuk Id Berita
+            //set hidden form untuk Id Pelatihan
             $('[name="idpelatihan"]').val(idpelatihan);
 
             editpelatihan(idpelatihan);
         });
 
 
-        $(document).on('click', '.btnHapusBerita', function() {
+        $(document).on('click', '.btnHapusPelatihan', function() {
             var id = $(this).data("id");
             if (confirm("Are you sure you want to delete this?")) {
                 $.ajax({
-                    url: "<?php echo site_url(); ?>informasi/deletepelatihan",
+                    url: "<?php echo site_url(); ?>informasi/delete_pelatihan",
                     type: "POST",
                     data: {
                         id: id

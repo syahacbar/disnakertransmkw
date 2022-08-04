@@ -26,26 +26,25 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
             <ul id="portfolio-flters" class="d-flex justify-content-center">
                 <li data-filter="*" class="filter-active">Semua Kejuruan</li>
-                <li data-filter=".tkj">Teknologi Informasi dan Komunikasi</li>
-                <li data-filter=".bismen">Bisnis dan Manajemen</li>
-                <li data-filter=".filter-web">Tata Kecantikan</li>
-                <li data-filter=".filter-web">Pariwisata</li>
+                <?php foreach($listpelatihan AS $jp) : ?>
+                <li data-filter="<?php echo ".kode".$jp->jenis_pelatihan_kode;?>"><?php echo $jp->pelatihan;?></li>
+                <?php endforeach;?>
+                
             </ul>
 
             <div class="row portfolio-container">
-                <?php foreach ($listpelatihan as $pelatihan) : ?>
-                    <div class="col-sm-12 col-md-4 col-lg-3 portfolio-item tkj">
+                <?php foreach ($listpelatihan as $pelatihan) : ?>              
+                    <div class="col-sm-12 col-md-4 col-lg-3 portfolio-item <?php echo "kode".$pelatihan->jenis_pelatihan_kode;?>">
                         <div class="card">
+                            <a href="<?php echo site_url('pelatihan/') . $pelatihan->slug; ?>">
                             <img src="<?php echo base_url('uploads/informasi/pelatihan/') . $pelatihan->gambar; ?>" class="card-img-top">
-                            <div class="card-body">
-                                <?php $slug = url_title($pelatihan->judul, 'dash', true); ?>
-                                <a href="<?php echo site_url('pelatihan/') . $slug; ?>">
-                                    <h5 class="card-title"><?php echo $pelatihan->judul; ?></h5>
-                                </a>
+                            <div class="card-body">                                
+                            <h5 class="card-title"><?php echo $pelatihan->judul; ?></h5>
                             </div>
                             <div class="card-footer">
-                                <small class="text-muted">Teknik Komputer</small>
+                                <small class="text-muted"><em><?php echo $pelatihan->pelatihan;?></em></small>
                             </div>
+                            </a>
                         </div>
                     </div>
                 <?php endforeach; ?>
