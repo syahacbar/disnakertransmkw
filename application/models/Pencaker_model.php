@@ -1,76 +1,83 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pencaker_model extends MY_Model {
-	
+class Pencaker_model extends MY_Model
+{
+
 
 	public $table = 'pencaker';
 
-    public function nomorpendaftaran()
-    {
-        $query = $this->db->query("SELECT RIGHT(nopendaftaran,6) AS nopendaftaran FROM pencaker ORDER BY nopendaftaran DESC LIMIT 1 ");
-        if($query->num_rows() <> 0)
-        { 
-            $data = $query->row();      
-            $nourut = intval($data->nopendaftaran) + 1; 
-        } else {      
-            $nourut = 1;  //cek jika kode belum terdapat pada table
-        }
+	public function nomorpendaftaran()
+	{
+		$query = $this->db->query("SELECT RIGHT(nopendaftaran,6) AS nopendaftaran FROM pencaker ORDER BY nopendaftaran DESC LIMIT 1 ");
+		if ($query->num_rows() <> 0) {
+			$data = $query->row();
+			$nourut = intval($data->nopendaftaran) + 1;
+		} else {
+			$nourut = 1;  //cek jika kode belum terdapat pada table
+		}
 
-        $tgl=date('dmY');  
-        $batas = str_pad($nourut, 6, "0", STR_PAD_LEFT);    
-        $nopendaftaran = "9202".$tgl.$batas;  //format kode
-        return $nopendaftaran;  
-    }
+		$tgl = date('dmY');
+		$batas = str_pad($nourut, 6, "0", STR_PAD_LEFT);
+		$nopendaftaran = "9202" . $tgl . $batas;  //format kode
+		return $nopendaftaran;
+	}
 
-    function get_kartu_kuning($iduser)
-    {
-    	$query = $this->db->query("SELECT * FROM pencaker p WHERE p.users_id=$iduser");
-    	return $query->result();
-    }
+	function get_kartu_kuning($iduser)
+	{
+		$query = $this->db->query("SELECT * FROM pencaker p WHERE p.users_id=$iduser");
+		return $query->result();
+	}
 
 	function get_by_users_id($id)
-    {
-        $this->db->select('*');
-        $this->db->from('pencaker p');
-        $this->db->join('users u', 'u.id=p.users_id');
-        $this->db->where('p.users_id',$id);
-        $query = $this->db->get();
- 
-        return $query->row();
-    }
+	{
+		$this->db->select('*');
+		$this->db->from('pencaker p');
+		$this->db->join('users u', 'u.id=p.users_id');
+		$this->db->where('p.users_id', $id);
+		$query = $this->db->get();
 
-    function get_pencaker_id($users_id)
-    {
-        $this->db->select('id');
-        $this->db->from('pencaker');
-        $this->db->where('users_id',$users_id);
-        $query = $this->db->get();
- 
-        return $query->row();
-    }
+		return $query->row();
+	}
 
-    // function get_pencaker_nik($users_id)
-    // {
-    //     $this->db->select('nik');
-    //     $this->db->from('pencaker');
-    //     $this->db->where('users_id',$users_id);
-    //     $query = $this->db->get();
- 
-    //     return $query->row();
-    // }
+	function get_pencaker_id($users_id)
+	{
+		$this->db->select('id');
+		$this->db->from('pencaker');
+		$this->db->where('users_id', $users_id);
+		$query = $this->db->get();
 
-    // function get_pencaker_nopendaftaran($users_id)
-    // {
-    //     $this->db->select('opendaftaran');
-    //     $this->db->from('pencaker');
-    //     $this->db->where('users_id',$users_id);
-    //     $query = $this->db->get();
- 
-    //     return $query->row();
-    // }
+		return $query->row();
+	}
 
-    function update_by_users_id($id, $data)
+	function get_all()
+	{
+		$query = $this->db->get('pencaker');
+		return $query->result_array();
+	}
+
+
+	// function get_pencaker_nik($users_id)
+	// {
+	//     $this->db->select('nik');
+	//     $this->db->from('pencaker');
+	//     $this->db->where('users_id',$users_id);
+	//     $query = $this->db->get();
+
+	//     return $query->row();
+	// }
+
+	// function get_pencaker_nopendaftaran($users_id)
+	// {
+	//     $this->db->select('opendaftaran');
+	//     $this->db->from('pencaker');
+	//     $this->db->where('users_id',$users_id);
+	//     $query = $this->db->get();
+
+	//     return $query->row();
+	// }
+
+	function update_by_users_id($id, $data)
 	{
 		$this->db->where('users_id', $id);
 		$this->db->update('pencaker', $data);
@@ -80,10 +87,10 @@ class Pencaker_model extends MY_Model {
 	function get_pendidikan_by_id($id)
 	{
 		$this->db->select('*');
-        $this->db->from('pendidikan_pencaker');
-        $this->db->where('id',$id);
-        $query = $this->db->get();
-        return $query->row();
+		$this->db->from('pendidikan_pencaker');
+		$this->db->where('id', $id);
+		$query = $this->db->get();
+		return $query->row();
 	}
 
 	function add_pendidikan($data)
@@ -92,7 +99,7 @@ class Pencaker_model extends MY_Model {
 		return $this->db->insert_id();
 	}
 
-	function update_pendidikan($id,$data)
+	function update_pendidikan($id, $data)
 	{
 		$this->db->where('id', $id);
 		$this->db->update('pendidikan_pencaker', $data);
@@ -109,10 +116,10 @@ class Pencaker_model extends MY_Model {
 	function get_pekerjaan_by_id($id)
 	{
 		$this->db->select('*');
-        $this->db->from('pengalaman_kerja');
-        $this->db->where('id',$id);
-        $query = $this->db->get();
-        return $query->row();
+		$this->db->from('pengalaman_kerja');
+		$this->db->where('id', $id);
+		$query = $this->db->get();
+		return $query->row();
 	}
 
 	function add_pekerjaan($data)
@@ -121,7 +128,7 @@ class Pencaker_model extends MY_Model {
 		return $this->db->insert_id();
 	}
 
-	function update_pekerjaan($id,$data)
+	function update_pekerjaan($id, $data)
 	{
 		$this->db->where('id', $id);
 		$this->db->update('pengalaman_kerja', $data);
@@ -138,11 +145,20 @@ class Pencaker_model extends MY_Model {
 	function get_jabatan_by_id($id)
 	{
 		$this->db->select('*');
-        $this->db->from('minat_jabatan');
-        $this->db->where('id',$id);
-        $query = $this->db->get();
-        return $query->row();
+		$this->db->from('minat_jabatan');
+		$this->db->where('id', $id);
+		$query = $this->db->get();
+		return $query->row();
 	}
+
+	// function get_count_pendidikan()
+	// {
+	// 	$this->db->select('*');
+	// 	$this->db->from('pendidikan_pencaker');
+	// 	$this->db->where('jenjang');
+	// 	$query = $this->db->get();
+	// 	return $query->row();
+	// }
 
 	function add_jabatan($data)
 	{
@@ -150,7 +166,7 @@ class Pencaker_model extends MY_Model {
 		return $this->db->insert_id();
 	}
 
-	function update_jabatan($id,$data)
+	function update_jabatan($id, $data)
 	{
 		$this->db->where('id', $id);
 		$this->db->update('minat_jabatan', $data);
@@ -177,32 +193,32 @@ class Pencaker_model extends MY_Model {
 	{
 		return $this->db->get('dokumen')->result();
 	}
-  
+
 	function get_preview_doc($id)
 	{
 		$query = $this->db->query("SELECT * FROM pencaker_dokumen pd JOIN pencaker p ON p.id=pd.pencaker_id WHERE pd.id='$id'");
 		return $query->row();
 	}
 
-    function get_jenis_dokumen($iddokumen)
-    {
-        $this->db->select('jenis_dokumen');
-        $this->db->from('dokumen');
-        $this->db->where('id',$iddokumen);
-        $query = $this->db->get();
- 
-        return $query->row();
-    }
+	function get_jenis_dokumen($iddokumen)
+	{
+		$this->db->select('jenis_dokumen');
+		$this->db->from('dokumen');
+		$this->db->where('id', $iddokumen);
+		$query = $this->db->get();
 
-    function pencaker_doc($pencaker_id)
-    {
-    	$query  = $this->db->query("SELECT d.*,
+		return $query->row();
+	}
+
+	function pencaker_doc($pencaker_id)
+	{
+		$query  = $this->db->query("SELECT d.*,
                     (SELECT pd.namadokumen FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS namadokumen,
                     (SELECT pd.tgl_upload FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS tgl_upload,
                     (SELECT pd.id FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS pencakerdokumen_id
                     FROM dokumen d");
-    	return $query->result();
-    }
+		return $query->result();
+	}
 }
 /* End of file Pencaker_model.php */
 /* Location: ./application/models/Pencaker_model.php */

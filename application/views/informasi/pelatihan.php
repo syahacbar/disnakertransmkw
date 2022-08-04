@@ -200,9 +200,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <label for="judul">Bidang Pelatihan</label>
                                 <select class="form-control" name="jenis_pelatihan" id="jenis_pelatihan">
                                     <option>-- Pilih Salah Satu --</option>
-                                <?php foreach($jenis_pelatihan AS $jp) : ?>
-                                    <option value="<?php echo $jp->kode; ?>"><?php echo $jp->pelatihan; ?></option>
-                                <?php endforeach;?>
+                                    <?php foreach ($jenis_pelatihan as $jp) : ?>
+                                        <option value="<?php echo $jp->kode; ?>"><?php echo $jp->pelatihan; ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
@@ -254,12 +254,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         </div>
                         <div class="col-12 col-sm-12 col-md-8 col-lg-8">
                             <div class="form-group">
-                                <label for="judul">Bidang Pelatihan</label>
-                                <select class="form-control" name="jenis_pelatihan" id="jenis_pelatihan">
+                                <label for="editjenis_pelatihan">Bidang Pelatihan</label>
+                                <select class="form-control" name="editjenis_pelatihan" id="editjenis_pelatihan">
                                     <option>-- Pilih Salah Satu --</option>
-                                <?php foreach($jenis_pelatihan AS $jp) : ?>
-                                    <option value="<?php echo $jp->kode; ?>"><?php echo $jp->pelatihan; ?></option>
-                                <?php endforeach;?>
+                                    <?php foreach ($jenis_pelatihan as $jp) : ?>
+                                        <option value="<?php echo $jp->kode; ?>"><?php echo $jp->pelatihan; ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
@@ -283,7 +283,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="modal-footer">
                     <input type="hidden" name="idpelatihan">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <button id="btnSimpan" type="button" class="btn btn-primary">Simpan</button>
+                    <button id="btnSimpan" name="submit" type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>
@@ -340,6 +340,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#tabelpelatihan').DataTable().ajax.reload(null, false);
 
         }
+
         var unggah_pelatihan = new Dropzone(".dropzone", {
             autoProcessQueue: false,
             url: "<?php echo site_url('informasi/add_pelatihan') ?>",
@@ -373,7 +374,40 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             //location.reload();
         });
 
+        // Edit Pelatihan
 
+        edit_pelatihan = new Dropzone(".edit_gambar", {
+            autoProcessQueue: false,
+            url: "<?php echo site_url('informasi/ubah_pelatihan') ?>",
+            maxFilesize: 20,
+            method: "post",
+            acceptedFiles: "image/*",
+            paramName: "editthumbnailpelatihan",
+            dictInvalidFileType: "Type file ini tidak dizinkan",
+            addRemoveLinks: true,
+        });
+
+        edit_pelatihan.on("sending", function(a, b, c) {
+            a.judul = $("input[name='editjudul']").val();
+            a.editjenis_pelatihan = $("select[name='editjenis_pelatihan']").val();
+            a.isi = $("textarea[name='editisi']").val();
+            a.status = 1;
+            c.append("judul", a.judul);
+            c.append("editjenis_pelatihan", a.editjenis_pelatihan);
+            c.append("isi", a.isi);
+            c.append("status", a.status)
+
+        });
+
+        edit_pelatihan.on('complete', function() {
+            location.reload();
+        });
+
+        $('#formeditpelatihan').submit(function(e) {
+            e.preventDefault();
+            edit_pelatihan.processQueue();
+            //location.reload();
+        });
 
         $(document).on('click', '.btnEditPelatihan', function() {
             $('#modalEditPelatihan').modal('show');
