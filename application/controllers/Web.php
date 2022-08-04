@@ -111,9 +111,9 @@ class Web extends CI_Controller
 			$detailberita = $this->informasi_model->get_informasi_by_slug($slug);
 
 
-			$this->page_data['count_berita'] = $this->informasi_model->get_count_informasi('Berita');
-			$this->page_data['count_pengumuman'] = $this->informasi_model->get_count_informasi('Pengumuman');
-			$this->page_data['count_pelatihan'] = $this->informasi_model->get_count_pelatihan();
+			$this->page_data['count_berita'] = $this->informasi_model->get_count_informasi('Berita', '1');
+			$this->page_data['count_pengumuman'] = $this->informasi_model->get_count_informasi('Pengumuman', '1');
+			$this->page_data['count_pelatihan'] = $this->informasi_model->get_count_pelatihan('1');
 			$this->page_data['detailberita'] = $detailberita;
 			$this->page_data['tags_sidebar'] = $tags_sidebar;
 			$this->page_data['page']->menu = 'informasi';
@@ -160,9 +160,9 @@ class Web extends CI_Controller
 
 			//end
 			$detailpengumuman = $this->informasi_model->get_informasi_by_slug($slug);
-			$this->page_data['count_berita'] = $this->informasi_model->get_count_informasi('Berita');
-			$this->page_data['count_pengumuman'] = $this->informasi_model->get_count_informasi('Pengumuman');
-			$this->page_data['count_pelatihan'] = $this->informasi_model->get_count_pelatihan();
+			$this->page_data['count_berita'] = $this->informasi_model->get_count_informasi('Berita', '1');
+			$this->page_data['count_pengumuman'] = $this->informasi_model->get_count_informasi('Pengumuman', '1');
+			$this->page_data['count_pelatihan'] = $this->informasi_model->get_count_pelatihan('1');
 
 			$this->page_data['detailpengumuman'] = $detailpengumuman;
 			$this->page_data['tags_sidebar'] = $tags_sidebar;
@@ -181,9 +181,9 @@ class Web extends CI_Controller
 	{
 		if ($slug != NULL) {
 			$detailpelatihan = $this->informasi_model->get_pelatihan_by_slug($slug);
-			$this->page_data['count_berita'] = $this->informasi_model->get_count_informasi('Berita');
-			$this->page_data['count_pengumuman'] = $this->informasi_model->get_count_informasi('Pengumuman');
-			$this->page_data['count_pelatihan'] = $this->informasi_model->get_count_pelatihan();
+			$this->page_data['count_berita'] = $this->informasi_model->get_count_informasi('Berita', '1');
+			$this->page_data['count_pengumuman'] = $this->informasi_model->get_count_informasi('Pengumuman', '1');
+			$this->page_data['count_pelatihan'] = $this->informasi_model->get_count_pelatihan('1');
 
 			$this->page_data['detailpelatihan'] = $detailpelatihan;
 			$this->page_data['page']->menu = 'informasi';
