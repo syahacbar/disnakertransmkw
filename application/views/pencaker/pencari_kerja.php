@@ -144,12 +144,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <td><?php echo $p['nopendaftaran']; ?> </td>
                                         <td><?php echo $p['nik']; ?> </td>
                                         <td>
-                                            <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange=""><span class="slider"></span><span class="labels" data-on="On" data-off="Off"></span></label>
+                                            <label class="toggle"><input class="onOff" type="checkbox" onchange=""><span class="slider"></span><span class="labels" data-on="On" data-off="Off"></span></label>
                                         </td>
                                         <td>
                                             <a target="_blank" href="" class="btn btn-sm btn-info"><i class="fas fa-print"></i></a>&nbsp;
-                                            <a href="javascript:void(0)" data-id="" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
-                                            <a class="btn btn-sm btn-danger" id="btnHapusBerita" href="javascript:void(0)" data-idberita=""><i class="fas fa-trash"></i></a>
+                                            <a href="" data-id="" class="btn btn-sm btn-primary editPencariKerja"><i class="fas fa-edit"></i></a>&nbsp;
+                                            <a class="btn btn-sm btn-danger" id="hapusPencariKerja" href="" data-idberita=""><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
