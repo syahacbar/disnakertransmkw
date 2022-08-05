@@ -181,7 +181,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           <div class="card-header">
             <h3 class="card-title">
               <i class="ion ion-clipboard mr-1"></i>
-              <?php echo "Kelengkapan Berkas Pencari Kerja" ?>
+              <?php echo "Kelengkapan Berkas/Dokumen Pencari Kerja" ?>
             </h3>
           </div>
           <!-- /.card-header -->
@@ -199,7 +199,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               ?>
                 <li>
                   <div class="icheck-primary d-inline ml-2">
-                    <input type="checkbox" value="" name="todo2" id="todoCheck2" <?php echo ($dok->pencakerdokumen_id != NULL) ? 'checked' : ''; ?>>
+                    <input type="checkbox" value="" name="todo2" id="todoCheck2" <?php echo ($dok->pencakerdokumen_id != NULL) ? 'checked' : ''; ?> disabled>
                     <label for="todoCheck2"></label>
                   </div>
                   <span class="text"><?php echo $dok->jenis_dokumen; ?></span>

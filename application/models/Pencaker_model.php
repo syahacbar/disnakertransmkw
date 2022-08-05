@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pencaker_model extends MY_Model
+class Pencaker_model extends MY_Model 
 {
 
 

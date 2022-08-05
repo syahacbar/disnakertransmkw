@@ -389,8 +389,8 @@
           <h2>Galeri</h2>
         </div>
         <?php
-        $tenaker = directory_map('./assets/frontend/assets/img/tenagakerja', 1, FALSE);
-        $trans = directory_map('./assets/frontend/assets/img/transmigrasi', 1, FALSE);
+        $tenaker = directory_map('./assets/frontend/assets/img/tenagakerja/all', 1);
+        $trans = directory_map('./assets/frontend/assets/img/transmigrasi/all', 1);
         ?>
 
         <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
@@ -402,17 +402,17 @@
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
           <?php foreach ($tenaker as $ten) : ?>
             <div class="col-lg-4 col-md-6 portfolio-item filter-tenaker">
-              <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/tenagakerja/') . $ten; ?>" class="img-fluid" alt=""></div>
+              <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/tenagakerja/all/') . $ten; ?>" class="img-fluid" alt=""></div>
               <div class="portfolio-info">
-                <a href="<?php echo base_url('assets/frontend/assets/img/tenagakerja/') . $ten; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="<?php echo base_url('assets/frontend/assets/img/tenagakerja/all/') . $ten; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bi bi-zoom-in"></i></a>
               </div>
             </div>
           <?php endforeach; ?>
           <?php foreach ($trans as $tra) : ?>
             <div class="col-lg-4 col-md-6 portfolio-item filter-trans">
-              <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/') . $tra ?>" class="img-fluid" alt=""></div>
+              <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/all/') . $tra ?>" class="img-fluid" alt=""></div>
               <div class="portfolio-info">
-                <a href="<?php echo base_url('assets/frontend/assets/img/transmigrasi/') . $tra ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                <a href="<?php echo base_url('assets/frontend/assets/img/transmigrasi/all/') . $tra ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bi bi-zoom-in"></i></a>
               </div>
             </div>
           <?php endforeach; ?>
