@@ -99,11 +99,11 @@
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a target="_blank" href="https://jdih.kemnaker.go.id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/jdih-logo.png" class="img-fluid" alt="JDIH Kementerian Ketenagakerjaan RI"></a>
+            <a target="_blank" href="https://jdih.kemnaker.go.id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/jdih.png" class="img-fluid" alt="JDIH Kementerian Ketenagakerjaan RI"></a>
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a target="_blank" href="http://www.conch-skc.com/id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/sdic.png" class="img-fluid" alt="SDIC Semen CONCH Indonesia"></a>
+            <a target="_blank" href="http://www.conch-skc.com/id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/jobfair.png" class="img-fluid" alt="Jobfair Kementerian Ketenagakerjaan RI"></a>
           </div>
 
         </div>

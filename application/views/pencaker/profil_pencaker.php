@@ -1470,6 +1470,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 success: function(data) {
                     if (data.status) //if success close modal and reload ajax table
                     {
+                        console.log(data.hasil);
                         showidentitaspencaker();
                         if (data.tujuan == 'tujuan1')
                             $('#perusahaanpencaker').addClass("hide");

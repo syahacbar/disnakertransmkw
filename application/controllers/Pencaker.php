@@ -110,12 +110,13 @@ class Pencaker extends MY_Controller
             $res['hasil'] = 'gagal';
             $res['status'] = FALSE;
         }
-        $this->activity_model->add("User #$id menambah data Pendidikan Pencaker");
+        $this->activity_model->add("User #$users_id menambah data Pendidikan Pencaker");
         echo json_encode($res);
     }
 
     function update_pendidikan()
     {
+        $users_id = logged('id');
         $idpendidikan = $this->input->post('idpendidikan');
         $data = array(
             'tahunmasuk' => $this->input->post('tahunmasuk'),
@@ -134,12 +135,13 @@ class Pencaker extends MY_Controller
             $res['hasil'] = 'gagal';
             $res['status'] = FALSE;
         }
-        $this->activity_model->add("User #$id memperbarui data Pendidikan Pencaker");
+        $this->activity_model->add("User #$users_id memperbarui data Pendidikan Pencaker");
         echo json_encode($res);
     }
 
     function del_pendidikan_by_id($idpendidikan)
     {
+        $users_id = logged('id');
         $del  = $this->pencaker_model->del_pendidikan_by_id($idpendidikan);
         if ($del) {
             $res['hasil'] = 'sukses';
@@ -148,7 +150,7 @@ class Pencaker extends MY_Controller
             $res['hasil'] = 'gagal';
             $res['status'] = FALSE;
         }
-        $this->activity_model->add("User #$id menghapus data Pendidikan Pencaker");
+        $this->activity_model->add("User #$users_id menghapus data Pendidikan Pencaker");
         echo json_encode($res);
     }
 
@@ -194,12 +196,13 @@ class Pencaker extends MY_Controller
             $res['hasil'] = 'gagal';
             $res['status'] = FALSE;
         }
-        $this->activity_model->add("User #$id menambah data Pekerjaan Pencaker");
+        $this->activity_model->add("User #$users_id menambah data Pekerjaan Pencaker");
         echo json_encode($res);
     }
 
     function update_pekerjaan()
     {
+        $users_id = logged('id');
         $idpekerjaan = $this->input->post('idpekerjaan');
         $data = array(
             'tahunmasuk' => $this->input->post('tahunmasukkerja'),
@@ -217,12 +220,13 @@ class Pencaker extends MY_Controller
             $res['status'] = FALSE;
         }
 
-        $this->activity_model->add("User #$id memperbarui data Pekerjaan Pencaker");
+        $this->activity_model->add("User #$users_id memperbarui data Pekerjaan Pencaker");
         echo json_encode($res);
     }
 
     function del_pekerjaan_by_id($idpekerjaan)
     {
+        $users_id = logged('id');
         $del  = $this->pencaker_model->del_pekerjaan_by_id($idpekerjaan);
         if ($del) {
             $res['hasil'] = 'sukses';
@@ -232,7 +236,7 @@ class Pencaker extends MY_Controller
             $res['status'] = FALSE;
         }
 
-        $this->activity_model->add("User #$id menghapus data Pekerjaan Pencaker");
+        $this->activity_model->add("User #$users_id menghapus data Pekerjaan Pencaker");
         echo json_encode($res);
     }
 
@@ -275,12 +279,13 @@ class Pencaker extends MY_Controller
             $res['hasil'] = 'gagal';
             $res['status'] = FALSE;
         }
-        $this->activity_model->add("User #$id menambah data Jabatan Pencaker");
+        $this->activity_model->add("User #$users_id menambah data Jabatan Pencaker");
         echo json_encode($res);
     }
 
     function update_jabatan()
     {
+        $users_id = logged('id');
         $idjabatan = $this->input->post('idjabatan');
         $data = array(
             'nama_jabatan' => $this->input->post('minat_jabatan'),
@@ -295,12 +300,13 @@ class Pencaker extends MY_Controller
             $res['status'] = FALSE;
         }
 
-        $this->activity_model->add("User #$id memperbarui data Jabatan Pencaker");
+        $this->activity_model->add("User #$users_id memperbarui data Jabatan Pencaker");
         echo json_encode($res);
     }
 
     function del_jabatan_by_id($idjabatan)
     {
+        $users_id = logged('id');
         $del  = $this->pencaker_model->del_jabatan_by_id($idjabatan);
         if ($del) {
             $res['hasil'] = 'sukses';
@@ -310,7 +316,7 @@ class Pencaker extends MY_Controller
             $res['status'] = FALSE;
         }
 
-        $this->activity_model->add("User #$id menghapus data Jabatan Pencaker");
+        $this->activity_model->add("User #$users_id menghapus data Jabatan Pencaker");
         echo json_encode($res);
     }
 
@@ -333,16 +339,16 @@ class Pencaker extends MY_Controller
             'tujuan' => $this->input->post('tujuan'),
         );
 
-        $update = $this->pencaker_model->update_by_users_id($users_id, $data);
+        $update = $this->pencaker_model->update_by_users_id($users_id, $data); 
         if ($update) {
             $res['hasil'] = 'sukses';
             $res['status'] = TRUE;
+            $this->activity_model->add("User #$users_id memperbarui data tujuan pembuatan kartu kuning");
         } else {
             $res['hasil'] = 'gagal';
             $res['status'] = FALSE;
         }
 
-        $this->activity_model->add("User #$id memperbarui data tujuan pembuatan kartu kuning");
         echo json_encode($res);
     }
 
@@ -371,7 +377,7 @@ class Pencaker extends MY_Controller
             $res['status'] = FALSE;
         }
 
-        $this->activity_model->add("User #$id memperbarui data identitas/ket. umum Pencaker");
+        $this->activity_model->add("User #$users_id memperbarui data identitas/ket. umum Pencaker");
         echo json_encode($res);
     }
 
@@ -398,7 +404,7 @@ class Pencaker extends MY_Controller
         $res['hasil'] = 'sukses';
         $res['status'] = TRUE;
 
-        $this->activity_model->add("User #$id memperbarui data keterampilan bahasa");
+        $this->activity_model->add("User #$users_id memperbarui data keterampilan bahasa");
         echo json_encode($res);
     }
 
@@ -418,7 +424,7 @@ class Pencaker extends MY_Controller
             $res['status'] = FALSE;
         }
 
-        $this->activity_model->add("User #$id memperbarui data lokasi jabatan");
+        $this->activity_model->add("User #$users_id memperbarui data lokasi jabatan");
         echo json_encode($res);
     }
 
@@ -438,7 +444,7 @@ class Pencaker extends MY_Controller
             $res['status'] = FALSE;
         }
 
-        $this->activity_model->add("User #$id memperbarui data tujuan perusahaan");
+        $this->activity_model->add("User #$users_id memperbarui data tujuan perusahaan");
         echo json_encode($res);
     }
 
@@ -460,7 +466,7 @@ class Pencaker extends MY_Controller
             $res['status'] = FALSE;
         }
 
-        $this->activity_model->add("User #$id memperbarui data catatan pengantar");
+        $this->activity_model->add("User #$users_id memperbarui data catatan pengantar");
         echo json_encode($res);
     }
 
@@ -513,11 +519,11 @@ class Pencaker extends MY_Controller
                 $this->db->update('pencaker_dokumen', array('namadokumen' => $namadokumen, 'tgl_upload' => $uploaded_on));
             }
         }
-        $this->activity_model->add("User #$id mengunggah dokumen Pencaker");
+        $this->activity_model->add("User #$users_id mengunggah dokumen Pencaker");
     }
 
 
-    function get_dokumen()
+    function get_dokumen() 
     {
         $users_id = logged('id');
         $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
