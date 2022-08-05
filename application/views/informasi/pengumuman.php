@@ -356,7 +356,18 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 
         upload_pengumuman.on('complete', function() {
-            location.reload();
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: 'Anda berhasil menambah pengumuman',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                }
+                return false;
+            })
         });
 
 
@@ -394,14 +405,24 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         });
 
         ubah_pengumuman.on('complete', function() {
-            location.reload();
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: 'Anda berhasil mengubah pengumuman',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                }
+                return false;
+            })
         });
 
 
         $('#formUbahPengumuman').submit(function(e) {
             e.preventDefault();
             ubah_pengumuman.processQueue();
-            //location.reload();
         });
 
 
@@ -417,23 +438,41 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         $(document).on('click', '.hapusPengumuman', function() {
             var id = $(this).data("id");
-            if (confirm("Are you sure you want to delete this?")) {
-                $.ajax({
-                    url: "<?php echo site_url(); ?>informasi/delete_pengumuman",
-                    type: "POST",
-                    data: {
-                        id: id
-                    },
-                    success: function(data) {
-                        var objData = jQuery.parseJSON(data);
-                        // console.log(objData.status);
-                        // console.log(objData.info);
-                        location.reload();
-                    }
-                });
-            } else {
-                return false;
-            }
+            Swal.fire({
+                text: 'Apakah Anda yakin menghapus pengumuman ini?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "<?php echo site_url(); ?>informasi/delete_pengumuman",
+                        type: "POST",
+                        data: {
+                            id: id
+                        },
+                        success: function(data) {
+                            Swal.fire({
+                                text: 'Berhasil menghapus pengumuman.',
+                                icon: 'success',
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Ya'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                }
+                            });
+
+                        }
+                    })
+                }
+
+            })
+
         });
+
     });
 </script>

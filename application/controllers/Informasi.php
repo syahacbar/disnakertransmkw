@@ -64,7 +64,7 @@ class Informasi extends MY_Controller
 			$slug = $this->slug($judul);
 
 			$this->db->insert('informasi', array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tags, 'status' => $status, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
-			$this->activity_model->add("User #$id menambah berita");
+			$this->activity_model->add("User #$users_id menambah berita");
 		}
 	}
 
@@ -107,11 +107,9 @@ class Informasi extends MY_Controller
 		$id = $this->input->post('idberita');
 
 		$users_id = logged('id');
-		// $config['upload_path']   = FCPATH.'uploads/informasi/berita';
 		$config['allowed_types'] = 'gif|jpg|png|ico';
 		$this->load->library('upload', $config);
 
-		// if($this->upload->do_upload('thumbnailberita')){
 		if ($this->uploadlib->uploadImage('thumbnailberita', '/informasi/berita')) {
 			$gambar = $this->upload->data('file_name');
 			$judul = $this->input->post('judul');
@@ -141,11 +139,14 @@ class Informasi extends MY_Controller
 	public function delete_berita()
 	{
 
-		$idberita = $this->input->post('idberita');
-		$this->Informasi_model->delete_informasi($idberita);
-		echo json_encode(array("statusCode" => 1));
+		$id = $this->input->post('id');
+		if ($this->informasi_model->delete_informasi($id)) {
+			echo json_encode(array('status' => TRUE, 'info' => 'Berhasil hapus pengumuman'));
+		} else {
+			echo json_encode(array('status' => FALSE, 'info' => 'Gagal hapus pengumuman'));
+		}
 
-		$this->activity_model->add("User #$idberita menghapus berita");
+		$this->activity_model->add("User #$id menghapus berita");
 	}
 
 	public function pengumuman()
@@ -192,7 +193,7 @@ class Informasi extends MY_Controller
 			$this->db->insert('informasi', array('gambar' => $gambar, 'kategori' => $kategori, 'judul' => $judul, 'isi' => $isi, 'tags' => $tag, 'status' => $status, 'tgl_publikasi' => $tgl_publikasi, 'users_id' => $users_id, 'slug' => $slug));
 		}
 
-		$this->activity_model->add("User #$id menambah pengumuman");
+		$this->activity_model->add("User #$users_id menambah pengumuman");
 	}
 
 	public function get_pengumuman_by_id($id)
@@ -309,7 +310,7 @@ class Informasi extends MY_Controller
 
 			$this->db->insert('pelatihan', array('judul' => $judul, 'isi' => $isi, 'tanggal' => $tgl_publikasi, 'gambar' => $gambar, 'status' => $status, 'users_id' => $users_id, 'slug' => $slug, 'jenis_pelatihan_kode' => $jenis_pelatihan_kode));
 		}
-		$this->activity_model->add("User #$id menambah pelatihan");
+		$this->activity_model->add("User #$users_id menambah pelatihan");
 	}
 
 	public function get_pelatihan_by_id($id)
@@ -345,7 +346,7 @@ class Informasi extends MY_Controller
 		$this->activity_model->add("User #$id memperbarui status pengumuman");
 	}
 
-	public function ubah_pelatihan()
+	public function update_pelatihan()
 	{
 		$id = $this->input->post('idpelatihan');
 

@@ -365,7 +365,18 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         });
 
         unggah_pelatihan.on('complete', function() {
-            location.reload();
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: 'Anda berhasil menambah pelatihan',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                }
+                return false;
+            })
         });
 
         $('#formtambahpelatihan').submit(function(e) {
@@ -378,7 +389,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         edit_pelatihan = new Dropzone(".edit_gambar", {
             autoProcessQueue: false,
-            url: "<?php echo site_url('informasi/ubah_pelatihan') ?>",
+            url: "<?php echo site_url('informasi/update_pelatihan') ?>",
             maxFilesize: 20,
             method: "post",
             acceptedFiles: "image/*",
@@ -391,16 +402,28 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             a.judul = $("input[name='editjudul']").val();
             a.editjenis_pelatihan = $("select[name='editjenis_pelatihan']").val();
             a.isi = $("textarea[name='editisi']").val();
+            a.idpelatihan = $("input[name='idpelatihan']").val();
             a.status = 1;
             c.append("judul", a.judul);
             c.append("editjenis_pelatihan", a.editjenis_pelatihan);
             c.append("isi", a.isi);
-            c.append("status", a.status)
-
+            c.append("status", a.status);
+            c.append("idpelatihan", a.idpelatihan);
         });
 
         edit_pelatihan.on('complete', function() {
-            location.reload();
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: 'Anda berhasil mengubah pelatihan',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                }
+                return false;
+            })
         });
 
         $('#formeditpelatihan').submit(function(e) {
@@ -412,32 +435,48 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         $(document).on('click', '.btnEditPelatihan', function() {
             $('#modalEditPelatihan').modal('show');
             var idpelatihan = $(this).attr("data-id");
-            //set hidden form untuk Id Pelatihan
             $('[name="idpelatihan"]').val(idpelatihan);
-
             editpelatihan(idpelatihan);
         });
 
 
+
         $(document).on('click', '.btnHapusPelatihan', function() {
             var id = $(this).data("id");
-            if (confirm("Are you sure you want to delete this?")) {
-                $.ajax({
-                    url: "<?php echo site_url(); ?>informasi/delete_pelatihan",
-                    type: "POST",
-                    data: {
-                        id: id
-                    },
-                    success: function(data) {
-                        var objData = jQuery.parseJSON(data);
-                        // console.log(objData.status);
-                        // console.log(objData.info);
-                        location.reload();
-                    }
-                });
-            } else {
-                return false;
-            }
+            Swal.fire({
+                text: 'Apakah Anda yakin menghapus pelatihan ini?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "<?php echo site_url(); ?>informasi/delete_pelatihan",
+                        type: "POST",
+                        data: {
+                            id: id
+                        },
+                        success: function(data) {
+                            Swal.fire({
+                                text: 'Berhasil menghapus pelatihan.',
+                                icon: 'success',
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Ya'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                }
+                            });
+
+                        }
+                    })
+                }
+
+            })
+
         });
     });
 </script>
