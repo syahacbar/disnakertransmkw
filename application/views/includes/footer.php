@@ -44,7 +44,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script src="<?php echo $url->assets ?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 
 <!-- SweetAlert2 -->
-<script src="<?php echo $url->assets ?>plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- <script src="<?php // echo $url->assets 
+                  ?>plugins/sweetalert2/sweetalert2.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
 <!-- Toastr -->
 <script src="<?php echo $url->assets ?>plugins/toastr/toastr.min.js"></script>
 

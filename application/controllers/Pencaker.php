@@ -30,6 +30,7 @@ class Pencaker extends MY_Controller
     public function pencari_kerja()
     {
         $this->page_data['pencaker'] = $this->pencaker_model->get_all();
+        $this->page_data['users'] = $this->users_model->get();
 
         $this->page_data['page']->title = 'Data Pencari Kerja';
         $this->page_data['page']->menu = 'pencari_kerja';

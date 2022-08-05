@@ -139,7 +139,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 foreach ($pencaker as $p) : ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
-                                        <td>Gambar</td>
+                                        <td>
+                                            <img height="180px" width="180px" class="ppborder" src="<?php echo userProfile($p['id']) ?>">
+                                        </td>
                                         <td><?php echo $p['namalengkap']; ?> </td>
                                         <td><?php echo $p['nopendaftaran']; ?> </td>
                                         <td><?php echo $p['nik']; ?> </td>

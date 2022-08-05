@@ -44,15 +44,17 @@ class Informasi_model extends MY_Model
 		return $query->row();
 	}
 
-	function get_count_informasi($kategori)
+	function get_count_informasi($kategori, $status)
 	{
 		$this->db->where('kategori', $kategori);
+		$this->db->where('status', $status);
 		$q = $this->db->get('informasi');
 		return $q->num_rows();
 	}
 
-	function get_count_pelatihan()
+	function get_count_pelatihan($status)
 	{
+		$this->db->where('status', $status);
 		$q = $this->db->get('pelatihan');
 		return $q->num_rows();
 	}
@@ -64,11 +66,11 @@ class Informasi_model extends MY_Model
 		return $id;
 	}
 
-	function delete_informasi($idberita)
+	function delete_informasi($id)
 	{
-		$this->db->where('id', $idberita);
+		$this->db->where('id', $id);
 		$this->db->delete('informasi');
-		return $idberita;
+		return $id;
 	}
 
 	// function get_berita_by_slug($slug)

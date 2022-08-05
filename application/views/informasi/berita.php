@@ -159,7 +159,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <td>
                                             <a target="_blank" href="<?php echo site_url() . 'berita/' . $b->slug; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
                                             <a href="javascript:void(0)" data-id="<?php echo $b->id; ?>" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
-                                            <a class="btn btn-sm btn-danger" id="btnHapusBerita" href="javascript:void(0)" data-idberita="<?php echo $b->id; ?>"><i class="fas fa-trash"></i></a>
+                                            <a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="<?php echo $b->id; ?>"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -212,7 +212,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="gambar_berita">Gambar</label>
-                                <div id="gambar_berita" class="dropzone border-1 dz-clickable">
+                                <div id="tambah_gbrBerita" class="dropzone border-1 dz-clickable">
                                     <div class="dz-message">Klik atau drop gambar thumbnail ke sini</div>
                                 </div>
                             </div>
@@ -264,7 +264,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="edit_gambar">Gambar</label>
-                                <div id="edit_gambar" class="dropzone border-1 dz-clickable">
+                                <div id="ubah_gbrBerita" class="dropzone border-1 dz-clickable">
                                     <div class="dz-message">Klik atau drop gambar thumbnail ke sini</div>
                                 </div>
                             </div>
@@ -332,7 +332,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         }
 
-        var unggah_berita = new Dropzone("#gambar_berita", {
+        var unggah_berita = new Dropzone("#tambah_gbrBerita", {
             autoProcessQueue: false,
             url: "<?php echo site_url('informasi/add_berita') ?>",
             maxFilesize: 20,
@@ -355,7 +355,18 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         });
 
         unggah_berita.on('complete', function() {
-            location.reload();
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: 'Anda berhasil menambah berita',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                }
+                return false;
+            })
         });
 
         $('#formtambahberita').submit(function(e) {
@@ -363,9 +374,58 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             unggah_berita.processQueue();
         });
 
+        // Edit Berita
+
+        var edit_berita = new Dropzone("#ubah_gbrBerita", {
+            autoProcessQueue: false,
+            url: "<?php echo site_url('informasi/update_berita') ?>",
+            maxFilesize: 20,
+            method: "post",
+            acceptedFiles: "image/*",
+            paramName: "thumbnailberita",
+            dictInvalidFileType: "Type file ini tidak dizinkan",
+            addRemoveLinks: true,
+        });
+
+        edit_berita.on("sending", function(a, b, c) {
+            a.judul = $("input[name='editjudul']").val();
+            a.tags = $("input[name='edittags']").val();
+            a.isi = $("textarea[name='editisi']").val();
+            a.idberita = $("input[name='idberita']").val();
+            c.append("judul", a.judul);
+            c.append("tags", a.tags);
+            c.append("isi", a.isi);
+            c.append("idberita", a.idberita);
+        });
+
+        edit_berita.on('complete', function() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: 'Anda berhasil mengubah berita',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                }
+                return false;
+            })
+        });
+
+
+        $('#formeditberita').submit(function(e) {
+            e.preventDefault();
+            edit_berita.processQueue();
+        });
+
+        // $('#formeditberita').submit(function(e) {
+        //     e.preventDefault();
+        // edit_berita.processQueue();
+
         // var edit_berita = new Dropzone("#edit_gambar", {
         //     autoProcessQueue: false,
-        //     url: "<?php //echo site_url('informasi/update_berita') 
+        //     url: "<?php // echo site_url('informasi/update_berita') 
                         ?>",
         //     maxFilesize: 20,
         //     method: "post",
@@ -375,56 +435,22 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         //     addRemoveLinks: true,
         // });
 
-        // edit_berita.on("sending", function(a, b, c) {
-        //     a.judul = $("input[name='editjudul']").val();
-        //     a.tags = $("input[name='edittags']").val();
-        //     a.isi = $("textarea[name='editisi']").val();
-        //     a.idberita = $("input[name='idberita']").val();
-        //     c.append("judul", a.judul);
-        //     c.append("tags", a.tags);
-        //     c.append("isi", a.isi);
-        //     c.append("idberita", a.idberita);
+
+        // var form = $(this).closest('#edit_gambar'); 
+        // if (edit_berita.files.length > 0) {
+        //     edit_berita.processQueue();
+        // } else {
+        //     edit_berita.uploadFiles([]); //send empty 
+        // }
+
+
+        // if (edit_berita.getQueuedFiles().length > 0) {
+        //     edit_berita.processQueue();
+        // } else {
+        //     edit_berita.uploadFiles([{ name: 'nofiles' }]); //send empty
+        // }
+
         // });
-
-        // edit_berita.on('complete', function() {
-        //     location.reload();
-        // });
-
-
-
-
-        $('#formeditberita').submit(function(e) {
-            e.preventDefault();
-            // edit_berita.processQueue();
-
-            var edit_berita = new Dropzone("#edit_gambar", {
-                autoProcessQueue: false,
-                url: "<?php echo site_url('informasi/update_berita') ?>",
-                maxFilesize: 20,
-                method: "post",
-                acceptedFiles: "image/*",
-                paramName: "thumbnailberita",
-                dictInvalidFileType: "Type file ini tidak dizinkan",
-                addRemoveLinks: true,
-            });
-
-
-            // var form = $(this).closest('#edit_gambar'); 
-            if (edit_berita.files.length > 0) {
-                edit_berita.processQueue();
-            } else {
-                edit_berita.uploadFiles([]); //send empty 
-            }
-
-
-            // if (edit_berita.getQueuedFiles().length > 0) {
-            //     edit_berita.processQueue();
-            // } else {
-            //     edit_berita.uploadFiles([{ name: 'nofiles' }]); //send empty
-            // }
-
-        });
-
 
 
         $(document).on('click', '.btnEditBerita', function() {
@@ -437,57 +463,42 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         });
 
 
-        $(document).on('click', '#btnHapusBerita', function() {
-
-            // e.preventDefault();
-            // var url = $(this).attr('href');
-
+        $(document).on('click', '.btnHapusBerita', function() {
+            var id = $(this).data("id");
             Swal.fire({
-                title: 'Apakah yakin akan menghapus berita ini?',
+                text: 'Apakah Anda yakin menghapus berita ini?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya',
-                cancelButtonText: 'Tidak',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    var idberita = $(this).data("idberitaberita");
                     $.ajax({
                         url: "<?php echo site_url(); ?>informasi/delete_berita",
-                        method: "POST",
+                        type: "POST",
                         data: {
-                            idberita: idberita
+                            id: id
                         },
                         success: function(data) {
-                            var hasil = JSON.parse(data);
-                            if (hasil.statusCode == 1) {
-                                Swal.fire({
-                                    title: "Berhasil",
-                                    text: "Menghapus berita!",
-                                    icon: "success"
-                                }).then(function(isConfirm) {
-                                    if (isConfirm) {
-                                        location.reload();
-                                    }
-                                });
-                            } else {
-                                Swal.fire({
-                                    title: "Gagal",
-                                    text: "Menghapus berita!",
-                                    icon: "error"
-                                }).then(function(isConfirm) {
-                                    if (isConfirm) {
-                                        location.reload();
-                                    }
-                                });
-                            }
-                        }
-                    });
+                            Swal.fire({
+                                text: 'Berhasil menghapus berita.',
+                                icon: 'success',
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Ya'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                }
+                            });
 
-                };
+                        }
+                    })
+                }
 
             })
+
         });
     });
 </script>
