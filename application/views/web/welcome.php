@@ -103,7 +103,7 @@
           </div>
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <a target="_blank" href="http://www.conch-skc.com/id"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/jobfair.png" class="img-fluid" alt="Jobfair Kementerian Ketenagakerjaan RI"></a>
+            <a target="_blank" href="https://jobfair.kemnaker.go.id/web"><img src="<?php echo base_url(); ?>/assets/frontend/assets/img/clients/jobfair.png" class="img-fluid" alt="Jobfair Kementerian Ketenagakerjaan RI"></a>
           </div>
 
         </div>
@@ -185,7 +185,7 @@
             <p>Proses pembuatan kartu kuning dimulai dengan pendaftaran akun untuk selanjutnya mengisi formulir AK-1 dan mengunggah dokumen. Adapun dokumen yang dibutuhkan diantaranya: Pas Foto, KTP, Ijazah Terakhir, Transkrip Nilai, Riwayat Hidup, SKCK dan Suket. Sehat</p>
           </div>
           <div class="col-lg-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="#">Buat Akun</a>
+            <a class="cta-btn align-middle" href="<?php echo site_url('web/registrasi');?>">Buat Akun</a>
           </div>
         </div>
 
