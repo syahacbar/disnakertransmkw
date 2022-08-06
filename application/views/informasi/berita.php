@@ -191,7 +191,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <form id="formtambahberita">
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="judul">Judul Artikel</label>
                                 <input type="text" class="form-control" name="judul" id="judul" required autofocus />
@@ -203,7 +203,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <textarea name="isi" id="summernote" cols="20" rows="20"></textarea>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="tag">Tags</label>
                                 <input type="text" class="form-control" name="tags" id="tags" required autofocus />
@@ -255,7 +255,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <textarea name="editisi" id="editberitasummernote" rows="20"></textarea>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="edittags">Tag</label>
                                 <input type="text" class="form-control" name="edittags" id="edittags" value="" />
