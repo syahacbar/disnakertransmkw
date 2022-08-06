@@ -14,6 +14,7 @@ class Pencaker extends MY_Controller
         ifPermissions('profil_pencaker');
         $this->page_data['page']->title = 'Profil Pencari Kerja';
         $this->page_data['page']->menu = 'profil_pencaker';
+        $this->page_data['jenjang_pendidikan'] = $this->informasi_model->get_jenjang_pendidikan();
 
         $users_id = logged('id');
 
@@ -71,15 +72,16 @@ class Pencaker extends MY_Controller
         $users_id = logged('id');
         $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
 
-        $query  = "SELECT p.users_id, pd.* FROM pencaker p JOIN pendidikan_pencaker pd ON pd.pencaker_id=p.id";
+        $query  = "SELECT jp.id AS idjenjang, jp.jenjang, p.users_id, pd.* FROM pencaker p JOIN pendidikan_pencaker pd ON pd.pencaker_id=p.id JOIN jenjang_pendidikan jp ON jp.id=pd.jenjang_pendidikan_id";
         $search = array('pd.nama_sekolah', 'pd.keterampilan');
         $where  = array('pd.pencaker_id' => $pencaker_id->id);
+        $set_order = "ORDER BY jp.id ASC";
 
         // jika memakai IS NULL pada where sql
         $isWhere = null;
         // $isWhere = 'artikel.deleted_at IS NULL';
         header('Content-Type: application/json');
-        echo $this->M_Datatables->get_tables_query($query, $search, $where, $isWhere);
+        echo $this->M_Datatables->get_tables_query($query, $search, $where, $isWhere, $set_order);
     }
 
     function get_pendidikan_by_id($idpendidikan)
@@ -163,12 +165,12 @@ class Pencaker extends MY_Controller
         $query  = "SELECT p.users_id, pk.* FROM pencaker p JOIN pengalaman_kerja pk ON pk.pencaker_id=p.id";
         $search = array('pk.instansi', 'pk.jabatan');
         $where  = array('pk.pencaker_id' => $pencaker_id->id);
-
+        $set_order = "ORDER BY pk.tahunmasuk ASC";
         // jika memakai IS NULL pada where sql
         $isWhere = null;
         // $isWhere = 'artikel.deleted_at IS NULL';
         header('Content-Type: application/json');
-        echo $this->M_Datatables->get_tables_query($query, $search, $where, $isWhere);
+        echo $this->M_Datatables->get_tables_query($query, $search, $where, $isWhere, $set_order);
     }
 
     function get_pekerjaan_by_id($idpekerjaan)
@@ -249,12 +251,12 @@ class Pencaker extends MY_Controller
         $query  = "SELECT p.users_id, mj.* FROM pencaker p JOIN minat_jabatan mj ON mj.pencaker_id=p.id";
         $search = array('mj.nama_jabatan');
         $where  = array('mj.pencaker_id' => $pencaker_id->id);
-
+        $set_order = "ORDER BY mj.id ASC";
         // jika memakai IS NULL pada where sql
         $isWhere = null;
         // $isWhere = 'artikel.deleted_at IS NULL';
         header('Content-Type: application/json');
-        echo $this->M_Datatables->get_tables_query($query, $search, $where, $isWhere);
+        echo $this->M_Datatables->get_tables_query($query, $search, $where, $isWhere, $set_order);
     }
 
     function get_jabatan_by_id($idjabatan)

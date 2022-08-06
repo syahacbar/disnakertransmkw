@@ -268,15 +268,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                             <label for="jenjang">Jenjang</label>
                                             <select name="jenjang" id="jenjang" class="w-100">
                                                 <option value="">-- Pilih Salah Satu --</option>
-                                                <option value="SD">SD</option>
-                                                <option value="SMTP">SMTP</option>
-                                                <option value="SMTA">SMTA</option>
-                                                <option value="D-I">D-I</option>
-                                                <option value="D-II">D-II</option>
-                                                <option value="D-III">D-III</option>
-                                                <option value="D-IV/S-1/Sarjana">D-IV/S-1/Sarjana</option>
-                                                <option value="S-2/Magister">S-2/Magister</option>
-                                                <option value="S-3/Doktor">S-3/Doktor</option>
+                                                <?php foreach($jenjang_pendidikan AS $jp) : ?>
+                                                    <option value="<?php echo $jp->id;?>"><?php echo $jp->jenjang;?></option>
+                                                <?php endforeach;?>
                                             </select>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 ">
@@ -784,7 +778,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     "type": "POST"
                 },
                 "deferRender": true,
-                "stateSave": true,
+                //"stateSave": true,
                 "bDestroy": true,
 
                 "columns": [{
@@ -844,7 +838,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 success: function(data) {
                     $('[name="tahunmasuk"]').val(data.tahunmasuk);
                     $('[name="tahunlulus"]').val(data.tahunlulus);
-                    $('[name="jenjang"]').val(data.jenjang).trigger("change");
+                    $('[name="jenjang"]').val(data.jenjang_pendidikan_id).trigger("change");
                     $('[name="nama_sekolah"]').val(data.nama_sekolah);
                     $('[name="ipk"]').val(data.ipk);
                     $('[name="keterampilan"]').val(data.keterampilan);
@@ -1005,7 +999,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     "type": "POST"
                 },
                 "deferRender": true,
-                "stateSave": true,
+                //"stateSave": true,
                 "bDestroy": true,
 
                 "columns": [{
@@ -1391,7 +1385,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 $('[name="catatan_pengantar"]').val(data.catatan_pengantar);
 
 
-            },
+            }, 
             error: function(jqXHR, textStatus, errorThrown) {
                 alert('Error');
             }

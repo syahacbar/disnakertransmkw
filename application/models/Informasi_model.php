@@ -203,4 +203,10 @@ class Informasi_model extends MY_Model
 		$this->db->delete('pelatihan');
 		return true;
 	}
+
+	function get_jenjang_pendidikan()
+	{
+		$q = $this->db->get('jenjang_pendidikan');
+		return $q->result();
+	}
 }

@@ -248,7 +248,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <i class="badge badge-dot badge-dot-xl badge-warning"> </i>
                   </span>
                   <div class="vertical-timeline-element-content bounce-in">
-                    <h4 class="timeline-title">MELENGKAPI PROFIL DAN DOKUMEN PENCAKER</h4>
+                    <h4 class="timeline-title">MENGISI FORMULIR PENCAKER</h4>
                     <p>Another meeting with UK client today, at <b class="text-danger">3:00 PM</b></p>
                     <p>Yet another one, at <span class="text-success">5:00 PM</span></p>
                     <span class="vertical-timeline-element-date text-left">4 <br>Agustus</span>
@@ -261,7 +261,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <i class="badge badge-dot badge-dot-xl badge-danger"> </i>
                   </span>
                   <div class="vertical-timeline-element-content bounce-in">
-                    <h4 class="timeline-title">VERIFIKASI DATA PENCAKER</h4>
+                    <h4 class="timeline-title">MELENGKAPI BERKAS/DOKUMEN PENCAKER</h4>
                     <p>meeting with team mates about the launch of new product. and tell them about new features</p>
                     <span class="vertical-timeline-element-date text-left">6 <br>Agustus</span>
                   </div>
@@ -273,7 +273,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <i class="badge badge-dot badge-dot-xl badge-primary"> </i>
                   </span>
                   <div class="vertical-timeline-element-content bounce-in">
-                    <h4 class="timeline-title text-success">PENGUMPULAN BERKAS ASLI</h4>
+                    <h4 class="timeline-title text-success">PROSES VERIFIKASI DATA</h4>
                     <p>Discussion with marketing team about the popularity of last product</p>
                     <span class="vertical-timeline-element-date text-left">10 <br>Agustus</span>
                   </div>
@@ -285,7 +285,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <i class="badge badge-dot badge-dot-xl badge-primary"> </i>
                   </span>
                   <div class="vertical-timeline-element-content bounce-in">
-                    <h4 class="timeline-title text-success">MENERIMA KARTU KUNING</h4>
+                    <h4 class="timeline-title text-success">DOKUMEN DINYATAKAN LENGKAP</h4>
                     <p>Discussion with marketing team about the popularity of last product</p>
                     <span class="vertical-timeline-element-date text-left">13 <br>Agustus</span>
                   </div>

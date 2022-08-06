@@ -145,7 +145,7 @@
             return json_encode($callback); // Convert array $callback ke json
         }
 
-        function get_tables_query($query,$cari,$where,$iswhere)
+        function get_tables_query($query,$cari,$where,$iswhere,$set_order)
         {
             // Ambil data yang di ketik user pada textbox pencarian
             $search = htmlspecialchars($_POST['search']['value']);
@@ -176,10 +176,16 @@
                 
                 // Untuk mengambil nama field yg menjadi acuan untuk sorting
                 $order_field = $_POST['order'][0]['column']; 
-    
-                // Untuk menentukan order by "ASC" atau "DESC"
-                $order_ascdesc = $_POST['order'][0]['dir']; 
-                $order = " ORDER BY ".$_POST['columns'][$order_field]['data']." ".$order_ascdesc;
+                
+                if(!empty($order_field))
+                {
+                    // Untuk menentukan order by "ASC" atau "DESC"
+                    $order_ascdesc = $_POST['order'][0]['dir']; 
+                    $order = " ORDER BY ".$_POST['columns'][$order_field]['data']." ".$order_ascdesc;
+                } else {
+                    $order = $set_order;
+                }
+                
     
                 if(!empty($iswhere))
                 {
@@ -253,6 +259,10 @@
                 }
                 $data = $sql_data->result_array();
             }
+
+            if($order != null)
+            {}
+
             
             $callback = array(    
                 'draw' => $_POST['draw'], // Ini dari datatablenya    
