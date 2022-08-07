@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
-    <!-- Dropzone CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+<!-- Dropzone CSS -->
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 <?php include viewPath('includes/header'); ?>
 
 <style>
@@ -28,10 +28,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     }
 
     .alert-warning {
-    color: #664d03;
-    background-color: #fff3cd;
-    border-color: #ffecb5;
-}
+        color: #664d03;
+        background-color: #fff3cd;
+        border-color: #ffecb5;
+    }
 </style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -58,7 +58,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="card">
                     <div class="card-header d-flex p-0">
                         <h3 class="card-title p-3"><?php echo lang('doc_pencaker') ?></h3>
-                        
+
                     </div>
 
                     <!-- /.card-header -->
@@ -74,29 +74,29 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
+                                <?php
                                 $no = 1;
-                                foreach ($pencaker_dokumen AS $doc) :?>
-                                <tr>
-                                    <td><?php echo $no++;?></td>
-                                    <td><?php echo $doc->jenis_dokumen;?></td>
-                                    <td><?php echo $doc->namadokumen;?></td>
-                                    <td><?php echo $doc->tgl_upload;?></td>
-                                    <td>
-                                    <?php if($doc->pencakerdokumen_id != NULL) { ?>
+                                foreach ($pencaker_dokumen as $doc) : ?>
+                                    <tr>
+                                        <td><?php echo $no++; ?></td>
+                                        <td><?php echo $doc->jenis_dokumen; ?></td>
+                                        <td><?php echo $doc->namadokumen; ?></td>
+                                        <td><?php echo $doc->tgl_upload; ?></td>
+                                        <td>
+                                            <?php if ($doc->pencakerdokumen_id != NULL) { ?>
 
-                                        <a target="_blank" class="btn btn-sm btn-info btnViewDokumen" href="#" data-id="<?php ?>" data-placement="left" title="Hapus Dokumen"><i class="fas fa-eye"></i></a>&nbsp;
+                                                <a target="_blank" class="btn btn-sm btn-info btnViewDokumen" href="<?php echo base_url('uploads/pencaker/') . $doc->namadokumen; ?>" data-id="<?php ?>" data-placement="left" title="Hapus Dokumen"><i class="fas fa-eye"></i></a>&nbsp;
 
-                                        <a href="javascript:void(0)" data-iddokumen="<?php echo $doc->id; ?>"  data-idpencakerdokumen="<?php echo $doc->pencakerdokumen_id; ?>" data-jenisdokumen="<?php echo $doc->jenis_dokumen; ?>" class="btn btn-sm btn-primary btnEditDokumen" data-toggle="tooltip" data-placement="bottom" title="Perbarui Dokumen"><i class="fas fa-edit"></i></a>
+                                                <a href="javascript:void(0)" data-iddokumen="<?php echo $doc->id; ?>" data-idpencakerdokumen="<?php echo $doc->pencakerdokumen_id; ?>" data-jenisdokumen="<?php echo $doc->jenis_dokumen; ?>" class="btn btn-sm btn-primary btnEditDokumen" data-toggle="tooltip" data-placement="bottom" title="Perbarui Dokumen"><i class="fas fa-edit"></i></a>
 
-                                    <?php } else { ?>
+                                            <?php } else { ?>
 
-                                        <a href="javascript:void(0)" data-iddokumen="<?php echo $doc->id; ?>" data-jenisdokumen="<?php echo $doc->jenis_dokumen; ?>" class="btn btn-sm btn-success btnAddDokumen" data-placement="bottom" title="Unggah Dokumen"><i class="fas fa-upload"></i></a>
+                                                <a href="javascript:void(0)" data-iddokumen="<?php echo $doc->id; ?>" data-jenisdokumen="<?php echo $doc->jenis_dokumen; ?>" class="btn btn-sm btn-success btnAddDokumen" data-placement="bottom" title="Unggah Dokumen"><i class="fas fa-upload"></i></a>
 
-                                    <?php } ?>
-                                    </td>
-                                </tr>
-                                <?php endforeach;?>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
 
                         </table>
@@ -111,7 +111,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     </div>
     <!-- /.container-fluid -->
 </section>
-<!-- /.content --> 
+<!-- /.content -->
 
 <!-- Modal -->
 <div class="modal fade" id="unggahDokumen" tabindex="-1" role="dialog" aria-labelledby="unggahDokumenTitle" aria-hidden="true">
@@ -124,30 +124,30 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 </button>
             </div>
             <div class="modal-body">
-                <?php echo form_open_multipart('',array('id'=>'formunggahdokumen')); ?>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-3">
-                        <label for="jenisdokumen">Jenis Dokumen</label>
-                        <input type="text" class="form-control" name="jenisdokumen" id="jenisdokumen" readonly>
-                        <input type="hidden" class="form-control" name="iddokumen" id="iddokumen">
-                        <input type="hidden" class="form-control" name="idpencakerdokumen" id="idpencakerdokumen">
-                        <input type="hidden" class="form-control" name="mode" id="mode">
-                    </div>
+                <?php echo form_open_multipart('', array('id' => 'formunggahdokumen')); ?>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-3">
+                    <label for="jenisdokumen">Jenis Dokumen</label>
+                    <input type="text" class="form-control" name="jenisdokumen" id="jenisdokumen" readonly>
+                    <input type="hidden" class="form-control" name="iddokumen" id="iddokumen">
+                    <input type="hidden" class="form-control" name="idpencakerdokumen" id="idpencakerdokumen">
+                    <input type="hidden" class="form-control" name="mode" id="mode">
+                </div>
 
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="alert alert-warning" role="alert">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="alert alert-warning" role="alert">
                         Dokumen yang diunggah berekstensi .jpg, .png, atau .jpeg.
-                        </div>
                     </div>
+                </div>
 
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-5">
-                        <label for="pasfoto">Dokumen</label>
-                        <div class="dropzone pasfoto" id="pasfoto">
-                            <div class="dz-message">
-                                <h6>Klik atau seret file/dokumen ke sini</h6>
-                            </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-5">
+                    <label for="pasfoto">Dokumen</label>
+                    <div class="dropzone pasfoto" id="pasfoto">
+                        <div class="dz-message">
+                            <h6>Klik atau seret file/dokumen ke sini</h6>
                         </div>
                     </div>
-                    <button id="btnSubmit" name="submit" type="submit" class="btn btn-primary btn-block mb-4">Kirim File</button>
+                </div>
+                <button id="btnSubmit" name="submit" type="submit" class="btn btn-primary btn-block mb-4">Kirim File</button>
                 <?php echo form_close(); ?>
             </div>
             <!-- <div class="modal-footer">
@@ -167,8 +167,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     Dropzone.autoDiscover = false;
     $(document).ready(function() {
         tabeldokumenpencaker = $("#tabeldokumenpencaker").DataTable({
-          "responsive": true,
-          "autoWidth": false,
+            "responsive": true,
+            "autoWidth": false,
         });
 
 
@@ -190,13 +190,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             a.mode = $("input[name='mode']").val();
             a.idpencakerdokumen = $("input[name='idpencakerdokumen']").val();
             c.append("token", a.token);
-            c.append("iddokumen",a.iddokumen);
-            c.append("mode",a.mode);
-            c.append("idpencakerdokumen",a.idpencakerdokumen);
+            c.append("iddokumen", a.iddokumen);
+            c.append("mode", a.mode);
+            c.append("idpencakerdokumen", a.idpencakerdokumen);
 
         });
 
-        unggah_dokumen.on('complete', function () {
+        unggah_dokumen.on('complete', function() {
             $('#unggahDokumen').modal('hide')
             location.reload();
         });
@@ -227,5 +227,4 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('[name="iddokumen"]').val(iddokumen);
         });
     });
-
 </script>
