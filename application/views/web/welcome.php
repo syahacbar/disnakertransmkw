@@ -185,7 +185,7 @@
             <p>Proses pembuatan kartu kuning dimulai dengan pendaftaran akun untuk selanjutnya mengisi formulir AK-1 dan mengunggah dokumen. Adapun dokumen yang dibutuhkan diantaranya: Pas Foto, KTP, Ijazah Terakhir, Transkrip Nilai, Riwayat Hidup, SKCK dan Suket. Sehat</p>
           </div>
           <div class="col-lg-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="<?php echo site_url('web/registrasi');?>">Buat Akun</a>
+            <a class="cta-btn align-middle" href="<?php echo site_url('web/registrasi'); ?>">Buat Akun</a>
           </div>
         </div>
 
@@ -197,15 +197,15 @@
     <section id="skills" class="skills">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
-        <h2>Statistik Pencari Kerja</h2>
-            <p class="fst-italic">
-              Berikut ini ditampilkan statistik pencari kerja di Kab. Manokwari.
-            </p>
-          </div>
+          <h2>Statistik Pencari Kerja</h2>
+          <p class="fst-italic">
+            Berikut ini ditampilkan statistik pencari kerja di Kab. Manokwari.
+          </p>
+        </div>
         <div class="row">
-          <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">    
+          <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
             <div class="skills-content">
-        <h4>Berdasarkan Jenjang Pendidikan Terakhir</h4>
+              <h4>Berdasarkan Jenjang Pendidikan Terakhir</h4>
               <div class="progress">
                 <span class="skill">SD <i class="val">10%</i></span>
                 <div class="progress-bar-wrap">
@@ -251,77 +251,79 @@
             </div>
 
           </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">    
+          <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
             <div class="skills-content">
-            <h4>Berdasarkan rentang umur</h4>
-            <?php 
+              <h4>Berdasarkan rentang umur</h4>
+              <?php
               $u1 = 0;
               $u2 = 0;
               $u3 = 0;
               $u4 = 0;
               $u5 = 0;
               $u6 = 0;
-              foreach($c_umur AS $u) :
-                if($u->umur < 15) {
+              foreach ($c_umur as $u) :
+                if ($u->umur < 15) {
                   $u1 += $u->jumlah;
                 }
-                if($u->umur >= 15 && $u->umur<24) {
+                if ($u->umur >= 15 && $u->umur < 24) {
                   $u2 += $u->jumlah;
                 }
-                if($u->umur >= 25 && $u->umur<34) {
+                if ($u->umur >= 25 && $u->umur < 34) {
                   $u3 += $u->jumlah;
                 }
-                if($u->umur >= 35 && $u->umur<44) {
+                if ($u->umur >= 35 && $u->umur < 44) {
                   $u4 += $u->jumlah;
                 }
-                if($u->umur >= 45 && $u->umur<54) {
+                if ($u->umur >= 45 && $u->umur < 54) {
                   $u5 += $u->jumlah;
                 }
-                if($u->umur >54) {
+                if ($u->umur > 54) {
                   $u6 += $u->jumlah;
                 }
               endforeach;
-            ?>
+              ?>
 
               <div class="progress">
-                <span class="skill">< 15 th <i class="val"><?php echo $u1;?> orang</i></span>
+                <span class="skill">
+                  < 15 th <i class="val"><?php echo $u1; ?> orang</i>
+                </span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u1;?>" aria-valuemin="0" aria-valuemax="8"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u1; ?>" aria-valuemin="0" aria-valuemax="8"></div>
                 </div>
               </div>
 
               <div class="progress">
-                <span class="skill">15 - 24 th <i class="val"><?php echo $u2;?> orang</i></span>
+                <span class="skill">15 - 24 th <i class="val"><?php echo $u2; ?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u2;?>" aria-valuemin="0" aria-valuemax="8"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u2; ?>" aria-valuemin="0" aria-valuemax="8"></div>
                 </div>
               </div>
 
               <div class="progress">
-                <span class="skill">25 - 34 th<i class="val"><?php echo $u3;?> orang</i></span>
+                <span class="skill">25 - 34 th<i class="val"><?php echo $u3; ?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u3;?>" aria-valuemin="0" aria-valuemax="8"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u3; ?>" aria-valuemin="0" aria-valuemax="8"></div>
                 </div>
               </div>
 
               <div class="progress">
-                <span class="skill">35 - 44 th<i class="val"><?php echo $u4;?> orang</i></span>
+                <span class="skill">35 - 44 th<i class="val"><?php echo $u4; ?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u4;?>" aria-valuemin="0" aria-valuemax="8"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u4; ?>" aria-valuemin="0" aria-valuemax="8"></div>
                 </div>
               </div>
 
               <div class="progress">
-                <span class="skill">45 - 54 th <i class="val"><?php echo $u5;?> orang</i></span>
+                <span class="skill">45 - 54 th <i class="val"><?php echo $u5; ?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u5;?>" aria-valuemin="0" aria-valuemax="8"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u5; ?>" aria-valuemin="0" aria-valuemax="8"></div>
                 </div>
               </div>
 
               <div class="progress">
-                <span class="skill">> 54 th<i class="val"><?php echo $u6;?> orang</i></span>
+                <span class="skill">> 54 th<i class="val"><?php echo $u6; ?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u6;?>" aria-valuemin="0" aria-valuemax="8"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u6; ?>" aria-valuemin="0" aria-valuemax="8"></div>
                 </div>
               </div>
 
@@ -622,32 +624,60 @@
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="name">Nama Lengkap</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
-                </div>
+            <?php $attributes = array("id" => "contactform");
+            echo form_open("web/kontak", $attributes); ?>
+            <div class="col-12">
+              <h4 class="m-0 px-0">Kirim Pesan</h4>
+              <p class="px-0 py-2 text-secondary">Punya pertanyaan lebih lanjut? Hubungi kami melalui kontak yang tercantum di halaman ini, atau klik di sini untuk akses ke halaman pusat bantuan.</p>
+            </div>
+            <div class="form-group mt-4">
+              <div class="col-md-12 mt-2 mb-1">
+                <label for="name" class="control-label">Nama Lengkap</label>
               </div>
-              <div class="form-group">
-                <label for="name">Judul Pesan</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
+              <div class="col-md-12 mt-2 mb-1">
+                <input class="form-control" name="name" placeholder="Ketik nama lengkap Anda di sini" type="text" value="<?php echo set_value('name'); ?>" />
+                <span class="text-danger"><?php echo form_error('name'); ?></span>
               </div>
-              <div class="form-group">
-                <label for="name">Isi Pesan</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-12 mt-2 mb-1">
+                <label for="email" class="control-label">Email</label>
               </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+              <div class="col-md-12 mt-2 mb-1">
+                <input class="form-control" name="email" placeholder="Contoh: emailsaya@email.com" type="text" value="<?php echo set_value('email'); ?>" />
+                <span class="text-danger"><?php echo form_error('email'); ?></span>
               </div>
-              <div class="text-center"><button type="submit">Kirim</button></div>
-            </form>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-12 mt-2 mb-1">
+                <label for="subject" class="control-label">Judul Pesan</label>
+              </div>
+              <div class="col-md-12 mt-2 mb-1">
+                <input class="form-control" name="subject" placeholder="Ketik judul pesan Anda di sini" type="text" value="<?php echo set_value('subject'); ?>" />
+                <span class="text-danger"><?php echo form_error('subject'); ?></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-12 mt-2 mb-1">
+                <label for="message" class="control-label">Isi Pesan</label>
+              </div>
+              <div class="col-md-12 mt-2 mb-1">
+                <textarea class="form-control" name="message" rows="4" placeholder="Ketik isi pesan Anda di sini"><?php echo set_value('message'); ?></textarea>
+                <span class="text-danger"><?php echo form_error('message'); ?></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-12 mt-2 mb-1">
+                <input name="submit" type="submit" class="btn btn-primary w-25" value="Send" />
+              </div>
+            </div>
+            <?php echo form_close(); ?>
+            <?php echo $this->session->flashdata('msg'); ?>
+
           </div>
 
         </div>
