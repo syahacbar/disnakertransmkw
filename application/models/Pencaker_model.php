@@ -42,7 +42,7 @@ class Pencaker_model extends MY_Model
 
 	function get_pencaker_id($users_id)
 	{
-		$this->db->select('id');
+		$this->db->select('*');
 		$this->db->from('pencaker');
 		$this->db->where('users_id', $users_id);
 		$query = $this->db->get();
@@ -208,6 +208,16 @@ class Pencaker_model extends MY_Model
 	function get_keterampilan_bahasa()
 	{
 		$q = $this->db->get('keterampilan_bahasa');
+		return $q->result();
+	}
+
+	function get_timeline($pencaker_id)
+	{
+		$q = $this->db->query("
+			SELECT tl.*,
+			(SELECT tp.description FROM timeline_pencaker tp WHERE tp.timeline_id=tl.id AND tp.pencaker_id='$pencaker_id') AS description,
+			(SELECT tp.tglwaktu FROM timeline_pencaker tp WHERE tp.timeline_id=tl.id AND tp.pencaker_id='$pencaker_id') AS tglwaktu
+			FROM timeline tl");
 		return $q->result();
 	}
 }

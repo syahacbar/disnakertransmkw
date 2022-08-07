@@ -166,17 +166,79 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
   </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
-
 <!-- Main content -->
 <section class="content">
   <div class="container-fluid">
-
-    <!-- Main row -->
     <div class="row">
-      <!-- Left col -->
-      <section class="col-lg-5 connectedSortable">
+      <div class="col">
+        <?php if($keterangan_status == 'Aktif') { ?>
+        <div>
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>AKTIF</h3>
 
-        <!-- TO DO List -->
+              <p>Status Anda Saat Ini Aktif Sebagai Pencari Kerja</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-checked"></i>
+            </div>
+            
+          </div>
+        </div>
+      <?php } ?>
+        <!-- ./col -->
+      <?php if($keterangan_status == 'Pekerja') { ?>
+        <div>
+          <!-- small box -->
+          <div class="small-box bg-success">
+            <div class="inner">
+              <h3>PEKERJA</h3>
+
+              <p>Status Anda Saat Ini Sudah Mendapatkan Pekerjaan</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-users"></i>
+            </div>
+            
+          </div>
+        </div>
+      <?php } ?>
+        <!-- ./col -->
+      <?php if($keterangan_status == 'Lapor') { ?>
+        <div>
+          <!-- small box -->
+          <div class="small-box bg-danger">
+            <div class="inner">
+              <h3>LAPOR</h3>
+
+              <p>Anda terdaftar di sistem sudah lebih dari 6 bulan, wajib melaporkan apabila belum mendapatkan pekerjaan</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-users"></i>
+            </div>
+            
+          </div>
+        </div>
+      <?php } ?>
+        <!-- ./col -->
+      <?php if($keterangan_status == 'Verifikasi') { ?>
+        <div>
+          <!-- small box -->
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3>Verifikasi</h3>
+
+              <p>Silahkan tekan tombol berikut ini jika pengisian data formulir AK-1 dan dokumen telah lengkap untuk mengajukan verifikasi data guna penerbitan Kartu Pencari Kerja (Kartu Kuning)</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-list"></i>
+            </div>
+            <a href="#" class="small-box-footer">Verifikasi Data<i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      <?php } ?>
+      <!-- TO DO List -->
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">
@@ -217,9 +279,39 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           </div>
         </div>
         <!-- /.card -->
-      </section>
+      </div>   
+      <div class="col">
+        <section>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="ion-ios-calendar-outline mr-1"></i>
+                <?php echo "Linimasa" ?>
+              </h3>
+            </div>
 
-      <section class="col-lg-7">
+            <div class="card-body">
+              <div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                <?php foreach($timeline AS $tl) : ?>
+                
+                <div class="vertical-timeline-item vertical-timeline-element">
+                  <div>
+                    <span class="vertical-timeline-element-icon bounce-in">
+                      <i class="badge badge-dot badge-dot-xl badge-warning"> </i>
+                    </span>
+                    <div class="vertical-timeline-element-content bounce-in">
+                      <h4 class="timeline-title"><?php echo $tl->subject;?></h4>
+                      <p><?php echo $tl->description;?></p>
+                      <span class="vertical-timeline-element-date text-left"><?php echo $tl->tglwaktu;?></span>
+                    </div>
+                  </div>
+                </div>
+                <?php endforeach;?>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="col-lg-8">
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">
@@ -230,15 +322,17 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
           <div class="card-body">
             <div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+              
               <div class="vertical-timeline-item vertical-timeline-element">
                 <div>
                   <span class="vertical-timeline-element-icon bounce-in">
-                    <i class="badge badge-dot badge-dot-xl badge-success"></i>
+                    <i class="badge badge-dot badge-dot-xl badge-warning"> </i>
                   </span>
                   <div class="vertical-timeline-element-content bounce-in">
-                    <h4 class="timeline-title">REGISTRASI AKUN PENCAKER</h4>
-                    <p>Meeting with USA Client, today at <a href="javascript:void(0);" data-abc="true">2 Agustus</a></p>
-                    <span class="vertical-timeline-element-date text-left">2 <br>Agustus</span>
+                    <h4 class="timeline-title">MENGISI FORMULIR PENCAKER</h4>
+                    <p>Another meeting with UK client today, at <b class="text-danger">3:00 PM</b></p>
+                    <p>Yet another one, at <span class="text-success">5:00 PM</span></p>
+                    <span class="vertical-timeline-element-date text-left">4 <br>Agustus</span>
                   </div>
                 </div>
               </div>
@@ -295,14 +389,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           </div>
         </div>
       </section>
-      <!-- /.Left col -->
-      <!-- right col (We are only adding the ID to make the widgets sortable)-->
-
-    </div>
-    <!-- /.row (main row) -->
-  </div><!-- /.container-fluid -->
+      </div> 
+    </div> 
+  </div>
 </section>
-<!-- /.content -->
 
 <?php include viewPath('includes/footer'); ?>
 
