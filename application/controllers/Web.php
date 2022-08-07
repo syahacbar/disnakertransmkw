@@ -85,10 +85,69 @@ class Web extends CI_Controller
 
 	public function kontak()
 	{
+		// $this->page_data['page']->menu = 'kontak';
+		// $this->page_data['page']->title = 'Kontak';
+
+		// $this->load->view('web/kontak', $this->page_data);
+
+		$this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean|callback_alpha_space_only');
+		$this->form_validation->set_rules('email', 'Emaid ID', 'trim|required|valid_email');
+		$this->form_validation->set_rules('subject', 'Subject', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('message', 'Message', 'trim|required|xss_clean');
+
 		$this->page_data['page']->menu = 'kontak';
 		$this->page_data['page']->title = 'Kontak';
 
-		$this->load->view('web/kontak', $this->page_data);
+		if ($this->form_validation->run() == FALSE) {
+			//validation fails
+			$this->load->view('web/kontak', $this->page_data);
+			// $this->load->view('web/contact_form_view');
+		} else {
+			//get the form data
+			$name = $this->input->post('name');
+			$from_email = $this->input->post('email');
+			$subject = $this->input->post('subject');
+			$message = $this->input->post('message');
+
+			//set to_email id to which you want to receive mails
+			$to_email = 'fnterupun@gmail.com';
+
+			//configure email settings
+			$config['protocol'] = 'smtp';
+			$config['smtp_host'] = 'mail.disnakertransmkw.com';
+			$config['smtp_port'] = '465';
+			$config['smtp_user'] = 'admin@disnakertransmkw.com';
+			$config['smtp_pass'] = 'i[U)wpP;i)S*';
+			$config['mailtype'] = 'html';
+			$config['charset'] =  'iso-8859-1';
+			$config['wordwrap'] = TRUE;
+			$config['newline'] = "\r\n"; //use double quotes
+			//$this->load->library('email', $config);
+			$this->email->initialize($config);
+
+			$this->email->from($from_email, $name);
+			$this->email->to($to_email);
+			$this->email->subject($subject);
+			$this->email->message($message);
+			if ($this->email->send()) {
+				$this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Pesan Anda telah dikirim!</div>');
+				redirect('web/kontak');
+			} else {
+				//error
+				$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Ada kesalahan! Silakan coba sesaat lagi!</div>');
+				redirect('web/kontak');
+			}
+		}
+	}
+
+	function alpha_space_only($str)
+	{
+		if (!preg_match("/^[a-zA-Z ]+$/", $str)) {
+			$this->form_validation->set_message('alpha_space_only', 'Hanya boleh mengandung huruf dan spasi');
+			return FALSE;
+		} else {
+			return TRUE;
+		}
 	}
 
 	public function berita($slug = NULL)

@@ -205,7 +205,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="tag">Tag</label>
-                                <input type="text" class="form-control" name="tag" id="tag" required autofocus />
+                                <input type="text" class="form-control" name="tag" id="tag" required aria-autocomplete="both" />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -254,7 +254,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <textarea name="editisi" id="editberitasummernote" rows="20"></textarea>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="edittags">Tags</label>
                                 <input type="text" class="form-control" name="edittags" id="edittags" value="" />

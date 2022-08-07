@@ -189,13 +189,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <form id="formtambahpelatihan">
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="judul">Nama Pelatihan</label>
-                                <input type="text" class="form-control" name="judul" id="judul" required autofocus />
+                                <input type="text" class="form-control" name="judul" id="judul" autofocus />
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="judul">Bidang Pelatihan</label>
                                 <select class="form-control" name="jenis_pelatihan" id="jenis_pelatihan">
@@ -249,10 +249,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="editjudul">Nama Pelatihan</label>
-                                <input type="text" class="form-control" name="editjudul" id="editjudul" value="" />
+                                <input type="text" class="form-control" name="editjudul" id="editjudul" value="" autofocus />
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
                                 <label for="editjenis_pelatihan">Bidang Pelatihan</label>
                                 <select class="form-control" name="editjenis_pelatihan" id="editjenis_pelatihan">

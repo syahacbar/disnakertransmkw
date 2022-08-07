@@ -250,11 +250,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="d-flex flex-row"></div>
                     <h2 class="text-capitalize"><?php echo $detailberita->judul; ?></h2>
                     <p class="text-primary">
-                        <i class="bx bxl-calendar text-secondary"></i>  <?php echo longdate_indo(substr($detailberita->tgl_publikasi, 0, 10));; ?>
+                        <i class="bx bxl-calendar text-secondary"></i> <?php echo longdate_indo(substr($detailberita->tgl_publikasi, 0, 10));; ?>
                     </p>
                     <div class="row news-card mt-3">
                         <div class="col-sm-12 col-md-12 col-lg-12 mb-4 mt-3">
-                            <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="<?php echo base_url('uploads/informasi/berita/'.$detailberita->gambar); ?>"></div>
+                            <div class="feed-image"><img class="news-feed-image rounded img-fluid img-responsive" src="<?php echo base_url('uploads/informasi/berita/' . $detailberita->gambar); ?>"></div>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
                             <div class="news-feed-text">
@@ -319,7 +319,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                                         <div class="thecard">
                                                             <div class="thefront text-center py-4 envelope">
                                                                 <div class="social-icon">
-                                                                <i class="bi bi-envelope"></i>
+                                                                    <i class="bi bi-envelope"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -357,9 +357,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             </div>
                             <div class="row">
                                 <ul>
-                                    <a href="<?php echo site_url('berita');?>">Berita<span> (<?php echo $count_berita;?>)</span></a><br>
-                                    <a href="<?php echo site_url('pengumuman');?>">Pengumuman<span> (<?php echo $count_pengumuman;?>)</span></a><br>
-                                    <a href="<?php echo site_url('pelatihan');?>">Pelatihan<span> (<?php echo $count_pelatihan;?>)</span></a><br>
+                                    <a href="<?php echo site_url('berita'); ?>">Berita<span> (<?php echo $count_berita; ?>)</span></a><br>
+                                    <a href="<?php echo site_url('pengumuman'); ?>">Pengumuman<span> (<?php echo $count_pengumuman; ?>)</span></a><br>
+                                    <a href="<?php echo site_url('pelatihan'); ?>">Pelatihan<span> (<?php echo $count_pelatihan; ?>)</span></a><br>
                                 </ul>
                             </div>
                         </div>
@@ -375,7 +375,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 </ul>
                             </div>
                         </div>
-                        
+
 
                     </div>
                 </div>
