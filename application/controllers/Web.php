@@ -196,13 +196,6 @@ class Web extends CI_Controller
 		$this->load->view('web/tags', $this->page_data);
 	}
 
-	// public function pengumuman()
-	// {
-	// 	$this->page_data['page']->menu = 'informasi';
-	// 	$this->page_data['page']->title = 'Pengumuman';
-	// 	$this->load->view('web/pengumuman', $this->page_data);
-	// }
-
 	public function pengumuman($slug = NULL)
 	{
 		if ($slug != NULL) {
@@ -250,7 +243,7 @@ class Web extends CI_Controller
 			$this->page_data['page']->title = $detailpelatihan->judul;
 			$this->load->view('web/detailpelatihan', $this->page_data);
 		} else {
-
+ 
 			$this->page_data['jenis_pelatihan'] = $this->informasi_model->get_jenis_pelatihan();
 			$this->page_data['listpelatihan'] = $this->informasi_model->get_pelatihan('1');
 			$this->page_data['page']->menu = 'informasi';

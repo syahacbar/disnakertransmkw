@@ -12,24 +12,29 @@ class Pencaker extends MY_Controller
     public function index()
     {
         ifPermissions('profil_pencaker');
+        $users_id = logged('id');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+
+        $querybahasa  = $this->db->query("SELECT * FROM pencaker WHERE id='$pencaker_id'");
+
         $this->page_data['page']->title = 'Profil Pencari Kerja';
         $this->page_data['page']->menu = 'profil_pencaker';
-        $this->page_data['jenjang_pendidikan'] = $this->informasi_model->get_jenjang_pendidikan();
-
-        $users_id = logged('id');
+        $this->page_data['jenjang_pendidikan'] = $this->pencaker_model->get_jenjang_pendidikan();
+        $this->page_data['ket_bahasa'] = $this->pencaker_model->get_keterampilan_bahasa();
+        $this->page_data['ket_bahasa_pencaker'] = $querybahasa->row();
 
         $this->load->view('pencaker/profil_pencaker', $this->page_data);
     }
 
-    function formulir_ak1()
-    {
-        $this->page_data['page']->title = 'Printout Form AK-1';
-        $this->page_data['page']->menu = 'doc_pencaker';
-        $this->load->view('printout/formulirak1', $this->page_data);
-    }
+    // function formulir_ak1()
+    // {
+    //     $this->page_data['page']->title = 'Printout Form AK-1';
+    //     $this->page_data['page']->menu = 'doc_pencaker';
+    //     $this->load->view('printout/formulirak1', $this->page_data);
+    // }
 
     public function pencari_kerja()
-    {
+    { 
         $this->page_data['pencaker'] = $this->pencaker_model->get_all();
         $this->page_data['users'] = $this->users_model->get();
 
@@ -42,7 +47,7 @@ class Pencaker extends MY_Controller
     {
         $pencaker_id = $this->pencaker_model->get_pencaker_id($iduser);
 
-        $q_pendidikan = $this->db->query("SELECT p.users_id, pd.* FROM pencaker p JOIN pendidikan_pencaker pd ON pd.pencaker_id=p.id WHERE pd.pencaker_id = $pencaker_id->id");
+        $q_pendidikan = $this->db->query("SELECT jp.id AS idjenjang, jp.jenjang, p.users_id, pd.* FROM pencaker p JOIN pendidikan_pencaker pd ON pd.pencaker_id=p.id JOIN jenjang_pendidikan jp ON jp.id=pd.jenjang_pendidikan_id WHERE pd.pencaker_id = $pencaker_id->id ORDER BY jp.id ASC");
         $q_pekerjaan = $this->db->query("SELECT p.users_id, pk.* FROM pencaker p JOIN pengalaman_kerja pk ON pk.pencaker_id=p.id WHERE pk.pencaker_id = $pencaker_id->id");
 
         $this->page_data['pencaker'] = $this->pencaker_model->get_by_users_id($iduser);
@@ -60,6 +65,23 @@ class Pencaker extends MY_Controller
         $this->load->view('printout/kartukuning2', $this->page_data);
     }
 
+    function review_pencaker($iduser)
+    {
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($iduser);
+
+        $q_pendidikan = $this->db->query("SELECT jp.id AS idjenjang, jp.jenjang, p.users_id, pd.* FROM pencaker p JOIN pendidikan_pencaker pd ON pd.pencaker_id=p.id JOIN jenjang_pendidikan jp ON jp.id=pd.jenjang_pendidikan_id WHERE pd.pencaker_id = $pencaker_id->id ORDER BY jp.id ASC");
+        $q_pekerjaan = $this->db->query("SELECT p.users_id, pk.* FROM pencaker p JOIN pengalaman_kerja pk ON pk.pencaker_id=p.id WHERE pk.pencaker_id = $pencaker_id->id");
+        $q_minat_jabatan = $this->db->query("SELECT mj.* FROM pencaker p JOIN minat_jabatan mj ON mj.pencaker_id=p.id WHERE p.id = $pencaker_id->id");
+
+        $this->page_data['pencaker'] = $this->pencaker_model->get_by_users_id($iduser);
+        $this->page_data['pendidikan_pencaker'] = $q_pendidikan->result();
+        $this->page_data['pekerjaan_pencaker'] = $q_pekerjaan->result();
+        $this->page_data['minat_jabatan'] = $q_minat_jabatan->result();
+        $this->page_data['page']->title = 'Review Pencaker';
+        $this->page_data['page']->menu = 'doc_pencaker';
+        $this->load->view('printout/formulirak1', $this->page_data);
+    }
+ 
     function get_pencaker()
     {
         $users_id = logged('id');
@@ -328,7 +350,7 @@ class Pencaker extends MY_Controller
         $users_id = logged('id');
         $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
 
-        $query  = $this->db->query("SELECT * FROM keterampilan_bahasa WHERE pencaker_id='$pencaker_id'");
+        $query  = $this->db->query("SELECT keterampilan_bahasa FROM pencaker WHERE id='$pencaker_id'");
         $bahasa = $query->result();
         $data['bahasa'] = $bahasa;
         $data['hasil'] = "sukses";
@@ -390,18 +412,29 @@ class Pencaker extends MY_Controller
         $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
 
         $ket_bahasa = $this->input->post('ket_bahasa');
+        $arr_bahasa = array();
         for ($i = 0; $i < count($ket_bahasa); $i++) {
-            $bahasa = $ket_bahasa[$i];
-            $this->db->insert('keterampilan_bahasa', array('bahasa' => $bahasa, 'pencaker_id' => $pencaker_id));
+            $arr_bahasa[$i] = $ket_bahasa[$i];
+        }
+        $gabung_bhs = implode(",",$arr_bahasa);
+        $this->db->where('id', $pencaker_id);
+        $this->db->update('pencaker', array('keterampilan_bahasa' => $gabung_bhs));
+
+        //bahasa lainnya
+        $bahasa_lainnya = $this->input->post('txt_bahasa_lainnya');
+        if($bahasa_lainnya != NULL)
+        {
+            $this->db->where('id', $pencaker_id);
+            $this->db->update('pencaker', array('bahasa_lainnya' => $bahasa_lainnya));
         }
 
-        $cb_bhslain = $this->input->post('checkboxbahasalainnya');
-        $txt_bhslain = $this->input->post('txt_bahasa_lainnya');
-        if ($cb_bhslain == 'bahasa_lain') {
-            $this->pencaker_model->update_by_users_id($users_id, array('bahasa_lainnya' => $txt_bhslain));
-        } else {
-            $this->pencaker_model->update_by_users_id($users_id, array('bahasa_lainnya' => ''));
-        }
+        // $cb_bhslain = $this->input->post('checkboxbahasalainnya');
+        // $txt_bhslain = $this->input->post('txt_bahasa_lainnya');
+        // if ($cb_bhslain == 'bahasa_lain') {
+        //     $this->pencaker_model->update_by_users_id($users_id, array('bahasa_lainnya' => $txt_bhslain));
+        // } else {
+        //     $this->pencaker_model->update_by_users_id($users_id, array('bahasa_lainnya' => ''));
+        // }
 
 
         $res['hasil'] = 'sukses';

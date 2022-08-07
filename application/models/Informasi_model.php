@@ -73,81 +73,9 @@ class Informasi_model extends MY_Model
 		return $id;
 	}
 
-	// function get_berita_by_slug($slug)
-	// {
-	// 	$query = $this->db->get_where('informasi', array('slug' => $slug, 'kategori' => 'Berita'), 1);
-	// 	return $query->row();
-	// }
-
-	// function get_berita_by_status()
-	// {
-	// 	$this->db->where('status', 1);
-	// 	$q = $this->db->get('informasi');
-
-	// 	return $q->result();
-	// }
-
-	// function hapusberita($id)
-	// {
-	// 	$this->db->where('id', $id);
-	// 	$this->db->delete('informasi');
-	// 	return true;
-	// }
-
-	// function updateberita($idberita, $data)
-	// {
-	// 	$this->db->where('id', $idberita);
-	// 	$this->db->update('informasi', $data);
-	// 	return $idberita;
-	// }
-
-
-	// function get_pengumuman()
-	// {
-	// 	$this->db->where('kategori', 'Pengumuman');
-	// 	$q = $this->db->get('informasi');
-
-	// 	return $q->result();
-	// }
-
-	// function get_pengumuman_by_id($id)
-	// {
-	// 	$this->db->select('*');
-	// 	$this->db->from('informasi');
-	// 	$this->db->where('id', $id);
-	// 	$query = $this->db->get();
-	// 	return $query->row();
-	// }
-
-	// function get_pengumuman_by_slug($slug)
-	// {
-	// 	$query = $this->db->get_where('informasi', array('slug' => $slug, 'kategori' => 'Pengumuman'), 1);
-	// 	return $query->row();
-	// }
-
-	// function hapuspengumuman($id)
-	// {
-	// 	$this->db->where('id', $id);
-	// 	$this->db->delete('informasi');
-	// 	return true;
-	// }
-
-	// function updatepengumuman($idpengumuman, $data)
-	// {
-	// 	$this->db->where('id', $idpengumuman);
-	// 	$this->db->update('informasi', $data);
-	// 	return $idpengumuman;
-	// }
-
-	// function updatestatuspengumuman($id, $data)
-	// {
-	// 	$this->db->where('id', $id);
-	// 	$this->db->update('informasi', $data);
-	// 	return $id;
-	// }
 	function get_jenis_pelatihan()
 	{
-		$q = $this->db->get('jenis_pelatihan');
+		$q = $this->db->query("SELECT DISTINCT jp.* FROM jenis_pelatihan jp JOIN pelatihan p ON p.jenis_pelatihan_kode=jp.kode");
 		return $q->result();
 	}
 
@@ -183,12 +111,6 @@ class Informasi_model extends MY_Model
 		return $query->row();
 	}
 
-	// function update_pelatihan($id, $data)
-	// {
-	// 	$this->db->where('id', $id);
-	// 	$this->db->update('pelatihan', $data);
-	// 	return $id;
-	// }
 
 	function update_pelatihan($idpelatihan, $data)
 	{
@@ -202,11 +124,5 @@ class Informasi_model extends MY_Model
 		$this->db->where('id', $id);
 		$this->db->delete('pelatihan');
 		return true;
-	}
-
-	function get_jenjang_pendidikan()
-	{
-		$q = $this->db->get('jenjang_pendidikan');
-		return $q->result();
 	}
 }

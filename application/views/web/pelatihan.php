@@ -26,8 +26,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
             <ul id="portfolio-flters" class="d-flex justify-content-center">
                 <li data-filter="*" class="filter-active">Semua Kejuruan</li>
-                <?php foreach($listpelatihan AS $jp) : ?>
-                <li data-filter="<?php echo ".kode".$jp->jenis_pelatihan_kode;?>"><?php echo $jp->pelatihan;?></li>
+                <?php foreach($jenis_pelatihan AS $jp) : ?>
+                <li data-filter="<?php echo ".kode".$jp->kode;?>"><?php echo $jp->pelatihan;?></li>
                 <?php endforeach;?>
                 
             </ul>

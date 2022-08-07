@@ -129,7 +129,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     <th>Nama</th>
                                     <th>No. Pendaftaran</th>
                                     <th>NIK</th>
-                                    <th>Status</th>
+                                    <th>Keterangan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -142,16 +142,18 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <td>
                                             <img width="40" height="40" alt="" class="img-avtar" src="<?php echo base_url('uploads/users/default.png'); ?>">
                                         </td>
-                                        <td><?php echo $p['namalengkap']; ?> </td>
-                                        <td><?php echo $p['nopendaftaran']; ?> </td>
-                                        <td><?php echo $p['nik']; ?> </td>
+                                        <td><?php echo $p->namalengkap; ?> </td>
+                                        <td><?php echo $p->nopendaftaran; ?> </td>
+                                        <td><?php echo $p->nik; ?> </td>
                                         <td>
-                                            <label class="toggle"><input class="onOff" type="checkbox" onchange=""><span class="slider"></span><span class="labels" data-on="On" data-off="Off"></span></label>
+                                            Aktif
                                         </td>
                                         <td>
-                                            <a target="_blank" href="" class="btn btn-sm btn-info"><i class="fas fa-print"></i></a>&nbsp;
-                                            <a href="" data-id="" class="btn btn-sm btn-primary editPencariKerja"><i class="fas fa-edit"></i></a>&nbsp;
-                                            <a class="btn btn-sm btn-danger" id="hapusPencariKerja" href="" data-idberita=""><i class="fas fa-trash"></i></a>
+                                            <a target="_blank" href="<?php echo site_url('pencaker/review_pencaker/').$p->users_id;?>" class="btn btn-sm btn-warning" title="Review Data Pencaker"><i class="fas fa-search"></i></a>&nbsp;
+                                            <a target="" href="" class="btn btn-sm btn-secondary" title="Verifikasi Pencaker"><i class="fas fa-check"></i></a>&nbsp;
+                                            <a target="_blank" href="<?php echo site_url('pencaker/kartukuning_1/').$p->users_id;?>" class="btn btn-sm btn-info" title="Cetak Kartu Pencaker"><i class="fas fa-id-card"></i></a>&nbsp;
+                                            <a href="" data-id="" class="btn btn-sm btn-primary editPencariKerja" title="Edit Pencaker"><i class="fas fa-edit"></i></a>&nbsp;
+                                            <a class="btn btn-sm btn-danger" id="hapusPencariKerja" href="" data-idberita="" title="Hapus Pencaker"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

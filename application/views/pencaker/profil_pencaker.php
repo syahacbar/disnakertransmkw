@@ -352,77 +352,29 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <div class="alert alert-success" role="alert">
                                     Silakan centang salah satu atau beberapa bahasa yang Anda kuasai di bawah ini!
                                 </div>
+                                <?php 
+                                    $arr_bhs = explode(',',$ket_bahasa_pencaker->keterampilan_bahasa);
+                                    // print_r($arr_bhs);
+                                    // foreach($arr_bhs AS $bhs) :
+                                    //     echo $bhs;
+                                    // endforeach;
+                                ?>
 
                                 <!-- form bahasa pencaker-->
                                 <form action="#" id="formbahasapencaker">
                                     <div class="row mb-5">
+                                        <?php foreach($ket_bahasa AS $kb) : ?>
                                         <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
                                             <div class="form-check">
-                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="bahasa_Inggris" value="Inggris">
-                                                <label class="form-check-label" for="inggris">
-                                                    Inggris
+                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="<?php echo "b_".$kb->bahasa;?>" value="<?php echo $kb->bahasa;?>" <?php if (in_array($kb->bahasa, $arr_bhs)) { echo 'checked'; };?>>
+                                                <label class="form-check-label" for="<?php echo $kb->bahasa;?>">
+                                                    <?php echo $kb->bahasa;?>
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
-                                            <div class="form-check">
-                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="bahasa_Jerman" value="Jerman">
-                                                <label class="form-check-label" for="jerman">
-                                                    Jerman
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
-                                            <div class="form-check">
-                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="bahasa_Perancis" value="Perancis">
-                                                <label class="form-check-label" for="perancis">
-                                                    Perancis
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
-                                            <div class="form-check">
-                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="bahasa_Mandarin" value="Mandarin">
-                                                <label class="form-check-label" for="mandarin">
-                                                    Mandarin
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
-                                            <div class="form-check">
-                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="bahasa_Arab" value="Arab">
-                                                <label class="form-check-label" for="arab">
-                                                    Arab
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
-                                            <div class="form-check">
-                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="bahasa_Belanda" value="Belanda">
-                                                <label class="form-check-label" for="belanda">
-                                                    Belanda
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
-                                            <div class="form-check">
-                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="bahasa_Jepang" value="Jepang">
-                                                <label class="form-check-label" for="jepang">
-                                                    Jepang
-                                                </label>
-                                            </div>
-                                        </div>
+                                        <?php endforeach;?>
 
-                                        <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="bahasa_lain" name="checkboxbahasalainnya" id="checkboxbahasalainnya">
-                                                <label class="form-check-label" for="lainnya">
-                                                    Lainnnya
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div id="textboxbahasalainnya" class="col-12 col-sm-12 col-md-12 col-lg-12 mt-4 hide">
+                                        <div id="textboxbahasalainnya" class="col-12 col-sm-12 col-md-12 col-lg-12 mt-4">
                                             <div class="form-floating">
                                                 <label for="lainnya">Bahasa Lainnya</label>
                                                 <textarea class="form-control" placeholder="Deskripsikan bahasa yang Anda kuasai di sini" name="txt_bahasa_lainnya" id="txt_bahasa_lainnya" style="height: 100px"></textarea>
@@ -943,24 +895,33 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 
 
-            $('input[id="checkboxbahasalainnya"]').click(function() {
-                if ($(this).prop("checked") == true) {
-                    $('#textboxbahasalainnya').removeClass("hide");
-                } else if ($(this).prop("checked") == false) {
-                    $('#textboxbahasalainnya').addClass("hide");
-                }
-            });
+            // $('input[id="b_Lainnya"]').click(function() {
+            //     if ($(this).prop("checked") === true) {
+            //         $('#textboxbahasalainnya').removeClass("hide");
+            //     } else if ($(this).prop("checked") === false) {
+            //         $('#textboxbahasalainnya').addClass("hide");
+            //     }
+            // });
 
             $.ajax({
                 url: "<?php echo site_url('pencaker/get_bahasa_pencaker') ?>",
                 type: "GET",
                 dataType: "JSON",
                 success: function(data) {
-                    //console.log(data.bahasa);
-                    for (const element of data.bahasa) { 
-                        $('[id="bahasa_'+element.bahasa+'"]').prop("checked", true);
+                    // //console.log(data.bahasa);
+                    // // for (const element of data.bahasa.keterampilan_bahasa) { 
+                    // //     $('[id="bahasa_'+element.bahasa+'"]').prop("checked", true);
 
-                    }
+                    // // }
+                    // var objData = JSON.stringify(data.bahasa.keterampilan_bahasa);
+                    // var ketbahasa = JSON.parse(objData);
+                    // // var bahasa = data.bahasa.keterampilan_bahasa;
+                    // var strArray = objData.split(",");
+                    
+                    // // // Display array values on page
+                    // for(var i = 0; i < strArray.length; i++){
+                    //     console.log(strArray[i]);
+                    // }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert('Error Get Data Keterampilan Bahasa');
@@ -1366,10 +1327,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 //keterampilan bahasa 
                 if(data.bahasa_lainnya != '')
                 {
-                    $('#checkboxbahasalainnya').prop("checked",true);
-                    $('#textboxbahasalainnya').removeClass("hide");
-
-                    $('[name="txt_bahasa_lainnya"]').val(data.bahasa_lainnya);
+                   $('[name="txt_bahasa_lainnya"]').val(data.bahasa_lainnya);
                 }
                 
                 //selected lokasi jabatan

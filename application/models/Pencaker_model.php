@@ -29,12 +29,12 @@ class Pencaker_model extends MY_Model
 		return $query->result();
 	}
 
-	function get_by_users_id($id)
+	function get_by_users_id($iduser)
 	{
 		$this->db->select('*');
 		$this->db->from('pencaker p');
 		$this->db->join('users u', 'u.id=p.users_id');
-		$this->db->where('p.users_id', $id);
+		$this->db->where('p.users_id', $iduser);
 		$query = $this->db->get();
 
 		return $query->row();
@@ -53,29 +53,8 @@ class Pencaker_model extends MY_Model
 	function get_all()
 	{
 		$query = $this->db->get('pencaker');
-		return $query->result_array();
+		return $query->result();
 	}
-
-
-	// function get_pencaker_nik($users_id)
-	// {
-	//     $this->db->select('nik');
-	//     $this->db->from('pencaker');
-	//     $this->db->where('users_id',$users_id);
-	//     $query = $this->db->get();
-
-	//     return $query->row();
-	// }
-
-	// function get_pencaker_nopendaftaran($users_id)
-	// {
-	//     $this->db->select('opendaftaran');
-	//     $this->db->from('pencaker');
-	//     $this->db->where('users_id',$users_id);
-	//     $query = $this->db->get();
-
-	//     return $query->row();
-	// }
 
 	function update_by_users_id($id, $data)
 	{
@@ -218,6 +197,18 @@ class Pencaker_model extends MY_Model
                     (SELECT pd.id FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS pencakerdokumen_id
                     FROM dokumen d");
 		return $query->result();
+	}
+
+	function get_jenjang_pendidikan()
+	{
+		$q = $this->db->get('jenjang_pendidikan');
+		return $q->result();
+	}
+
+	function get_keterampilan_bahasa()
+	{
+		$q = $this->db->get('keterampilan_bahasa');
+		return $q->result();
 	}
 }
 /* End of file Pencaker_model.php */

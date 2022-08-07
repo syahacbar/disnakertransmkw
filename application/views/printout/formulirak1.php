@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Formulir AK-1</title>
+    <title>Review Data dan Dokumen Pencari Kerja</title>
     <style>
         /* .formulirak1 {
             border: 2px solid #000;
@@ -32,10 +32,10 @@
                         <p>PEMERINTAH KABUPATEN MANOKWARI<br>DINAS TENAGA KERJA DAN TRANSMIGRASI __________</p>
                     </div>
                     <div class="col-4">
-                        <p>Kode Wilayah Provinsi ______________</p>
+                        <p>Kode Wilayah Provinsi 92</p>
                     </div>
                     <div class="col-4">
-                        <p>Kode Wilayah ___________</p>
+                        <p>Kode Wilayah 02</p>
                     </div>
 
                 </div>
@@ -50,17 +50,17 @@
                         <tr>
                             <td width="20%">NOMOR PENDAFTARAN</td>
                             <td width="2%">:</td>
-                            <td width="78%">____________</td>
+                            <td width="78%"><?php echo $pencaker->nopendaftaran; ?></td>
                         </tr>
                         <tr>
                             <td width="20%">TANGGAL PENDAFTARAN</td>
                             <td width="2%">:</td>
-                            <td width="78%">____________</td>
+                            <td width="78%"><?php echo date_indo(substr($pencaker->created_at,0,10)); ?></td>
                         </tr>
                         <tr>
                             <td width="20%">NOMOR INDUK KEPENDUDUKAN</td>
                             <td width="2%">:</td>
-                            <td width="78%">____________</td>
+                            <td width="78%"><?php echo $pencaker->nik; ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -80,22 +80,22 @@
                         <tr>
                             <td width="20%">Nama Lengkap</td>
                             <td width="2%">:</td>
-                            <td width="78%">____________</td>
+                            <td width="78%"><?php echo $pencaker->namalengkap; ?></td>
                         </tr>
                         <tr>
                             <td>Tempat, Tanggal Lahir</td>
                             <td>:</td>
-                            <td>____________</td>
+                            <td><?php echo $pencaker->tempatlahir.", ".date_indo($pencaker->tgllahir); ?></td>
                         </tr>
                         <tr>
                             <td>Tinggi Badan</td>
                             <td>:</td>
-                            <td>____________</td>
+                            <td><?php echo $pencaker->tinggibadan." cm"; ?></td>
                         </tr>
                         <tr>
                             <td>Berat Badan</td>
                             <td>:</td>
-                            <td>____________</td>
+                            <td><?php echo $pencaker->beratbadan." kg"; ?></td>
                         </tr>
                         <tr>
                             <td>Jenis Kelamin</td>
@@ -130,7 +130,7 @@
                         <tr>
                             <td>Email</td>
                             <td>:</td>
-                            <td>____________</td>
+                            <td><?php echo $pencaker->email; ?></td>
                         </tr>
                         </tbody>
                     </table>
@@ -141,53 +141,33 @@
             <div class="col-12 mt-3 mb-2">
                 <h4>PENDIDIKAN FORMAL</h4>
                 <div class="row">
-                <table class="table table-borderless">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th width="10px">No</th>
+                            <th>Tahun Masuk</th>
+                            <th>Tahun Lulus</th>
+                            <th>Jenjang</th>
+                            <th>Nama Satuan Pendidikan</th>
+                            <th>NEM/NUN/IPK</th>
+                            <th>Keterampilan</th>
+                        </tr>
+                    </thead>
                     <tbody>
+                    <?php 
+                        $no=1;
+                        foreach($pendidikan_pencaker AS $pd) : 
+                    ?>
                     <tr>
-                        <td width="20%">Pendidikan Terakhir</td>
-                        <td width="2%">:</td>
-                        <td width="78%">______________________</td>
+                        <td><?php echo $no++;?></td>
+                        <td><?php echo $pd->tahunmasuk;?></td>
+                        <td><?php echo $pd->tahunlulus;?></td>
+                        <td><?php echo $pd->jenjang;?></td>
+                        <td><?php echo $pd->nama_sekolah;?></td>
+                        <td><?php echo $pd->ipk;?></td>
+                        <td><?php echo $pd->keterampilan;?></td>
                     </tr>
-                    <tr>
-                        <td>Jurusan</td>
-                        <td>:</td>
-                        <td>______________________</td>
-                    </tr>
-                    <tr>
-                        <td>Keterampilan</td>
-                        <td>:</td>
-                        <td>______________________</td>
-                    </tr>
-                    <tr>
-                        <td>NEM/IPK</td>
-                        <td>:</td>
-                        <td>______________________</td>
-                    </tr>
-                    <tr>
-                        <td>Nomor HP</td>
-                        <td>:</td>
-                        <td>______________________</td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td>:</td>
-                        <td>______________________</td>
-                    </tr>
-                    <tr>
-                        <td>Kode Pos</td>
-                        <td>:</td>
-                        <td>______________________</td>
-                    </tr>
-                    <tr>
-                        <td>Status Pernikahan</td>
-                        <td>:</td>
-                        <td>______________________</td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td>:</td>
-                        <td>______________________</td>
-                    </tr>
+                    <?php endforeach;?>
                     </tbody>
                 </table>
                 </div>
@@ -197,20 +177,26 @@
             <div class="col-12 mt-3 mb-2">
                 <h4>BAHASA YANG DIKUASAI</h4>
                 <div class="row">
-                    <div class="col-3">
-                        <p>INGGRIS</p>
-                    </div>
-                    <div class="col-3">
-                        <p>BELANDA</p>
-                    </div>
-                    <div class="col-3">
-                        <p>JEPANG</p>
-                    </div>
-                    <div class="col-3">
-                        <p>KONGO</p>
-                    </div>
-                    
+                    <ol>
+                <?php 
+                    if($pencaker->keterampilan_bahasa != NULL)
+                    {
+                        $ket_bahasa = explode(',',$pencaker->keterampilan_bahasa);
+                    }
+                    if($pencaker->bahasa_lainnya != NULL)
+                    {
+                        $bahasa_lainnya = explode(',',$pencaker->bahasa_lainnya);
+                    }
 
+                    foreach($ket_bahasa AS $kb) :
+                        echo "<li>".$kb."</li>";
+                    endforeach;
+                    foreach($bahasa_lainnya AS $bl) :
+                        echo "<li>".$bl."</li>";
+                    endforeach;
+
+                ?>            
+                    </ol>
                 </div>
             </div>
             <hr>
@@ -218,24 +204,45 @@
             <div class="col-12 mt-3 mb-2">
                 <h4>PENGALAMAN KERJA</h4>
                 <div class="row">
-                    <table class="table table-borderless">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th width="10px">No</th>
+                                <th>Tahun Masuk</th>
+                                <th>Tahun Keluar</th>
+                                <th>Nama Perusahan/Instansi</th>
+                                <th>Jabatan</th>
+                            </tr>
+                        </thead>
                         <tbody>
+                            <?php 
+                                $no=1;
+                                foreach($pekerjaan_pencaker AS $pk) : 
+                            ?>
                             <tr>
-                                <td width="20%">Tahun Masuk</td>
-                                <td width="2%">:</td>
-                                <td width="78%">______________________</td>
+                                <td><?php echo $no++;?></td>
+                                <td><?php echo $pk->tahunmasuk;?></td>
+                                <td><?php echo $pk->tahunkeluar;?></td>
+                                <td><?php echo $pk->instansi;?></td>
+                                <td><?php echo $pk->jabatan;?></td>
                             </tr>
-                            <tr>
-                                <td width="20%">Tahun Keluar</td>
-                                <td width="2%">:</td>
-                                <td width="78%">______________________</td>
-                            </tr>
-                            <tr>
-                                <td width="20%">Jabatan</td>
-                                <td width="2%">:</td>
-                                <td width="78%">______________________</td>
-                            </tr>
+                            <?php endforeach;?>
+
+
                         </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+
+            <div class="col-12 mt-3 mb-2">
+                <h4>JABATAN YANG DIINGINKAN</h4>
+                <div class="row">
+                     <ol>
+                        <?php foreach($minat_jabatan AS $mj) : ?>
+                            <li><?php echo $mj->nama_jabatan;?></li>
+                        <?php endforeach;?>
+                     </ol>
                     </table>
                 </div>
             </div>
@@ -267,21 +274,7 @@
             </div>
             <hr>
             
-            <div class="col-12 mt-3 mb-2">
-                <h4>JABATAN YANG DIINGINKAN</h4>
-                <div class="row">
-                    <table class="table table-borderless">
-                        <tbody>
-                            <tr>
-                                <td width="20%">Lokasi</td>
-                                <td width="2%">:</td>
-                                <td width="78%">______________________</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <hr>
+            
 
         </div>
     </div>
