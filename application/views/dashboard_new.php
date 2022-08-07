@@ -171,74 +171,74 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <?php if($keterangan_status == 'Aktif') { ?>
-        <div>
-          <!-- small box -->
-          <div class="small-box bg-info">
-            <div class="inner">
-              <h3>AKTIF</h3>
+        <?php if ($keterangan_status == 'Aktif') { ?>
+          <div>
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>AKTIF</h3>
 
-              <p>Status Anda Saat Ini Aktif Sebagai Pencari Kerja</p>
+                <p>Status Anda Saat Ini Aktif Sebagai Pencari Kerja</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-checked"></i>
+              </div>
+
             </div>
-            <div class="icon">
-              <i class="fa fa-checked"></i>
-            </div>
-            
           </div>
-        </div>
-      <?php } ?>
+        <?php } ?>
         <!-- ./col -->
-      <?php if($keterangan_status == 'Pekerja') { ?>
-        <div>
-          <!-- small box -->
-          <div class="small-box bg-success">
-            <div class="inner">
-              <h3>PEKERJA</h3>
+        <?php if ($keterangan_status == 'Pekerja') { ?>
+          <div>
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>PEKERJA</h3>
 
-              <p>Status Anda Saat Ini Sudah Mendapatkan Pekerjaan</p>
+                <p>Status Anda Saat Ini Sudah Mendapatkan Pekerjaan</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-users"></i>
+              </div>
+
             </div>
-            <div class="icon">
-              <i class="fa fa-users"></i>
-            </div>
-            
           </div>
-        </div>
-      <?php } ?>
+        <?php } ?>
         <!-- ./col -->
-      <?php if($keterangan_status == 'Lapor') { ?>
-        <div>
-          <!-- small box -->
-          <div class="small-box bg-danger">
-            <div class="inner">
-              <h3>LAPOR</h3>
+        <?php if ($keterangan_status == 'Lapor') { ?>
+          <div>
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>LAPOR</h3>
 
-              <p>Anda terdaftar di sistem sudah lebih dari 6 bulan, wajib melaporkan apabila belum mendapatkan pekerjaan</p>
+                <p>Anda terdaftar di sistem sudah lebih dari 6 bulan, wajib melaporkan apabila belum mendapatkan pekerjaan</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-users"></i>
+              </div>
+
             </div>
-            <div class="icon">
-              <i class="fa fa-users"></i>
-            </div>
-            
           </div>
-        </div>
-      <?php } ?>
+        <?php } ?>
         <!-- ./col -->
-      <?php if($keterangan_status == 'Verifikasi') { ?>
-        <div>
-          <!-- small box -->
-          <div class="small-box bg-warning">
-            <div class="inner">
-              <h3>Verifikasi</h3>
+        <?php if ($keterangan_status == 'Verifikasi') { ?>
+          <div>
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>Verifikasi</h3>
 
-              <p>Silahkan tekan tombol berikut ini jika pengisian data formulir AK-1 dan dokumen telah lengkap untuk mengajukan verifikasi data guna penerbitan Kartu Pencari Kerja (Kartu Kuning)</p>
+                <p>Silahkan tekan tombol berikut ini jika pengisian data formulir AK-1 dan dokumen telah lengkap untuk mengajukan verifikasi data guna penerbitan Kartu Pencari Kerja (Kartu Kuning)</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-list"></i>
+              </div>
+              <a data-toggle="modal" data-target="#modalVerifikasi" class="small-box-footer">Verifikasi Data <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-            <div class="icon">
-              <i class="fa fa-list"></i>
-            </div>
-            <a href="#" class="small-box-footer">Verifikasi Data<i class="fas fa-arrow-circle-right"></i></a>
           </div>
-        </div>
-      <?php } ?>
-      <!-- TO DO List -->
+        <?php } ?>
+        <!-- TO DO List -->
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">
@@ -279,7 +279,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           </div>
         </div>
         <!-- /.card -->
-      </div>   
+      </div>
       <div class="col">
         <section>
           <div class="card">
@@ -292,30 +292,69 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
             <div class="card-body">
               <div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
-                <?php foreach($timeline AS $tl) : ?>
-                
-                <div class="vertical-timeline-item vertical-timeline-element">
-                  <div>
-                    <span class="vertical-timeline-element-icon bounce-in">
-                      <i class="badge badge-dot badge-dot-xl badge-warning"> </i>
-                    </span>
-                    <div class="vertical-timeline-element-content bounce-in">
-                      <h4 class="timeline-title"><?php echo $tl->subject;?></h4>
-                      <p><?php echo $tl->description;?></p>
-                      <span class="vertical-timeline-element-date text-left"><?php echo $tl->tglwaktu;?></span>
+                <?php foreach ($timeline as $tl) : ?>
+
+                  <div class="vertical-timeline-item vertical-timeline-element">
+                    <div>
+                      <span class="vertical-timeline-element-icon bounce-in">
+                        <i class="badge badge-dot badge-dot-xl badge-warning"> </i>
+                      </span>
+                      <div class="vertical-timeline-element-content bounce-in">
+                        <h4 class="timeline-title"><?php echo $tl->subject; ?></h4>
+                        <p><?php echo $tl->description; ?></p>
+                        <span class="vertical-timeline-element-date text-left"><?php echo $tl->tglwaktu; ?></span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <?php endforeach;?>
+                <?php endforeach; ?>
               </div>
             </div>
           </div>
         </section>
-      </div> 
-    </div> 
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- Modal Verifikasi -->
+<div class="modal fade" id="modalVerifikasi" tabindex="-1" aria-labelledby="modalVerifikasiLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalVerifikasiLabel">Verifikasi Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <label for="datalengkap">Status Data</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="datalengkap" id="datalengkap1" value="option1" checked>
+            <label class="form-check-label" for="datalengkap1">
+              Lengkap
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="datalengkap" id="datalengkap2" value="option2">
+            <label class="form-check-label" for="datalengkap2">
+              Tidak Lengkap
+            </label>
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="pesan">Catatan</label>
+            <textarea type="email" class="form-control" id="pesan" aria-describedby="emailHelp"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <?php include viewPath('includes/footer'); ?>
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
