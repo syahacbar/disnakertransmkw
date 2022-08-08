@@ -297,7 +297,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                   <div class="vertical-timeline-item vertical-timeline-element">
                     <div>
                       <span class="vertical-timeline-element-icon bounce-in">
-                        <i class="badge badge-dot badge-dot-xl badge-warning"> </i>
+                        <i class="badge badge-dot badge-dot-xl badge-success"> </i>
                       </span>
                       <div class="vertical-timeline-element-content bounce-in">
                         <h4 class="timeline-title"><?php echo $tl->subject; ?></h4>

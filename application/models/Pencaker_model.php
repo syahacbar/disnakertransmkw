@@ -56,6 +56,12 @@ class Pencaker_model extends MY_Model
 		return $query->result();
 	}
 
+	function get_by_keterangan($ket)
+	{
+		$query = $this->db->get_where('pencaker', array('keterangan_status' => $ket));
+		return $query;
+	}
+
 	function update_by_users_id($id, $data)
 	{
 		$this->db->where('users_id', $id);

@@ -98,7 +98,15 @@
           <?php endforeach; ?>
 
               </tbody>
-          </table>
+          </table>          
+        </div>
+        <div class="row">
+          <div class="col-6"></div>
+          <div class="col-6 text-center">
+            Pengantar Kerja/Petugas Antar Kerja<br><br><br><br>
+            <strong><u>Ema Alberthina M. Rumsayor, S.STP</u></strong><br>
+            NIP. 19830225 200312 2 001
+          </div>
         </div>
       </div>
       <div class="col-6">      

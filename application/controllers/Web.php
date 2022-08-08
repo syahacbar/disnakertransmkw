@@ -61,7 +61,14 @@ class Web extends CI_Controller
 	public function index()
 	{
 		$q_umur = $this->db->query("SELECT (YEAR(CURDATE())-YEAR(tgllahir)) AS umur, COUNT((YEAR(CURDATE())-YEAR(tgllahir))) AS jumlah  FROM pencaker GROUP BY umur ORDER BY umur ASC");
+		
+		$q_pendidikan_terakhir = $this->db->query("SELECT jp.jenjang, (SELECT COUNT(pd.id) FROM pendidikan_pencaker pd WHERE pd.jenjang_pendidikan_id=jp.id) AS total FROM jenjang_pendidikan jp");
+		
+		$pencaker = $this->db->query("SELECT * FROM pencaker");
+
 		$this->page_data['c_umur'] = $q_umur->result();
+		$this->page_data['c_pendidikan_terakhir'] = $q_pendidikan_terakhir->result();
+		$this->page_data['max_umur'] = $pencaker->num_rows();
 		$this->page_data['page']->menu = 'beranda';
 		$this->page_data['page']->title = 'Beranda';
 		$this->load->view('web/welcome', $this->page_data);
