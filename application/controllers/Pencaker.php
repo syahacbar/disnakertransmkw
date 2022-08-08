@@ -26,12 +26,27 @@ class Pencaker extends MY_Controller
         $this->load->view('pencaker/profil_pencaker', $this->page_data);
     }
 
-    // function formulir_ak1()
-    // {
-    //     $this->page_data['page']->title = 'Printout Form AK-1';
-    //     $this->page_data['page']->menu = 'doc_pencaker';
-    //     $this->load->view('printout/formulirak1', $this->page_data);
-    // }
+    function formulir_ak1($iduser)
+    {
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($iduser);
+
+        //$pencaker_dokumen =  $this->pencaker_model->pencaker_doc($pencaker_id);
+
+        $q_pendidikan = $this->db->query("SELECT jp.id AS idjenjang, jp.jenjang, p.users_id, pd.* FROM pencaker p JOIN pendidikan_pencaker pd ON pd.pencaker_id=p.id JOIN jenjang_pendidikan jp ON jp.id=pd.jenjang_pendidikan_id WHERE pd.pencaker_id = $pencaker_id->id ORDER BY jp.id ASC");
+        $q_pekerjaan = $this->db->query("SELECT p.users_id, pk.* FROM pencaker p JOIN pengalaman_kerja pk ON pk.pencaker_id=p.id WHERE pk.pencaker_id = $pencaker_id->id");
+        $q_minat_jabatan = $this->db->query("SELECT mj.* FROM pencaker p JOIN minat_jabatan mj ON mj.pencaker_id=p.id WHERE p.id = $pencaker_id->id");
+
+        $this->page_data['pencaker'] = $this->pencaker_model->get_by_users_id($iduser);
+        $this->page_data['pendidikan_pencaker'] = $q_pendidikan->result();
+        $this->page_data['pekerjaan_pencaker'] = $q_pekerjaan->result();
+        $this->page_data['minat_jabatan'] = $q_minat_jabatan->result();
+
+        //$this->page_data['p_dok'] =  $pencaker_dokumen;
+
+        $this->page_data['page']->title = 'Review Pencaker';
+        $this->page_data['page']->menu = 'doc_pencaker';
+        $this->load->view('printout/formulirak1', $this->page_data);
+    }
 
     public function pencari_kerja()
     {
@@ -69,7 +84,7 @@ class Pencaker extends MY_Controller
     {
         $pencaker_id = $this->pencaker_model->get_pencaker_id($iduser);
 
-        $pencaker_dokumen =  $this->pencaker_model->pencaker_doc($pencaker_id);
+        $pencaker_dokumen =  $this->pencaker_model->pencaker_doc($pencaker_id->id);
 
         $q_pendidikan = $this->db->query("SELECT jp.id AS idjenjang, jp.jenjang, p.users_id, pd.* FROM pencaker p JOIN pendidikan_pencaker pd ON pd.pencaker_id=p.id JOIN jenjang_pendidikan jp ON jp.id=pd.jenjang_pendidikan_id WHERE pd.pencaker_id = $pencaker_id->id ORDER BY jp.id ASC");
         $q_pekerjaan = $this->db->query("SELECT p.users_id, pk.* FROM pencaker p JOIN pengalaman_kerja pk ON pk.pencaker_id=p.id WHERE pk.pencaker_id = $pencaker_id->id");
@@ -80,11 +95,11 @@ class Pencaker extends MY_Controller
         $this->page_data['pekerjaan_pencaker'] = $q_pekerjaan->result();
         $this->page_data['minat_jabatan'] = $q_minat_jabatan->result();
 
-        $this->page_data['p_dok'] =  $pencaker_dokumen;
+        $this->page_data['dokumen_pencaker'] =  $pencaker_dokumen;
 
         $this->page_data['page']->title = 'Review Pencaker';
         $this->page_data['page']->menu = 'doc_pencaker';
-        $this->load->view('printout/formulirak1', $this->page_data);
+        $this->load->view('printout/review', $this->page_data);
     }
 
     function get_pencaker()
@@ -527,7 +542,7 @@ class Pencaker extends MY_Controller
     }
 
     function upload_dokumen()
-    {
+    { 
         $users_id = logged('id');
         $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
         $iddokumen = $this->input->post('iddokumen');

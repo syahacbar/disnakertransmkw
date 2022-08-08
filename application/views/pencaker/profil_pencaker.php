@@ -893,35 +893,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#perusahaanpencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
 
-
-
-            // $('input[id="b_Lainnya"]').click(function() {
-            //     if ($(this).prop("checked") === true) {
-            //         $('#textboxbahasalainnya').removeClass("hide");
-            //     } else if ($(this).prop("checked") === false) {
-            //         $('#textboxbahasalainnya').addClass("hide");
-            //     }
-            // });
-
             $.ajax({
                 url: "<?php echo site_url('pencaker/get_bahasa_pencaker') ?>",
                 type: "GET",
                 dataType: "JSON",
                 success: function(data) {
-                    // //console.log(data.bahasa);
-                    // // for (const element of data.bahasa.keterampilan_bahasa) { 
-                    // //     $('[id="bahasa_'+element.bahasa+'"]').prop("checked", true);
-
-                    // // }
-                    // var objData = JSON.stringify(data.bahasa.keterampilan_bahasa);
-                    // var ketbahasa = JSON.parse(objData);
-                    // // var bahasa = data.bahasa.keterampilan_bahasa;
-                    // var strArray = objData.split(",");
-                    
-                    // // // Display array values on page
-                    // for(var i = 0; i < strArray.length; i++){
-                    //     console.log(strArray[i]);
-                    // }
+            
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert('Error Get Data Keterampilan Bahasa');

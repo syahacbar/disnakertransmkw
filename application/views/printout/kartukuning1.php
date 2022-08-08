@@ -79,7 +79,7 @@
 
                         <tbody>
                         <?php
-                            $no=1;
+                            $no=1; 
                             foreach($pekerjaan_pencaker AS $pk) : 
                         ?>
                             <tr>

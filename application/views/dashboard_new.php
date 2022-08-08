@@ -316,45 +316,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
   </div>
 </section>
 
-<!-- Modal Verifikasi -->
-<div class="modal fade" id="modalVerifikasi" tabindex="-1" aria-labelledby="modalVerifikasiLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalVerifikasiLabel">Verifikasi Data</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form>
-        <div class="modal-body">
-          <label for="datalengkap">Status Data</label>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="datalengkap" id="datalengkap1" value="option1" checked>
-            <label class="form-check-label" for="datalengkap1">
-              Lengkap
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="datalengkap" id="datalengkap2" value="option2">
-            <label class="form-check-label" for="datalengkap2">
-              Tidak Lengkap
-            </label>
-          </div>
 
-          <div class="form-group mt-3">
-            <label for="pesan">Catatan</label>
-            <textarea type="email" class="form-control" id="pesan" aria-describedby="emailHelp"></textarea>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-          <button type="submit" class="btn btn-primary">Simpan</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
 <?php include viewPath('includes/footer'); ?>
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->

@@ -12,7 +12,7 @@ class Uploadlib
         $this->ci =& get_instance();
 
         $config['upload_path'] = './uploads/';
-		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
 		$config['overwrite'] = true;
 		$config['remove_spaces'] = TRUE;
 

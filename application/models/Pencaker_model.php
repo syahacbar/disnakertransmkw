@@ -194,7 +194,8 @@ class Pencaker_model extends MY_Model
 		$query  = $this->db->query("SELECT d.*,
                     (SELECT pd.namadokumen FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS namadokumen,
                     (SELECT pd.tgl_upload FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS tgl_upload,
-                    (SELECT pd.id FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS pencakerdokumen_id
+                    (SELECT pd.id FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS pencakerdokumen_id,
+                    (SELECT p.nopendaftaran FROM pencaker_dokumen pd JOIN pencaker p ON p.id=pd.pencaker_id WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS nopendaftaran
                     FROM dokumen d");
 		return $query->result();
 	}
