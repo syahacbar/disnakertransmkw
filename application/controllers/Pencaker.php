@@ -182,7 +182,7 @@ class Pencaker extends MY_Controller
             'tahunmasuk' => $this->input->post('tahunmasuk'),
             'tahunlulus' => $this->input->post('tahunlulus'),
             'nama_sekolah' => $this->input->post('nama_sekolah'),
-            'jenjang' => $this->input->post('jenjang'),
+            'jenjang_pendidikan_id' => $this->input->post('jenjang'),
             'ipk' => $this->input->post('ipk'),
             'keterampilan' => $this->input->post('keterampilan'),
         );
