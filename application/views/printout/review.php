@@ -333,8 +333,7 @@
         if($dp->namadokumen != null && $dp->jenis_dokumen != 'PAS FOTO') {
 ?>
   <section class="sheet padding-10mm">
-            <object data="<?php echo base_url('uploads/pencaker/').$dp->nopendaftaran.'/'.$dp->namadokumen ?>" type="application/pdf" width="100%" height="100%">
-            </object>
+     <embed src="<?php echo base_url('uploads/pencaker/').$dp->nopendaftaran.'/'.$dp->namadokumen ?>" width="800" height="500">
   </section>
 <?php 
         }  
