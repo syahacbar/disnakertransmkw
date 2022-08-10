@@ -76,6 +76,24 @@ if (!function_exists('userProfile')) {
 
 }
 
+if (!function_exists('pencakerFoto')) {
+
+	function pencakerFoto($idpencaker)
+	{
+		$CI =& get_instance();
+
+		if($idpencaker!='default')
+			if(!empty($CI->pencaker_model->get_pas_foto($idpencaker)->namadokumen)){
+				$url = urlUpload('pencaker/'.$CI->pencaker_model->getById($idpencaker)->nopendaftaran.'/'.$CI->pencaker_model->get_pas_foto($idpencaker)->namadokumen);
+			} else {
+				$url = urlUpload('users/default.png');
+			}
+
+		return $url;
+	}
+
+}
+
 
 
 

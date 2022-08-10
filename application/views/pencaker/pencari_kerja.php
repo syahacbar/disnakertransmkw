@@ -140,7 +140,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
                                         <td>
-                                            <img width="40" height="40" alt="" class="img-avtar" src="<?php echo base_url('uploads/users/default.png'); ?>">
+                                            <img width="40" height="40" alt="" class="img-avtar" src="<?php echo pencakerFoto($p->id); ?>">
                                         </td>
                                         <td><?php echo $p->namalengkap; ?> </td>
                                         <td><?php echo $p->nopendaftaran; ?> </td>
