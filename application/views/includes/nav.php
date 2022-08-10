@@ -17,7 +17,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <?php if (hasPermissions('pencari_kerja')) : ?>
     <li class="nav-item">
       <a href="<?php echo url('pencaker/pencari_kerja') ?>" class="nav-link <?php echo ($page->menu == 'pencari_kerja') ? 'active' : '' ?>">
-        <i class="nav-icon fas fa-id-card"></i>
+        <i class="nav-icon fas fa-users"></i>
         <p>
           <?php echo lang('pencari_kerja')
           ?>
