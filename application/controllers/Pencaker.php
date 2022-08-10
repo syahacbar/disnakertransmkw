@@ -56,12 +56,37 @@ class Pencaker extends MY_Controller
 
     public function pencari_kerja()
     {
+        $users_id = logged('id');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+
+        $pencaker_dokumen =  $this->pencaker_model->pencaker_doc($pencaker_id);
         $this->page_data['pencaker'] = $this->pencaker_model->get_all();
         $this->page_data['users'] = $this->users_model->get();
 
+        $data = $this->pencaker_model->get_by_users_id($users_id);
+        echo json_encode($data);
+
+        $this->page_data['dokumen_pencaker'] =  $pencaker_dokumen;
         $this->page_data['page']->title = 'Data Pencari Kerja';
         $this->page_data['page']->menu = 'pencari_kerja';
         $this->load->view('pencaker/pencari_kerja', $this->page_data);
+    }
+
+    public function hapus_pencari_kerja($id)
+    {
+        $users_id = logged('id');
+        $del  = $this->pencaker_model->delete_pencaker($id);
+        if ($del) {
+            $res['hasil'] = 'sukses';
+            $res['status'] = TRUE;
+        } else {
+            $res['hasil'] = 'gagal';
+            $res['status'] = FALSE;
+        }
+        $this->activity_model->add("User #$users_id menghapus data Pendidikan Pencaker");
+        echo json_encode($res);
+
+        redirect('pencaker/pencari_kerja');
     }
 
     // function kartukuning_1($iduser)
@@ -570,7 +595,7 @@ class Pencaker extends MY_Controller
     }
 
     function upload_dokumen()
-    { 
+    {
         $users_id = logged('id');
         $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
         $iddokumen = $this->input->post('iddokumen');

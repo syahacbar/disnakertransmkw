@@ -234,7 +234,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <div class="icon">
                 <i class="fa fa-list"></i>
               </div>
-              <a data-toggle="modal" data-target="#modalVerifikasi" class="small-box-footer">Verifikasi Data <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" onclick="modalVerifikasi()" id="#modalVerifikasi" class="small-box-footer">Verifikasi Data <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
         <?php } ?>
@@ -331,8 +331,30 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
   </div>
 </section>
 
-
 <?php include viewPath('includes/footer'); ?>
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo $url->assets ?>js/pages/dashboard.js"></script>
+
+<script>
+  function modalVerifikasi() {
+    Swal.fire({
+      title: 'Konfirmasi!',
+      text: "Apakah Anda yakin telah melengkapi data profil dan mengunggah semua dokumen yang diperlukan dengan benar?",
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Tidak',
+      confirmButtonText: 'Ya, Saya Yakin!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Selamat!',
+          'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
+          'success'
+        )
+      }
+    })
+  }
+</script>
