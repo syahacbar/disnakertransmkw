@@ -115,9 +115,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           <div class="card-body">
             <div class="tab-content p-0">
               <!-- Morris chart - Sales -->
-              <div class="chart tab-pane active" id="pendidikan-chart" style="position: relative; height: 300px;">
+              <div class="chart tab-pane active" id="pendidikan-chart" style="position: relative; height: 600px;">
               </div>
-              <div class="chart tab-pane" id="usia-chart" style="position: relative; height: 300px;">
+              <div class="chart tab-pane" id="usia-chart" style="position: relative; height: 600px;">
               </div>
             </div>
           </div><!-- /.card-body -->
@@ -148,7 +148,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           <div class="card-body">
             <div class="tab-content p-0">
               <!-- Morris chart - Sales -->
-              <div class="chart tab-pane active" id="line-chart" style="position: relative; height: 300px;">
+              <div class="chart tab-pane active" id="line-chart" style="position: relative; height: 600px;">
                 <canvas id="pendidikan-chart-canvas" height="300" style="height: 300px;"></canvas>
               </div>
             </div>
@@ -215,7 +215,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         },
       <?php endforeach;?>
         ]
-    }]
+    }],
+
+    credits:{
+      enabled:false
+    }
 });
 
   //statistik rentang usia
@@ -299,42 +303,46 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             y: <?php echo $u6;?>
         } 
         ]
-    }]
+    }],
+
+    credits:{
+      enabled:false
+    }
 });
 
   //grafik line, pengajuan kartu kuning
    Highcharts.addEvent(Highcharts.Point, 'click', function () {
     if (this.series.options.className.indexOf('popup-on-click') !== -1) {
-        const chart = this.series.chart;
-        const date = Highcharts.dateFormat('%A, %b %e, %Y', this.x);
-        const text = `<b>${date}</b><br/>${this.y} ${this.series.name}`;
+      const chart = this.series.chart;
+      const date = Highcharts.dateFormat('%A, %b %e, %Y', this.x);
+      const text = `<b>${date}</b><br/>${this.y} ${this.series.name}`;
 
-        const anchorX = this.plotX + this.series.xAxis.pos;
-        const anchorY = this.plotY + this.series.yAxis.pos;
-        const align = anchorX < chart.chartWidth - 200 ? 'left' : 'right';
-        const x = align === 'left' ? anchorX + 10 : anchorX - 10;
-        const y = anchorY - 30;
-        if (!chart.sticky) {
-            chart.sticky = chart.renderer
-                .label(text, x, y, 'callout',  anchorX, anchorY)
-                .attr({
-                    align,
-                    fill: 'rgba(0, 0, 0, 0.75)',
-                    padding: 10,
-                    zIndex: 7 // Above series, below tooltip
-                })
-                .css({
-                    color: 'white'
-                })
-                .on('click', function () {
-                    chart.sticky = chart.sticky.destroy();
-                })
-                .add();
-        } else {
-            chart.sticky
-                .attr({ align, text })
-                .animate({ anchorX, anchorY, x, y }, { duration: 250 });
-        }
+      const anchorX = this.plotX + this.series.xAxis.pos;
+      const anchorY = this.plotY + this.series.yAxis.pos;
+      const align = anchorX < chart.chartWidth - 200 ? 'left' : 'right';
+      const x = align === 'left' ? anchorX + 10 : anchorX - 10;
+      const y = anchorY - 30;
+      if (!chart.sticky) {
+          chart.sticky = chart.renderer
+              .label(text, x, y, 'callout',  anchorX, anchorY)
+              .attr({
+                  align,
+                  fill: 'rgba(0, 0, 0, 0.75)',
+                  padding: 10,
+                  zIndex: 7 // Above series, below tooltip
+              })
+              .css({
+                  color: 'white'
+              })
+              .on('click', function () {
+                  chart.sticky = chart.sticky.destroy();
+              })
+              .add();
+      } else {
+          chart.sticky
+              .attr({ align, text })
+              .animate({ anchorX, anchorY, x, y }, { duration: 250 });
+      }
     }
 });
 
@@ -345,17 +353,17 @@ Highcharts.chart('line-chart', {
         type: 'line'
     },
     title: {
-        text: 'Monthly Average Temperature'
+        text: 'Jumlah Permintaan Penerbitan Kartu Pencari Kerja'
     },
-    subtitle: {
-        text: 'Source: WorldClimate.com'
-    },
+    // subtitle: {
+    //     text: 'Source: WorldClimate.com'
+    // },
     xAxis: {
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     },
     yAxis: {
         title: {
-            text: 'Temperature (°C)'
+            text: 'Jumlah Pencaker (orang)'
         }
     },
     plotOptions: {
@@ -372,6 +380,9 @@ Highcharts.chart('line-chart', {
     }, {
         name: 'Perempuan',
         data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-    }]
+    }],
+    credits:{
+      enabled:false
+    }
 });
   </script>
