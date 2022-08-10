@@ -195,6 +195,12 @@ class Pencaker_model extends MY_Model
 		return $query->row();
 	}
 
+	function get_pas_foto($pencaker_id)
+	{
+		$q = $this->db->query("SELECT * FROM pencaker_dokumen pd JOIN dokumen d ON d.id=pd.dokumen_id JOIN pencaker p ON p.id=pd.pencaker_id WHERE d.jenis_dokumen = 'PAS FOTO' AND p.id=$pencaker_id");
+		return $q->row();
+	}
+
 	function pencaker_doc($pencaker_id)
 	{
 		$query  = $this->db->query("SELECT d.*,

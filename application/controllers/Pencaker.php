@@ -81,6 +81,7 @@ class Pencaker extends MY_Controller
         $q_pekerjaan = $this->db->query("SELECT p.users_id, pk.* FROM pencaker p JOIN pengalaman_kerja pk ON pk.pencaker_id=p.id WHERE pk.pencaker_id = $pencaker_id->id");
 
         $this->page_data['pencaker'] = $this->pencaker_model->get_by_users_id($iduser);
+        $this->page_data['pasfoto'] = $this->pencaker_model->get_pas_foto($pencaker_id->id);
         $this->page_data['pendidikan_pencaker'] = $q_pendidikan->result();
         $this->page_data['pekerjaan_pencaker'] = $q_pekerjaan->result();
         $this->page_data['page']->title = 'Kartu Pencari Kerja';

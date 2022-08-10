@@ -127,7 +127,11 @@
         </div>  
         <div class="row" style="margin-top:20px !important"> 
           <div class="col-3">
-            <img align="left" style="width:28mm;height: 38mm;border-style:solid; border-width: 1px;" src="<?php echo base_url('assets/img/')?>fotonotavail.jpg">
+            <?php if(!empty($pasfoto->namadokumen)) { ?>
+            <img align="left" style="width:28mm;height: 38mm;border-style:solid; border-width: 1px;" src="<?php echo base_url('uploads/pencaker/').$pencaker->nopendaftaran.'/'.$pasfoto->namadokumen;?>">
+          <?php } else { ?>
+            <img align="left" style="width:28mm;height: 38mm;border-style:solid; border-width: 1px;" src="<?php echo base_url('assets/img/fotonotavail.jpg')?>">
+          <?php } ?>
           </div>  
           <div class="col-9">
             <table class="t3">

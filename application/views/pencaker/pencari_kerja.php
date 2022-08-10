@@ -145,9 +145,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <td><?php echo $p->namalengkap; ?> </td>
                                         <td><?php echo $p->nopendaftaran; ?> </td>
                                         <td><?php echo $p->nik; ?> </td>
-                                        <td>
-                                            Aktif
-                                        </td>
+                                        <td><?php echo $p->keterangan_status;?></td>
                                         <td>
                                             <a target="_blank" href="<?php echo site_url('pencaker/review_pencaker/').$p->users_id;?>" class="btn btn-sm btn-warning" title="Review Data Pencaker"><i class="fas fa-search"></i></a>&nbsp;
                                             <a class="btn btn-sm btn-secondary" title="Verifikasi Pencaker" data-toggle="modal" data-target="#modalVerifikasi"><i class="fas fa-check"></i></a>&nbsp;

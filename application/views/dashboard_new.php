@@ -208,7 +208,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <?php if ($keterangan_status == 'Lapor') { ?>
           <div>
             <!-- small box -->
-            <div class="small-box bg-danger">
+            <div class="small-box bg-warning">
               <div class="inner">
                 <h3>LAPOR</h3>
 
@@ -229,12 +229,27 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <div class="inner">
                 <h3>Verifikasi</h3>
 
-                <p>Silahkan tekan tombol berikut ini jika pengisian data formulir AK-1 dan dokumen telah lengkap untuk mengajukan verifikasi data guna penerbitan Kartu Pencari Kerja (Kartu Kuning)</p>
+                <p>Silahkan tekan tombol berikut ini jika pengisian data formulir AK-1 dan dokumen telah lengkap untuk mengajukan verifikasi data</p>
               </div>
               <div class="icon">
                 <i class="fa fa-list"></i>
               </div>
               <a data-toggle="modal" data-target="#modalVerifikasi" class="small-box-footer">Verifikasi Data <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+        <?php } ?>
+        <?php if ($keterangan_status == 'Validasi') { ?>
+          <div>
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>Verifikasi</h3>
+
+                <p>Silahkan ke Kantor Disnakertrans Kab. Manokwari dengan membawa berkas/dokumen asli untuk divalidasi.</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-list"></i>
+              </div>
             </div>
           </div>
         <?php } ?>

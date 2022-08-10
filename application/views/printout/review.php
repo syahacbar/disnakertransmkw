@@ -333,7 +333,20 @@
         if($dp->namadokumen != null && $dp->jenis_dokumen != 'PAS FOTO') {
 ?>
   <section class="sheet padding-10mm">
-     <embed src="<?php echo base_url('uploads/pencaker/').$dp->nopendaftaran.'/'.$dp->namadokumen ?>" width="800" height="500">
+     <!-- <embed src="<?php //echo base_url('uploads/pencaker/').$dp->nopendaftaran.'/'.$dp->namadokumen ?>" width="100%" height="100%"> -->
+        
+    <?php    
+        $url = base_url('uploads/pencaker/').$dp->nopendaftaran.'/'.$dp->namadokumen;
+        $url = parse_url($url);
+        $ext  = pathinfo($url['path'], PATHINFO_EXTENSION);
+        if($ext == 'pdf') {
+    ?>
+    <iframe src="<?php echo base_url('uploads/pencaker/').$dp->nopendaftaran.'/'.$dp->namadokumen ?>" frameborder="0" style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;position:absolute;top:0px;left:0px;right:0px;bottom:0px" height="100%" width="100%"></iframe>
+
+    <?php } else { ?> 
+
+    <center><img src="<?php echo base_url('uploads/pencaker/').$dp->nopendaftaran.'/'.$dp->namadokumen ?>" width="80%"></center>
+    <?php } ?>
   </section>
 <?php 
         }  
