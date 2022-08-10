@@ -224,14 +224,26 @@ class Pencaker_model extends MY_Model
 		return $q->result();
 	}
 
-	function get_timeline($pencaker_id)
+	function get_timeline($users_id)
 	{
 		$q = $this->db->query("
 			SELECT tl.*,
-			(SELECT tp.description FROM timeline_pencaker tp WHERE tp.timeline_id=tl.id AND tp.pencaker_id='$pencaker_id') AS description,
-			(SELECT tp.tglwaktu FROM timeline_pencaker tp WHERE tp.timeline_id=tl.id AND tp.pencaker_id='$pencaker_id') AS tglwaktu
+			(SELECT tu.description FROM timeline_user tu WHERE tu.timeline_id=tl.id AND tu.users_id='$users_id') AS description,
+			(SELECT tu.tglwaktu FROM timeline_user tu WHERE tu.timeline_id=tl.id AND tu.users_id='$users_id') AS tglwaktu
 			FROM timeline tl");
 		return $q->result();
+	}
+
+	function get_timeline_by_id($timeline_id,$users_id)
+	{
+		$q = $this->db->query("SELECT * FROM timeline_user tu WHERE tu.timeline_id=$timeline_id AND tu.users_id=$users_id");
+		return $q->row();
+	}
+
+	function add_timeline($data)
+	{
+		$this->db->insert('timeline_user', $data);
+		return $this->db->insert_id();
 	}
 }
 /* End of file Pencaker_model.php */

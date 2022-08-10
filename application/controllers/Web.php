@@ -314,6 +314,7 @@ class Web extends CI_Controller
 		}
 
 		$this->activity_model->add('New User $' . $id . ' Created by User:' . logged('name'), logged('id'));
+		isitimeline('1',$id,'Anda berhasil melakukan registrasi akun di portal Disnakertrans Kab. Manokwari');
 		$pesan = 'Hai...' . $name . ', anda berhasil membuat akun di website Disnakertrans Manokwari.' . PHP_EOL . 'Silahkan kembali ke halaman website disnakertransmkw.com untuk melakukan login dan melengkapi formulir pembuatan Kartu Pencari Kerja (Form AK-1).' . PHP_EOL . PHP_EOL . 'Terima Kasih...';
 		$this->notifWA($phone, $pesan);
 		$this->session->set_flashdata('alert-type', 'success');

@@ -94,6 +94,23 @@ if (!function_exists('pencakerFoto')) {
 
 }
 
+if (!function_exists('isitimeline')) {
+
+	function isitimeline($idtimeline,$iduser,$description)
+	{
+		$CI =& get_instance();
+		$data = array(
+			'timeline_id' => $idtimeline,
+			'users_id' => $iduser,
+			'tglwaktu' => date("Y-m-d H:i:s"),
+			'description' => $description
+		);
+
+		$addtimeline = $CI->pencaker_model->add_timeline($data);
+		return $addtimeline;
+	}
+}
+
 
 
 

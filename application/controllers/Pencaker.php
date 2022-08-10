@@ -17,6 +17,12 @@ class Pencaker extends MY_Controller
 
         $querybahasa  = $this->db->query("SELECT * FROM pencaker WHERE id='$pencaker_id'");
 
+        $get_timeline = $this->pencaker_model->get_timeline_by_id('2',$users_id);
+        if(empty($get_timeline->id))
+        {
+            isitimeline('2',$users_id,'Tahap ini anda harus mengisi formulir AK-1 pada menu Profil Pencari Kerja');
+        }
+
         $this->page_data['page']->title = 'Profil Pencari Kerja';
         $this->page_data['page']->menu = 'profil_pencaker';
         $this->page_data['jenjang_pendidikan'] = $this->pencaker_model->get_jenjang_pendidikan();
@@ -405,6 +411,7 @@ class Pencaker extends MY_Controller
             $res['hasil'] = 'sukses';
             $res['status'] = TRUE;
             $this->activity_model->add("User #$users_id memperbarui data tujuan pembuatan kartu kuning");
+            
         } else {
             $res['hasil'] = 'gagal';
             $res['status'] = FALSE;
@@ -548,6 +555,11 @@ class Pencaker extends MY_Controller
         $users_id = logged('id');
         $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
 
+        $get_timeline = $this->pencaker_model->get_timeline_by_id('3',$users_id);
+        if(empty($get_timeline->id))
+        {
+            isitimeline('3',$users_id,'Tahap ini anda harus mengunggah berkas/dokumen sebagai syarat kelengkapan pengajuan pembuatan Kartu Pencari Kerja');
+        }
 
         $pencaker_dokumen =  $this->pencaker_model->pencaker_doc($pencaker_id);
         $this->page_data['pencaker_dokumen'] = $pencaker_dokumen;

@@ -222,7 +222,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           </div>
         <?php } ?>
         <!-- ./col -->
-        <?php if ($keterangan_status == 'Verifikasi') { ?>
+        <?php if ($keterangan_status == '') { ?>
           <div>
             <!-- small box -->
             <div class="small-box bg-warning">
@@ -312,11 +312,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                   <div class="vertical-timeline-item vertical-timeline-element">
                     <div>
                       <span class="vertical-timeline-element-icon bounce-in">
-                        <i class="badge badge-dot badge-dot-xl badge-success"> </i>
+                        <i class="badge badge-dot badge-dot-xl badge-<?php echo ($tl->description!=null) ? 'primary':'secondary';?>"> </i>
                       </span>
                       <div class="vertical-timeline-element-content bounce-in">
-                        <h4 class="timeline-title"><?php echo $tl->subject; ?></h4>
-                        <p><?php echo $tl->description; ?></p>
+                        <h4 class="timeline-title <?php echo ($tl->description!=null) ? 'text-primary':'';?>"><?php echo $tl->subject; ?></h4>
+                        <p <?php echo ($tl->description!=null) ? 'class="text-primary"':'';?>><?php echo $tl->description; ?></p>
                         <span class="vertical-timeline-element-date text-left"><?php echo $tl->tglwaktu; ?></span>
                       </div>
                     </div>
