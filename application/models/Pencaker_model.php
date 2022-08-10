@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pencaker_model extends MY_Model 
+class Pencaker_model extends MY_Model
 {
 
 
@@ -48,6 +48,13 @@ class Pencaker_model extends MY_Model
 		$query = $this->db->get();
 
 		return $query->row();
+	}
+
+	function delete_pencaker($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('pencaker');
+		return true;
 	}
 
 	function get_all()
