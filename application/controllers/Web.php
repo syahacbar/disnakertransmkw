@@ -92,6 +92,9 @@ class Web extends CI_Controller
 
 	public function kontak()
 	{
+
+		$q_smtp = $this->db->query("SELECT * from smtp");
+
 		// $this->page_data['page']->menu = 'kontak';
 		// $this->page_data['page']->title = 'Kontak';
 
@@ -102,6 +105,7 @@ class Web extends CI_Controller
 		$this->form_validation->set_rules('subject', 'Subject', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('message', 'Message', 'trim|required|xss_clean');
 
+		$this->page_data['email'] = $q_smtp->result();
 		$this->page_data['page']->menu = 'kontak';
 		$this->page_data['page']->title = 'Kontak';
 
@@ -121,10 +125,10 @@ class Web extends CI_Controller
 
 			//configure email settings
 			$config['protocol'] = 'smtp';
-			$config['smtp_host'] = 'mail.disnakertransmkw.com';
+			$config['smtp_host'] = $this->email->smtp_host;
 			$config['smtp_port'] = '465';
-			$config['smtp_user'] = 'noreply@disnakertransmkw.com';
-			$config['smtp_pass'] = 'Dinakertrans@2022';
+			$config['smtp_user'] = $this->email->smtp_user;
+			$config['smtp_pass'] = $this->email->smtp_pass;
 			$config['mailtype'] = 'html';
 			$config['charset'] =  'iso-8859-1';
 			$config['wordwrap'] = TRUE;
