@@ -239,7 +239,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           </div>
         <?php } ?>
         <!-- ./col -->
-        <?php if ($keterangan_status == '') { ?>
+        <?php if ($keterangan_status == 'Verifikasi') { ?>
           <div>
             <!-- small box -->
             <div class="small-box bg-warning">
@@ -335,8 +335,17 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         <h4 class="timeline-title <?php echo ($tl->description != null) ? 'text-primary' : ''; ?>"><?php echo $tl->subject; ?></h4>
                         <p <?php echo ($tl->description != null) ? 'class="text-primary"' : ''; ?>><?php echo $tl->description; ?></p>
                         <div class="tanggal">
-                          <span class="vertical-timeline-element-date text-left">22 Agustus 2022</span><br>
-                          <span class="vertical-timeline-element-time text-left text-primary"><?php echo substr($tl->tglwaktu, 10, 16); ?></span>
+                          <span class="vertical-timeline-element-date text-left">
+                            <?php 
+                            if(!empty($tl->tglwaktu))
+                            {
+                              echo date_indo(substr($tl->tglwaktu,0,10));
+                            } 
+                            ?>
+                              </span><br>
+                          <span class="vertical-timeline-element-time text-left text-primary">
+                          <?php echo substr($tl->tglwaktu, 10, 14); ?>                            
+                          </span>
                         </div>
 
                       </div>
