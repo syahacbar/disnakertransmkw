@@ -74,11 +74,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       <!-- ./col -->
       <div class="col-lg-3 col-6">
         <!-- small box -->
-        <div class="small-box bg-danger">
+        <div class="small-box bg-secondary">
           <div class="inner">
             <h3><?php echo $verifikasi;?></h3>
 
-            <p>Belum Diverifikasi</p>
+            <p>Belum Diverifikasi/Divalidasi</p>
           </div>
           <div class="icon">
             <i class="fa fa-users"></i>
@@ -115,9 +115,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           <div class="card-body">
             <div class="tab-content p-0">
               <!-- Morris chart - Sales -->
-              <div class="chart tab-pane active" id="pendidikan-chart" style="position: relative; height: 600px;">
+              <div class="chart tab-pane active" id="pendidikan-chart" style="position: relative; height: 450px;">
               </div>
-              <div class="chart tab-pane" id="usia-chart" style="position: relative; height: 600px;">
+              <div class="chart tab-pane" id="usia-chart" style="position: relative; height: 450px;">
               </div>
             </div>
           </div><!-- /.card-body -->
@@ -148,7 +148,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           <div class="card-body">
             <div class="tab-content p-0">
               <!-- Morris chart - Sales -->
-              <div class="chart tab-pane active" id="line-chart" style="position: relative; height: 600px;">
+              <div class="chart tab-pane active" id="line-chart" style="position: relative; height: 450px;">
                 <canvas id="pendidikan-chart-canvas" height="300" style="height: 300px;"></canvas>
               </div>
             </div>
