@@ -85,14 +85,14 @@ class CI_Email
 	 *
 	 * @var	string
 	 */
-	public $smtp_user	= 'admin@disnakertransmkw.com';
+	public $smtp_user	= 'noreply@disnakertransmkw.com';
 
 	/**
 	 * SMTP Password
 	 *
 	 * @var	string
 	 */
-	public $smtp_pass	= 'i[U)wpP;i)S*';
+	public $smtp_pass	= 'Dinakertrans@2022';
 
 	/**
 	 * SMTP Server port

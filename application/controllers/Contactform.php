@@ -28,14 +28,14 @@ class contactform extends CI_Controller
             $message = $this->input->post('message');
 
             //set to_email id to which you want to receive mails
-            $to_email = 'fnterupun@gmail.com';
+            $to_email = 'noreply@disnakertransmkw.com';
 
             //configure email settings
             $config['protocol'] = 'smtp';
             $config['smtp_host'] = 'mail.disnakertransmkw.com';
             $config['smtp_port'] = '465';
-            $config['smtp_user'] = 'admin@disnakertransmkw.com';
-            $config['smtp_pass'] = 'i[U)wpP;i)S*';
+            $config['smtp_user'] = 'noreply@disnakertransmkw.com';
+            $config['smtp_pass'] = 'Dinakertrans@2022';
             $config['mailtype'] = 'html';
             $config['charset'] =  'iso-8859-1';
             $config['wordwrap'] = TRUE;

@@ -61,9 +61,9 @@ class Web extends CI_Controller
 	public function index()
 	{
 		$q_umur = $this->db->query("SELECT (YEAR(CURDATE())-YEAR(tgllahir)) AS umur, COUNT((YEAR(CURDATE())-YEAR(tgllahir))) AS jumlah  FROM pencaker GROUP BY umur ORDER BY umur ASC");
-		
+
 		$q_pendidikan_terakhir = $this->db->query("SELECT jp.jenjang, (SELECT COUNT(pd.id) FROM pendidikan_pencaker pd WHERE pd.jenjang_pendidikan_id=jp.id) AS total FROM jenjang_pendidikan jp");
-		
+
 		$pencaker = $this->db->query("SELECT * FROM pencaker");
 
 		$this->page_data['c_umur'] = $q_umur->result();
@@ -117,14 +117,14 @@ class Web extends CI_Controller
 			$message = $this->input->post('message');
 
 			//set to_email id to which you want to receive mails
-			$to_email = 'fnterupun@gmail.com';
+			$to_email = 'noreply@disnakertransmkw.com';
 
 			//configure email settings
 			$config['protocol'] = 'smtp';
 			$config['smtp_host'] = 'mail.disnakertransmkw.com';
 			$config['smtp_port'] = '465';
-			$config['smtp_user'] = 'admin@disnakertransmkw.com';
-			$config['smtp_pass'] = 'i[U)wpP;i)S*';
+			$config['smtp_user'] = 'noreply@disnakertransmkw.com';
+			$config['smtp_pass'] = 'Dinakertrans@2022';
 			$config['mailtype'] = 'html';
 			$config['charset'] =  'iso-8859-1';
 			$config['wordwrap'] = TRUE;
@@ -250,7 +250,7 @@ class Web extends CI_Controller
 			$this->page_data['page']->title = $detailpelatihan->judul;
 			$this->load->view('web/detailpelatihan', $this->page_data);
 		} else {
- 
+
 			$this->page_data['jenis_pelatihan'] = $this->informasi_model->get_jenis_pelatihan();
 			$this->page_data['listpelatihan'] = $this->informasi_model->get_pelatihan('1');
 			$this->page_data['page']->menu = 'informasi';
