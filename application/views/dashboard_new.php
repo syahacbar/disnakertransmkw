@@ -65,7 +65,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     content: '';
     position: absolute;
     top: 0;
-    left: 67px;
+    left: 110px;
     height: 100%;
     width: 4px;
     background: #e9ecef;
@@ -85,7 +85,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
   .vertical-timeline-element-icon {
     position: absolute;
     top: 0;
-    left: 60px;
+    left: 103px;
   }
 
   .vertical-timeline-element-icon .badge-dot-xl {
@@ -117,8 +117,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
   .vertical-timeline-element-content {
     position: relative;
-    margin-left: 90px;
+    margin-left: 85px;
     font-size: .8rem;
+  }
+
+  .vertical-timeline-element-content p {
+    margin-left: 55px;
   }
 
   .vertical-timeline-element-content .timeline-title {
@@ -127,6 +131,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     margin: 0 0 .5rem;
     padding: 2px 0 0;
     font-weight: bold;
+    margin-left: 55px;
   }
 
   .vertical-timeline-element-content .vertical-timeline-element-date {
@@ -145,6 +150,18 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     content: "";
     display: table;
     clear: both;
+  }
+
+  span.vertical-timeline-element-time.text-left {
+    display: block;
+    position: absolute;
+    left: -90px;
+    top: 27px;
+    padding-right: 10px;
+    text-align: right;
+    color: #adb5bd;
+    font-size: .7619rem;
+    white-space: nowrap;
   }
 </style>
 <?php include viewPath('includes/header'); ?>
@@ -312,12 +329,16 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                   <div class="vertical-timeline-item vertical-timeline-element">
                     <div>
                       <span class="vertical-timeline-element-icon bounce-in">
-                        <i class="badge badge-dot badge-dot-xl badge-<?php echo ($tl->description!=null) ? 'primary':'secondary';?>"> </i>
+                        <i class="badge badge-dot badge-dot-xl badge-<?php echo ($tl->description != null) ? 'primary' : 'secondary'; ?>"> </i>
                       </span>
                       <div class="vertical-timeline-element-content bounce-in">
-                        <h4 class="timeline-title <?php echo ($tl->description!=null) ? 'text-primary':'';?>"><?php echo $tl->subject; ?></h4>
-                        <p <?php echo ($tl->description!=null) ? 'class="text-primary"':'';?>><?php echo $tl->description; ?></p>
-                        <span class="vertical-timeline-element-date text-left"><?php echo $tl->tglwaktu; ?></span>
+                        <h4 class="timeline-title <?php echo ($tl->description != null) ? 'text-primary' : ''; ?>"><?php echo $tl->subject; ?></h4>
+                        <p <?php echo ($tl->description != null) ? 'class="text-primary"' : ''; ?>><?php echo $tl->description; ?></p>
+                        <div class="tanggal">
+                          <span class="vertical-timeline-element-date text-left">22 Agustus 2022</span><br>
+                          <span class="vertical-timeline-element-time text-left text-primary"><?php echo substr($tl->tglwaktu, 10, 16); ?></span>
+                        </div>
+
                       </div>
                     </div>
                   </div>

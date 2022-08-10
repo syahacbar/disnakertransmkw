@@ -92,26 +92,32 @@ class Web extends CI_Controller
 
 	public function kontak()
 	{
+		$this->page_data['page']->menu = 'kontak';
+		$this->page_data['page']->title = 'Kontak';
 
-		$q_smtp = $this->db->query("SELECT * from smtp");
+		$this->load->view('web/kontak', $this->page_data);
+	}
 
-		// $this->page_data['page']->menu = 'kontak';
-		// $this->page_data['page']->title = 'Kontak';
+	public function kirim_email()
+	{
+		$page = $this->input->post('page');
+		if ($page == 'welcome') {
+			$redirectx = 'web';
+			$viewx = 'web/welcome';
+		} else if ($page == 'kontak') {
+			$redirectx = 'web/kontak';
+			$viewx = 'web/kontak';
+		}
 
-		// $this->load->view('web/kontak', $this->page_data);
-
+		$q_smtp = $this->db->query("SELECT * FROM smtp LIMIT 1")->row();
 		$this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean|callback_alpha_space_only');
 		$this->form_validation->set_rules('email', 'Emaid ID', 'trim|required|valid_email');
 		$this->form_validation->set_rules('subject', 'Subject', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('message', 'Message', 'trim|required|xss_clean');
 
-		$this->page_data['email'] = $q_smtp->result();
-		$this->page_data['page']->menu = 'kontak';
-		$this->page_data['page']->title = 'Kontak';
-
 		if ($this->form_validation->run() == FALSE) {
 			//validation fails
-			$this->load->view('web/kontak', $this->page_data);
+			$this->load->view($viewx, $this->page_data);
 			// $this->load->view('web/contact_form_view');
 		} else {
 			//get the form data
@@ -125,13 +131,15 @@ class Web extends CI_Controller
 
 			//configure email settings
 			$config['protocol'] = 'smtp';
-			$config['smtp_host'] = $this->email->smtp_host;
+			$config['smtp_host'] = $q_smtp->smtp_host;
 			$config['smtp_port'] = '465';
-			$config['smtp_user'] = $this->email->smtp_user;
-			$config['smtp_pass'] = $this->email->smtp_pass;
+			$config['smtp_user'] = $q_smtp->smtp_user;
+			$config['smtp_pass'] = $q_smtp->smtp_pass;
 			$config['mailtype'] = 'html';
 			$config['charset'] =  'iso-8859-1';
 			$config['wordwrap'] = TRUE;
+			$config['smtp_crypto'] = 'ssl';
+			$config['crypto'] = 'ssl';
 			$config['newline'] = "\r\n"; //use double quotes
 			//$this->load->library('email', $config);
 			$this->email->initialize($config);
@@ -142,11 +150,11 @@ class Web extends CI_Controller
 			$this->email->message($message);
 			if ($this->email->send()) {
 				$this->session->set_flashdata('msg', '<div class="alert alert-success text-center">Pesan Anda telah dikirim!</div>');
-				redirect('web/kontak');
+				redirect($redirectx);
 			} else {
 				//error
 				$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Ada kesalahan! Silakan coba sesaat lagi!</div>');
-				redirect('web/kontak');
+				redirect($redirectx);
 			}
 		}
 	}
@@ -318,7 +326,7 @@ class Web extends CI_Controller
 		}
 
 		$this->activity_model->add('New User $' . $id . ' Created by User:' . logged('name'), logged('id'));
-		isitimeline('1',$id,'Anda berhasil melakukan registrasi akun di portal Disnakertrans Kab. Manokwari');
+		isitimeline('1', $id, 'Anda berhasil melakukan registrasi akun di portal Disnakertrans Kab. Manokwari');
 		$pesan = 'Hai...' . $name . ', anda berhasil membuat akun di website Disnakertrans Manokwari.' . PHP_EOL . 'Silahkan kembali ke halaman website disnakertransmkw.com untuk melakukan login dan melengkapi formulir pembuatan Kartu Pencari Kerja (Form AK-1).' . PHP_EOL . PHP_EOL . 'Terima Kasih...';
 		$this->notifWA($phone, $pesan);
 		$this->session->set_flashdata('alert-type', 'success');

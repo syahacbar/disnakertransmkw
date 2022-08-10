@@ -43,7 +43,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="info">
                         <?php echo $this->session->flashdata('msg'); ?>
                         <?php $attributes = array("id" => "contactform");
-                        echo form_open("web/kontak", $attributes); ?>
+                        echo form_open("web/kirim_email", $attributes); ?>
                         <div class="col-12">
                             <h4 class="m-0 px-0">Kirim Pesan</h4>
                             <p class="px-0 py-2 text-secondary">Punya pertanyaan lebih lanjut? Hubungi kami melalui kontak yang tercantum di halaman ini, atau klik di sini untuk akses ke halaman pusat bantuan.</p>
@@ -93,6 +93,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <input name="submit" type="submit" class="btn btn-primary w-25" value="Send" />
                             </div>
                         </div>
+                        <input type="hidden" value="kontak" name="page">
                         <?php echo form_close(); ?>
                     </div>
                 </div>
