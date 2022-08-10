@@ -126,6 +126,35 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                     <!-- /.card-header -->
                     <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <?php echo form_open('/pencaker/pencari_kerja', ['method' => 'GET']); ?>
+                                <div class="row align-items-center">
+                                    <div class="col-sm-2">
+                                        <label class="m-0" for="filter_pencaker">Filter Pencaker</label>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group mb-0">
+                                            <select name="user" id="filter_pencaker" onchange="" class="form-control filter_pencaker">
+                                                <option value="">Pilih</option>
+                                                <option value="Aktif">Aktif</option>
+                                                <option value="Verifikasi">Verifikasi</option>
+                                                <option value="Validasi">Validasi</option>
+                                                <option value="Lapor">Lapor</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-1 text-right">
+                                        <a href="<?php echo url('/pencaker/pencari_kerja') ?>" class="btn btn-danger"><?php echo lang('reset') ?></a>
+                                    </div>
+
+                                </div>
+
+                                <?php echo form_close(); ?>
+
+                            </div>
+                        </div>
                         <table id="dataPencariKerja" class="table table-bordered table-hover table-striped">
                             <thead>
                                 <tr>
@@ -607,6 +636,20 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     </div>
 </div>
 <?php include viewPath('includes/footer'); ?>
-<script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#dataPencariKerja').DataTable();
+
+        function filterData() {
+            $('#dataPencariKerja').DataTable().search(
+                $('.filter_pencaker').val()
+            ).draw();
+        }
+        $('.filter_pencaker').on('change', function() {
+            filterData();
+        });
+    });
+
     $('#dataPencariKerja').DataTable();
 </script>
