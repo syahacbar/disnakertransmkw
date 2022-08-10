@@ -206,17 +206,17 @@
           <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
             <div class="skills-content">
               <h4>Berdasarkan Jenjang Pendidikan Terakhir</h4>
-              <?php foreach($c_pendidikan_terakhir AS $pt) : ?>
-              <div class="progress">
-                <span class="skill"><?php echo $pt->jenjang;?> <i class="val"><?php echo $pt->total;?> orang</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $pt->total;?>" aria-valuemin="0" aria-valuemax="<?php echo $max_umur;?>"></div>
+              <?php foreach ($c_pendidikan_terakhir as $pt) : ?>
+                <div class="progress">
+                  <span class="skill"><?php echo $pt->jenjang; ?> <i class="val"><?php echo $pt->total; ?> orang</i></span>
+                  <div class="progress-bar-wrap">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $pt->total; ?>" aria-valuemin="0" aria-valuemax="<?php echo $max_umur; ?>"></div>
+                  </div>
                 </div>
-              </div>
               <?php endforeach; ?>
             </div>
 
-          </div> 
+          </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
             <div class="skills-content">
               <h4>Berdasarkan rentang umur</h4>
@@ -254,42 +254,42 @@
                   < 15 th <i class="val"><?php echo $u1; ?> orang</i>
                 </span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u1; ?>" aria-valuemin="0" aria-valuemax="<?php echo $max_umur;?>"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u1; ?>" aria-valuemin="0" aria-valuemax="<?php echo $max_umur; ?>"></div>
                 </div>
               </div>
 
               <div class="progress">
                 <span class="skill">15 - 24 th <i class="val"><?php echo $u2; ?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u2; ?>" aria-valuemin="0" aria-valuemax="<?php echo $max_umur;?>"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u2; ?>" aria-valuemin="0" aria-valuemax="<?php echo $max_umur; ?>"></div>
                 </div>
               </div>
 
               <div class="progress">
                 <span class="skill">25 - 34 th<i class="val"><?php echo $u3; ?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u3; ?>" aria-valuemin="0" aria-valuemax="<?php echo $max_umur;?>"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u3; ?>" aria-valuemin="0" aria-valuemax="<?php echo $max_umur; ?>"></div>
                 </div>
               </div>
 
               <div class="progress">
                 <span class="skill">35 - 44 th<i class="val"><?php echo $u4; ?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u4; ?>" aria-valuemin="0" aria-valuemax="<?php echo $max_umur;?>"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u4; ?>" aria-valuemin="0" aria-valuemax="<?php echo $max_umur; ?>"></div>
                 </div>
               </div>
 
               <div class="progress">
                 <span class="skill">45 - 54 th <i class="val"><?php echo $u5; ?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u5; ?>" aria-valuemin="0" aria-valuemax="<?php echo $max_umur;?>"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u5; ?>" aria-valuemin="0" aria-valuemax="<?php echo $max_umur; ?>"></div>
                 </div>
               </div>
 
               <div class="progress">
                 <span class="skill">> 54 th<i class="val"><?php echo $u6; ?> orang</i></span>
                 <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u6; ?>" aria-valuemin="0" aria-valuemax="<?php echo $max_umur;?>"></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $u6; ?>" aria-valuemin="0" aria-valuemax="<?php echo $max_umur; ?>"></div>
                 </div>
               </div>
 
@@ -589,9 +589,10 @@
 
           </div>
 
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+          <div class="col-lg-7 mt-5 mt-lg-0">
+            <?php echo $this->session->flashdata('msg'); ?>
             <?php $attributes = array("id" => "contactform");
-            echo form_open("web/kontak", $attributes); ?>
+            echo form_open("web/kirim_email", $attributes); ?>
             <div class="col-12">
               <h4 class="m-0 px-0">Kirim Pesan</h4>
               <p class="px-0 py-2 text-secondary">Punya pertanyaan lebih lanjut? Hubungi kami melalui kontak yang tercantum di halaman ini, atau klik di sini untuk akses ke halaman pusat bantuan.</p>
@@ -641,9 +642,8 @@
                 <input name="submit" type="submit" class="btn btn-primary w-25" value="Send" />
               </div>
             </div>
+            <input type="hidden" value="welcome" name="page">
             <?php echo form_close(); ?>
-            <?php echo $this->session->flashdata('msg'); ?>
-
           </div>
 
         </div>
