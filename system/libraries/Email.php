@@ -78,21 +78,21 @@ class CI_Email
 	 *
 	 * @var	string
 	 */
-	public $smtp_host	= 'mail.disnakertransmkw.com';
+	public $smtp_host	= '';
 
 	/**
 	 * SMTP Username
 	 *
 	 * @var	string
 	 */
-	public $smtp_user	= 'noreply@disnakertransmkw.com';
+	public $smtp_user	= '';
 
 	/**
 	 * SMTP Password
 	 *
 	 * @var	string
 	 */
-	public $smtp_pass	= 'Dinakertrans@2022';
+	public $smtp_pass	= '';
 
 	/**
 	 * SMTP Server port
@@ -142,7 +142,7 @@ class CI_Email
 	 *
 	 * @var	string	'text' or 'html'
 	 */
-	public $mailtype	= 'html';
+	public $mailtype	= 'text';
 
 	/**
 	 * Character set (default: utf-8)
