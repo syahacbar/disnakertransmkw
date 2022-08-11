@@ -421,6 +421,7 @@ class Pencaker extends MY_Controller
             'tempatlahir' => $this->input->post('tempatlahir'),
             'tgllahir' => $this->input->post('tgllahir'),
             'statusnikah' => $this->input->post('statusnikah'),
+            'agama' => $this->input->post('agama'),
             'tinggibadan' => $this->input->post('tinggibadan'),
             'beratbadan' => $this->input->post('beratbadan'),
             'alamat' => $this->input->post('alamat'),
