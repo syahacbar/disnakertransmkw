@@ -300,7 +300,7 @@ class Web extends CI_Controller
         $this->ciqrcode->initialize($config);
  
         $qr_name=$nopendaftaran.'.png'; //buat name dari qr code sesuai dengan nim
-        $params['data'] = site_url()."card_validation/".sha1($nopendaftaran); //data yang akan di jadikan QR CODE
+        $params['data'] = site_url()."web/card_validation/".sha1($nopendaftaran); //data yang akan di jadikan QR CODE
         $params['level'] = 'H'; //H=High
         $params['size'] = 10;
         $params['savename'] = FCPATH.$config['imagedir'].$qr_name; //simpan image QR CODE ke folder assets/images/
