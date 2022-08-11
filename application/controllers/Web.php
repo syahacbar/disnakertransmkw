@@ -330,6 +330,7 @@ class Web extends CI_Controller
 
 		$this->pencaker_model->create([
 			'nik' => post('nik'),
+			'namalengkap' => post('namalengkap'),
 			'users_id' => $id,
 			'nopendaftaran' => $nopendaftaran,
 			'keterangan_status' => 'Registrasi',

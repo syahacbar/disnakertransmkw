@@ -178,7 +178,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <td>
                                             <img width="40" height="40" alt="" class="img-avtar" src="<?php echo pencakerFoto($p->id); ?>">
                                         </td>
-                                        <td><?php echo strtoupper($p->name); ?> </td>
+                                        <td><?php echo strtoupper($p->namalengkap); ?> </td>
                                         <td><?php echo $p->nopendaftaran; ?> </td>
                                         <td><?php echo $p->nik; ?> </td>
                                         <td><?php echo $p->phone; ?> </td>
