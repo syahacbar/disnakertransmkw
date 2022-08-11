@@ -329,11 +329,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                   <div class="vertical-timeline-item vertical-timeline-element">
                     <div>
                       <span class="vertical-timeline-element-icon bounce-in">
-                        <i class="badge badge-dot badge-dot-xl badge-<?php echo ($tl->description != null) ? 'primary' : 'secondary'; ?>"> </i>
+                        <i class="badge badge-dot badge-dot-xl badge-<?php echo ($tl->description != null) ? 'info' : 'secondary'; ?>"> </i>
                       </span>
                       <div class="vertical-timeline-element-content bounce-in">
-                        <h4 class="timeline-title <?php echo ($tl->description != null) ? 'text-primary' : ''; ?>"><?php echo $tl->subject; ?></h4>
-                        <p <?php echo ($tl->description != null) ? 'class="text-primary"' : ''; ?>><?php echo $tl->description; ?></p>
+                        <h4 class="timeline-title <?php echo ($tl->description != null) ? 'text-info' : ''; ?>"><?php echo $tl->subject; ?></h4>
+                        <p <?php echo ($tl->description != null) ? 'class="text-info"' : ''; ?>><?php echo $tl->description; ?></p>
                         <div class="tanggal">
                           <span class="vertical-timeline-element-date text-left">
                             <?php 
@@ -343,8 +343,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             } 
                             ?>
                               </span><br>
-                          <span class="vertical-timeline-element-time text-left text-primary">
-                          <?php echo substr($tl->tglwaktu, 10, 14); ?>                            
+                          <span class="vertical-timeline-element-time text-left text-info">
+                          <?php echo substr($tl->tglwaktu, 11, 5); ?>                            
                           </span>
                         </div>
 
