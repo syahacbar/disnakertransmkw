@@ -61,4 +61,3 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <!-- ======= Footer ======= -->
 <?php include viewPath('web/template/footer'); ?>
 <!-- End Footer -->
->

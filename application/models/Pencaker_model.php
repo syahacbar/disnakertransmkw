@@ -87,7 +87,7 @@ class Pencaker_model extends MY_Model
 
 	function get_all()
 	{
-		$query = $this->db->get('pencaker');
+		$query = $this->db->query("SELECT * FROM pencaker p JOIN users u ON u.id=p.users_id");
 		return $query->result();
 	}
 

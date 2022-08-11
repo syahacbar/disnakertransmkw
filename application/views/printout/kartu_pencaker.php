@@ -101,7 +101,9 @@
           </table>          
         </div>
         <div class="row">
-          <div class="col-6"></div>
+          <div class="col-6">
+            <img width="75" height="75" src="<?php echo base_url('uploads/pencaker/qrcode/').$pencaker->qr_code;?>">
+          </div>
           <div class="col-6 text-center">
             Pengantar Kerja/Petugas Antar Kerja<br><br><br><br>
             <strong><u>Ema Alberthina M. Rumsayor, S.STP</u></strong><br>

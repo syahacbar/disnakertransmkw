@@ -8,7 +8,6 @@ class Pencaker extends MY_Controller
         parent::__construct();
     }
 
-
     public function index()
     {
         ifPermissions('profil_pencaker');
@@ -32,7 +31,7 @@ class Pencaker extends MY_Controller
     }
 
     public function pencari_kerja()
-    {
+    { 
         $users_id = logged('id');
         $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
 

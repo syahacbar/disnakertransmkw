@@ -286,8 +286,35 @@ class Web extends CI_Controller
 		$this->load->view('web/tenaker', $this->page_data);
 	}
 
+	public function generate_qr_code($nopendaftaran)
+	{
+		$this->load->library('ciqrcode'); //pemanggilan library QR CODE
+		$config['cacheable']    = true; //boolean, the default is true
+        $config['cachedir']     = './assets/'; //string, the default is application/cache/
+        $config['errorlog']     = './assets/'; //string, the default is application/logs/
+        $config['imagedir']     = './uploads/pencaker/qrcode/'; //direktori penyimpanan qr code
+        $config['quality']      = true; //boolean, the default is true
+        $config['size']         = '1024'; //interger, the default is 1024
+        $config['black']        = array(224,255,255); // array, default is array(255,255,255)
+        $config['white']        = array(70,130,180); // array, default is array(0,0,0)
+        $this->ciqrcode->initialize($config);
+ 
+        $qr_name=$nopendaftaran.'.png'; //buat name dari qr code sesuai dengan nim
+        $params['data'] = site_url()."card_validation/".sha1($nopendaftaran); //data yang akan di jadikan QR CODE
+        $params['level'] = 'H'; //H=High
+        $params['size'] = 10;
+        $params['savename'] = FCPATH.$config['imagedir'].$qr_name; //simpan image QR CODE ke folder assets/images/
+        $this->ciqrcode->generate($params); // fungsi untuk generate QR CODE
+
+
+        return $qr_name;
+	}
+
 	public function account_registration()
 	{
+		$nopendaftaran = $this->pencaker_model->nomorpendaftaran();
+		$qrcode = $this->generate_qr_code($nopendaftaran);
+
 		$name = $this->input->post('namalengkap');
 		$phone = $this->input->post('nohp');
 		$id = $this->users_model->create([
@@ -300,10 +327,13 @@ class Web extends CI_Controller
 			'password' => hash("sha256", post('password')),
 		]);
 
+
 		$this->pencaker_model->create([
 			'nik' => post('nik'),
 			'users_id' => $id,
-			'nopendaftaran' => $this->pencaker_model->nomorpendaftaran(),
+			'nopendaftaran' => $nopendaftaran,
+			'keterangan_status' => 'Registrasi',
+			'qr_code' => $qrcode
 		]);
 
 		if (!empty($_FILES['image']['name'])) {
@@ -325,13 +355,34 @@ class Web extends CI_Controller
 			copy(FCPATH . 'uploads/users/default.png', 'uploads/users/' . $id . '.png');
 		}
 
+
 		$this->activity_model->add('New User $' . $id . ' Created by User:' . logged('name'), logged('id'));
 		isitimeline('1', $id, 'Anda berhasil melakukan registrasi akun di portal Disnakertrans Kab. Manokwari');
-		$pesan = 'Hai...' . $name . ', anda berhasil membuat akun di website Disnakertrans Manokwari.' . PHP_EOL . 'Silahkan kembali ke halaman website disnakertransmkw.com untuk melakukan login dan melengkapi formulir pembuatan Kartu Pencari Kerja (Form AK-1).' . PHP_EOL . PHP_EOL . 'Terima Kasih...';
+		$pesan = 'Hai...' . $name . ','. PHP_EOL .'Anda berhasil membuat akun di website Disnakertrans Manokwari.' . PHP_EOL . 'Silahkan kembali ke halaman website disnakertransmkw.com untuk melakukan login dan melengkapi formulir pembuatan Kartu Pencari Kerja (Form AK-1).' . PHP_EOL . PHP_EOL . 'Terima Kasih...'. PHP_EOL . PHP_EOL .'<noreply>';
 		$this->notifWA($phone, $pesan);
 		$this->session->set_flashdata('alert-type', 'success');
 		$this->session->set_flashdata('alert', 'New User Created Successfully');
 
 		redirect('login');
+	}
+
+	public function card_validation($code)
+	{
+		$this->page_data['v_msg'] = (object)array();
+		$get_pencaker = $this->db->query("SELECT * FROM pencaker p WHERE SHA1(p.nopendaftaran) = '$code'");
+		if($get_pencaker->num_rows() > 0)
+		{
+			$this->page_data['v_msg']->valid = "Kartu Anda Valid dan Terdaftar di Sistem Dinas Tenaga Kerja dan Transmigrasi Kabupaten Manokwari";
+			$this->page_data['v_msg']->code = TRUE;
+			$this->page_data['v_msg']->pencaker = $get_pencaker->row();
+		} else {
+			$this->page_data['v_msg']->valid = "Kartu Anda Tidak Valid !";
+			$this->page_data['v_msg']->code = FALSE;
+		}
+
+		$this->page_data['page']->menu = 'dashboard';
+		$this->page_data['page']->title = 'Pelatihan';
+		$this->load->view('web/validasikartupencaker', $this->page_data);
+
 	}
 }
