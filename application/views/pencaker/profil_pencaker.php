@@ -39,7 +39,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!-- Content Header (Page header) -->
@@ -198,6 +198,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 </select>
                             </div>
 
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 agama">
+                                <label for="agama">Agama</label>
+                                <select name="agama" id="agama" class="w-100 form-control">
+                                    <option value="">- Pilih -</option>
+                                    <option value="Islam">Islam</option>
+                                    <option value="Katolik">Katolik</option>
+                                    <option value="Kristen Protestan">Kristen Protestan</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Budha">Budha</option>
+                                    <option value="Konghucu">Konghucu</option>
+                                </select>
+                            </div>
+
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                                 <div class="form-group">
                                     <label for="tinggibadan">Tinggi Badan (cm)</label>
@@ -268,9 +281,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                             <label for="jenjang">Jenjang</label>
                                             <select name="jenjang" id="jenjang" class="w-100">
                                                 <option value="">-- Pilih Salah Satu --</option>
-                                                <?php foreach($jenjang_pendidikan AS $jp) : ?>
-                                                    <option value="<?php echo $jp->id;?>"><?php echo $jp->jenjang;?></option>
-                                                <?php endforeach;?>
+                                                <?php foreach ($jenjang_pendidikan as $jp) : ?>
+                                                    <option value="<?php echo $jp->id; ?>"><?php echo $jp->jenjang; ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 ">
@@ -352,27 +365,29 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <div class="alert alert-success" role="alert">
                                     Silakan centang salah satu atau beberapa bahasa yang Anda kuasai di bawah ini!
                                 </div>
-                                <?php 
-                                    $arr_bhs = explode(',',$ket_bahasa_pencaker->keterampilan_bahasa);
-                                    // print_r($arr_bhs);
-                                    // foreach($arr_bhs AS $bhs) :
-                                    //     echo $bhs;
-                                    // endforeach;
+                                <?php
+                                $arr_bhs = explode(',', $ket_bahasa_pencaker->keterampilan_bahasa);
+                                // print_r($arr_bhs);
+                                // foreach($arr_bhs AS $bhs) :
+                                //     echo $bhs;
+                                // endforeach;
                                 ?>
 
                                 <!-- form bahasa pencaker-->
                                 <form action="#" id="formbahasapencaker">
                                     <div class="row mb-5">
-                                        <?php foreach($ket_bahasa AS $kb) : ?>
-                                        <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
-                                            <div class="form-check">
-                                                <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="<?php echo "b_".$kb->bahasa;?>" value="<?php echo $kb->bahasa;?>" <?php if (in_array($kb->bahasa, $arr_bhs)) { echo 'checked'; };?>>
-                                                <label class="form-check-label" for="<?php echo $kb->bahasa;?>">
-                                                    <?php echo $kb->bahasa;?>
-                                                </label>
+                                        <?php foreach ($ket_bahasa as $kb) : ?>
+                                            <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="<?php echo "b_" . $kb->bahasa; ?>" value="<?php echo $kb->bahasa; ?>" <?php if (in_array($kb->bahasa, $arr_bhs)) {
+                                                                                                                                                                                                                    echo 'checked';
+                                                                                                                                                                                                                }; ?>>
+                                                    <label class="form-check-label" for="<?php echo $kb->bahasa; ?>">
+                                                        <?php echo $kb->bahasa; ?>
+                                                    </label>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <?php endforeach;?>
+                                        <?php endforeach; ?>
 
                                         <div id="textboxbahasalainnya" class="col-12 col-sm-12 col-md-12 col-lg-12 mt-4">
                                             <div class="form-floating">
@@ -380,162 +395,162 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                                 <textarea class="form-control" placeholder="Deskripsikan bahasa yang Anda kuasai di sini" name="txt_bahasa_lainnya" id="txt_bahasa_lainnya" style="height: 100px"></textarea>
                                             </div>
                                         </div>
-                                        </form>
-                                    </div>
-                                <!-- end of formbahasa pencaker -->
+                                </form>
                             </div>
+                            <!-- end of formbahasa pencaker -->
                         </div>
                     </div>
+                </div>
 
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    <button type="button" id="btnback3" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
-                    <button type="button" id="btnSave4" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
-                </div>
             </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="button" id="btnback3" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
+                <button type="button" id="btnSave4" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
+            </div>
+        </div>
 
-            <!-- pekerjaanpencaker card -->
-            <div class="card pekerjaanpencaker" style="display: none;">
-                <div class="card-header with-border">
-                    <h3 class="card-title">Pengalaman Kerja</h3>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-card">
-                                <div class="alert alert-success" role="alert">
-                                    Silakan isi data terkait pengalaman kerja Anda pada bidang-bidang di bawah ini!
-                                </div>
-                                <!-- form pekerjaan pencaker     -->
-                                <form action="#" id="formpekerjaanpencaker">
-                                    <div class="row">
-                                        <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
-                                            <div class="form-group">
-                                                <label for="tahunmasukkerja">Tahun Masuk</label>
-                                                <input type="text" class="form-control year" name="tahunmasukkerja" id="tahunmasukkerja" placeholder="" required placeholder="Tahun masuk kerja" autofocus />
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
-                                            <div class="form-group">
-                                                <label for="tahunkeluarkerja">Tahun Keluar</label>
-                                                <input type="text" class="form-control year" name="tahunkeluarkerja" id="tahunkeluarkerja" placeholder="" required placeholder="Tahun keluar kerja" autofocus />
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-12 col-md-3 col-lg-4">
-                                            <div class="form-group">
-                                                <label for="instansi">Nama Perusahan/Instansi</label>
-                                                <input type="text" class="form-control" name="instansi" id="instansi" placeholder="" required placeholder="Nama Perusahan/Instansi" autofocus />
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-12 col-md-3 col-lg-4">
-                                            <div class="form-group">
-                                                <label for="jabatan">Jabatan</label>
-                                                <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="" required placeholder="Tahun masuk sekolah" autofocus />
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
-                                            <div class="ml-auto">
-                                                <button type="button" id="btnSavePekerjaan" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> <?php echo lang('save') ?></button>
-                                                <button type="button" id="btnUpdatePekerjaan" class="btn btn-primary btn-sm hide"><i class="fas fa-edit"></i> <?php echo lang('update') ?></button>
-                                                <!-- hiden form untuk id pendidikan saat proses update -->
-                                                <input type="hidden" name="idpekerjaan">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <!-- end of formpkerjaan pencaker -->
-
-                                <hr>
-                                <div class="row mt-5">
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 table-responsive">
-                                        <table style="width:100%" id="tabelpekerjaanpencaker" class="table table-bordered table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th width="10px">No</th>
-                                                    <th>Tahun Masuk</th>
-                                                    <th>Tahun Keluar</th>
-                                                    <th>Nama Perusahan/Instansi</th>
-                                                    <th>Jabatan</th>
-                                                    <th>Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+        <!-- pekerjaanpencaker card -->
+        <div class="card pekerjaanpencaker" style="display: none;">
+            <div class="card-header with-border">
+                <h3 class="card-title">Pengalaman Kerja</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-card">
+                            <div class="alert alert-success" role="alert">
+                                Silakan isi data terkait pengalaman kerja Anda pada bidang-bidang di bawah ini!
                             </div>
-
-                        </div>
-                    </div>
-
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    <button type="button" id="btnback4" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
-                    <button type="button" id="btnSave5" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
-                </div>
-            </div>
-
-            <!-- jabatan card -->
-            <div class="card jabatanpencaker" style="display: none;">
-                <div class="card-header with-border">
-                    <h3 class="card-title">Jabatan Yang Diminati</h3>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-card">
-                                <div class="alert alert-success" role="alert">
-                                    Silakan isi data terkait Jabatan yang diminati
-                                </div>
-                                <!-- form jabatan pencaker     -->
-                                <form action="#" id="formjabatanpencaker">
-                                    <div class="row">
-                                        <div class="col-12 col-sm-12 col-md-3 col-lg-9 ">
-                                            <div class="form-group">
-                                                <label for="minat_jabatan">Jabatan</label>
-                                                <input type="text" class="form-control" name="minat_jabatan" id="minat_jabatan" placeholder="" required />
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
-                                            <div class="ml-auto">
-                                                <button type="button" id="btnSaveJabatan" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> <?php echo lang('save') ?></button>
-                                                <button type="button" id="btnUpdateJabatan" class="btn btn-primary btn-sm hide"><i class="fas fa-edit"></i> <?php echo lang('update') ?></button>
-                                                <!-- hiden form untuk id pendidikan saat proses update -->
-                                                <input type="hidden" name="idjabatan">
-                                            </div>
+                            <!-- form pekerjaan pencaker     -->
+                            <form action="#" id="formpekerjaanpencaker">
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
+                                        <div class="form-group">
+                                            <label for="tahunmasukkerja">Tahun Masuk</label>
+                                            <input type="text" class="form-control year" name="tahunmasukkerja" id="tahunmasukkerja" placeholder="" required placeholder="Tahun masuk kerja" autofocus />
                                         </div>
                                     </div>
-                                </form>
-                                <!-- end of formpkerjaan pencaker -->
-
-                                <div class="row mt-5">
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 table-responsive">
-                                        <table style="width:100%" id="tabeljabatanpencaker" class="table table-bordered table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th width="10px">No</th>
-                                                    <th>Jabatan</th>
-                                                    <th>Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-                                            </tbody>
-                                        </table>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-2 ">
+                                        <div class="form-group">
+                                            <label for="tahunkeluarkerja">Tahun Keluar</label>
+                                            <input type="text" class="form-control year" name="tahunkeluarkerja" id="tahunkeluarkerja" placeholder="" required placeholder="Tahun keluar kerja" autofocus />
+                                        </div>
                                     </div>
-                                </div>
-
-                                <hr>
-                                <br>
-                                <div class="row mt-3">
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <label for="instansi">Nama Perusahan/Instansi</label>
+                                            <input type="text" class="form-control" name="instansi" id="instansi" placeholder="" required placeholder="Nama Perusahan/Instansi" autofocus />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-4">
+                                        <div class="form-group">
+                                            <label for="jabatan">Jabatan</label>
+                                            <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="" required placeholder="Tahun masuk sekolah" autofocus />
+                                        </div>
+                                    </div>
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
-                                        <label>Lokasi jabatan yang diinginkan</label>
+                                        <div class="ml-auto">
+                                            <button type="button" id="btnSavePekerjaan" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> <?php echo lang('save') ?></button>
+                                            <button type="button" id="btnUpdatePekerjaan" class="btn btn-primary btn-sm hide"><i class="fas fa-edit"></i> <?php echo lang('update') ?></button>
+                                            <!-- hiden form untuk id pendidikan saat proses update -->
+                                            <input type="hidden" name="idpekerjaan">
+                                        </div>
                                     </div>
-                                    <form action="#" id="formlokasijabatan">
+                                </div>
+                            </form>
+                            <!-- end of formpkerjaan pencaker -->
+
+                            <hr>
+                            <div class="row mt-5">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 table-responsive">
+                                    <table style="width:100%" id="tabelpekerjaanpencaker" class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th width="10px">No</th>
+                                                <th>Tahun Masuk</th>
+                                                <th>Tahun Keluar</th>
+                                                <th>Nama Perusahan/Instansi</th>
+                                                <th>Jabatan</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="button" id="btnback4" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
+                <button type="button" id="btnSave5" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
+            </div>
+        </div>
+
+        <!-- jabatan card -->
+        <div class="card jabatanpencaker" style="display: none;">
+            <div class="card-header with-border">
+                <h3 class="card-title">Jabatan Yang Diminati</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-card">
+                            <div class="alert alert-success" role="alert">
+                                Silakan isi data terkait Jabatan yang diminati
+                            </div>
+                            <!-- form jabatan pencaker     -->
+                            <form action="#" id="formjabatanpencaker">
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-9 ">
+                                        <div class="form-group">
+                                            <label for="minat_jabatan">Jabatan</label>
+                                            <input type="text" class="form-control" name="minat_jabatan" id="minat_jabatan" placeholder="" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
+                                        <div class="ml-auto">
+                                            <button type="button" id="btnSaveJabatan" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> <?php echo lang('save') ?></button>
+                                            <button type="button" id="btnUpdateJabatan" class="btn btn-primary btn-sm hide"><i class="fas fa-edit"></i> <?php echo lang('update') ?></button>
+                                            <!-- hiden form untuk id pendidikan saat proses update -->
+                                            <input type="hidden" name="idjabatan">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- end of formpkerjaan pencaker -->
+
+                            <div class="row mt-5">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 table-responsive">
+                                    <table style="width:100%" id="tabeljabatanpencaker" class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th width="10px">No</th>
+                                                <th>Jabatan</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <hr>
+                            <br>
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
+                                    <label>Lokasi jabatan yang diinginkan</label>
+                                </div>
+                                <form action="#" id="formlokasijabatan">
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="lokasi_jabatan" id="lokasijabatan1" value="DN">
@@ -552,27 +567,27 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                             </label>
                                         </div>
                                     </div>
-                                    </form>
-                                </div>
+                                </form>
                             </div>
-
                         </div>
+
                     </div>
+                </div>
 
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    <button type="button" id="btnback5" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
-                    <button type="button" id="btnSave6" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
-                </div>
             </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="button" id="btnback5" class="btn btn-flat btn-secondary"><?php echo lang('sebelumnya') ?></button>
+                <button type="button" id="btnSave6" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
+            </div>
+        </div>
 
-            <!-- perusahaan card -->
-            <div class="card perusahaanpencaker" style="display: none;">
-                <div class="card-header with-border">
-                    <h3 class="card-title">Perusahaan Yang Dituju</h3>
-                </div>
-                <form action="#" id="formtujuanperusahaan">
+        <!-- perusahaan card -->
+        <div class="card perusahaanpencaker" style="display: none;">
+            <div class="card-header with-border">
+                <h3 class="card-title">Perusahaan Yang Dituju</h3>
+            </div>
+            <form action="#" id="formtujuanperusahaan">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12">
@@ -598,14 +613,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <button type="button" id="btnSave7" class="btn btn-flat btn-primary"><?php echo lang('selanjutnya') ?></button>
                 </div>
                 <!-- /.card-footer-->
+        </div>
+        </form>
+        <!-- datatamabahan card -->
+        <div class="card datatambahanpencaker" style="display: none;">
+            <div class="card-header with-border">
+                <h3 class="card-title">Keterangan Tambahan</h3>
             </div>
-            </form>
-            <!-- datatamabahan card -->
-            <div class="card datatambahanpencaker" style="display: none;">
-                <div class="card-header with-border">
-                    <h3 class="card-title">Keterangan Tambahan</h3>
-                </div>
-                <form action="#" id="formcatatanpengantar">
+            <form action="#" id="formcatatanpengantar">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12">
@@ -636,9 +651,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 </div>
                 <!-- /.card-footer-->
                 <?php echo form_close(); ?>
-            </div>
-
         </div>
+
+    </div>
     </div>
 </section>
 <!-- /.content -->
@@ -649,7 +664,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
     $(".year").datepicker({
         format: "yyyy",
-        viewMode: "years", 
+        viewMode: "years",
         minViewMode: "years"
     });
 
@@ -898,7 +913,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 type: "GET",
                 dataType: "JSON",
                 success: function(data) {
-            
+
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert('Error Get Data Keterampilan Bahasa');
@@ -1296,17 +1311,17 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 $('[name="tempatlahir"]').val(data.tempatlahir);
                 $('[name="tgllahir"]').val(data.tgllahir);
                 $('[name="statusnikah"]').val(data.statusnikah).trigger("change");
+                $('[name="agama"]').val(data.agama).trigger("change");
                 $('[name="tinggibadan"]').val(data.tinggibadan);
                 $('[name="beratbadan"]').val(data.beratbadan);
                 $('[name="alamat"]').val(data.alamat);
                 $('[name="kodepos"]').val(data.kodepos);
 
                 //keterampilan bahasa 
-                if(data.bahasa_lainnya != '')
-                {
-                   $('[name="txt_bahasa_lainnya"]').val(data.bahasa_lainnya);
+                if (data.bahasa_lainnya != '') {
+                    $('[name="txt_bahasa_lainnya"]').val(data.bahasa_lainnya);
                 }
-                
+
                 //selected lokasi jabatan
                 if (data.lokasi_jabatan == 'DN')
                     $("#lokasijabatan1").prop("checked", true);
@@ -1320,7 +1335,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 $('[name="catatan_pengantar"]').val(data.catatan_pengantar);
 
 
-            }, 
+            },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert('Error');
             }
@@ -1421,8 +1436,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 data: $('#formidentitaspencaker').serialize(),
                 dataType: "JSON",
                 success: function(data) {
-                    if (data.status) 
-                    {
+                    if (data.status) {
                         showpendidikanpencaker();
                     }
 
@@ -1444,8 +1458,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 data: $('#formbahasapencaker').serialize(),
                 dataType: "JSON",
                 success: function(data) {
-                    if (data.status) 
-                    {
+                    if (data.status) {
                         showpekerjaanpencaker();
                     }
 
@@ -1454,22 +1467,21 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     alert('Error update data');
                 }
             });
-            
+
         });
 
         $('#btnSave5').click(function() {
             showjabatanpencaker();
         });
 
-        $('#btnSave6').click(function() {            
+        $('#btnSave6').click(function() {
             $.ajax({
                 url: "<?php echo site_url('pencaker/update6') ?>",
                 type: "POST",
                 data: $('#formlokasijabatan').serialize(),
                 dataType: "JSON",
                 success: function(data) {
-                    if (data.status) 
-                    {
+                    if (data.status) {
                         showperusahaanpencaker();
                     }
 
@@ -1487,8 +1499,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 data: $('#formtujuanperusahaan').serialize(),
                 dataType: "JSON",
                 success: function(data) {
-                    if (data.status) 
-                    {
+                    if (data.status) {
                         showdatatambahanpencaker();
                     }
 
@@ -1506,9 +1517,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 data: $('#formcatatanpengantar').serialize(),
                 dataType: "JSON",
                 success: function(data) {
-                    if (data.status) 
-                    {
-                         window.location.href = 'dashboard/';
+                    if (data.status) {
+                        window.location.href = 'dashboard/';
                     }
 
                 },
