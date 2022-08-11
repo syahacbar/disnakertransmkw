@@ -50,10 +50,38 @@ class Pencaker_model extends MY_Model
 		return $query->row();
 	}
 
-	function delete_pencaker($id)
+	function delete_pencaker($pencaker_id)
 	{
-		$this->db->where('id', $id);
+		$this->db->where('id', $pencaker_id);
 		$this->db->delete('pencaker');
+		return true;
+	}
+
+	function delete_minat_jabatan($pencaker_id)
+	{
+		$this->db->where('pencaker_id', $pencaker_id);
+		$this->db->delete('minat_jabatan');
+		return true;
+	}
+
+	function delete_pendidikan_pencaker($pencaker_id)
+	{
+		$this->db->where('pencaker_id', $pencaker_id);
+		$this->db->delete('pendidikan_pencaker');
+		return true;
+	}
+
+	function delete_pengalaman_kerja($pencaker_id)
+	{
+		$this->db->where('pencaker_id', $pencaker_id);
+		$this->db->delete('pengalaman_kerja');
+		return true;
+	}
+
+	function delete_timeline_user($users_id)
+	{
+		$this->db->where('users_id', $users_id);
+		$this->db->delete('timeline_user');
 		return true;
 	}
 
@@ -162,6 +190,9 @@ class Pencaker_model extends MY_Model
 		$this->db->delete('minat_jabatan');
 		return true;
 	}
+
+
+
 
 	function add_berita($data)
 	{

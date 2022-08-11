@@ -184,12 +184,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                             <a target="_blank" href="<?php echo site_url('pencaker/review_pencaker/') . $p->users_id; ?>" class="btn btn-sm btn-warning" title="Review Data Pencaker"><i class="fas fa-search"></i></a>&nbsp;
                                             <a class="btn btn-sm btn-secondary" title="Verifikasi Pencaker" data-toggle="modal" data-target="#modalVerifikasi"><i class="fas fa-check"></i></a>&nbsp;
                                             <a target="_blank" href="<?php echo site_url('pencaker/kartu_pencaker/') . $p->users_id; ?>" class="btn btn-sm btn-info" title="Cetak Kartu Pencaker"><i class="fas fa-id-card"></i></a>&nbsp;
-                                            <!-- <a href="" data-id="" class="btn btn-sm btn-primary editPencariKerja" title="Edit Pencaker"><i class="fas fa-edit"></i></a>&nbsp; -->
-                                            <!-- <a class="btn btn-sm btn-danger" id="hapusPencariKerja" href="" data-idberita="" title="Hapus Pencaker"><i class="fas fa-trash"></i></a> -->
-                                            <!-- <a target="_blank" href="<?php // echo site_url('pencaker/kartu_pencaker/') . $p->users_id; 
-                                                                            ?>" class="btn btn-sm btn-info" title="Cetak Kartu Pencaker"><i class="fas fa-id-card"></i></a>&nbsp; -->
-                                            <!-- <a href="" data-id="" class="btn btn-sm btn-primary editPencariKerja" data-toggle="modal" data-target="#modalEditPencariKerja"><i class="fas fa-edit"></i></a>&nbsp; -->
-                                            <a class="btn btn-sm btn-danger" id="hapusPencariKerja" onclick="return confirm('Do you really want to delete this user ?')" href="<?php echo site_url('pencaker/hapus_pencari_kerja/') . $p->id; ?>" title="Hapus Pencaker"><i class="fas fa-trash"></i></a>
+                                            
+                                            <a class="btn btn-sm btn-danger btnHapusPencaker" id="hapusPencariKerja" href="javascript:void(0)" data-id="<?php echo $p->users_id; ?>" title="Hapus Pencaker"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
@@ -261,6 +257,44 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         }
         $('.filter_pencaker').on('change', function() {
             filterData();
+        });
+
+        $(document).on('click', '.btnHapusPencaker', function() {
+            var usersid = $(this).data("id");
+            Swal.fire({
+                text: 'Apakah Anda yakin menghapus Pencaker ini?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "<?php echo site_url(); ?>pencaker/hapus_pencari_kerja/",
+                        type: "POST",
+                        data: {
+                            usersid: usersid
+                        },
+                        success: function(data) {
+                            Swal.fire({
+                                text: 'Berhasil menghapus Pencaker.',
+                                icon: 'success',
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Ya'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                }
+                            });
+
+                        }
+                    })
+                }
+
+            })
+
         });
     });
 

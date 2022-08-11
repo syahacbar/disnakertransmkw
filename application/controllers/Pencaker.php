@@ -45,21 +45,31 @@ class Pencaker extends MY_Controller
         $this->load->view('pencaker/pencari_kerja', $this->page_data);
     }
 
-    public function hapus_pencari_kerja($id)
+    public function hapus_pencari_kerja()
     {
-        $users_id = logged('id');
-        $del  = $this->pencaker_model->delete_pencaker($id);
-        if ($del) {
+        $users_id = $this->input->post('usersid');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+
+        //delete semua yang berkaitan dengan pencaker
+        $delminatjabatan = $this->pencaker_model->delete_minat_jabatan($pencaker_id->id);
+        $delpendidikanpencaker = $this->pencaker_model->delete_pendidikan_pencaker($pencaker_id->id);
+        $delpengalamankerja = $this->pencaker_model->delete_pengalaman_kerja($pencaker_id->id);
+        $deltimlineuser = $this->pencaker_model->delete_timeline_user($pencaker_id->id);
+        
+        $delpencaker  = $this->pencaker_model->delete_pencaker($pencaker_id->id);
+        $deluser = $this->users_model->delete($users_id);
+
+        if ($deluser) {
             $res['hasil'] = 'sukses';
             $res['status'] = TRUE;
         } else {
             $res['hasil'] = 'gagal';
             $res['status'] = FALSE;
         }
-        $this->activity_model->add("User #$users_id menghapus data Pendidikan Pencaker");
+        $this->activity_model->add("User #$users_id menghapus data Pencaker");
         echo json_encode($res);
 
-        redirect('pencaker/pencari_kerja');
+        //redirect('pencaker/pencari_kerja');
     }
 
     function kartu_pencaker($iduser)
