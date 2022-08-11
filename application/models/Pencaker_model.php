@@ -143,15 +143,6 @@ class Pencaker_model extends MY_Model
 		return $query->row();
 	}
 
-	// function get_count_pendidikan()
-	// {
-	// 	$this->db->select('*');
-	// 	$this->db->from('pendidikan_pencaker');
-	// 	$this->db->where('jenjang');
-	// 	$query = $this->db->get();
-	// 	return $query->row();
-	// }
-
 	function add_jabatan($data)
 	{
 		$this->db->insert('minat_jabatan', $data);
@@ -171,9 +162,6 @@ class Pencaker_model extends MY_Model
 		$this->db->delete('minat_jabatan');
 		return true;
 	}
-
-
-
 
 	function add_berita($data)
 	{
