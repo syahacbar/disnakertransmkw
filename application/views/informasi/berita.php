@@ -157,9 +157,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                             <label class="toggle"><input class="cbStatusberita" type="checkbox" onchange="updateStatusberita(<?php echo $b->id; ?>,$(this).is(':checked'))" <?php echo ($b->status) ? 'checked' : ''; ?>><span class="slider"></span><span class="labels" data-on="Published" data-off="Draf"></span></label>
                                         </td>
                                         <td>
-                                            <a target="_blank" href="<?php echo site_url() . 'berita/' . $b->slug; ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
-                                            <a href="javascript:void(0)" data-id="<?php echo $b->id; ?>" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
-                                            <a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" data-id="<?php echo $b->id; ?>"><i class="fas fa-trash"></i></a>
+                                            <a target="_blank" href="<?php echo site_url() . 'berita/' . $b->slug; ?>" title="Detail Berita" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>&nbsp;
+                                            <a href="javascript:void(0)" data-id="<?php echo $b->id; ?>" title="Ubah Berita" class="btn btn-sm btn-primary btnEditBerita"><i class="fas fa-edit"></i></a>&nbsp;
+                                            <a class="btn btn-sm btn-danger btnHapusBerita" href="javascript:void(0)" title="Hapus Berita" data-id="<?php echo $b->id; ?>"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
