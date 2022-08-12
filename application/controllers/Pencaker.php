@@ -31,7 +31,7 @@ class Pencaker extends MY_Controller
     }
 
     public function pencari_kerja()
-    { 
+    {
         $users_id = logged('id');
         $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
 
@@ -54,7 +54,7 @@ class Pencaker extends MY_Controller
         $delpendidikanpencaker = $this->pencaker_model->delete_pendidikan_pencaker($pencaker_id->id);
         $delpengalamankerja = $this->pencaker_model->delete_pengalaman_kerja($pencaker_id->id);
         $deltimlineuser = $this->pencaker_model->delete_timeline_user($pencaker_id->id);
-        
+
         $delpencaker  = $this->pencaker_model->delete_pencaker($pencaker_id->id);
         $deluser = $this->users_model->delete($users_id);
 
@@ -634,19 +634,38 @@ class Pencaker extends MY_Controller
         $users_id = logged('id');
         $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
         $keterangan_status = $this->input->post('keterangan_status');
-        $updateketstatus = $this->pencaker_model->update_keterangan_status($pencaker_id->id,$keterangan_status);
-        if($updateketstatus)
-        {
+        $updateketstatus = $this->pencaker_model->update_keterangan_status($pencaker_id->id, $keterangan_status);
+        if ($updateketstatus) {
             $get_timeline = $this->pencaker_model->get_timeline_by_id('4', $users_id);
             if (empty($get_timeline->id)) {
                 isitimeline('4', $users_id, 'Tahap ini anda menunggu proses verifikasi data oleh tim Disnakertrans Kab. Manokwari');
             }
-            
-           $res['status'] = TRUE;
+
+            $res['status'] = TRUE;
         } else {
-           $res['status'] = FALSE;
+            $res['status'] = FALSE;
         }
 
         echo json_encode($res);
+    }
+
+
+    function add_verifikasi_data($aksi)
+    {
+        $users_id = $this->input->post('usersid');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+
+        if ($aksi == 2) {
+            $data = array(
+                'tglwaktu'  => date("Y-m-d H:i:s"),
+                'pesan'  => $this->input->post('pesan'),
+                'status_pesan'  => $this->input->post('statusverifikasi'),
+                'users_id'  => $users_id,
+            );
+
+            $this->pencaker_model->add_verifikasi($data);
+        } else if ($aksi == 1) {
+            $this->pencaker_model->update_keterangan_status($pencaker_id->id, 'Validasi');
+        }
     }
 }

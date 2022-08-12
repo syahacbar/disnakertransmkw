@@ -50,11 +50,11 @@ class Pencaker_model extends MY_Model
 		return $query->row();
 	}
 
-	function update_keterangan_status($idpencaker,$status)
+	function update_keterangan_status($idpencaker, $status)
 	{
 		$this->db->where('id', $idpencaker);
-        $this->db->update('pencaker', array('keterangan_status' => $status));
-        return TRUE;
+		$this->db->update('pencaker', array('keterangan_status' => $status));
+		return TRUE;
 	}
 
 	function delete_pencaker($pencaker_id)
@@ -267,7 +267,7 @@ class Pencaker_model extends MY_Model
 		return $q->result();
 	}
 
-	function get_timeline_by_id($timeline_id,$users_id)
+	function get_timeline_by_id($timeline_id, $users_id)
 	{
 		$q = $this->db->query("SELECT * FROM timeline_user tu WHERE tu.timeline_id=$timeline_id AND tu.users_id=$users_id");
 		return $q->row();
@@ -285,9 +285,12 @@ class Pencaker_model extends MY_Model
 		return $q->result();
 	}
 
-	function add_verifikasi()
+	function add_verifikasi($data)
 	{
 		//PR nya supri sekalian belajar lah
+		$this->db->insert('verifikasi', $data);
+		// return TRUE;
+		return $this->db->insert_id();
 	}
 }
 /* End of file Pencaker_model.php */
