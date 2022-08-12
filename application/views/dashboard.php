@@ -31,7 +31,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <!-- small box -->
         <div class="small-box bg-info">
           <div class="inner">
-            <h3><?php echo $aktif;?></h3>
+            <h3><?php echo $aktif; ?></h3>
 
             <p>Pencaker Aktif</p>
           </div>
@@ -46,7 +46,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <!-- small box -->
         <div class="small-box bg-success">
           <div class="inner">
-            <h3><?php echo $bekerja;?></h3>
+            <h3><?php echo $bekerja; ?></h3>
 
             <p>Sudah Bekerja</p>
           </div>
@@ -61,7 +61,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <!-- small box -->
         <div class="small-box bg-warning">
           <div class="inner">
-            <h3><?php echo $lapor;?></h3>
+            <h3><?php echo $lapor; ?></h3>
 
             <p>Wajib Lapor</p>
           </div>
@@ -76,7 +76,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <!-- small box -->
         <div class="small-box bg-secondary">
           <div class="inner">
-            <h3><?php echo $verifikasi;?></h3>
+            <h3><?php echo $verifikasi; ?></h3>
 
             <p>Belum Diverifikasi/Divalidasi</p>
           </div>
@@ -134,7 +134,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <i class="fas fa-chart-bar mr-1"></i>
               Grafik Pengajuan Penerbitan Kartu Pencari Kerja
             </h3>
-        <!--     <div class="card-tools">
+            <!--     <div class="card-tools">
               <ul class="nav nav-pills ml-auto">
                 <li class="nav-item">
                   <a class="nav-link active" href="#pendidikan-chart" data-toggle="tab">Pendidikan Terakhir</a>
@@ -174,144 +174,140 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 
 <script>
-
   //statistik pendidikan terakhir
   Highcharts.chart('pendidikan-chart', {
     chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
+      type: 'pie'
     },
     title: {
-        text: 'Jumlah Pencari Kerja di Kab. Manokwari Berdasarkan Jenjang Pendidikan Terakhir'
+      text: 'Jumlah Pencari Kerja di Kab. Manokwari Berdasarkan Jenjang Pendidikan Terakhir'
     },
     tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
     },
     accessibility: {
-        point: {
-            valueSuffix: '%'
-        }
+      point: {
+        valueSuffix: '%'
+      }
     },
     plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-            }
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}</b>: {point.percentage:.1f} %'
         }
+      }
     },
     series: [{
-        name: 'Brands',
-        colorByPoint: true,
-        data: [
-        <?php foreach($q_pendidikan_terakhir AS $pdt) : ?>
-        {
-            name: '<?php echo $pdt->jenjang;?>',
-            y: <?php echo $pdt->total;?>
-        },
-      <?php endforeach;?>
-        ]
+      name: 'Brands',
+      colorByPoint: true,
+      data: [
+        <?php foreach ($q_pendidikan_terakhir as $pdt) : ?> {
+            name: '<?php echo $pdt->jenjang; ?>',
+            y: <?php echo $pdt->total; ?>
+          },
+        <?php endforeach; ?>
+      ]
     }],
 
-    credits:{
-      enabled:false
+    credits: {
+      enabled: false
     }
-});
+  });
 
   //statistik rentang usia
   <?php
-    $u1 = 0;
-    $u2 = 0;
-    $u3 = 0;
-    $u4 = 0;
-    $u5 = 0;
-    $u6 = 0;
-    foreach ($q_umur as $u) :
-      if ($u->umur < 15) {
-        $u1 += $u->jumlah;
-      }
-      if ($u->umur >= 15 && $u->umur < 24) {
-        $u2 += $u->jumlah;
-      }
-      if ($u->umur >= 25 && $u->umur < 34) {
-        $u3 += $u->jumlah;
-      }
-      if ($u->umur >= 35 && $u->umur < 44) {
-        $u4 += $u->jumlah;
-      }
-      if ($u->umur >= 45 && $u->umur < 54) {
-        $u5 += $u->jumlah;
-      }
-      if ($u->umur > 54) {
-        $u6 += $u->jumlah;
-      }
-    endforeach;
-    ?>
+  $u1 = 0;
+  $u2 = 0;
+  $u3 = 0;
+  $u4 = 0;
+  $u5 = 0;
+  $u6 = 0;
+  foreach ($q_umur as $u) :
+    if ($u->umur < 15) {
+      $u1 += $u->jumlah;
+    }
+    if ($u->umur >= 15 && $u->umur < 24) {
+      $u2 += $u->jumlah;
+    }
+    if ($u->umur >= 25 && $u->umur < 34) {
+      $u3 += $u->jumlah;
+    }
+    if ($u->umur >= 35 && $u->umur < 44) {
+      $u4 += $u->jumlah;
+    }
+    if ($u->umur >= 45 && $u->umur < 54) {
+      $u5 += $u->jumlah;
+    }
+    if ($u->umur > 54) {
+      $u6 += $u->jumlah;
+    }
+  endforeach;
+  ?>
   Highcharts.chart('usia-chart', {
     chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
+      type: 'pie'
     },
     title: {
-        text: 'Jumlah Pencari Kerja di Kab. Manokwari Berdasarkan Rentang Usia'
+      text: 'Jumlah Pencari Kerja di Kab. Manokwari Berdasarkan Rentang Usia'
     },
     tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
     },
     accessibility: {
-        point: {
-            valueSuffix: '%'
-        }
+      point: {
+        valueSuffix: '%'
+      }
     },
     plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-            }
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}</b>: {point.percentage:.1f} %'
         }
+      }
     },
     series: [{
-        name: 'Brands',
-        colorByPoint: true,
-        data: [
-        {
-            name: '< 15 tahun',
-            y: <?php echo $u1;?>
-        }, {
-            name: '15 - 24 tahun',
-            y: <?php echo $u2;?>
-        }, {
-            name: '25 - 34 tahun',
-            y: <?php echo $u3;?>
-        }, {
-            name: '35 - 44 tahun',
-            y: <?php echo $u4;?>
-        }, {
-            name: '45 - 54 tahun',
-            y: <?php echo $u5;?>
-        }, {
-            name: '> 54 tahun',
-            y: <?php echo $u6;?>
-        } 
-        ]
+      name: 'Brands',
+      colorByPoint: true,
+      data: [{
+        name: '< 15 tahun',
+        y: <?php echo $u1; ?>
+      }, {
+        name: '15 - 24 tahun',
+        y: <?php echo $u2; ?>
+      }, {
+        name: '25 - 34 tahun',
+        y: <?php echo $u3; ?>
+      }, {
+        name: '35 - 44 tahun',
+        y: <?php echo $u4; ?>
+      }, {
+        name: '45 - 54 tahun',
+        y: <?php echo $u5; ?>
+      }, {
+        name: '> 54 tahun',
+        y: <?php echo $u6; ?>
+      }]
     }],
 
-    credits:{
-      enabled:false
+    credits: {
+      enabled: false
     }
-});
+  });
 
   //grafik line, pengajuan kartu kuning
-   Highcharts.addEvent(Highcharts.Point, 'click', function () {
+  Highcharts.addEvent(Highcharts.Point, 'click', function() {
     if (this.series.options.className.indexOf('popup-on-click') !== -1) {
       const chart = this.series.chart;
       const date = Highcharts.dateFormat('%A, %b %e, %Y', this.x);
@@ -323,66 +319,76 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       const x = align === 'left' ? anchorX + 10 : anchorX - 10;
       const y = anchorY - 30;
       if (!chart.sticky) {
-          chart.sticky = chart.renderer
-              .label(text, x, y, 'callout',  anchorX, anchorY)
-              .attr({
-                  align,
-                  fill: 'rgba(0, 0, 0, 0.75)',
-                  padding: 10,
-                  zIndex: 7 // Above series, below tooltip
-              })
-              .css({
-                  color: 'white'
-              })
-              .on('click', function () {
-                  chart.sticky = chart.sticky.destroy();
-              })
-              .add();
+        chart.sticky = chart.renderer
+          .label(text, x, y, 'callout', anchorX, anchorY)
+          .attr({
+            align,
+            fill: 'rgba(0, 0, 0, 0.75)',
+            padding: 10,
+            zIndex: 7 // Above series, below tooltip
+          })
+          .css({
+            color: 'white'
+          })
+          .on('click', function() {
+            chart.sticky = chart.sticky.destroy();
+          })
+          .add();
       } else {
-          chart.sticky
-              .attr({ align, text })
-              .animate({ anchorX, anchorY, x, y }, { duration: 250 });
+        chart.sticky
+          .attr({
+            align,
+            text
+          })
+          .animate({
+            anchorX,
+            anchorY,
+            x,
+            y
+          }, {
+            duration: 250
+          });
       }
     }
-});
+  });
 
 
-Highcharts.chart('line-chart', {
+  Highcharts.chart('line-chart', {
 
     chart: {
-        type: 'line'
+      type: 'line'
     },
     title: {
-        text: 'Jumlah Permintaan Penerbitan Kartu Pencari Kerja'
+      text: 'Jumlah Permintaan Penerbitan Kartu Pencari Kerja'
     },
     // subtitle: {
     //     text: 'Source: WorldClimate.com'
     // },
     xAxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     },
     yAxis: {
-        title: {
-            text: 'Jumlah Pencaker (orang)'
-        }
+      title: {
+        text: 'Jumlah Pencaker (orang)'
+      }
     },
     plotOptions: {
-        line: {
-            dataLabels: {
-                enabled: true
-            },
-            enableMouseTracking: false
-        }
+      line: {
+        dataLabels: {
+          enabled: true
+        },
+        enableMouseTracking: false
+      }
     },
     series: [{
-        name: 'Laki-laki',
-        data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+      name: 'Laki-laki',
+      data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
     }, {
-        name: 'Perempuan',
-        data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+      name: 'Perempuan',
+      data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
     }],
-    credits:{
-      enabled:false
+    credits: {
+      enabled: false
     }
-});
-  </script>
+  });
+</script>

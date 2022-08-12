@@ -8,7 +8,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         --width: 80px;
         --height: calc(var(--width) / 3);
 
-        position: relative; 
+        position: relative;
         display: inline-block;
         width: var(--width);
         height: var(--height);
@@ -96,6 +96,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         font-size: 14px;
         font-weight: normal;
     }
+
+    .hide {
+        display: none;
+    }
 </style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -128,7 +132,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-12">
-                                <?php //echo form_open('/pencaker/pencari_kerja', ['method' => 'GET']); ?>
+                                <?php //echo form_open('/pencaker/pencari_kerja', ['method' => 'GET']); 
+                                ?>
                                 <div class="row align-items-center">
                                     <div class="col-sm-2">
                                         <label class="m-0" for="filter_pencaker">Filter Pencaker</label>
@@ -151,7 +156,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                                 </div>
 
-                                <?php //echo form_close(); ?>
+                                <?php //echo form_close(); 
+                                ?>
 
                             </div>
                         </div>
@@ -186,9 +192,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <td><?php echo $p->keterangan_status; ?></td>
                                         <td>
                                             <a target="_blank" href="<?php echo site_url('pencaker/review_pencaker/') . $p->users_id; ?>" class="btn btn-sm btn-warning" title="Review Data Pencaker"><i class="fas fa-search"></i></a>&nbsp;
-                                            <a class="btn btn-sm btn-secondary" title="Verifikasi Pencaker" data-toggle="modal" data-target="#modalVerifikasi"><i class="fas fa-check"></i></a>&nbsp;
+                                            <a class="btn btn-sm btn-secondary btnVerifikasi" title="Verifikasi Pencaker" data-id="<?php echo $p->users_id; ?>"><i class="fas fa-check"></i></a>&nbsp;
                                             <a target="_blank" href="<?php echo site_url('pencaker/kartu_pencaker/') . $p->users_id; ?>" class="btn btn-sm btn-info" title="Cetak Kartu Pencaker"><i class="fas fa-id-card"></i></a>&nbsp;
-                                            
+
                                             <a class="btn btn-sm btn-danger btnHapusPencaker" id="hapusPencariKerja" href="javascript:void(0)" data-id="<?php echo $p->users_id; ?>" title="Hapus Pencaker"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
@@ -234,14 +240,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         </label>
                     </div>
 
-                    <div class="form-group mt-3">
+                    <div id="pesanVerifikasi" class="form-group mt-3 hide">
                         <label class="col-form-label" for="pesan">Catatan</label>
-                        <textarea type="email" class="form-control form-control-sm" id="pesan" aria-describedby="emailHelp"></textarea>
+                        <textarea type="text" class="form-control form-control-sm" name="pesan" id="pesan"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <input type="hidden" name="usersid">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="button" id="saveVerifikasi" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>
@@ -251,6 +258,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <?php include viewPath('includes/footer'); ?>
 
 <script type="text/javascript">
+    $('#pesan').summernote({
+        placeholder: 'Tulis isi berita di sini',
+        height: 200
+    });
+
     $(document).ready(function() {
         $('#dataPencariKerja').DataTable();
 
@@ -298,6 +310,58 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 }
 
             })
+
+        });
+
+        $(document).on('click', '#ver_lengkap', function() {
+            $('#pesanVerifikasi').addClass("hide");
+        });
+
+        $(document).on('click', '#ver_tidaklengkap', function() {
+            $('#pesanVerifikasi').removeClass("hide");
+        });
+
+        $(document).on('click', '.btnVerifikasi', function() {
+            var usersid = $(this).data("id");
+            $('#modalVerifikasi').modal('show');
+            $('input[name="usersid"]').val(usersid);
+        });
+
+        $(document).on('click', '#saveVerifikasi', function() {
+            var usersid = $("input[name='usersid']").val();
+            var statusverifikasi = $("input[name='statusverifikasi']").val();
+            var pesan = $("textarea[name='pesan']").val();
+            if (statusverifikasi == 'ver_lengkap') {
+                var aksi = 1;
+            } else if (statusverifikasi == 'ver_tidaklengkap') {
+                var aksi = 2;
+            }
+
+            $.ajax({
+                url: "<?php echo site_url(); ?>pencaker/add_verifikasi_data/" + aksi,
+                method: "POST",
+                data: {
+                    usersid: usersid,
+                    pesan: pesan,
+                },
+                success: function(data) {
+                    Swal.fire({
+                        title: 'Verifikasi Berhasil',
+                        icon: 'success',
+                        showCancelButton: false,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Ya',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $('#modalVerifikasi').modal('hide');
+                            location.reload();
+                        }
+                    });
+
+                }
+            })
+
 
         });
     });
