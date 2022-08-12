@@ -220,16 +220,16 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
             <form>
                 <div class="modal-body">
-                    <label class="col-form-label" for="datalengkap">Status Data</label>
+                    <label class="col-form-label" for="statusverifikasi">Status Data</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="datalengkap" id="datalengkap1" value="option1" checked>
-                        <label class="form-check-label" for="datalengkap1">
+                        <input class="form-check-input" type="radio" name="statusverifikasi" id="ver_lengkap" value="ver_lengkap" checked>
+                        <label class="form-check-label" for="ver_lengkap">
                             Lengkap
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="datalengkap" id="datalengkap2" value="option2">
-                        <label class="form-check-label" for="datalengkap2">
+                        <input class="form-check-input" type="radio" name="statusverifikasi" id="ver_tidaklengkap" value="ver_tidaklengkap">
+                        <label class="form-check-label" for="ver_tidaklengkap">
                             Tidak Lengkap
                         </label>
                     </div>

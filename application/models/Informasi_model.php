@@ -73,11 +73,18 @@ class Informasi_model extends MY_Model
 		return $id;
 	}
 
-	function get_jenis_pelatihan()
+	function get_jenis_pelatihan_tampil_depan()
 	{
 		$q = $this->db->query("SELECT DISTINCT jp.* FROM jenis_pelatihan jp JOIN pelatihan p ON p.jenis_pelatihan_kode=jp.kode");
 		return $q->result();
 	}
+
+	function get_jenis_pelatihan()
+	{
+		$q = $this->db->query("SELECT * FROM jenis_pelatihan");
+		return $q->result();
+	}
+
 
 	function get_pelatihan($status = NULL)
 	{
@@ -105,11 +112,11 @@ class Informasi_model extends MY_Model
 		return $query->row();
 	}
 
-	function get_jenis_pelatihan_kode($jp)
-	{
-		$query = $this->db->get_where('pelatihan', array('jenis_pelatihan_kode' => $jp, 'kategori' => 'Pengumuman'), 1);
-		return $query->row();
-	}
+	// function get_jenis_pelatihan_kode($jp)
+	// {
+	// 	$query = $this->db->get_where('pelatihan', array('jenis_pelatihan_kode' => $jp, 'kategori' => 'Pengumuman'), 1);
+	// 	return $query->row();
+	// }
 
 
 	function update_pelatihan($idpelatihan, $data)

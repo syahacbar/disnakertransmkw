@@ -238,20 +238,45 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
           </div>
         <?php } ?>
+        <?php if ($keterangan_status == 'Registrasi') { ?>
+          <div>
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="row">
+                <div class="col-10 py-4 px-4">
+                  <div class="inner">
+                    <h3>Registrasi</h3>
+                    <p>Silahkan lengkapi formulir AK-1 pada menu <strong>Profil Pencaker</strong> dan mengunggah dokumen pada menu <strong>Dokumen Pencaker</strong>. Jika sudah lengkap, klik tombol minta Verifikasi berikut ini</p>
+                  </div>
+                </div>
+                <div class="col-2">
+                  <div class="icon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                </div>
+              </div>
+              <a href="#" onclick="modalVerifikasi('Verifikasi')" id="#modalVerifikasi" class="small-box-footer">Minta Verifikasi Data <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+        <?php } ?>
         <!-- ./col -->
         <?php if ($keterangan_status == 'Verifikasi') { ?>
           <div>
             <!-- small box -->
             <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>Verifikasi</h3>
-
-                <p>Silahkan tekan tombol berikut ini jika pengisian data formulir AK-1 dan dokumen telah lengkap untuk mengajukan verifikasi data</p>
+              <div class="row">
+                <div class="col-10 py-4 px-4">
+                  <div class="inner">
+                    <h3>Verifikasi</h3>
+                    <p>Silahkan menunggu maksimal 3x24 jam untuk proses verifikasi dan terus memantau linimasa untuk mendapatkan informasi terkait proses verifikasi bilamana didapati ada berkas/dokumen yang kurang lengkap. <br>Setelah dinyatakan lulus verifikasi, status ini akan berubah menjadi <strong>Validasi</strong></p>
+                  </div>
+                </div>
+                <div class="col-2">
+                  <div class="icon">
+                    <i class="fa fa-check"></i>
+                  </div>
+                </div>
               </div>
-              <div class="icon">
-                <i class="fa fa-list"></i>
-              </div>
-              <a href="#" onclick="modalVerifikasi()" id="#modalVerifikasi" class="small-box-footer">Verifikasi Data <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
         <?php } ?>
@@ -262,7 +287,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <div class="inner">
                 <h3>Verifikasi</h3>
 
-                <p>Silahkan ke Kantor Disnakertrans Kab. Manokwari dengan membawa berkas/dokumen asli untuk divalidasi.</p>
+                <p>Silahkan ke Kantor Disnakertrans Kab. Manokwari dengan membawa berkas/dokumen asli untuk divalidasi. Bila dinyatakan berkas/dokumen anda valid, anda akan mendapatkan Kartu Pencari Kerja</p>
               </div>
               <div class="icon">
                 <i class="fa fa-list"></i>
@@ -270,6 +295,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
           </div>
         <?php } ?>
+         
         <!-- TO DO List -->
         <div class="card">
           <div class="card-header">
@@ -334,6 +360,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                       <div class="vertical-timeline-element-content bounce-in">
                         <h4 class="timeline-title <?php echo ($tl->description != null) ? 'text-info' : ''; ?>"><?php echo $tl->subject; ?></h4>
                         <p <?php echo ($tl->description != null) ? 'class="text-info"' : ''; ?>><?php echo $tl->description; ?></p>
+                        <?php if($tl->subject == 'PROSES VERIFIKASI DATA') { ?>
+                        <p class="text-danger">Catatan:</p>
+                        <p style="border: 1px solid red;" class="text-danger py-1 px-1">                          
+                          <?php foreach($verifikasi AS $v) : 
+                            echo $v->pesan."<br>";
+                          endforeach;?>
+                        </p>
+
+                      <?php } ?>
                         <div class="tanggal">
                           <span class="vertical-timeline-element-date text-left">
                             <?php 
@@ -367,7 +402,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <script src="<?php echo $url->assets ?>js/pages/dashboard.js"></script>
 
 <script>
-  function modalVerifikasi() {
+  function modalVerifikasi(ket_status) { 
     Swal.fire({
       title: 'Konfirmasi!',
       text: "Apakah Anda yakin telah melengkapi data profil dan mengunggah semua dokumen yang diperlukan dengan benar?",
@@ -379,11 +414,29 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       confirmButtonText: 'Ya, Saya Yakin!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Selamat!',
-          'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
-          'success'
-        )
+        $.ajax({
+          url: "<?php echo site_url('pencaker/update_keterangan_status') ?>",
+          type: "POST",
+          data: { keterangan_status : ket_status },
+          success: function(data) {
+            var objData = jQuery.parseJSON(data);
+            if (objData.status) {
+                Swal.fire({
+                  title: 'Selamat!',
+                  text: 'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
+                  icon: 'success',
+                  confirmButtonColor: '#3085d6',
+                  confirmButtonText: 'Ya'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                      location.reload();
+                  }
+                });
+            }
+          }
+        });
+
+        
       }
     })
   }

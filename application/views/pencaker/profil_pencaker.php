@@ -379,9 +379,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <?php foreach ($ket_bahasa as $kb) : ?>
                                             <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
                                                 <div class="form-check">
-                                                    <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="<?php echo "b_" . $kb->bahasa; ?>" value="<?php echo $kb->bahasa; ?>" <?php if (in_array($kb->bahasa, $arr_bhs)) {
-                                                                                                                                                                                                                    echo 'checked';
-                                                                                                                                                                                                                }; ?>>
+                                                    <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="<?php echo "b_" . $kb->bahasa; ?>" value="<?php echo $kb->bahasa; ?>" <?php if (in_array($kb->bahasa, $arr_bhs)) { echo 'checked'; }; ?>>
                                                     <label class="form-check-label" for="<?php echo $kb->bahasa; ?>">
                                                         <?php echo $kb->bahasa; ?>
                                                     </label>
@@ -1292,9 +1290,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 } else if (data.tujuan == 'tujuan2') {
                     $("#tujuan2").prop("checked", true);
                     $('#perusahaanpencaker').removeClass("hide");
-                } else {
-                    $('#perusahaanpencaker').addClass("hide");
-                }
+                } 
+                // else {
+                //     $('#perusahaanpencaker').addClass("hide");
+                // }
 
                 //keterangan umum
                 $('[name="nopendaftaran"]').val(data.nopendaftaran);
@@ -1416,10 +1415,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     {
                         console.log(data.hasil);
                         showidentitaspencaker();
-                        if (data.tujuan == 'tujuan1')
+                        if ($('input[name="tujuan"]:checked').val() == 'tujuan1') {
                             $('#perusahaanpencaker').addClass("hide");
-                        else
+                        } else if ($('input[name="tujuan"]:checked').val() == 'tujuan2') {
                             $('#perusahaanpencaker').removeClass("hide");
+                        } 
                     }
 
                 },
@@ -1482,7 +1482,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 dataType: "JSON",
                 success: function(data) {
                     if (data.status) {
-                        showperusahaanpencaker();
+                        if ($('input[name="tujuan"]:checked').val() == 'tujuan1') {
+                            showdatatambahanpencaker();
+                        } else if ($('input[name="tujuan"]:checked').val() == 'tujuan2') {
+                            showperusahaanpencaker();
+                        } 
                     }
 
                 },

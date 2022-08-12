@@ -263,7 +263,7 @@ class Web extends CI_Controller
 			$this->load->view('web/detailpelatihan', $this->page_data);
 		} else {
 
-			$this->page_data['jenis_pelatihan'] = $this->informasi_model->get_jenis_pelatihan();
+			$this->page_data['jenis_pelatihan'] = $this->informasi_model->get_jenis_pelatihan_tampil_depan();
 			$this->page_data['listpelatihan'] = $this->informasi_model->get_pelatihan('1');
 			$this->page_data['page']->menu = 'informasi';
 			$this->page_data['page']->title = 'Pelatihan';
@@ -370,7 +370,7 @@ class Web extends CI_Controller
 	public function card_validation($code)
 	{
 		$this->page_data['v_msg'] = (object)array();
-		$get_pencaker = $this->db->query("SELECT * FROM pencaker p WHERE SHA1(p.nopendaftaran) = '$code'");
+		$get_pencaker = $this->db->query("SELECT * FROM pencaker p JOIN pencaker_dokumen pd ON pd.pencaker_id=p.id JOIN dokumen d ON d.id=pd.dokumen_id JOIN users u ON u.id=p.users_id WHERE d.jenis_dokumen='PAS FOTo' AND SHA1(p.nopendaftaran)= '$code'");
 		if($get_pencaker->num_rows() > 0)
 		{
 			$this->page_data['v_msg']->valid = "Kartu Anda Valid dan Terdaftar di Sistem Dinas Tenaga Kerja dan Transmigrasi Kabupaten Manokwari";

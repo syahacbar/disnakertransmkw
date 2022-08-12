@@ -50,6 +50,13 @@ class Pencaker_model extends MY_Model
 		return $query->row();
 	}
 
+	function update_keterangan_status($idpencaker,$status)
+	{
+		$this->db->where('id', $idpencaker);
+        $this->db->update('pencaker', array('keterangan_status' => $status));
+        return TRUE;
+	}
+
 	function delete_pencaker($pencaker_id)
 	{
 		$this->db->where('id', $pencaker_id);
@@ -270,6 +277,17 @@ class Pencaker_model extends MY_Model
 	{
 		$this->db->insert('timeline_user', $data);
 		return $this->db->insert_id();
+	}
+
+	function get_verifikasi($users_id)
+	{
+		$q = $this->db->query("SELECT * FROM verifikasi v WHERE v.users_id = $users_id");
+		return $q->result();
+	}
+
+	function add_verifikasi()
+	{
+		//PR nya supri sekalian belajar lah
 	}
 }
 /* End of file Pencaker_model.php */

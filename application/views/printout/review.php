@@ -139,6 +139,11 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>Agama</td>
+                                    <td>:</td>
+                                    <td class="fw-bold"><?php echo strtoupper($pencaker->agama); ?></td>
+                                </tr>
+                                <tr>
                                     <td>Alamat</td>
                                     <td>:</td>
                                     <td class="fw-bold"><?php echo strtoupper($pencaker->alamat); ?></td>

@@ -419,39 +419,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             edit_berita.processQueue();
         });
 
-        // $('#formeditberita').submit(function(e) {
-        //     e.preventDefault();
-        // edit_berita.processQueue();
-
-        // var edit_berita = new Dropzone("#edit_gambar", {
-        //     autoProcessQueue: false,
-        //     url: "<?php // echo site_url('informasi/update_berita') 
-                        ?>",
-        //     maxFilesize: 20,
-        //     method: "post",
-        //     acceptedFiles: "image/*",
-        //     paramName: "thumbnailberita",
-        //     dictInvalidFileType: "Type file ini tidak dizinkan",
-        //     addRemoveLinks: true,
-        // });
-
-
-        // var form = $(this).closest('#edit_gambar'); 
-        // if (edit_berita.files.length > 0) {
-        //     edit_berita.processQueue();
-        // } else {
-        //     edit_berita.uploadFiles([]); //send empty 
-        // }
-
-
-        // if (edit_berita.getQueuedFiles().length > 0) {
-        //     edit_berita.processQueue();
-        // } else {
-        //     edit_berita.uploadFiles([{ name: 'nofiles' }]); //send empty
-        // }
-
-        // });
-
 
         $(document).on('click', '.btnEditBerita', function() {
             $('#modalEditBerita').modal('show');

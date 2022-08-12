@@ -238,7 +238,7 @@ class Informasi extends MY_Controller
 	}
 
 	public function pelatihan()
-	{
+	{ 
 		$jenis_pelatihan = $this->informasi_model->get_jenis_pelatihan();
 
 		$this->page_data['page']->title = 'Pelatihan';

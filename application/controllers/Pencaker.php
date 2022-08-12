@@ -18,7 +18,7 @@ class Pencaker extends MY_Controller
 
         $get_timeline = $this->pencaker_model->get_timeline_by_id('2', $users_id);
         if (empty($get_timeline->id)) {
-            isitimeline('2', $users_id, 'Tahap ini anda harus mengisi formulir AK-1 pada menu Profil Pencari Kerja');
+            isitimeline('2', $users_id, 'Tahap ini anda harus mengisi/melengkapi formulir AK-1 pada menu Profil Pencari Kerja');
         }
 
         $this->page_data['page']->title = 'Profil Pencari Kerja';
@@ -627,5 +627,26 @@ class Pencaker extends MY_Controller
         $filepath = $folder . $namadokumen;
         $this->page_data['filepath'] = $filepath;
         $this->load->view('pencaker/preview_dokumen', $this->page_data);
+    }
+
+    function update_keterangan_status()
+    {
+        $users_id = logged('id');
+        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+        $keterangan_status = $this->input->post('keterangan_status');
+        $updateketstatus = $this->pencaker_model->update_keterangan_status($pencaker_id->id,$keterangan_status);
+        if($updateketstatus)
+        {
+            $get_timeline = $this->pencaker_model->get_timeline_by_id('4', $users_id);
+            if (empty($get_timeline->id)) {
+                isitimeline('4', $users_id, 'Tahap ini anda menunggu proses verifikasi data oleh tim Disnakertrans Kab. Manokwari');
+            }
+            
+           $res['status'] = TRUE;
+        } else {
+           $res['status'] = FALSE;
+        }
+
+        echo json_encode($res);
     }
 }
