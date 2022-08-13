@@ -201,8 +201,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <td><?php echo $p->keterangan_status; ?></td>
                                         <td>
                                             <a target="_blank" href="<?php echo site_url('pencaker/review_pencaker/') . $p->users_id; ?>" class="btn btn-sm btn-warning" title="Review Data Pencaker"><i class="fas fa-search"></i></a>&nbsp;
-                                            <a class="btn btn-sm btn-secondary btnVerifikasi" title="Verifikasi Pencaker" data-id="<?php echo $p->users_id; ?>"><i class="fas fa-check"></i></a>&nbsp;
-                                            <a target="_blank" href="<?php echo site_url('pencaker/kartu_pencaker/') . $p->users_id; ?>" class="btn btn-sm btn-info" title="Cetak Kartu Pencaker"><i class="fas fa-id-card"></i></a>&nbsp;
+                                            <a class="btn btn-sm btn-secondary btnVerifikasi <?php echo ($p->keterangan_status=='Verifikasi') ? '' : 'disabled';?>" title="Verifikasi Pencaker" data-id="<?php echo $p->users_id; ?>"><i class="fas fa-check"></i></a>&nbsp;
+                                            <a target="_blank" href="<?php echo site_url('pencaker/kartu_pencaker/') . $p->users_id; ?>" class="btn btn-sm btn-info <?php echo ($p->keterangan_status=='Validasi') ? '' : 'disabled';?>" title="Cetak Kartu Pencaker"><i class="fas fa-id-card"></i></a>&nbsp;
 
                                             <a class="btn btn-sm btn-danger btnHapusPencaker" id="hapusPencariKerja" href="javascript:void(0)" data-id="<?php echo $p->users_id; ?>" title="Hapus Pencaker"><i class="fas fa-trash"></i></a>
                                         </td>
