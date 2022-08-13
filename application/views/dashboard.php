@@ -27,65 +27,85 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
   <div class="container-fluid">
     <!-- Small boxes (Stat box) -->
     <div class="row">
-      <div class="col-lg-3 col-6">
+      <div class="col-lg-2 col-6">
         <!-- small box -->
-        <div class="small-box bg-info">
+        <div class="small-box bg-secondary">
           <div class="inner">
-            <h3><?php echo $aktif; ?></h3>
+            <h3><?php echo $c_registrasi;?></h3>
 
-            <p>Pencaker Aktif</p>
+            <p>Registrasi</p>
           </div>
           <div class="icon">
             <i class="fa fa-users"></i>
           </div>
-          <a href="#" class="small-box-footer"><?php echo lang('dashboard_more_info'); ?><i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-success">
-          <div class="inner">
-            <h3><?php echo $bekerja; ?></h3>
-
-            <p>Sudah Bekerja</p>
-          </div>
-          <div class="icon">
-            <i class="fa fa-users"></i>
-          </div>
-          <a href="#" class="small-box-footer"><?php echo lang('dashboard_more_info'); ?><i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-6">
+      <div class="col-lg-2 col-6">
         <!-- small box -->
         <div class="small-box bg-warning">
           <div class="inner">
-            <h3><?php echo $lapor; ?></h3>
+            <h3><?php echo $c_verifikasi;?></h3>
+
+            <p>Verifikasi</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-users"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3><?php echo $c_validasi;?></h3>
+
+            <p>Validasi</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-users"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2 col-6">
+        <!-- small box -->
+        <div class="small-box bg-primary">
+          <div class="inner">
+            <h3><?php echo $c_aktif;?></h3>
+
+            <p>Aktif</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-users"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3><?php echo $c_bekerja;?></h3>
+
+            <p>Bekerja</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-users"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2 col-6">
+        <!-- small box -->
+        <div class="small-box bg-danger">
+          <div class="inner">
+            <h3><?php echo $c_lapor;?></h3>
 
             <p>Wajib Lapor</p>
           </div>
           <div class="icon">
             <i class="fa fa-users"></i>
           </div>
-          <a href="#" class="small-box-footer"><?php echo lang('dashboard_more_info'); ?><i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-secondary">
-          <div class="inner">
-            <h3><?php echo $verifikasi; ?></h3>
-
-            <p>Belum Diverifikasi/Divalidasi</p>
-          </div>
-          <div class="icon">
-            <i class="fa fa-users"></i>
-          </div>
-          <a href="#" class="small-box-footer"><?php echo lang('dashboard_more_info'); ?><i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-      </div>
+      
       <!-- ./col -->
       <!-- ./col -->
     </div>

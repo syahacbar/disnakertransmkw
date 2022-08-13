@@ -35,10 +35,15 @@ class Dashboard extends MY_Controller
 			$this->page_data['q_laki'] = $q_laki->result();
 			$this->page_data['q_perempuan'] = $q_perempuan->result();
 
-			$this->page_data['aktif'] = $this->pencaker_model->get_by_keterangan("Aktif")->num_rows();
-			$this->page_data['bekerja'] = $this->pencaker_model->get_by_keterangan("Bekerja")->num_rows();
-			$this->page_data['lapor'] = $this->pencaker_model->get_by_keterangan("Lapor")->num_rows();;
-			$this->page_data['verifikasi'] = $this->pencaker_model->get_by_keterangan("Verifikasi")->num_rows();
+			//status keterangan pencaker
+			$this->page_data['c_aktif'] = $this->pencaker_model->get_by_keterangan("Aktif")->num_rows();
+			$this->page_data['c_bekerja'] = $this->pencaker_model->get_by_keterangan("Bekerja")->num_rows();
+			$this->page_data['c_lapor'] = $this->pencaker_model->get_by_keterangan("Lapor")->num_rows();;
+			$this->page_data['c_verifikasi'] = $this->pencaker_model->get_by_keterangan("Verifikasi")->num_rows();
+			$this->page_data['c_validasi'] = $this->pencaker_model->get_by_keterangan("Validasi")->num_rows();
+			$this->page_data['c_registrasi'] = $this->pencaker_model->get_by_keterangan("Registrasi")->num_rows();
+
+
 			$this->load->view('dashboard', $this->page_data);
 
 		} else {
