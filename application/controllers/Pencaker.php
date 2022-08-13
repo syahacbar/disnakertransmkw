@@ -666,6 +666,8 @@ class Pencaker extends MY_Controller
             $this->pencaker_model->add_verifikasi($data);
         } else if ($aksi == 1) {
             $this->pencaker_model->update_keterangan_status($pencaker_id->id, 'Validasi');
+        } else if ($aksi == 3) {
+            $this->pencaker_model->update_keterangan_status($pencaker_id->id, 'Aktif');
         }
     }
 
@@ -764,13 +766,20 @@ class Pencaker extends MY_Controller
         $no = 1; // Untuk penomoran tabel, di awal set dengan 1
         $numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
 
-        foreach($pencaker as $r){ // Lakukan looping pada variabel siswa
-            $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
-            $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $r->nopendaftaran);
-            $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, strtoupper($r->namalengkap));
-            $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $r->nik);
-            $excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $r->tempatlahir);
-            $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $r->tgllahir);
+        foreach ($pencaker as $r) { // Lakukan looping pada variabel siswa
+            $excel->setActiveSheetIndex(0)->setCellValue('A' . $numrow, $no);
+            $excel->setActiveSheetIndex(0)->setCellValue('B' . $numrow, $r->nopendaftaran);
+            $excel->setActiveSheetIndex(0)->setCellValue('C' . $numrow, strtoupper($r->namalengkap));
+            $excel->setActiveSheetIndex(0)->setCellValue('D' . $numrow, $r->nik);
+            $excel->setActiveSheetIndex(0)->setCellValue('E' . $numrow, $r->tempatlahir);
+            $excel->setActiveSheetIndex(0)->setCellValue('F' . $numrow, $r->tgllahir);
+            $excel->setActiveSheetIndex(0)->setCellValue('G' . $numrow, $r->jenkel);
+            $excel->setActiveSheetIndex(0)->setCellValue('H' . $numrow, $r->agama);
+            $excel->setActiveSheetIndex(0)->setCellValue('I' . $numrow, $r->statusnikah);
+            $excel->setActiveSheetIndex(0)->setCellValue('J' . $numrow, $r->tinggibadan);
+            $excel->setActiveSheetIndex(0)->setCellValue('K' . $numrow, $r->beratbadan);
+            $excel->setActiveSheetIndex(0)->setCellValue('K' . $numrow, $r->alamat);
+            $excel->setActiveSheetIndex(0)->setCellValue('K' . $numrow, $r->kodepos);
             $no++; // Tambah 1 setiap kali looping
             $numrow++; // Tambah 1 setiap kali looping
         }
@@ -779,7 +788,7 @@ class Pencaker extends MY_Controller
         // $excel->getActiveSheet()->getColumnDimension('BH')->setWidth(15);
         // $excel->getActiveSheet()->getStyle('BH3:BH4')->applyFromArray($style_col);
 
-        
+
 
         // for ($i = 'A'; $i !=  $excel->getActiveSheet()->getHighestColumn(); $i++) {
         // 	$excel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
