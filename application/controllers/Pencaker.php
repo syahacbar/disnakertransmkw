@@ -748,7 +748,7 @@ class Pencaker extends MY_Controller
         $excel->setActiveSheetIndex(0);
         $excel->getActiveSheet()->getRowDimension('3')->setRowHeight(40);
         // Buat header tabel nya pada baris ke 3
-        $table_columns = array("No.", "Nomor Pendaftaran", "Nama Lengkap", "NIK", "Tempat Lahir", "Tanggal Lahir", "Jenis Kelamin", "Agama", "Alamat", "Kode Pos", "Status Menikah", "Tinggi Badan (cm)", "Berat Badan (kg)");
+        $table_columns = array("No.", "Nomor Pendaftaran", "Nama Lengkap", "NIK", "Tempat Lahir", "Tanggal Lahir", "Jenis Kelamin", "Agama", "Status Menikah", "Tinggi Badan (cm)", "Berat Badan (kg)", "Alamat", "Kode Pos");
         $column = 0;
         foreach ($table_columns as $field) {
             $excel->getActiveSheet()->setCellValueByColumnAndRow($column, 3, $field);
@@ -778,8 +778,8 @@ class Pencaker extends MY_Controller
             $excel->setActiveSheetIndex(0)->setCellValue('I' . $numrow, $r->statusnikah);
             $excel->setActiveSheetIndex(0)->setCellValue('J' . $numrow, $r->tinggibadan);
             $excel->setActiveSheetIndex(0)->setCellValue('K' . $numrow, $r->beratbadan);
-            $excel->setActiveSheetIndex(0)->setCellValue('K' . $numrow, $r->alamat);
-            $excel->setActiveSheetIndex(0)->setCellValue('K' . $numrow, $r->kodepos);
+            $excel->setActiveSheetIndex(0)->setCellValue('L' . $numrow, $r->alamat);
+            $excel->setActiveSheetIndex(0)->setCellValue('M' . $numrow, $r->kodepos);
             $no++; // Tambah 1 setiap kali looping
             $numrow++; // Tambah 1 setiap kali looping
         }
