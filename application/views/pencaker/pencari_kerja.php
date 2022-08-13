@@ -126,7 +126,16 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="card">
                     <div class="card-header d-flex p-0">
                         <h3 class="card-title p-3"><?php echo lang('pencari_kerja') ?></h3>
+                        <ul class="nav nav-pills ml-auto px-3">
+                            <li class="nav-item m-auto px-4">
+                                <a href="<?php echo site_url('pencaker/export_pencaker_pdf'); ?>" target="_blank" id="btnExportPDF" type="button" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i> Export PDF</a>
+                            </li>
+                            <li class="nav-item m-auto">
+                                <a href="<?php echo site_url('pencaker/export_pencaker_excel'); ?>" id="btnExportExcel" type="button" class="btn btn-success btn-sm"><i class="fa fa-file-excel"></i> Export Excel</a>
+                            </li>
+                        </ul>
                     </div>
+
 
                     <!-- /.card-header -->
                     <div class="card-body">
