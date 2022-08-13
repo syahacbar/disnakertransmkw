@@ -22,18 +22,25 @@ class Dashboard extends MY_Controller
 			$this->page_data['timeline'] = $this->pencaker_model->get_timeline($users_id);
 			$this->page_data['verifikasi'] = $this->pencaker_model->get_verifikasi($users_id);
 			$this->load->view('dashboard_new', $this->page_data);
+
 		} elseif (hasPermissions('dash_admin')) {
+
 			$q_pendidikan_terakhir = $this->db->query("SELECT jp.jenjang, (SELECT COUNT(pd.id) FROM pendidikan_pencaker pd WHERE pd.jenjang_pendidikan_id=jp.id) AS total FROM jenjang_pendidikan jp");
 			$q_umur = $this->db->query("SELECT (YEAR(CURDATE())-YEAR(tgllahir)) AS umur, COUNT((YEAR(CURDATE())-YEAR(tgllahir))) AS jumlah  FROM pencaker GROUP BY umur ORDER BY umur ASC");
+			$q_laki = $this->db->query("SELECT  MONTH(u.created_at) AS bulan, COUNT(u.id) AS jumlah FROM pencaker p JOIN users u ON u.id=p.users_id WHERE p.jenkel='L' GROUP BY bulan;");
+			$q_perempuan = $this->db->query("SELECT  MONTH(u.created_at) AS bulan, COUNT(u.id) AS jumlah FROM pencaker p JOIN users u ON u.id=p.users_id WHERE p.jenkel='P' GROUP BY bulan;");
 
 			$this->page_data['q_pendidikan_terakhir'] = $q_pendidikan_terakhir->result();
 			$this->page_data['q_umur'] = $q_umur->result();
+			$this->page_data['q_laki'] = $q_laki->result();
+			$this->page_data['q_perempuan'] = $q_perempuan->result();
 
 			$this->page_data['aktif'] = $this->pencaker_model->get_by_keterangan("Aktif")->num_rows();
 			$this->page_data['bekerja'] = $this->pencaker_model->get_by_keterangan("Bekerja")->num_rows();
 			$this->page_data['lapor'] = $this->pencaker_model->get_by_keterangan("Lapor")->num_rows();;
 			$this->page_data['verifikasi'] = $this->pencaker_model->get_by_keterangan("Verifikasi")->num_rows();
 			$this->load->view('dashboard', $this->page_data);
+
 		} else {
 			$this->load->view('errors/html/error_403_permission', $this->page_data);
 		}

@@ -359,13 +359,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       type: 'line'
     },
     title: {
-      text: 'Jumlah Permintaan Penerbitan Kartu Pencari Kerja'
+      text: 'Jumlah Permintaan Penerbitan Kartu Pencari Kerja Tahun 2022'
     },
     // subtitle: {
     //     text: 'Source: WorldClimate.com'
     // },
     xAxis: {
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      // categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      categories: [<?php foreach($q_laki AS $lk) : echo "'".medium_bulan($lk->bulan)."',"; endforeach; ?>]
     },
     yAxis: {
       title: {
@@ -382,10 +383,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     },
     series: [{
       name: 'Laki-laki',
-      data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+      data: [<?php foreach($q_laki AS $lk) : echo $lk->jumlah.","; endforeach; ?>]
     }, {
       name: 'Perempuan',
-      data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+      data: [<?php foreach($q_perempuan AS $pr) : echo $pr->jumlah.","; endforeach; ?>]
     }],
     credits: {
       enabled: false
