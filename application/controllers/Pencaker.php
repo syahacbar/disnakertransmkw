@@ -766,9 +766,9 @@ class Pencaker extends MY_Controller
 
         foreach($pencaker as $r){ // Lakukan looping pada variabel siswa
             $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
-            $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $r->nopendaftaran,PHPExcel_Cell_DataType::TYPE_STRING);
+            $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $r->nopendaftaran);
             $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, strtoupper($r->namalengkap));
-            $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $r->nik, PHPExcel_Cell_DataType::TYPE_STRING);
+            $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $r->nik);
             $excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $r->tempatlahir);
             $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $r->tgllahir);
             $no++; // Tambah 1 setiap kali looping
