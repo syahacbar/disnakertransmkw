@@ -366,7 +366,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     // },
     xAxis: {
       // categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-      categories: [<?php foreach($q_laki AS $lk) : echo "'".medium_bulan($lk->bulan)."',"; endforeach; ?>]
+      categories: [<?php foreach($q_laki AS $lk) : echo "'".bulan($lk->bulan)."',"; endforeach; ?>]
     },
     yAxis: {
       title: {
