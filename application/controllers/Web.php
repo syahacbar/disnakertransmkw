@@ -290,24 +290,24 @@ class Web extends CI_Controller
 	{
 		$this->load->library('ciqrcode'); //pemanggilan library QR CODE
 		$config['cacheable']    = true; //boolean, the default is true
-        $config['cachedir']     = './assets/'; //string, the default is application/cache/
-        $config['errorlog']     = './assets/'; //string, the default is application/logs/
-        $config['imagedir']     = './uploads/pencaker/qrcode/'; //direktori penyimpanan qr code
-        $config['quality']      = true; //boolean, the default is true
-        $config['size']         = '1024'; //interger, the default is 1024
-        $config['black']        = array(224,255,255); // array, default is array(255,255,255)
-        $config['white']        = array(70,130,180); // array, default is array(0,0,0)
-        $this->ciqrcode->initialize($config);
- 
-        $qr_name=$nopendaftaran.'.png'; //buat name dari qr code sesuai dengan nim
-        $params['data'] = site_url()."web/card_validation/".sha1($nopendaftaran); //data yang akan di jadikan QR CODE
-        $params['level'] = 'H'; //H=High
-        $params['size'] = 10;
-        $params['savename'] = FCPATH.$config['imagedir'].$qr_name; //simpan image QR CODE ke folder assets/images/
-        $this->ciqrcode->generate($params); // fungsi untuk generate QR CODE
+		$config['cachedir']     = './assets/'; //string, the default is application/cache/
+		$config['errorlog']     = './assets/'; //string, the default is application/logs/
+		$config['imagedir']     = './uploads/pencaker/qrcode/'; //direktori penyimpanan qr code
+		$config['quality']      = true; //boolean, the default is true
+		$config['size']         = '1024'; //interger, the default is 1024
+		$config['black']        = array(224, 255, 255); // array, default is array(255,255,255)
+		$config['white']        = array(70, 130, 180); // array, default is array(0,0,0)
+		$this->ciqrcode->initialize($config);
+
+		$qr_name = $nopendaftaran . '.png'; //buat name dari qr code sesuai dengan nim
+		$params['data'] = site_url() . "web/card_validation/" . sha1($nopendaftaran); //data yang akan di jadikan QR CODE
+		$params['level'] = 'H'; //H=High
+		$params['size'] = 10;
+		$params['savename'] = FCPATH . $config['imagedir'] . $qr_name; //simpan image QR CODE ke folder assets/images/
+		$this->ciqrcode->generate($params); // fungsi untuk generate QR CODE
 
 
-        return $qr_name;
+		return $qr_name;
 	}
 
 	public function account_registration()
@@ -359,10 +359,10 @@ class Web extends CI_Controller
 
 		$this->activity_model->add('New User $' . $id . ' Created by User:' . logged('name'), logged('id'));
 		isitimeline('1', $id, 'Anda berhasil melakukan registrasi akun di portal Disnakertrans Kab. Manokwari');
-		$pesan = 'Hai...' . $name . ','. PHP_EOL .'Anda berhasil membuat akun di website Disnakertrans Manokwari.' . PHP_EOL . 'Silahkan kembali ke halaman website disnakertransmkw.com untuk melakukan login dan melengkapi formulir pembuatan Kartu Pencari Kerja (Form AK-1).' . PHP_EOL . PHP_EOL . 'Terima Kasih...'. PHP_EOL . PHP_EOL .'<noreply>';
+		$pesan = 'Hai...' . $name . ',' . PHP_EOL . 'Anda berhasil membuat akun di website Disnakertrans Manokwari.' . PHP_EOL . 'Silahkan kembali ke halaman website disnakertransmkw.com untuk melakukan login dan melengkapi formulir pembuatan Kartu Pencari Kerja (Form AK-1).' . PHP_EOL . PHP_EOL . 'Terima Kasih...' . PHP_EOL . PHP_EOL . '<noreply>';
 		$this->notifWA($phone, $pesan);
 		$this->session->set_flashdata('alert-type', 'success');
-		$this->session->set_flashdata('alert', 'New User Created Successfully');
+		$this->session->set_flashdata('alert', '<div class="alert alert-success text-center">Anda telah berhasil membuat akun.</div>');
 
 		redirect('login');
 	}
@@ -371,8 +371,7 @@ class Web extends CI_Controller
 	{
 		$this->page_data['v_msg'] = (object)array();
 		$get_pencaker = $this->db->query("SELECT * FROM pencaker p JOIN pencaker_dokumen pd ON pd.pencaker_id=p.id JOIN dokumen d ON d.id=pd.dokumen_id JOIN users u ON u.id=p.users_id WHERE d.jenis_dokumen='PAS FOTo' AND SHA1(p.nopendaftaran)= '$code'");
-		if($get_pencaker->num_rows() > 0)
-		{
+		if ($get_pencaker->num_rows() > 0) {
 			$this->page_data['v_msg']->valid = "Kartu Anda Valid dan Terdaftar di Sistem Dinas Tenaga Kerja dan Transmigrasi Kabupaten Manokwari";
 			$this->page_data['v_msg']->code = TRUE;
 			$this->page_data['v_msg']->pencaker = $get_pencaker->row();
@@ -384,6 +383,5 @@ class Web extends CI_Controller
 		$this->page_data['page']->menu = 'dashboard';
 		$this->page_data['page']->title = 'Pelatihan';
 		$this->load->view('web/validasikartupencaker', $this->page_data);
-
 	}
 }

@@ -19,9 +19,9 @@
             <div class="col-lg-3 col-md-6 footer-links">
               <h4>Informasi</h4>
               <ul>
-                <li><i class="bx bx-chevron-right"></i> <a href="<?php echo site_url('berita');?>">Berita</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="<?php echo site_url('pengumuman');?>">Pengumuman</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="<?php echo site_url('pelatihan');?>">Pelatihan</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="<?php echo site_url('berita'); ?>">Berita</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="<?php echo site_url('pengumuman'); ?>">Pengumuman</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="<?php echo site_url('pelatihan'); ?>">Pelatihan</a></li>
               </ul>
             </div>
 
@@ -88,5 +88,3 @@
         e.preventDefault();
       });
     </script>
-
-    

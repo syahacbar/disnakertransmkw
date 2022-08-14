@@ -150,7 +150,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     <div class="col-sm-4">
                                         <div class="form-group mb-0">
                                             <select name="user" id="filter_pencaker" onchange="" class="form-control filter_pencaker">
-                                                <option value="">Pilih</option>
+                                                <option value="">-- Pilih Salah Satu --</option>
                                                 <option value="Aktif">Aktif</option>
                                                 <option value="Verifikasi">Verifikasi</option>
                                                 <option value="Validasi">Validasi</option>
@@ -173,7 +173,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         <table id="dataPencariKerja" class="table table-bordered table-hover table-striped">
                             <thead>
                                 <tr>
-                                    <th>No.</th>
+                                    <th>Verifikasi/<br>Validasi</th>
                                     <th>Image</th>
                                     <th>Nama</th>
                                     <th>No. Pendaftaran</th>
@@ -189,7 +189,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 $no = 1;
                                 foreach ($pencaker as $p) : ?>
                                     <tr>
-                                        <td><?php echo $no++; ?></td>
+                                        <td>
+                                            <a class="btn btn-sm btn-secondary btnVerifikasi <?php echo ($p->keterangan_status == 'Verifikasi' || $p->keterangan_status == 'Validasi') ? '' : 'disabled'; ?>" title="Verifikasi Pencaker" data-usersid="<?php echo $p->users_id; ?>" data-nopendaftaran="<?php echo $p->nopendaftaran; ?>" data-namapencaker="<?php echo strtoupper($p->namalengkap); ?>">
+                                                <i class="fas fa-check"></i>
+                                            </a>
+                                        </td>
+
                                         <td>
                                             <img width="40" height="40" alt="" class="img-avtar" src="<?php echo pencakerFoto($p->id); ?>">
                                         </td>
@@ -201,8 +206,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <td><?php echo $p->keterangan_status; ?></td>
                                         <td>
                                             <a target="_blank" href="<?php echo site_url('pencaker/review_pencaker/') . $p->users_id; ?>" class="btn btn-sm btn-warning" title="Review Data Pencaker"><i class="fas fa-search"></i></a>&nbsp;
-                                            <a class="btn btn-sm btn-secondary btnVerifikasi <?php echo ($p->keterangan_status=='Verifikasi') ? '' : 'disabled';?>" title="Verifikasi Pencaker" data-id="<?php echo $p->users_id; ?>"><i class="fas fa-check"></i></a>&nbsp;
-                                            <a target="_blank" href="<?php echo site_url('pencaker/kartu_pencaker/') . $p->users_id; ?>" class="btn btn-sm btn-info <?php echo ($p->keterangan_status=='Validasi') ? '' : 'disabled';?>" title="Cetak Kartu Pencaker"><i class="fas fa-id-card"></i></a>&nbsp;
+                                            <a target="_blank" href="<?php echo site_url('pencaker/kartu_pencaker/') . $p->users_id; ?>" class="btn btn-sm btn-info <?php echo ($p->keterangan_status == 'Validasi') ? '' : 'disabled'; ?>" title="Cetak Kartu Pencaker"><i class="fas fa-id-card"></i></a>&nbsp;
 
                                             <a class="btn btn-sm btn-danger btnHapusPencaker" id="hapusPencariKerja" href="javascript:void(0)" data-id="<?php echo $p->users_id; ?>" title="Hapus Pencaker"><i class="fas fa-trash"></i></a>
                                         </td>
@@ -228,26 +232,29 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalVerifikasiLabel">Verifikasi Data</h5>
+                <h5 class="modal-title" id="modalVerifikasiLabel">Verifikasi/Validasi Pencaker</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form>
                 <div class="modal-body">
-                    <label class="col-form-label" for="statusverifikasi">Status Data</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="statusverifikasi" id="ver_lengkap" value="ver_lengkap" checked>
-                        <label class="form-check-label" for="ver_lengkap">
-                            Lengkap
-                        </label>
+                    <div class="form-group">
+                        <label for="nopendaftaran">Nomor Pendaftaran</label>
+                        <input class="form-control" name="nopendaftaran" type="text" readonly>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="statusverifikasi" id="ver_tidaklengkap" value="ver_tidaklengkap">
-                        <label class="form-check-label" for="ver_tidaklengkap">
-                            Tidak Lengkap
-                        </label>
+                    <div class="form-group">
+                        <label for="namalengkap">Nama Pencaker</label>
+                        <input class="form-control" name="namapencaker" type="text" readonly>
                     </div>
+
+                    <label class="col-form-label" for="statusverifikasi">Keterangan</label>
+                    <select class="form-control" name="statusverifikasi" id="statusverifikasi">
+                        <option value="">-- Pilih Salah Satu --</option>
+                        <option value="ver_tidaklengkap">Tidak Lengkap</option>
+                        <option value="ver_lengkap">Telah Diverifikasi</option>
+                        <option value="ver_valid">Aktif</option>
+                    </select>
 
                     <div id="pesanVerifikasi" class="form-group mt-3 hide">
                         <label class="col-form-label" for="pesan">Catatan</label>
@@ -322,28 +329,40 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         });
 
-        $(document).on('click', '#ver_lengkap', function() {
-            $('#pesanVerifikasi').addClass("hide");
-        });
-
-        $(document).on('click', '#ver_tidaklengkap', function() {
-            $('#pesanVerifikasi').removeClass("hide");
+        $('select[name="statusverifikasi"]').on('change', function(e) {
+            var optionSelected = $("option:selected", this);
+            var valueSelected = this.value;
+            if (valueSelected != '') {
+                if (valueSelected == 'ver_tidaklengkap') {
+                    $('#pesanVerifikasi').removeClass('hide');
+                } else {
+                    $('#pesanVerifikasi').addClass('hide');
+                }
+            } else {
+                $('#pesanVerifikasi').addClass('hide');
+            }
         });
 
         $(document).on('click', '.btnVerifikasi', function() {
-            var usersid = $(this).data("id");
+            var usersid = $(this).data("usersid");
+            var nopendaftaran = $(this).data("nopendaftaran");
+            var namapencaker = $(this).data("namapencaker");
             $('#modalVerifikasi').modal('show');
             $('input[name="usersid"]').val(usersid);
+            $('input[name="nopendaftaran"]').val(nopendaftaran);
+            $('input[name="namapencaker"]').val(namapencaker);
         });
 
         $(document).on('click', '#saveVerifikasi', function() {
             var usersid = $("input[name='usersid']").val();
-            var statusverifikasi = $("input[name='statusverifikasi']").val();
+            var statusverifikasi = $("select[name='statusverifikasi']").val();
             var pesan = $("textarea[name='pesan']").val();
             if (statusverifikasi == 'ver_lengkap') {
                 var aksi = 1;
             } else if (statusverifikasi == 'ver_tidaklengkap') {
                 var aksi = 2;
+            } else if (statusverifikasi == 'ver_valid') {
+                var aksi = 3;
             }
 
             $.ajax({
