@@ -362,7 +362,7 @@ class Web extends CI_Controller
 		$pesan = 'Hai...' . $name . ',' . PHP_EOL . 'Anda berhasil membuat akun di website Disnakertrans Manokwari.' . PHP_EOL . 'Silahkan kembali ke halaman website disnakertransmkw.com untuk melakukan login dan melengkapi formulir pembuatan Kartu Pencari Kerja (Form AK-1).' . PHP_EOL . PHP_EOL . 'Terima Kasih...' . PHP_EOL . PHP_EOL . '<noreply>';
 		$this->notifWA($phone, $pesan);
 
-		echo json_encode(array('status'=>TRUE));
+		echo json_encode(array('status' => TRUE));
 	}
 
 	public function account_registration()
@@ -419,7 +419,8 @@ class Web extends CI_Controller
 		$this->session->set_flashdata('alert-type', 'success');
 		$this->session->set_flashdata('alert', '<div class="alert alert-success text-center">Anda telah berhasil membuat akun.</div>');
 
-		redirect('login');
+		// redirect('login');
+		echo json_encode(array('status' => TRUE));
 	}
 
 	public function card_validation($code)
