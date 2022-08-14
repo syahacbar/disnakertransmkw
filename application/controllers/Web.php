@@ -310,6 +310,61 @@ class Web extends CI_Controller
 		return $qr_name;
 	}
 
+	public function registration_account()
+	{
+		$nopendaftaran = $this->pencaker_model->nomorpendaftaran();
+		$qrcode = $this->generate_qr_code($nopendaftaran);
+
+		$name = $this->input->post('namalengkap');
+		$phone = $this->input->post('nohp');
+		$id = $this->users_model->create([
+			'role' => '2',
+			'name' => post('namalengkap'),
+			'username' => post('nik'),
+			'email' => post('email'),
+			'phone' => $phone,
+			'status' => '1',
+			'password' => hash("sha256", post('password')),
+		]);
+
+
+		$this->pencaker_model->create([
+			'nik' => post('nik'),
+			'namalengkap' => post('namalengkap'),
+			'users_id' => $id,
+			'nopendaftaran' => $nopendaftaran,
+			'keterangan_status' => 'Registrasi',
+			'qr_code' => $qrcode
+		]);
+
+		if (!empty($_FILES['image']['name'])) {
+
+			$path = $_FILES['image']['name'];
+			$ext = pathinfo($path, PATHINFO_EXTENSION);
+			$this->uploadlib->initialize([
+				'file_name' => $id . '.' . $ext
+			]);
+			$image = $this->uploadlib->uploadImage('image', '/users');
+
+			if ($image['status']) {
+				$this->users_model->update($id, ['img_type' => $ext]);
+			} else {
+				copy(FCPATH . 'uploads/users/default.png', 'uploads/users/' . $id . '.png');
+			}
+		} else {
+
+			copy(FCPATH . 'uploads/users/default.png', 'uploads/users/' . $id . '.png');
+		}
+
+
+		$this->activity_model->add('New User $' . $id . ' Created by User:' . logged('name'), logged('id'));
+		isitimeline('1', $id, 'Anda berhasil melakukan registrasi akun di portal Disnakertrans Kab. Manokwari');
+		$pesan = 'Hai...' . $name . ',' . PHP_EOL . 'Anda berhasil membuat akun di website Disnakertrans Manokwari.' . PHP_EOL . 'Silahkan kembali ke halaman website disnakertransmkw.com untuk melakukan login dan melengkapi formulir pembuatan Kartu Pencari Kerja (Form AK-1).' . PHP_EOL . PHP_EOL . 'Terima Kasih...' . PHP_EOL . PHP_EOL . '<noreply>';
+		$this->notifWA($phone, $pesan);
+
+		echo json_encode(array('status'=>TRUE));
+	}
+
 	public function account_registration()
 	{
 		$nopendaftaran = $this->pencaker_model->nomorpendaftaran();

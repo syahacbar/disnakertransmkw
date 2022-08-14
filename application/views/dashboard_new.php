@@ -342,7 +342,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <section>
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">
+              <h3 class="card-title"> 
                 <i class="ion-ios-calendar-outline mr-1"></i>
                 <?php echo "Linimasa" ?>
               </h3>
@@ -360,7 +360,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                       <div class="vertical-timeline-element-content bounce-in">
                         <h4 class="timeline-title <?php echo ($tl->description != null) ? 'text-info' : ''; ?>"><?php echo $tl->subject; ?></h4>
                         <p <?php echo ($tl->description != null) ? 'class="text-info"' : ''; ?>><?php echo $tl->description; ?></p>
-                        <?php if($tl->subject == 'PROSES VERIFIKASI DATA') { ?>
+                        <?php if($tl->subject == 'PROSES VERIFIKASI DATA') { 
+                                if(!empty($verifikasi)) {
+                        ?>
                         <p class="text-danger">Catatan:</p>
                         <p style="border: 1px solid red;" class="text-danger py-1 px-1">                          
                           <?php foreach($verifikasi AS $v) : 
@@ -368,7 +370,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                           endforeach;?>
                         </p>
 
-                      <?php } ?>
+                      <?php }} ?>
                         <div class="tanggal">
                           <span class="vertical-timeline-element-date text-left">
                             <?php 

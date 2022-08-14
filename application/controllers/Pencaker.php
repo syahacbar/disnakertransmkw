@@ -647,7 +647,7 @@ class Pencaker extends MY_Controller
         }
 
         echo json_encode($res);
-    }
+    } 
 
 
     function add_verifikasi_data($aksi)
