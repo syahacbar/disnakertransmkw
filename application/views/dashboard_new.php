@@ -121,7 +121,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     font-size: .8rem;
   }
 
-  .vertical-timeline-element-content p {
+  .vertical-timeline-element-content p,
+  #pesan {
     margin-left: 55px;
   }
 
@@ -295,7 +296,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
           </div>
         <?php } ?>
-         
+
         <!-- TO DO List -->
         <div class="card">
           <div class="card-header">
@@ -342,7 +343,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <section>
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title"> 
+              <h3 class="card-title">
                 <i class="ion-ios-calendar-outline mr-1"></i>
                 <?php echo "Linimasa" ?>
               </h3>
@@ -360,28 +361,28 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                       <div class="vertical-timeline-element-content bounce-in">
                         <h4 class="timeline-title <?php echo ($tl->description != null) ? 'text-info' : ''; ?>"><?php echo $tl->subject; ?></h4>
                         <p <?php echo ($tl->description != null) ? 'class="text-info"' : ''; ?>><?php echo $tl->description; ?></p>
-                        <?php 
-                          if($tl->subject == 'PROSES VERIFIKASI DATA') { 
-                            if(!empty($verifikasi)) {
+                        <?php
+                        if ($tl->subject == 'PROSES VERIFIKASI DATA') {
+                          if (!empty($verifikasi)) {
                         ?>
-                        <p class="text-danger">Catatan:</p>
-                        <div style="border: 1px solid red;" class="text-danger py-1 px-1">                     
-                          <?php foreach($verifikasi AS $v) : 
-                            echo $v->pesan;
-                          endforeach;?>
-                        </div>
-                      <?php }} ?>
+                            <p class="text-danger">Catatan:</p>
+                            <div id="pesan" style="border: 1px solid red;" class="text-danger py-1 px-1">
+                              <?php foreach ($verifikasi as $v) :
+                                echo $v->pesan;
+                              endforeach; ?>
+                            </div>
+                        <?php }
+                        } ?>
                         <div class="tanggal">
                           <span class="vertical-timeline-element-date text-left">
-                            <?php 
-                            if(!empty($tl->tglwaktu))
-                            {
-                              echo date_indo(substr($tl->tglwaktu,0,10));
-                            } 
+                            <?php
+                            if (!empty($tl->tglwaktu)) {
+                              echo date_indo(substr($tl->tglwaktu, 0, 10));
+                            }
                             ?>
-                              </span><br>
+                          </span><br>
                           <span class="vertical-timeline-element-time text-left text-info">
-                          <?php echo substr($tl->tglwaktu, 11, 5); ?>                            
+                            <?php echo substr($tl->tglwaktu, 11, 5); ?>
                           </span>
                         </div>
 
@@ -404,7 +405,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <script src="<?php echo $url->assets ?>js/pages/dashboard.js"></script>
 
 <script>
-  function modalVerifikasi(ket_status) { 
+  function modalVerifikasi(ket_status) {
     Swal.fire({
       title: 'Konfirmasi!',
       text: "Apakah Anda yakin telah melengkapi data profil dan mengunggah semua dokumen yang diperlukan dengan benar?",
@@ -413,32 +414,34 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Tidak',
-      confirmButtonText: 'Ya, Saya Yakin!' 
+      confirmButtonText: 'Ya, Saya Yakin!'
     }).then((result) => {
       if (result.isConfirmed) {
         $.ajax({
           url: "<?php echo site_url('pencaker/update_keterangan_status') ?>",
           type: "POST",
-          data: { keterangan_status : ket_status },
+          data: {
+            keterangan_status: ket_status
+          },
           success: function(data) {
             var objData = jQuery.parseJSON(data);
             if (objData.status) {
-                Swal.fire({
-                  title: 'Selamat!',
-                  text: 'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
-                  icon: 'success',
-                  confirmButtonColor: '#3085d6',
-                  confirmButtonText: 'Ya'
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                      location.reload();
-                  }
-                });
+              Swal.fire({
+                title: 'Selamat!',
+                text: 'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ya'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  location.reload();
+                }
+              });
             }
           }
         });
 
-        
+
       }
     })
   }
