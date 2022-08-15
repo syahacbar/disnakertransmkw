@@ -14,14 +14,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         font-size: 15px;
     }
 
-    /* .input-group-addon.d-flex.align-items-center {
-        position: absolute;
-        right: 7px;
-        background-color: transparent;
-        height: 100%;
-        z-index: 999;
-    } */
-
     /* Chrome, Safari, Edge, Opera */
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
@@ -80,18 +72,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <label for="password" class="form-label">Kata Sandi</label>
                                 <div class="input-group" id="katasandi">
                                     <input class="form-control w-100" id="password" type="password" required name="password">
-                                    <!-- <div class="input-group-addon d-flex align-items-center">
-                                        <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                                    </div> -->
                                 </div>
                             </div>
                             <div class="mb-3 col-md-12">
                                 <label for="password_confirm" class="form-label">Konfirmasi Kata Sandi </label>
                                 <div class="input-group" id="katasandi_konfir">
                                     <input type="password" class="form-control w-100" id="password_confirm" required name="password_confirm">
-                                    <!-- <div class="input-group-addon d-flex align-items-center">
-                                        <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                                    </div> -->
+                                    
                                 </div>
                                 <span id="error-password_confirm" class="errormsg"></span>
                             </div>
@@ -121,31 +108,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <script type="text/javascript">
     $(document).ready(function() {
-        // $("#katasandi a").on('click', function(event) {
-        //     event.preventDefault();
-        //     if ($('#katasandi input').attr("type") == "text") {
-        //         $('#katasandi input').attr('type', 'password');
-        //         $('#katasandi i').addClass("fa-eye-slash");
-        //         $('#katasandi i').removeClass("fa-eye");
-        //     } else if ($('#katasandi input').attr("type") == "password") {
-        //         $('#katasandi input').attr('type', 'text');
-        //         $('#katasandi i').removeClass("fa-eye-slash");
-        //         $('#katasandi i').addClass("fa-eye");
-        //     }
-        // });
-
-        // $("#katasandi_konfir a").on('click', function(event) {
-        //     event.preventDefault();
-        //     if ($('#katasandi_konfir input').attr("type") == "text") {
-        //         $('#katasandi_konfir input').attr('type', 'password');
-        //         $('#katasandi_konfir i').addClass("fa-eye-slash");
-        //         $('#katasandi_konfir i').removeClass("fa-eye");
-        //     } else if ($('#katasandi_konfir input').attr("type") == "password") {
-        //         $('#katasandi_konfir input').attr('type', 'text');
-        //         $('#katasandi_konfir i').removeClass("fa-eye-slash");
-        //         $('#katasandi_konfir i').addClass("fa-eye");
-        //     }
-        // });
 
         $("#formRegistrasi").validate({
             rules: {
@@ -208,11 +170,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     type: "POST",
                     data: $('#formRegistrasi').serialize(),
                     dataType: "JSON",
-                    // success: function(response) {
-                    //     alert(response.message);
-                    //     location.reload();
-                    // },
-
                     success: function(data) {
                         if (data.status) //if success close modal and reload ajax table
                         {
@@ -228,11 +185,20 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 }
                                 return false;
                             })
+                        } 
+                        else
+                        {
+                            Swal.fire({
+                                icon: 'warning',
+                                html: data.msg,
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'OK'
+                            })
                         }
 
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
-                        alert('Error save data');
+                        alert('Error registration account');
                     }
                 });
             }

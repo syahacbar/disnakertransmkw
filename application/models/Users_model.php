@@ -147,6 +147,19 @@ class Users_model extends MY_Model {
 		return NULL;
 	}
 
+	public function user_exists($key)
+	{
+	    $this->db->where('username',$key);
+	    $this->db->or_where('email',$key);
+	    $query = $this->db->get('users');
+	    if ($query->num_rows() > 0){
+	        return true;
+	    }
+	    else{
+	        return false;
+	    }
+	}
+
 }
 
 /* End of file Users_model.php */
