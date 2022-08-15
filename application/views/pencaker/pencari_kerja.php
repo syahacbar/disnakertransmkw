@@ -151,9 +151,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <div class="form-group mb-0">
                                             <select name="user" id="filter_pencaker" onchange="" class="form-control filter_pencaker">
                                                 <option value="">-- Pilih Salah Satu --</option>
-                                                <option value="Aktif">Aktif</option>
+                                                <option value="Registrasi">Registrasi</option>
                                                 <option value="Verifikasi">Verifikasi</option>
                                                 <option value="Validasi">Validasi</option>
+                                                <option value="Aktif">Aktif</option>
                                                 <option value="Lapor">Lapor</option>
                                             </select>
                                         </div>

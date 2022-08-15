@@ -360,16 +360,16 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                       <div class="vertical-timeline-element-content bounce-in">
                         <h4 class="timeline-title <?php echo ($tl->description != null) ? 'text-info' : ''; ?>"><?php echo $tl->subject; ?></h4>
                         <p <?php echo ($tl->description != null) ? 'class="text-info"' : ''; ?>><?php echo $tl->description; ?></p>
-                        <?php if($tl->subject == 'PROSES VERIFIKASI DATA') { 
-                                if(!empty($verifikasi)) {
+                        <?php 
+                          if($tl->subject == 'PROSES VERIFIKASI DATA') { 
+                            if(!empty($verifikasi)) {
                         ?>
                         <p class="text-danger">Catatan:</p>
-                        <p style="border: 1px solid red;" class="text-danger py-1 px-1">                          
+                        <div style="border: 1px solid red;" class="text-danger py-1 px-1">                     
                           <?php foreach($verifikasi AS $v) : 
-                            echo $v->pesan."<br>";
+                            echo $v->pesan;
                           endforeach;?>
-                        </p>
-
+                        </div>
                       <?php }} ?>
                         <div class="tanggal">
                           <span class="vertical-timeline-element-date text-left">
@@ -413,7 +413,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Tidak',
-      confirmButtonText: 'Ya, Saya Yakin!'
+      confirmButtonText: 'Ya, Saya Yakin!' 
     }).then((result) => {
       if (result.isConfirmed) {
         $.ajax({

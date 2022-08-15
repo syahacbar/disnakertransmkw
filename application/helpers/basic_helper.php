@@ -1,4 +1,39 @@
 <?php 
+/**
+  * Function to send notif WA
+  *
+  * @param string $url any slug
+  *
+  * @return string site_url
+  * 
+  */
+if (!function_exists('url')) {
+	function notifWA($nohp, $pesan)
+	{
+		$CI =& get_instance();
+		$userkey = setting('whatsapp_userkey');
+		$passkey = setting('whatsapp_passkey');
+		$telepon = $nohp;
+		$message = $pesan;
+		$url = 'https://console.zenziva.net/wareguler/api/sendWA/';
+		$curlHandle = curl_init();
+		curl_setopt($curlHandle, CURLOPT_URL, $url);
+		curl_setopt($curlHandle, CURLOPT_HEADER, 0);
+		curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
+		curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($curlHandle, CURLOPT_TIMEOUT, 30);
+		curl_setopt($curlHandle, CURLOPT_POST, 1);
+		curl_setopt($curlHandle, CURLOPT_POSTFIELDS, array(
+			'userkey' => $userkey,
+			'passkey' => $passkey,
+			'to' => $telepon,
+			'message' => $message
+		));
+		$results = json_decode(curl_exec($curlHandle), true);
+		curl_close($curlHandle);
+	}
+}
 
 /**
   * Function to create custom url
