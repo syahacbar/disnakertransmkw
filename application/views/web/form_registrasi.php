@@ -78,7 +78,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <label for="password_confirm" class="form-label">Konfirmasi Kata Sandi </label>
                                 <div class="input-group" id="katasandi_konfir">
                                     <input type="password" class="form-control w-100" id="password_confirm" required name="password_confirm">
-                                    
+
                                 </div>
                                 <span id="error-password_confirm" class="errormsg"></span>
                             </div>
@@ -185,9 +185,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 }
                                 return false;
                             })
-                        } 
-                        else
-                        {
+                        } else {
                             Swal.fire({
                                 icon: 'warning',
                                 html: data.msg,

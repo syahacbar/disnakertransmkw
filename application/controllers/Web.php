@@ -26,7 +26,7 @@ class Web extends CI_Controller
 		// $this->page_data['page']->menu = 'dashboard';
 	}
 
-	
+
 
 	public function comingsoon()
 	{
@@ -49,6 +49,13 @@ class Web extends CI_Controller
 		$this->page_data['page']->menu = 'beranda';
 		$this->page_data['page']->title = 'Beranda';
 		$this->load->view('web/welcome', $this->page_data);
+	}
+
+	public function layanankartupencaker()
+	{
+		$this->page_data['page']->title = 'layanan';
+		$this->page_data['page']->title = '3 Langkah Mudah';
+		$this->load->view('web/layanankartupencaker', $this->page_data);
 	}
 
 	public function registrasi()
@@ -292,19 +299,14 @@ class Web extends CI_Controller
 		$nik = $this->input->post('nik');
 		$email = $this->input->post('email');
 
-		if($this->users_model->user_exists($nik))
-		{
+		if ($this->users_model->user_exists($nik)) {
 
 			$res['status'] = false;
 			$res['msg'] = 'NIK sudah terdaftar di sistem.<br>Mohon periksa kembali!';
-
-		} 
-		else if($this->users_model->user_exists($email))
-		{
+		} else if ($this->users_model->user_exists($email)) {
 
 			$res['status'] = false;
 			$res['msg'] = 'Email sudah terdaftar di sistem.<br>Mohon periksa kembali!';
-
 		} else {
 
 			$nopendaftaran = $this->pencaker_model->nomorpendaftaran();
@@ -355,7 +357,7 @@ class Web extends CI_Controller
 			$this->activity_model->add('New User $' . $id . ' Created by User:' . logged('name'), logged('id'));
 			isitimeline('1', $id, 'Anda berhasil melakukan registrasi akun di portal Disnakertrans Kab. Manokwari');
 			$pesan = 'Hai...' . $name . ',' . PHP_EOL . 'Anda berhasil membuat akun di website Disnakertrans Manokwari.' . PHP_EOL . 'Silahkan kembali ke halaman website disnakertransmkw.com untuk melakukan login dan melengkapi formulir pembuatan Kartu Pencari Kerja (Form AK-1).' . PHP_EOL . PHP_EOL . 'Terima Kasih...' . PHP_EOL . PHP_EOL . '<noreply>';
-			
+
 			notifWA($phone, $pesan);
 
 			$res['status'] = true;
