@@ -93,7 +93,6 @@ class Web extends CI_Controller
 			$viewx = 'web/kontak';
 		}
 
-		$q_smtp = $this->db->query("SELECT * FROM smtp LIMIT 1")->row();
 		$this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean|callback_alpha_space_only');
 		$this->form_validation->set_rules('email', 'Emaid ID', 'trim|required|valid_email');
 		$this->form_validation->set_rules('subject', 'Subject', 'trim|required|xss_clean');
