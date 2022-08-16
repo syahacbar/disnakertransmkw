@@ -31,7 +31,7 @@ class Pencaker_model extends MY_Model
 
 	function get_by_users_id($iduser)
 	{
-		$this->db->select('*');
+		$this->db->select('*,p.id as idpencaker, u.id as iduser');
 		$this->db->from('pencaker p');
 		$this->db->join('users u', 'u.id=p.users_id');
 		$this->db->where('p.users_id', $iduser);
@@ -230,7 +230,7 @@ class Pencaker_model extends MY_Model
 
 	function get_pas_foto($pencaker_id)
 	{
-		$q = $this->db->query("SELECT * FROM pencaker_dokumen pd JOIN dokumen d ON d.id=pd.dokumen_id JOIN pencaker p ON p.id=pd.pencaker_id WHERE d.jenis_dokumen = 'PAS FOTO' AND p.id=$pencaker_id");
+		$q = $this->db->query("SELECT * FROM pencaker_dokumen pd JOIN dokumen d ON d.id=pd.dokumen_id JOIN pencaker p ON p.id=pd.pencaker_id WHERE d.id = '1' AND p.id=$pencaker_id");
 		return $q->row();
 	}
 

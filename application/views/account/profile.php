@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
       <div class="card card-primary">
         <div class="card-body card-profile">
           <div class="text-center">
-            <img class="profile-user-img img-responsive img-circle" src="<?php echo userProfile($user->id) ?>" alt="<?php echo lang('user_profile_image') ?>" />
+            <img class="profile-user-img img-responsive img-circle" src="<?php echo (logged('role')==2) ? pencakerFoto(pencakerIdfromUserid($user->id)) : userProfile($user->id); ?>" alt="<?php echo lang('user_profile_image') ?>" />
           </div>
 
           <h3 class="profile-username text-center"><?php echo $user->name ?></h3>
@@ -64,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         <ul class="nav nav-pills">
           <li class="nav-item"><a href="#viewProfile" class="nav-link <?php echo $activeTab=='profile'?'active':'' ?>" data-toggle="tab"><?php echo lang('profile') ?></a></li>
           <li class="nav-item"><a href="#editProfile" class="nav-link <?php echo $activeTab=='edit'?'active':'' ?>" data-toggle="tab"><?php echo lang('edit') ?></a></li>
-          <li class="nav-item"><a href="#editProfilePic" class="nav-link <?php echo $activeTab=='change_pic'?'active':'' ?>" data-toggle="tab"><?php echo lang('change_profile_image') ?></a></li>
+          <!-- <li class="nav-item"><a href="#editProfilePic" class="nav-link <?php //echo $activeTab=='change_pic'?'active':'' ?>" data-toggle="tab"><?php //echo lang('change_profile_image') ?></a></li> -->
           <li class="nav-item"><a href="#changePassword" class="nav-link <?php echo $activeTab=='change_password'?'active':'' ?>" data-toggle="tab"><?php echo lang('change_password') ?></a></li>
 
           
@@ -158,19 +158,20 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 </div>
               </div>
 
-              <div class="form-group hidden">
+              <!-- <div class="form-group hidden">
                 <label for="inputContact" class="col-sm-2 control-label"><?php echo lang('user_role') ?></label>
 
                 <div class="col-sm-10">
                   <select name="role" id="inputRole" class="form-control select2" style="width:100%;">
-                    <option value=""><?php echo lang('user_select_role') ?></option>
-                    <?php foreach ($this->roles_model->get() as $row): ?>
-                      <?php $sel = !empty($user->role) && $user->role->id==$row->id ? 'selected' : '' ?>
-                      <option value="<?php echo $row->id ?>" <?php echo $sel ?>><?php echo $row->title ?></option>
-                    <?php endforeach ?>
+                    <option value=""><?php //echo lang('user_select_role') ?></option>
+                    <?php //foreach ($this->roles_model->get() as $row): ?>
+                      <?php //$sel = !empty($user->role) && $user->role->id==$row->id ? 'selected' : '' ?>
+                      <option value="<?php //echo $row->id ?>" <?php //echo $sel ?>><?php //echo $row->title ?></option>
+                    <?php //endforeach ?>
                   </select>
                 </div>
-              </div>
+              </div> -->
+              <input type="hidden" name="role" value="<?php echo $user->role->id;?>">
 
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">

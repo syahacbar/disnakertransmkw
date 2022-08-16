@@ -129,6 +129,19 @@ if (!function_exists('pencakerFoto')) {
 
 }
 
+if (!function_exists('pencakerIdfromUserid')) {
+
+	function pencakerIdfromUserid($userid)
+	{
+		$CI =& get_instance();
+
+		$pencaker = $CI->pencaker_model->get_by_users_id($userid);
+
+		return $pencaker->idpencaker;
+	}
+
+}
+
 if (!function_exists('isitimeline')) {
 
 	function isitimeline($idtimeline,$iduser,$description)

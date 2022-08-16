@@ -172,13 +172,7 @@
                         </table>
                     </div>
                     <div class="col-2" style="margin-left: auto; margin-right: 0;">
-                        <?php
-                        foreach ($dokumen_pencaker as $dp) :
-                            if ($dp->jenis_dokumen == 'PAS FOTO') {
-                                echo '<img align="right" src="' . base_url('uploads/pencaker/') . $dp->nopendaftaran . '/' . $dp->namadokumen . '" height="130px" width="100px">';
-                            }
-                        endforeach;
-                        ?>
+                        <img align="right" src="<?php echo pencakerFoto($pencaker->idpencaker) ?>" height="200px" width="160px">
                     </div>
                 </div>
             </div>
