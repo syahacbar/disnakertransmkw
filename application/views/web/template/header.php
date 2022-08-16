@@ -137,7 +137,7 @@
                     </li>
                     <li class="dropdown"><a class="<?php echo ($page->menu == 'layanan') ? 'active' : '' ?>" href="#"><span>Layanan</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="<?php echo site_url(); ?>web/layanankartupencaker">Kartu Pencari Kerja (Kartu Kuning)</a></li>
+                            <li><a href="<?php echo site_url(); ?>web/kartupencaker">Kartu Pencari Kerja (Kartu Kuning)</a></li>
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto <?php echo ($page->menu == 'kontak') ? 'active' : '' ?>" href="<?php echo site_url('kontak'); ?>">Kontak</a></li>

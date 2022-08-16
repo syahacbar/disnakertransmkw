@@ -51,9 +51,9 @@ class Web extends CI_Controller
 		$this->load->view('web/welcome', $this->page_data);
 	}
 
-	public function layanankartupencaker()
+	public function kartupencaker()
 	{
-		$this->page_data['page']->title = 'layanan';
+		$this->page_data['page']->menu = 'layanan';
 		$this->page_data['page']->title = '3 Langkah Mudah';
 		$this->load->view('web/layanankartupencaker', $this->page_data);
 	}
