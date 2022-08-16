@@ -25,25 +25,31 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="row">
                 <div class="col-xl-4 col-md-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                     <div class="icon-box">
-                        <div class="icon"><i class="bx bxs-user-plus bx-lg"></i></div>
-                        <h4>Registrasi Akun</h4>
-                        <p class="text-dark">Buat akun baru dengan mengisi nama lengkap, NIK (Nomor Induk Kependudukan), email, dan nomor HP.</p>
+                        <div class="col-md-12 py-3 d-flex justify-content-center align-items-center ">
+                            <img class="w-100" src="https://thumbs.dreamstime.com/b/online-registration-sign-up-concept-young-people-signing-login-to-account-user-interface-secure-password-modern-vector-194944767.jpg" alt="">
+                        </div>
+                        <h4>1. Registrasi Akun</h4>
+                        <p class="text-dark">Buat akun baru dengan mengisi Nama Lengkap, NIK (Nomor Induk Kependudukan), Email, dan nomor HP/Whatsapp.</p>
                     </div>
                 </div>
 
                 <div class="col-xl-4 col-md-4 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
                     <div class="icon-box">
-                        <div class="icon"><i class="bx bxs-dock-left bx-lg"></i></div>
-                        <h4>Isi Aplikasi</h4>
-                        <p class="text-dark">Lengkapi form AK-1 dan unggah dokumen kelengkapan sebagai pencari kerja, diantaranya: pas foto, KTP, ijazah terakhir, transkrip nilai, riwayat hidup, SKCK, dan suket sehat.</p>
+                        <div class="col-md-12 py-3 d-flex justify-content-center align-items-center ">
+                            <img class="w-100" src="https://cdni.iconscout.com/illustration/premium/thumb/online-form-filling-4488741-3757136.png" alt="">
+                        </div>
+                        <h4>2. Isi Aplikasi</h4>
+                        <p class="text-dark">Lengkapi form AK-1 dan unggah dokumen kelengkapan persyaratan pencari kerja, diantaranya: Pas Foto, KTP, Ijazah Terakhir, Transkrip Nilai, Riwayat Hidup, SKCK, dan Surat Keterangan Kesehatan.</p>
                     </div>
                 </div>
 
                 <div class="col-xl-4 col-md-4 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
                     <div class="icon-box">
-                        <div class="icon"><i class="bx bxs-check-square bx-lg"></i></div>
-                        <h4>Validasi</h4>
-                        <p class="text-dark">Mendatangi kantor Disnakertrans Kab. Manokwari dengan membawa dokumen asli untuk proses validasi sehingga Anda dapat memperoleh Kartu Pencari Kerja (Kartu Kuning) dan tercatat aktif sebagai pencari kerja di Disnakertrans Kab. Manokwari.</p>
+                        <div class="col-md-12 py-3 d-flex justify-content-center align-items-center ">
+                            <img class="w-100" src="<?php echo base_url('assets/frontend/assets/img/office.jpg');?>" alt="">
+                        </div>
+                        <h4>3. Datang Ke Kantor</h4>
+                        <p class="text-dark">Mendatangi kantor Disnakertrans Kab. Manokwari untuk mengambil Kartu Pencari Kerja (Kartu Kuning) dengan syarat menunjukkan dokumen asli yang telah diunggah di sistem.</p>
                     </div>
                 </div>
 
