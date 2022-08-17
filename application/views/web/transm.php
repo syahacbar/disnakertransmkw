@@ -2,105 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <?php include viewPath('web/template/header'); ?>
-
-<style>
-    header#header {
-        background: #283a5a !important;
-    }
-
-    section#pricing,
-    section#contact {
-        margin-top: 120px;
-    }
-
-    section#pricing .col-lg-12 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    section#pricing .col-lg-12 .box {
-        -webkit-box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 10%), 0px 1px 3px 0px rgb(0 0 0 / 8%);
-        box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 10%), 0px 1px 3px 0px rgb(0 0 0 / 8%);
-    }
-
-    .contact .php-email-form {
-        width: 100%;
-        border-top: 0;
-        border-bottom: 0;
-        padding: 30px 0 0 0;
-        background: #fff;
-        box-shadow: none;
-    }
-
-    .why-us .accordion-list li {
-        padding: 0;
-        background: transparent;
-        border-radius: 4px;
-    }
-
-    #skills .skills-content li {
-        padding: 5px 1px !important;
-        line-height: 1.8 !important;
-    }
-
-    section#visimisi {
-        padding: 0;
-        margin-top: 120px;
-        padding-top: 60px;
-    }
-
-    section#why-us li {
-        padding: 5px 0;
-        line-height: 1.8;
-        margin-top: 0;
-    }
-
-    .why-us .content p {
-        color: #444444;
-        font-size: 16px;
-    }
-
-    section {
-        padding: 0;
-        overflow: hidden;
-    }
-
-    .why-us .content {
-        padding: 20px 10px 0 100px;
-    }
-
-    .why-us .accordion-list {
-        padding: 0 100px 19px 100px;
-    }
-
-    .bpkt,
-    .pkt {
-        background-color: #fff;
-    }
-
-    ol li::marker {
-        color: #47b2e4;
-        font-weight: bold;
-    }
-
-    .skills .content h3 {
-        font-weight: 400;
-        font-size: 34px;
-        color: #37517e;
-    }
-
-    .content h3 {
-        font-weight: 400;
-        font-size: 34px;
-        color: #fff !important;
-        background-color: #37517e;
-        padding: 10px 20px;
-        -webkit-clip-path: polygon(0% 0%, 95% 0, 100% 50%, 100% 100%, 0% 100%);
-        clip-path: polygon(0% 0%, 95% 0, 100% 50%, 100% 100%, 0% 100%);
-    }
-</style>
-</head>
+<link rel="stylesheet" href="<?php echo base_url(); ?>/assets/frontend/assets/css/transm-custom-css.css">
 
 <main id="main">
     <section id="visimisi" class="about mt-10">
@@ -240,11 +142,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                     <div class="accordion-list">
                         <?php
-                            $transp2kt = directory_map('./assets/frontend/assets/img/transmigrasi/p2kt/', 1);
-                            $x = 1;
-                            $y = 1;
-                            $z = 0;
-                            $w = 0;
+                        $transp2kt = directory_map('./assets/frontend/assets/img/transmigrasi/p2kt/', 1);
+                        $x = 1;
+                        $y = 1;
+                        $z = 0;
+                        $w = 0;
                         ?>
                         <ul>
                             <li>
@@ -252,17 +154,17 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <div id="p2kt-1" class="collapse show" data-bs-parent=".accordion-list">
                                     <div id="p2kt" class="carousel carousel-dark slide mt-3" data-bs-ride="carousel">
                                         <div class="carousel-indicators">
-                                        <?php foreach ($transp2kt as $tp) : $z++?>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="<?php echo $x++;?>" <?php echo ($z=='1') ? 'class="active" aria-current="true"' : '';?> aria-label="Slide <?php echo $y++ ;?>"></button>
-                                        <?php endforeach; ?>
+                                            <?php foreach ($transp2kt as $tp) : $z++ ?>
+                                                <button type="button" data-bs-target="#p2kt" data-bs-slide-to="<?php echo $x++; ?>" <?php echo ($z == '1') ? 'class="active" aria-current="true"' : ''; ?> aria-label="Slide <?php echo $y++; ?>"></button>
+                                            <?php endforeach; ?>
                                         </div>
                                         <div class="carousel-inner">
-                                            <?php foreach ($transp2kt as $tp) : $w++?>
-                                            <div class="carousel-item <?php echo ($w=='1') ? 'active':'';?>" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/p2kt/').$tp; ?>" class="d-block w-100">
-                                                </a>
-                                            </div>
+                                            <?php foreach ($transp2kt as $tp) : $w++ ?>
+                                                <div class="carousel-item <?php echo ($w == '1') ? 'active' : ''; ?>" data-bs-interval="2000">
+                                                    <a class="lsb-preview" href="#">
+                                                        <img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/p2kt/') . $tp; ?>" class="d-block w-100">
+                                                    </a>
+                                                </div>
                                             <?php endforeach; ?>
 
                                         </div>
@@ -446,8 +348,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </ul>
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-               
-                 <?php foreach ($teknis as $tek) : ?>
+
+                <?php foreach ($teknis as $tek) : ?>
                     <div class="col-lg-4 col-md-6 portfolio-item rapatteknis">
                         <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/rapatteknis/') . $tek; ?>" class="img-fluid" alt=""></div>
                         <div class="portfolio-info">

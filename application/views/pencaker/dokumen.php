@@ -85,7 +85,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <td>
                                             <?php if ($doc->pencakerdokumen_id != NULL) { ?>
 
-                                                <a target="_blank" class="btn btn-sm btn-info btnViewDokumen" href="<?php echo base_url('uploads/pencaker/').$doc->nopendaftaran.'/'.$doc->namadokumen; ?>" data-id="<?php ?>" data-placement="left" title="Hapus Dokumen"><i class="fas fa-eye"></i></a>&nbsp;
+                                                <a target="_blank" class="btn btn-sm btn-info btnViewDokumen" href="<?php echo base_url('uploads/pencaker/') . $doc->nopendaftaran . '/' . $doc->namadokumen; ?>" data-id="<?php ?>" data-placement="left" title="Hapus Dokumen"><i class="fas fa-eye"></i></a>&nbsp;
 
                                                 <a href="javascript:void(0)" data-iddokumen="<?php echo $doc->id; ?>" data-idpencakerdokumen="<?php echo $doc->pencakerdokumen_id; ?>" data-jenisdokumen="<?php echo $doc->jenis_dokumen; ?>" class="btn btn-sm btn-primary btnEditDokumen" data-toggle="tooltip" data-placement="bottom" title="Perbarui Dokumen"><i class="fas fa-edit"></i></a>
 

@@ -2,104 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <?php include viewPath('web/template/header'); ?>
-
-<style>
-    header#header {
-        background: #283a5a !important;
-    }
-
-    section#pricing,
-    section#contact {
-        margin-top: 120px;
-    }
-
-    section#pricing .col-lg-12 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    section#pricing .col-lg-12 .box {
-        -webkit-box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 10%), 0px 1px 3px 0px rgb(0 0 0 / 8%);
-        box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 10%), 0px 1px 3px 0px rgb(0 0 0 / 8%);
-    }
-
-    .contact .php-email-form {
-        width: 100%;
-        border-top: 0;
-        border-bottom: 0;
-        padding: 30px 0 0 0;
-        background: #fff;
-        box-shadow: none;
-    }
-
-    .why-us .accordion-list li {
-        padding: 0;
-        background: transparent;
-        border-radius: 4px;
-    }
-
-    #skills .skills-content li {
-        padding: 5px 1px !important;
-        line-height: 1.8 !important;
-    }
-
-    section#visimisi {
-        padding: 0;
-        margin-top: 120px;
-        padding-top: 60px;
-    }
-
-    section#why-us li {
-        padding: 5px 0;
-        line-height: 1.8;
-        margin-top: 0;
-    }
-
-    .why-us .content p {
-        color: #444444;
-        font-size: 16px;
-    }
-
-    section {
-        padding: 0;
-        overflow: hidden;
-    }
-
-    .why-us .content {
-        padding: 20px 10px 0 100px;
-    }
-
-    .why-us .accordion-list {
-        padding: 0 100px 19px 100px;
-    }
-
-    .bpkt,
-    .pkt {
-        background-color: #fff;
-    }
-
-    ol li::marker {
-        color: #47b2e4;
-        font-weight: bold;
-    }
-
-    .skills .content h3 {
-        font-weight: 400;
-        font-size: 34px;
-        color: #37517e;
-    }
-
-    .content h3 {
-        font-weight: 400;
-        font-size: 34px;
-        color: #fff !important;
-        background-color: #37517e;
-        padding: 10px 20px;
-        -webkit-clip-path: polygon(0% 0%, 95% 0, 100% 50%, 100% 100%, 0% 100%);
-        clip-path: polygon(0% 0%, 95% 0, 100% 50%, 100% 100%, 0% 100%);
-    }
-</style>
+<link rel="stylesheet" href="<?php echo base_url(); ?>/assets/frontend/assets/css/tenaker-custom-css.css">
 
 <main id="main">
     <section id="visimisi" class="about mt-10">
@@ -221,19 +124,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         </div>
     </section><!-- End Why Us Section -->
 
-     <!-- ======= Cta Section ======= -->
+    <!-- ======= Cta Section ======= -->
     <section id="cta" class="cta">
-      <div class="container" data-aos="zoom-in">
+        <div class="container" data-aos="zoom-in">
 
-        <div class="row">
-          <div class="col-lg-9 text-center text-lg-start">
-            <h3>PERBUP  RESTRIBUSI IMTA </h3>
-            <p>UNTUK PERBUP  RESTRIBUSI IMTA TELAH BERGANTI NAMA MENJADI RPTKA SESUAI PERATURAN PEMERINTAH NOMOR 34 TAHUN 2021, DAN UNTUK PERATURAN DAERAH MASIH DIBAHAS OLEH BALEGDA TINGKAT PROVINSI PAPUA BARAT  
-</p>
-          </div>
+            <div class="row">
+                <div class="col-lg-9 text-center text-lg-start">
+                    <h3>PERBUP RESTRIBUSI IMTA </h3>
+                    <p>UNTUK PERBUP RESTRIBUSI IMTA TELAH BERGANTI NAMA MENJADI RPTKA SESUAI PERATURAN PEMERINTAH NOMOR 34 TAHUN 2021, DAN UNTUK PERATURAN DAERAH MASIH DIBAHAS OLEH BALEGDA TINGKAT PROVINSI PAPUA BARAT
+                    </p>
+                </div>
+            </div>
+
         </div>
-
-      </div>
     </section><!-- End Cta Section -->
 
     <!-- ======= Why Us Section ======= -->
@@ -252,7 +155,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         </p>
                     </div>
 
-                    <div class="accordion-list">
+                    <div class="accordion-list table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -300,7 +203,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
 
             <?php
-            $all = directory_map('./assets/frontend/assets/img/tenagakerja/all',1);
+            $all = directory_map('./assets/frontend/assets/img/tenagakerja/all', 1);
             $pelatihan = directory_map('./assets/frontend/assets/img/tenagakerja/pelatihankerja', 1);
             $bantuan = directory_map('./assets/frontend/assets/img/tenagakerja/bantuan', 1);
             ?>
@@ -312,7 +215,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </ul>
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-                 <?php foreach ($all as $a) : ?>
+                <?php foreach ($all as $a) : ?>
                     <div class="col-lg-4 col-md-6 portfolio-item all">
                         <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/tenagakerja/all/') . $a; ?>" class="img-fluid" alt=""></div>
                         <div class="portfolio-info">
