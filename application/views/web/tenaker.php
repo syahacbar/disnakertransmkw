@@ -2,6 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <?php include viewPath('web/template/header'); ?>
+
 <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/frontend/assets/css/tenaker-custom-css.css">
 
 <main id="main">

@@ -85,7 +85,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     <section id="portfolio" class="portfolio">
         <div class="container" data-aos="fade-up">
 
-            <div class="section-title mt-4">
+            <div class="section-title mt-2">
                 <h2>Struktur Organisasi</h2>
             </div>
 
