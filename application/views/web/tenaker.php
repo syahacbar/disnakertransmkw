@@ -66,13 +66,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         overflow: hidden;
     }
 
-    .why-us .content {
+    /* .why-us .content {
         padding: 20px 10px 0 100px;
     }
 
     .why-us .accordion-list {
         padding: 0 100px 19px 100px;
-    }
+    } */
 
     .bpkt,
     .pkt {
@@ -98,6 +98,41 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         padding: 10px 20px;
         -webkit-clip-path: polygon(0% 0%, 95% 0, 100% 50%, 100% 100%, 0% 100%);
         clip-path: polygon(0% 0%, 95% 0, 100% 50%, 100% 100%, 0% 100%);
+    }
+
+    .portfolio #portfolio-flters li {
+        background: #efefef !important;
+        color: #000 !important;
+        width: 100% !important;
+        line-height: 1.8;
+        padding: 10px;
+        border-radius: 10px !important;
+        border: 0;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .portfolio #portfolio-flters {
+        list-style: none;
+        padding: 0;
+        display: flex !important;
+        margin-bottom: 20px;
+        overflow: visible;
+        width: 100% !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        white-space: nowrap !important;
+        -webkit-overflow-scrolling: touch !important;
+        left: 0 !important;
+        margin-left: 0;
+        justify-content: flex-start !important;
+    }
+
+    .portfolio #portfolio-flters li:hover,
+    .portfolio #portfolio-flters li.filter-active {
+        background: #47b2e4 !important;
+        color: #fff !important;
     }
 </style>
 
@@ -221,19 +256,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         </div>
     </section><!-- End Why Us Section -->
 
-     <!-- ======= Cta Section ======= -->
+    <!-- ======= Cta Section ======= -->
     <section id="cta" class="cta">
-      <div class="container" data-aos="zoom-in">
+        <div class="container" data-aos="zoom-in">
 
-        <div class="row">
-          <div class="col-lg-9 text-center text-lg-start">
-            <h3>PERBUP  RESTRIBUSI IMTA </h3>
-            <p>UNTUK PERBUP  RESTRIBUSI IMTA TELAH BERGANTI NAMA MENJADI RPTKA SESUAI PERATURAN PEMERINTAH NOMOR 34 TAHUN 2021, DAN UNTUK PERATURAN DAERAH MASIH DIBAHAS OLEH BALEGDA TINGKAT PROVINSI PAPUA BARAT  
-</p>
-          </div>
+            <div class="row">
+                <div class="col-lg-9 text-center text-lg-start">
+                    <h3>PERBUP RESTRIBUSI IMTA </h3>
+                    <p>UNTUK PERBUP RESTRIBUSI IMTA TELAH BERGANTI NAMA MENJADI RPTKA SESUAI PERATURAN PEMERINTAH NOMOR 34 TAHUN 2021, DAN UNTUK PERATURAN DAERAH MASIH DIBAHAS OLEH BALEGDA TINGKAT PROVINSI PAPUA BARAT
+                    </p>
+                </div>
+            </div>
+
         </div>
-
-      </div>
     </section><!-- End Cta Section -->
 
     <!-- ======= Why Us Section ======= -->
@@ -252,7 +287,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         </p>
                     </div>
 
-                    <div class="accordion-list">
+                    <div class="accordion-list table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -300,7 +335,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
 
             <?php
-            $all = directory_map('./assets/frontend/assets/img/tenagakerja/all',1);
+            $all = directory_map('./assets/frontend/assets/img/tenagakerja/all', 1);
             $pelatihan = directory_map('./assets/frontend/assets/img/tenagakerja/pelatihankerja', 1);
             $bantuan = directory_map('./assets/frontend/assets/img/tenagakerja/bantuan', 1);
             ?>
@@ -312,7 +347,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </ul>
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-                 <?php foreach ($all as $a) : ?>
+                <?php foreach ($all as $a) : ?>
                     <div class="col-lg-4 col-md-6 portfolio-item all">
                         <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/tenagakerja/all/') . $a; ?>" class="img-fluid" alt=""></div>
                         <div class="portfolio-info">

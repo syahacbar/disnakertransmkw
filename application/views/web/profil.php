@@ -21,7 +21,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
 
             <div class="row content">
-                <div class="col-lg-6">
+                <div class="col-lg-6 mb-4">
                     <h4 class="text-center">Visi</h4>
                     <i class="fa fa-quote-left"></i>
                     <p class="text-center blockquote text-right mt-4"><strong><em>"Mempersiapkan Tenaga Kerja Mandiri dan Membangun Permukiman Layak Huni Menuju Masyarakat Manokwari Sejahtera"</em></strong>
@@ -48,10 +48,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 
     <!-- ======= About Us Section ======= -->
-    <section id="tupoksi" class="about section-bg tupoksi mt-4">
+    <section id="tupoksi" class="about section-bg tupoksi mt-3">
         <div class="container" data-aos="fade-up">
 
-            <div class="section-title mt-4">
+            <div class="section-title mt-3">
                 <h2>Tugas Pokok dan Fungsi</h2>
             </div>
 
@@ -86,7 +86,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     <section id="struktur" class="contact struktur mt-3">
         <div class="container">
 
-            <div class="section-title mt-4">
+            <div class="section-title mt-2">
                 <h2>Struktur Organisasi</h2>
                 <a class="lsb-preview" href="#">
                     <img class="w-100 lsb-preview border rounded" src="<?php echo base_url('uploads/profil/'); ?>STRUKTUR_DISNAKERTRANS.jpg" alt="Struktur Organisasi">
