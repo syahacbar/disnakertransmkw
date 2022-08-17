@@ -11,13 +11,24 @@ class Pdf extends TCPDF
 
     public function Header()
     {
-        // Logo
-        $image_file = K_PATH_IMAGES . 'logo_example.jpg';
-        $this->Image($image_file, 10, 10, 15, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        $logoX = 7; // 186mm. The logo will be displayed on the right side close to the border of the page
+        $logoFileName = base_url('assets/frontend/assets/img/logodisnakertransmkw.png');
+        $logoWidth = 40; // 15mm
         // Set font
-        $this->SetFont('helvetica', 'B', 20);
-        // Title
-        $this->Cell(0, 15, '<< TCPDF Example 003 >>', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->SetFont('helvetica', 'I', 7);
+        $this->Image($logoFileName, $logoX, 5, $logoWidth);
+        // $headertext = '
+        // <table border="0" width="100%">
+        // <tr><td align="left"></td>
+        //     <td align="center"></td>
+        //     <td align="right">Copyright &copy; 2022 DisnakertransMkw. All rights reserved.</td>
+        // </tr>
+        // <tr><td align="left"></td>
+        //     <td align="center">Page ' . $this->getAliasNumPage() . ' of ' . $this->getAliasNbPages() . '</td>
+        //     <td align="right">Print date: ' . date("d-m-Y H:i:s") . '</td>
+        // </tr>
+        // </table>';
+        // $this->writeHTML($headertext);
     }
 
     // Page footer
@@ -28,7 +39,7 @@ class Pdf extends TCPDF
         $logoWidth = 40; // 15mm
         // Set font
         $this->SetFont('helvetica', 'I', 7);
-        $this->Image($logoFileName, $logoX, $this->GetY(), $logoWidth);
+        // $this->Image($logoFileName, $logoX, $this->GetY(), $logoWidth);
         $footertext = '
         <table border="0" width="100%">
         <tr><td align="left"></td>

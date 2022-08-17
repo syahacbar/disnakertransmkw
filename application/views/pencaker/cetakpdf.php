@@ -7,7 +7,7 @@ $pdf->setFooterMargin(15);
 $pdf->SetAutoPageBreak(true, 20);
 $pdf->SetAuthor('Author');
 $pdf->SetDisplayMode('real', 'default');
-$pdf->setPrintHeader(false);
+// $pdf->setPrintHeader(false);
 //$pdf->setPrintFooter(false);
 $pdf->SetMargins(5, 10, 5, true);
 
