@@ -21,7 +21,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <div class="pic"><img src="<?php echo base_url('uploads/pencaker/').$v_msg->pencaker->nopendaftaran.'/'.$v_msg->pencaker->namadokumen; ?>" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4><?php echo strtoupper($v_msg->pencaker->namalengkap);?></h4>
-                <span>Aktif Sebagai Pencari Kerja Sejak ...</span>
+                <span>Aktif Sebagai Pencari Kerja Sejak <?php echo (!empty($v_msg->pencaker->tglaktifpencaker)) ? date_indo($v_msg->pencaker->tglaktifpencaker) : '';?></span>
                 <p>Status Pekerjaan Saat Ini : </p>
                 <p>Status Pelaporan :  </p>
                 <div class="social">

@@ -649,12 +649,14 @@ class Pencaker extends MY_Controller
 
         } else if ($aksi == 1) {
             $this->pencaker_model->update_keterangan_status($pencaker->idpencaker, 'Validasi');
+            isitimeline('5', $pencaker->iduser, 'Silahkan datang ke kantor Disnakertrans Kab. Manokwari untuk mengambil Kartu Pencari Kerja (Kartu Kuning) dengan menunjukkan dokumen asli yang sebelumnya telah anda unggah di sistem disnakertransmkw.com');
             $pesan = 'Hai...' . strtoupper($pencaker->namalengkap) . ',' . PHP_EOL . 'Data dan berkas anda telah kami verifikasi dan dinyatakan lengkap.' . PHP_EOL . 'Selanjutnya kami mohon untuk datang ke kantor Dinas Tenaga Kerja dan Transmigrasi Kabupaten Manokwari untuk mengambil *Kartu Pencari Kerja (Kartu Kuning)* dengan syarat menunjukkan *dokumen asli* yang telah diunggah di sistem disnakertransmkw.com.' . PHP_EOL . PHP_EOL . 'Terima Kasih...' . PHP_EOL . PHP_EOL . '<noreply>';
             
             notifWA($this->users_model->getById($users_id)->phone, $pesan);
 
         } else if ($aksi == 3) {
             $this->pencaker_model->update_keterangan_status($pencaker->idpencaker, 'Aktif');
+            isitimeline('6', $pencaker->iduser, 'Anda telah resmi terdaftar sebagai Pencari Kerja (Aktif) di Disnakertrans Manokwari. Kami mohon untuk kembali melapor setiap 6 (enam) bulan sekali melalui panel Pencaker pada website disnakertransmkw.com.');
             $pesan = 'Hai...' . strtoupper($pencaker->namalengkap) . ',' . PHP_EOL . 'Anda telah resmi terdaftar sebagai Pencari Kerja (Aktif) di Disnakertrans Manokwari.' . PHP_EOL . 'Kami mohon untuk kembali melapor setiap 6 (enam) bulan sekali melalui panel Pencaker pada website disnakertransmkw.com.' . PHP_EOL . PHP_EOL . 'Terima Kasih...' . PHP_EOL . PHP_EOL . '<noreply>';
             
             notifWA($this->users_model->getById($users_id)->phone, $pesan);

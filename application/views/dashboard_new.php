@@ -286,7 +286,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>Verifikasi</h3>
+                <h3>Validasi</h3>
 
                 <p>Silahkan ke Kantor Disnakertrans Kab. Manokwari dengan membawa berkas/dokumen asli untuk divalidasi. Bila dinyatakan berkas/dokumen anda valid, anda akan mendapatkan Kartu Pencari Kerja</p>
               </div>
