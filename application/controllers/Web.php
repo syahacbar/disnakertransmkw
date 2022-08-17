@@ -382,7 +382,7 @@ class Web extends CI_Controller
 			$this->page_data['v_msg']->code = TRUE;
 			$this->page_data['v_msg']->pencaker = $get_pencaker->row();
 		} else {
-			$this->page_data['v_msg']->valid = "Kartu Anda Tidak Valid !";
+			$this->page_data['v_msg']->valid = "Kartu Anda Tidak Terdaftar Di Sistem Disnakertrans Manokwari !";
 			$this->page_data['v_msg']->code = FALSE;
 		}
 
