@@ -26,8 +26,6 @@ class Web extends CI_Controller
 		// $this->page_data['page']->menu = 'dashboard';
 	}
 
-
-
 	public function comingsoon()
 	{
 		$this->page_data['page']->title = 'Comingsoon';

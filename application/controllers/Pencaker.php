@@ -555,11 +555,11 @@ class Pencaker extends MY_Controller
         $jenisdokumen = $this->pencaker_model->get_jenis_dokumen($iddokumen)->jenis_dokumen;
 
 
-        if (!is_dir('uploads/pencaker/' . $pencaker_nopendaftaran)) {
-            mkdir('./uploads/pencaker/' . $pencaker_nopendaftaran, 0777, TRUE);
+        if (!is_dir('uploads/pencaker/' . $pencaker->nopendaftaran)) {
+            mkdir('./uploads/pencaker/' . $pencaker->nopendaftaran, 0777, TRUE);
         }
 
-        $newfilename = $pencaker_nopendaftaran . "_" . $jenisdokumen;
+        $newfilename = $pencaker->nopendaftaran . "_" . $jenisdokumen;
 
         $this->uploadlib->initialize([
             'file_name' => $newfilename
