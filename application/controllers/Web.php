@@ -369,13 +369,20 @@ class Web extends CI_Controller
 	public function card_validation($code)
 	{
 		$this->page_data['v_msg'] = (object)array();
-		$get_pencaker = $this->db->query("SELECT * FROM pencaker p JOIN pencaker_dokumen pd ON pd.pencaker_id=p.id JOIN dokumen d ON d.id=pd.dokumen_id JOIN users u ON u.id=p.users_id WHERE d.jenis_dokumen='PAS FOTo' AND SHA1(p.nopendaftaran)= '$code'");
+
+		$get_pencaker = $this->db->query("
+			SELECT *, date(tu.tglwaktu) AS tglaktifpencaker FROM pencaker p JOIN pencaker_dokumen pd ON pd.pencaker_id=p.id
+			JOIN dokumen d ON d.id=pd.dokumen_id
+			JOIN users u ON u.id=p.users_id
+			JOIN timeline_user tu ON tu.users_id=u.id
+			WHERE d.id='1' AND tu.timeline_id='6' AND SHA1(p.nopendaftaran)= '$code'");
+
 		if ($get_pencaker->num_rows() > 0) {
 			$this->page_data['v_msg']->valid = "Kartu Anda Valid dan Terdaftar di Sistem Dinas Tenaga Kerja dan Transmigrasi Kabupaten Manokwari";
 			$this->page_data['v_msg']->code = TRUE;
 			$this->page_data['v_msg']->pencaker = $get_pencaker->row();
 		} else {
-			$this->page_data['v_msg']->valid = "Kartu Anda Tidak Valid !";
+			$this->page_data['v_msg']->valid = "Kartu Anda Tidak Terdaftar Di Sistem Disnakertrans Manokwari !";
 			$this->page_data['v_msg']->code = FALSE;
 		}
 

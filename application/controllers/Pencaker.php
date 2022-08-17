@@ -12,9 +12,9 @@ class Pencaker extends MY_Controller
     {
         ifPermissions('profil_pencaker');
         $users_id = logged('id');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
 
-        $querybahasa  = $this->db->query("SELECT * FROM pencaker WHERE id='$pencaker_id'");
+        $querybahasa  = $this->db->query("SELECT * FROM pencaker WHERE id='$pencaker->idpencaker'");
 
         $get_timeline = $this->pencaker_model->get_timeline_by_id('2', $users_id);
         if (empty($get_timeline->id)) {
@@ -32,13 +32,8 @@ class Pencaker extends MY_Controller
 
     public function pencari_kerja()
     {
-        $users_id = logged('id');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
-
-        $pencaker_dokumen =  $this->pencaker_model->pencaker_doc($pencaker_id);
         $this->page_data['pencaker'] = $this->pencaker_model->get_all();
 
-        $this->page_data['dokumen_pencaker'] =  $pencaker_dokumen;
         $this->page_data['page']->title = 'Data Pencari Kerja';
         $this->page_data['page']->menu = 'pencari_kerja';
         $this->load->view('pencaker/pencari_kerja', $this->page_data);
@@ -47,15 +42,15 @@ class Pencaker extends MY_Controller
     public function hapus_pencari_kerja()
     {
         $users_id = $this->input->post('usersid');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
 
         //delete semua yang berkaitan dengan pencaker
-        $delminatjabatan = $this->pencaker_model->delete_minat_jabatan($pencaker_id->id);
-        $delpendidikanpencaker = $this->pencaker_model->delete_pendidikan_pencaker($pencaker_id->id);
-        $delpengalamankerja = $this->pencaker_model->delete_pengalaman_kerja($pencaker_id->id);
-        $deltimlineuser = $this->pencaker_model->delete_timeline_user($pencaker_id->id);
+        $delminatjabatan = $this->pencaker_model->delete_minat_jabatan($pencaker->idpencaker);
+        $delpendidikanpencaker = $this->pencaker_model->delete_pendidikan_pencaker($pencaker->idpencaker);
+        $delpengalamankerja = $this->pencaker_model->delete_pengalaman_kerja($pencaker->idpencaker);
+        $deltimlineuser = $this->pencaker_model->delete_timeline_user($pencaker->idpencaker);
 
-        $delpencaker  = $this->pencaker_model->delete_pencaker($pencaker_id->id);
+        $delpencaker  = $this->pencaker_model->delete_pencaker($pencaker->idpencaker);
         $deluser = $this->users_model->delete($users_id);
 
         if ($deluser) {
@@ -68,18 +63,17 @@ class Pencaker extends MY_Controller
         $this->activity_model->add("User #$users_id menghapus data Pencaker");
         echo json_encode($res);
 
-        //redirect('pencaker/pencari_kerja');
     }
 
     function kartu_pencaker($iduser)
-    {
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($iduser);
+    { 
+        $pencaker = $this->pencaker_model->get_by_users_id($iduser);
 
-        $q_pendidikan = $this->db->query("SELECT jp.id AS idjenjang, jp.jenjang, p.users_id, pd.* FROM pencaker p JOIN pendidikan_pencaker pd ON pd.pencaker_id=p.id JOIN jenjang_pendidikan jp ON jp.id=pd.jenjang_pendidikan_id WHERE pd.pencaker_id = $pencaker_id->id ORDER BY jp.id ASC");
-        $q_pekerjaan = $this->db->query("SELECT p.users_id, pk.* FROM pencaker p JOIN pengalaman_kerja pk ON pk.pencaker_id=p.id WHERE pk.pencaker_id = $pencaker_id->id");
+        $q_pendidikan = $this->db->query("SELECT jp.id AS idjenjang, jp.jenjang, p.users_id, pd.* FROM pencaker p JOIN pendidikan_pencaker pd ON pd.pencaker_id=p.id JOIN jenjang_pendidikan jp ON jp.id=pd.jenjang_pendidikan_id WHERE pd.pencaker_id = $pencaker->idpencaker ORDER BY jp.id ASC");
+        $q_pekerjaan = $this->db->query("SELECT p.users_id, pk.* FROM pencaker p JOIN pengalaman_kerja pk ON pk.pencaker_id=p.id WHERE pk.pencaker_id = $pencaker->idpencaker");
 
         $this->page_data['pencaker'] = $this->pencaker_model->get_by_users_id($iduser);
-        $this->page_data['pasfoto'] = $this->pencaker_model->get_pas_foto($pencaker_id->id);
+        $this->page_data['pasfoto'] = $this->pencaker_model->get_pas_foto($pencaker->idpencaker);
         $this->page_data['pendidikan_pencaker'] = $q_pendidikan->result();
         $this->page_data['pekerjaan_pencaker'] = $q_pekerjaan->result();
         $this->page_data['page']->title = 'Kartu Pencari Kerja';
@@ -87,22 +81,15 @@ class Pencaker extends MY_Controller
         $this->load->view('printout/kartu_pencaker', $this->page_data);
     }
 
-    // function kartukuning_2()
-    // {
-    //     $this->page_data['page']->title = 'Printout Form AK-1';
-    //     $this->page_data['page']->menu = 'doc_pencaker';
-    //     $this->load->view('printout/kartukuning2', $this->page_data);
-    // }
-
     function review_pencaker($iduser)
     {
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($iduser);
+        $pencaker = $this->pencaker_model->get_by_users_id($iduser);
 
-        $pencaker_dokumen =  $this->pencaker_model->pencaker_doc($pencaker_id->id);
+        $pencaker_dokumen =  $this->pencaker_model->pencaker_doc($pencaker->idpencaker);
 
-        $q_pendidikan = $this->db->query("SELECT jp.id AS idjenjang, jp.jenjang, p.users_id, pd.* FROM pencaker p JOIN pendidikan_pencaker pd ON pd.pencaker_id=p.id JOIN jenjang_pendidikan jp ON jp.id=pd.jenjang_pendidikan_id WHERE pd.pencaker_id = $pencaker_id->id ORDER BY jp.id ASC");
-        $q_pekerjaan = $this->db->query("SELECT p.users_id, pk.* FROM pencaker p JOIN pengalaman_kerja pk ON pk.pencaker_id=p.id WHERE pk.pencaker_id = $pencaker_id->id");
-        $q_minat_jabatan = $this->db->query("SELECT mj.* FROM pencaker p JOIN minat_jabatan mj ON mj.pencaker_id=p.id WHERE p.id = $pencaker_id->id");
+        $q_pendidikan = $this->db->query("SELECT jp.id AS idjenjang, jp.jenjang, p.users_id, pd.* FROM pencaker p JOIN pendidikan_pencaker pd ON pd.pencaker_id=p.id JOIN jenjang_pendidikan jp ON jp.id=pd.jenjang_pendidikan_id WHERE pd.pencaker_id = $pencaker->idpencaker ORDER BY jp.id ASC");
+        $q_pekerjaan = $this->db->query("SELECT p.users_id, pk.* FROM pencaker p JOIN pengalaman_kerja pk ON pk.pencaker_id=p.id WHERE pk.pencaker_id = $pencaker->idpencaker");
+        $q_minat_jabatan = $this->db->query("SELECT mj.* FROM pencaker p JOIN minat_jabatan mj ON mj.pencaker_id=p.id WHERE p.id = $pencaker->idpencaker");
 
         $this->page_data['pencaker'] = $this->pencaker_model->get_by_users_id($iduser);
         $this->page_data['pendidikan_pencaker'] = $q_pendidikan->result();
@@ -126,11 +113,11 @@ class Pencaker extends MY_Controller
     function get_pendidikan()
     {
         $users_id = logged('id');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
 
         $query  = "SELECT jp.id AS idjenjang, jp.jenjang, p.users_id, pd.* FROM pencaker p JOIN pendidikan_pencaker pd ON pd.pencaker_id=p.id JOIN jenjang_pendidikan jp ON jp.id=pd.jenjang_pendidikan_id";
         $search = array('pd.nama_sekolah', 'pd.keterampilan');
-        $where  = array('pd.pencaker_id' => $pencaker_id->id);
+        $where  = array('pd.pencaker_id' => $pencaker->idpencaker);
         $set_order = "ORDER BY jp.id ASC";
 
         // jika memakai IS NULL pada where sql
@@ -149,9 +136,9 @@ class Pencaker extends MY_Controller
     function add_pendidikan()
     {
         $users_id = logged('id');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
         $data = array(
-            'pencaker_id' => $pencaker_id,
+            'pencaker_id' => $pencaker->idpencaker,
             'tahunmasuk' => $this->input->post('tahunmasuk'),
             'tahunlulus' => $this->input->post('tahunlulus'),
             'nama_sekolah' => $this->input->post('nama_sekolah'),
@@ -216,11 +203,11 @@ class Pencaker extends MY_Controller
     function get_pekerjaan()
     {
         $users_id = logged('id');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
 
         $query  = "SELECT p.users_id, pk.* FROM pencaker p JOIN pengalaman_kerja pk ON pk.pencaker_id=p.id";
         $search = array('pk.instansi', 'pk.jabatan');
-        $where  = array('pk.pencaker_id' => $pencaker_id->id);
+        $where  = array('pk.pencaker_id' => $pencaker->idpencaker);
         $set_order = "ORDER BY pk.tahunmasuk ASC";
         // jika memakai IS NULL pada where sql
         $isWhere = null;
@@ -238,9 +225,9 @@ class Pencaker extends MY_Controller
     function add_pekerjaan()
     {
         $users_id = logged('id');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
         $data = array(
-            'pencaker_id' => $pencaker_id,
+            'pencaker_id' => $pencaker->idpencaker,
             'tahunmasuk' => $this->input->post('tahunmasukkerja'),
             'tahunkeluar' => $this->input->post('tahunkeluarkerja'),
             'instansi' => $this->input->post('instansi'),
@@ -302,11 +289,11 @@ class Pencaker extends MY_Controller
     function get_jabatan()
     {
         $users_id = logged('id');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
 
         $query  = "SELECT p.users_id, mj.* FROM pencaker p JOIN minat_jabatan mj ON mj.pencaker_id=p.id";
         $search = array('mj.nama_jabatan');
-        $where  = array('mj.pencaker_id' => $pencaker_id->id);
+        $where  = array('mj.pencaker_id' => $pencaker->idpencaker);
         $set_order = "ORDER BY mj.id ASC";
         // jika memakai IS NULL pada where sql
         $isWhere = null;
@@ -324,9 +311,9 @@ class Pencaker extends MY_Controller
     function add_jabatan()
     {
         $users_id = logged('id');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
         $data = array(
-            'pencaker_id' => $pencaker_id,
+            'pencaker_id' => $pencaker->idpencaker,
             'nama_jabatan' => $this->input->post('minat_jabatan'),
         );
 
@@ -382,9 +369,9 @@ class Pencaker extends MY_Controller
     function get_bahasa_pencaker()
     {
         $users_id = logged('id');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
 
-        $query  = $this->db->query("SELECT keterampilan_bahasa FROM pencaker WHERE id='$pencaker_id'");
+        $query  = $this->db->query("SELECT keterampilan_bahasa FROM pencaker WHERE id='$pencaker->idpencaker'");
         $bahasa = $query->result();
         $data['bahasa'] = $bahasa;
         $data['hasil'] = "sukses";
@@ -444,7 +431,7 @@ class Pencaker extends MY_Controller
     function update4()
     {
         $users_id = logged('id');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
 
         $ket_bahasa = $this->input->post('ket_bahasa');
         $arr_bahasa = array();
@@ -452,13 +439,13 @@ class Pencaker extends MY_Controller
             $arr_bahasa[$i] = $ket_bahasa[$i];
         }
         $gabung_bhs = implode(",", $arr_bahasa);
-        $this->db->where('id', $pencaker_id);
+        $this->db->where('id', $pencaker->idpencaker);
         $this->db->update('pencaker', array('keterampilan_bahasa' => $gabung_bhs));
 
         //bahasa lainnya
         $bahasa_lainnya = $this->input->post('txt_bahasa_lainnya');
         if ($bahasa_lainnya != NULL) {
-            $this->db->where('id', $pencaker_id);
+            $this->db->where('id', $pencaker->idpencaker);
             $this->db->update('pencaker', array('bahasa_lainnya' => $bahasa_lainnya));
         }
 
@@ -545,14 +532,14 @@ class Pencaker extends MY_Controller
         ifPermissions('doc_pencaker');
 
         $users_id = logged('id');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
 
         $get_timeline = $this->pencaker_model->get_timeline_by_id('3', $users_id);
         if (empty($get_timeline->id)) {
             isitimeline('3', $users_id, 'Tahap ini anda harus mengunggah berkas/dokumen sebagai syarat kelengkapan pengajuan pembuatan Kartu Pencari Kerja');
         }
 
-        $pencaker_dokumen =  $this->pencaker_model->pencaker_doc($pencaker_id);
+        $pencaker_dokumen =  $this->pencaker_model->pencaker_doc($pencaker->idpencaker);
         $this->page_data['pencaker_dokumen'] = $pencaker_dokumen;
         $this->page_data['page']->title = 'Dokumen Pencari Kerja';
         $this->page_data['page']->menu = 'doc_pencaker';
@@ -563,9 +550,8 @@ class Pencaker extends MY_Controller
     function upload_dokumen()
     {
         $users_id = logged('id');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
         $iddokumen = $this->input->post('iddokumen');
-        $pencaker_nopendaftaran = $this->pencaker_model->get_by_users_id($users_id)->nopendaftaran;
         $jenisdokumen = $this->pencaker_model->get_jenis_dokumen($iddokumen)->jenis_dokumen;
 
 
@@ -579,14 +565,14 @@ class Pencaker extends MY_Controller
             'file_name' => $newfilename
         ]);
 
-        if ($this->uploadlib->uploadImage('dokumenpencaker', '/pencaker/' . $pencaker_nopendaftaran)) {
+        if ($this->uploadlib->uploadImage('dokumenpencaker', '/pencaker/' . $pencaker->nopendaftaran)) {
             $namadokumen = $this->upload->data('file_name');
             $token = $this->input->post('token');
             $uploaded_on = date("Y-m-d H:i:s");
             $mode = $this->input->post('mode');
 
             if ($mode == "add") {
-                $this->db->insert('pencaker_dokumen', array('namadokumen' => $namadokumen, 'token' => $token, 'dokumen_id' => $iddokumen, 'tgl_upload' => $uploaded_on, 'pencaker_id' => $pencaker_id));
+                $this->db->insert('pencaker_dokumen', array('namadokumen' => $namadokumen, 'token' => $token, 'dokumen_id' => $iddokumen, 'tgl_upload' => $uploaded_on, 'pencaker_id' => $pencaker->idpencaker));
             } else {
                 $idpencakerdokumen = $this->input->post('idpencakerdokumen');
                 $this->db->where('id', $idpencakerdokumen);
@@ -600,13 +586,13 @@ class Pencaker extends MY_Controller
     function get_dokumen()
     {
         $users_id = logged('id');
-        $pencaker_id = $this->pencaker_model->get_pencaker_id($users_id)->id;
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
 
         $query  = "SELECT d.*,
-                    (SELECT pd.namadokumen FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS namadokumen,
-                    (SELECT p.nopendaftaran FROM pencaker p WHERE p.id='$pencaker_id') AS nopendaftaran,
-                    (SELECT pd.tgl_upload FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS tgl_upload,
-                    (SELECT pd.id FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker_id') AS pencakerdokumen_id
+                    (SELECT pd.namadokumen FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker->idpencaker') AS namadokumen,
+                    (SELECT p.nopendaftaran FROM pencaker p WHERE p.id='$pencaker->idpencaker') AS nopendaftaran,
+                    (SELECT pd.tgl_upload FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker->idpencaker') AS tgl_upload,
+                    (SELECT pd.id FROM pencaker_dokumen pd WHERE pd.dokumen_id=d.id AND pd.pencaker_id='$pencaker->idpencaker') AS pencakerdokumen_id
                     FROM dokumen d";
         $search = array('d.jenis_dokumen');
         $where  = NULL;
@@ -617,6 +603,7 @@ class Pencaker extends MY_Controller
         header('Content-Type: application/json');
         echo $this->M_Datatables->get_tables_query($query, $search, $where, $isWhere);
     }
+<<<<<<< HEAD
 
 
     function preview_doc($id)
@@ -628,13 +615,15 @@ class Pencaker extends MY_Controller
         $this->page_data['filepath'] = $filepath;
         $this->load->view('pencaker/preview_dokumen', $this->page_data);
     }
+=======
+>>>>>>> 2929686941387cd0eca967fc67dcd840d01139ea
 
     function update_keterangan_status()
     {
         $users_id = logged('id');
-        $pencaker = $this->pencaker_model->get_pencaker_id($users_id);
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
         $keterangan_status = $this->input->post('keterangan_status');
-        $updateketstatus = $this->pencaker_model->update_keterangan_status($pencaker->id, $keterangan_status);
+        $updateketstatus = $this->pencaker_model->update_keterangan_status($pencaker->idpencaker, $keterangan_status);
         if ($updateketstatus) {
             $get_timeline = $this->pencaker_model->get_timeline_by_id('4', $users_id);
             if (empty($get_timeline->id)) {
@@ -657,7 +646,7 @@ class Pencaker extends MY_Controller
     function add_verifikasi_data($aksi)
     {
         $users_id = $this->input->post('usersid');
-        $pencaker = $this->pencaker_model->get_pencaker_id($users_id);
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
 
         if ($aksi == 2) {
             $data = array(
@@ -672,12 +661,14 @@ class Pencaker extends MY_Controller
 
             notifWA($this->users_model->getById($users_id)->phone, $pesan);
         } else if ($aksi == 1) {
-            $this->pencaker_model->update_keterangan_status($pencaker->id, 'Validasi');
+            $this->pencaker_model->update_keterangan_status($pencaker->idpencaker, 'Validasi');
+            isitimeline('5', $pencaker->iduser, 'Silahkan datang ke kantor Disnakertrans Kab. Manokwari untuk mengambil Kartu Pencari Kerja (Kartu Kuning) dengan menunjukkan dokumen asli yang sebelumnya telah anda unggah di sistem disnakertransmkw.com');
             $pesan = 'Hai...' . strtoupper($pencaker->namalengkap) . ',' . PHP_EOL . 'Data dan berkas anda telah kami verifikasi dan dinyatakan lengkap.' . PHP_EOL . 'Selanjutnya kami mohon untuk datang ke kantor Dinas Tenaga Kerja dan Transmigrasi Kabupaten Manokwari untuk mengambil *Kartu Pencari Kerja (Kartu Kuning)* dengan syarat menunjukkan *dokumen asli* yang telah diunggah di sistem disnakertransmkw.com.' . PHP_EOL . PHP_EOL . 'Terima Kasih...' . PHP_EOL . PHP_EOL . '<noreply>';
 
             notifWA($this->users_model->getById($users_id)->phone, $pesan);
         } else if ($aksi == 3) {
-            $this->pencaker_model->update_keterangan_status($pencaker->id, 'Aktif');
+            $this->pencaker_model->update_keterangan_status($pencaker->idpencaker, 'Aktif');
+            isitimeline('6', $pencaker->iduser, 'Anda telah resmi terdaftar sebagai Pencari Kerja (Aktif) di Disnakertrans Manokwari. Kami mohon untuk kembali melapor setiap 6 (enam) bulan sekali melalui panel Pencaker pada website disnakertransmkw.com.');
             $pesan = 'Hai...' . strtoupper($pencaker->namalengkap) . ',' . PHP_EOL . 'Anda telah resmi terdaftar sebagai Pencari Kerja (Aktif) di Disnakertrans Manokwari.' . PHP_EOL . 'Kami mohon untuk kembali melapor setiap 6 (enam) bulan sekali melalui panel Pencaker pada website disnakertransmkw.com.' . PHP_EOL . PHP_EOL . 'Terima Kasih...' . PHP_EOL . PHP_EOL . '<noreply>';
 
             notifWA($this->users_model->getById($users_id)->phone, $pesan);
@@ -739,25 +730,6 @@ class Pencaker extends MY_Controller
         $excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15); // Set font size 15 untuk kolom A1
         $excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT); // Set text center untuk kolom A1
 
-        // $excel->setActiveSheetIndex(0)->setCellValue('A3', "No.");
-        // $excel->getActiveSheet()->mergeCells('A3:A4');
-
-        // $excel->setActiveSheetIndex(0)->setCellValue('B3', "Identitas Pendaftar");
-        // $excel->getActiveSheet()->mergeCells('B3:AB3');
-
-        // $excel->setActiveSheetIndex(0)->setCellValue('AC3', "Data Sekolah");
-        // $excel->getActiveSheet()->mergeCells('AC3:AL3');
-
-        // $excel->setActiveSheetIndex(0)->setCellValue('AM3', "Data Orang Tua");
-        // $excel->getActiveSheet()->mergeCells('AM3:BB3');
-
-        // $excel->setActiveSheetIndex(0)->setCellValue('BC3', "Data Wali");
-        // $excel->getActiveSheet()->mergeCells('BC3:BG3');
-
-        // $excel->setActiveSheetIndex(0)->setCellValue('BH3', "Tgl. Pendaftaran");
-        // $excel->getActiveSheet()->mergeCells('BH3:BH4');
-
-
         $excel->setActiveSheetIndex(0);
         $excel->getActiveSheet()->getRowDimension('3')->setRowHeight(40);
         // Buat header tabel nya pada baris ke 3
@@ -796,17 +768,6 @@ class Pencaker extends MY_Controller
             $no++; // Tambah 1 setiap kali looping
             $numrow++; // Tambah 1 setiap kali looping
         }
-
-
-        // $excel->getActiveSheet()->getColumnDimension('BH')->setWidth(15);
-        // $excel->getActiveSheet()->getStyle('BH3:BH4')->applyFromArray($style_col);
-
-
-
-        // for ($i = 'A'; $i !=  $excel->getActiveSheet()->getHighestColumn(); $i++) {
-        // 	$excel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
-        // }
-
 
         // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
         $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);

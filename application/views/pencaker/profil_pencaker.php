@@ -367,10 +367,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 </div>
                                 <?php
                                 $arr_bhs = explode(',', $ket_bahasa_pencaker->keterampilan_bahasa);
-                                // print_r($arr_bhs);
-                                // foreach($arr_bhs AS $bhs) :
-                                //     echo $bhs;
-                                // endforeach;
+
                                 ?>
 
                                 <!-- form bahasa pencaker-->

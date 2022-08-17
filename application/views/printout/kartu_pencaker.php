@@ -131,11 +131,8 @@
         </div>  
         <div class="row" style="margin-top:20px !important"> 
           <div class="col-3">
-            <?php if(!empty($pasfoto->namadokumen)) { ?>
-            <img align="left" style="width:28mm;height: 38mm;border-style:solid; border-width: 1px;" src="<?php echo base_url('uploads/pencaker/').$pencaker->nopendaftaran.'/'.$pasfoto->namadokumen;?>">
-          <?php } else { ?>
-            <img align="left" style="width:28mm;height: 38mm;border-style:solid; border-width: 1px;" src="<?php echo base_url('assets/img/fotonotavail.jpg')?>">
-          <?php } ?>
+          <img align="left" style="width:28mm;height: 38mm;border-style:solid; border-width: 1px;" src="<?php echo pencakerFoto($pencaker->idpencaker); ?>">
+
           </div>  
           <div class="col-9">
             <table class="t3">
@@ -158,7 +155,10 @@
                 <tr>
                     <td>Tempat, Tanggal Lahir</td>
                     <td>:</td>
-                    <td class="border-bottom"><?php echo $pencaker->tempatlahir.", ".date_indo($pencaker->tgllahir);?></td>
+                    <td class="border-bottom">
+                      <?php 
+                      echo $pencaker->tempatlahir.", "; 
+                      echo (!empty($pencaker->tgllahir)) ? date_indo($pencaker->tgllahir) : '';?></td>
                 </tr>
                 <tr>
                     <td>Jenis Kelamin</td>

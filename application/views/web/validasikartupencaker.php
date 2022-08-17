@@ -17,11 +17,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <div class="row">
 
           <div class="col-lg-6 mx-auto">
+            <?php if($v_msg->code == TRUE) { ?>
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
               <div class="pic"><img src="<?php echo base_url('uploads/pencaker/').$v_msg->pencaker->nopendaftaran.'/'.$v_msg->pencaker->namadokumen; ?>" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4><?php echo strtoupper($v_msg->pencaker->namalengkap);?></h4>
-                <span>Aktif Sebagai Pencari Kerja Sejak ...</span>
+                <span>Aktif Sebagai Pencari Kerja Sejak <?php echo (!empty($v_msg->pencaker->tglaktifpencaker)) ? date_indo($v_msg->pencaker->tglaktifpencaker) : '';?></span>
                 <p>Status Pekerjaan Saat Ini : </p>
                 <p>Status Pelaporan :  </p>
                 <div class="social">
@@ -31,6 +32,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 </div>
               </div>
             </div>
+          <?php } else { ?>
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+              <div class="member-info">
+                <center><h4><?php echo $v_msg->valid;?></h4></center>
+                
+              </div>
+            </div>
+          <?php } ?>
           </div>
 
         </div>

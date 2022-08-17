@@ -242,17 +242,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <!-- User Account: style can be found in dropdown.less -->
         <li class="nav-item dropdown user-menu">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-            <img src="<?php echo userProfile(logged('id')) ?>" class="user-image img-circle elevation-2" alt="User Image">
-            <span class="d-none d-md-inline"><?php echo logged('name') ?></span>
+            <img src="<?php echo (logged('role')==2) ? pencakerFoto(pencakerIdfromUserid(logged('id'))) : userProfile(logged('id')) ?>" class="user-image img-circle elevation-2" alt="User Image">
+            <span class="d-none d-md-inline"><?php echo strtoupper(logged('name')); ?></span>
           </a>
           <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <!-- User image -->
             <li class="user-header bg-primary">
-              <img src="<?php echo userProfile(logged('id')) ?>" class="img-circle elevation-2" alt="User Image">
+              <img src="<?php echo (logged('role')==2) ? pencakerFoto(pencakerIdfromUserid(logged('id'))) : userProfile(logged('id')) ?>" class="img-circle elevation-2" alt="User Image">
 
               <p>
-                <?php echo logged('name') ?>
-                <small>Member since Nov. 2012</small>
+                <?php echo strtoupper(logged('name')); ?>
+                <small>Member since <?php echo date_indo(substr(logged('created_at'),0,10)); ?></small>
               </p>
             </li>
             <!-- Menu Body -->

@@ -7,7 +7,7 @@ $pdf->setFooterMargin(15);
 $pdf->SetAutoPageBreak(true, 20);
 $pdf->SetAuthor('Author');
 $pdf->SetDisplayMode('real', 'default');
-$pdf->setPrintHeader(false);
+// $pdf->setPrintHeader(false);
 //$pdf->setPrintFooter(false);
 $pdf->SetMargins(5, 10, 5, true);
 
@@ -50,8 +50,8 @@ $html = '
     }
     
 </style>
-<div class="heading">DATA PENCARI KERJA KABUPATEN MANOKWARI</div><br>
-<div class="small">Keterangan: <span><strong>BB</strong>: Berat Badan</span>, <span><strong>LJ</strong>: Lokasi Jabatan</span></div><br>
+<div class="heading">DATA PENCARI KERJA KABUPATEN MANOKWARI</div>
+<div class="small"></div><br>
 <table width="100%" border="1" cellpadding="5">
     <tr class="center">
         <th width="22">No.</th>
