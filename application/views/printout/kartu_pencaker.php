@@ -155,7 +155,10 @@
                 <tr>
                     <td>Tempat, Tanggal Lahir</td>
                     <td>:</td>
-                    <td class="border-bottom"><?php echo $pencaker->tempatlahir.", ".date_indo($pencaker->tgllahir);?></td>
+                    <td class="border-bottom">
+                      <?php 
+                      echo $pencaker->tempatlahir.", "; 
+                      echo (!empty($pencaker->tgllahir)) ? date_indo($pencaker->tgllahir) : '';?></td>
                 </tr>
                 <tr>
                     <td>Jenis Kelamin</td>

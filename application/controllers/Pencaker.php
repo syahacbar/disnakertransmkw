@@ -32,13 +32,8 @@ class Pencaker extends MY_Controller
 
     public function pencari_kerja()
     {
-        $users_id = logged('id');
-        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
-
-        $pencaker_dokumen =  $this->pencaker_model->pencaker_doc($pencaker->idpencaker);
         $this->page_data['pencaker'] = $this->pencaker_model->get_all();
 
-        $this->page_data['dokumen_pencaker'] =  $pencaker_dokumen;
         $this->page_data['page']->title = 'Data Pencari Kerja';
         $this->page_data['page']->menu = 'pencari_kerja';
         $this->load->view('pencaker/pencari_kerja', $this->page_data);
@@ -68,7 +63,6 @@ class Pencaker extends MY_Controller
         $this->activity_model->add("User #$users_id menghapus data Pencaker");
         echo json_encode($res);
 
-        //redirect('pencaker/pencari_kerja');
     }
 
     function kartu_pencaker($iduser)
@@ -86,13 +80,6 @@ class Pencaker extends MY_Controller
         $this->page_data['page']->menu = 'doc_pencaker';
         $this->load->view('printout/kartu_pencaker', $this->page_data);
     }
-
-    // function kartukuning_2()
-    // {
-    //     $this->page_data['page']->title = 'Printout Form AK-1';
-    //     $this->page_data['page']->menu = 'doc_pencaker';
-    //     $this->load->view('printout/kartukuning2', $this->page_data);
-    // }
 
     function review_pencaker($iduser)
     {
@@ -616,17 +603,6 @@ class Pencaker extends MY_Controller
         header('Content-Type: application/json');
         echo $this->M_Datatables->get_tables_query($query, $search, $where, $isWhere);
     }
- 
-
-    function preview_doc($id)
-    {
-        $dokumen = $this->pencaker_model->get_preview_doc($id);
-        $namadokumen = $dokumen->namadokumen;
-        $folder = $dokumen->nopendaftaran;
-        $filepath = $folder . $namadokumen;
-        $this->page_data['filepath'] = $filepath;
-        $this->load->view('pencaker/preview_dokumen', $this->page_data);
-    }
 
     function update_keterangan_status()
     {
@@ -740,25 +716,6 @@ class Pencaker extends MY_Controller
         $excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15); // Set font size 15 untuk kolom A1
         $excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT); // Set text center untuk kolom A1
 
-        // $excel->setActiveSheetIndex(0)->setCellValue('A3', "No.");
-        // $excel->getActiveSheet()->mergeCells('A3:A4');
-
-        // $excel->setActiveSheetIndex(0)->setCellValue('B3', "Identitas Pendaftar");
-        // $excel->getActiveSheet()->mergeCells('B3:AB3');
-
-        // $excel->setActiveSheetIndex(0)->setCellValue('AC3', "Data Sekolah");
-        // $excel->getActiveSheet()->mergeCells('AC3:AL3');
-
-        // $excel->setActiveSheetIndex(0)->setCellValue('AM3', "Data Orang Tua");
-        // $excel->getActiveSheet()->mergeCells('AM3:BB3');
-
-        // $excel->setActiveSheetIndex(0)->setCellValue('BC3', "Data Wali");
-        // $excel->getActiveSheet()->mergeCells('BC3:BG3');
-
-        // $excel->setActiveSheetIndex(0)->setCellValue('BH3', "Tgl. Pendaftaran");
-        // $excel->getActiveSheet()->mergeCells('BH3:BH4');
-
-
         $excel->setActiveSheetIndex(0);
         $excel->getActiveSheet()->getRowDimension('3')->setRowHeight(40);
         // Buat header tabel nya pada baris ke 3
@@ -797,17 +754,6 @@ class Pencaker extends MY_Controller
             $no++; // Tambah 1 setiap kali looping
             $numrow++; // Tambah 1 setiap kali looping
         }
-
-
-        // $excel->getActiveSheet()->getColumnDimension('BH')->setWidth(15);
-        // $excel->getActiveSheet()->getStyle('BH3:BH4')->applyFromArray($style_col);
-
-
-
-        // for ($i = 'A'; $i !=  $excel->getActiveSheet()->getHighestColumn(); $i++) {
-        // 	$excel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
-        // }
-
 
         // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
         $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);

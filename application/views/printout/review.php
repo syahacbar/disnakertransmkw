@@ -111,7 +111,13 @@
                                 <tr>
                                     <td>Tempat, Tanggal Lahir</td>
                                     <td>:</td>
-                                    <td class="fw-bold"><?php echo strtoupper($pencaker->tempatlahir) . ", " . date_indo($pencaker->tgllahir); ?></td>
+                                    <td class="fw-bold">
+                                    <?php 
+                                        echo strtoupper($pencaker->tempatlahir) . ", ";
+                                        echo (!empty($pencaker->tgllahir)) ? strtoupper(date_indo($pencaker->tgllahir)) : ''; 
+                                    ?>
+                                        
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Tinggi Badan</td>
