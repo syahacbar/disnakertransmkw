@@ -297,6 +297,97 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           </div>
         <?php } ?>
 
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-chart-pie mr-1"></i>
+              Laporan Pencari Kerja
+            </h3>
+            <div class="card-tools">
+              <ul class="nav nav-pills ml-auto">
+                <li class="nav-item">
+                  <button class="nav-link active btn btn-sm" data-toggle="modal" data-target="#modalLaporan" data-toggle="tab">Lapor</button>
+                </li>
+              </ul>
+            </div>
+          </div><!-- /.card-header -->
+          <div class="card-body">
+            <div class="tab-content p-0">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Nomor Urut Laporan</th>
+                    <th scope="col">Tanggal Melapor</th>
+                    <th scope="col">Status Pekerjaan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div><!-- /.card-body -->
+        </div>
+
+        <!-- <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="ion ion-stats-bars mr-1"></i>
+              <?php // echo "Laporan Per 6 Bulan" 
+              ?>
+            </h3>
+          </div>
+          <div class="card-body py-2">
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <label for="">Apakah Anda sudah memperoleh pekerjaan?</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="laporan" id="laporan1" value="laporan1">
+                  <label class="form-check-label" for="laporan1">
+                    Ya, saya sudah bekerja
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="laporan" id="laporan2" value="laporan2">
+                  <label class="form-check-label" for="laporan2">
+                    Belum bekerja
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <button type="button" id="simpanLaporan" value="button" class="btn btn-primary btn-sm" style="display:none">Simpan</button>
+            </div>
+          </div>
+        </div> -->
+
         <!-- TO DO List -->
         <div class="card">
           <div class="card-header">
@@ -306,7 +397,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </h3>
           </div>
           <!-- /.card-header -->
-          <div class="card-body">
+          <div class="card-body py-2">
             <ul class="todo-list" data-widget="todo-list">
               <?php
               $now = time();
@@ -318,7 +409,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                   $datediff = '0';
                 }
               ?>
-                <li>
+                <li style="display: inline-block;">
                   <div class="icheck-primary d-inline ml-2">
                     <input type="checkbox" value="" name="todo2" id="todoCheck2" <?php echo ($dok->pencakerdokumen_id != NULL) ? 'checked' : ''; ?> disabled>
                     <label for="todoCheck2"></label>
@@ -399,6 +490,80 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
   </div>
 </section>
 
+<!-- Modal -->
+<div class="modal fade" id="modalLaporan" tabindex="-1" role="dialog" aria-labelledby="modalLaporanLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLaporanLabel">Laporan Pencari Kerja</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <label for="">Apakah Anda sudah memperoleh pekerjaan?</label>
+          <div class="form-check mb-1">
+            <input class="form-check-input" type="radio" name="laporan" id="laporan1" value="laporan1">
+            <label class="form-check-label" for="laporan1">
+              Ya, saya sudah bekerja
+            </label>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="form-check mt-1">
+            <input class="form-check-input" type="radio" name="laporan" id="laporan2" value="laporan2">
+            <label class="form-check-label" for="laporan2">
+              Belum bekerja
+            </label>
+          </div>
+        </div>
+
+        <div id="dataperusahaan" class="row mt-3 modal-footer" style="display: none">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="nama_perusahaan">Nama Perusahaan/Instansi/Badan Hukum</label>
+              <input type="text" class="form-control" name="nama_perusahaan" id="nama_perusahaan" />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <label for="bidang_pekerjaan">Bidang Pekerjaan</label>
+              <input type="text" class="form-control" name="bidang_pekerjaan" id="bidang_pekerjaan" />
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group">
+              <label for="alamat_perusahaan">Alamat</label>
+              <textarea type="text" class="form-control" name="alamat_perusahaan" id="alamat_perusahaan"></textarea>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group">
+              <label for="notlp_perusahaan">Nomor Telepon</label>
+              <input type="text" class="form-control" name="notlp_perusahaan" id="notlp_perusahaan" />
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group">
+              <label for="jabatan">Jabatan Anda</label>
+              <input type="text" class="form-control" name="jabatan" id="jabatan" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer ">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <button type="button" class="btn btn-primary">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <?php include viewPath('includes/footer'); ?>
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -445,4 +610,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       }
     })
   }
+
+  $('input[name="laporan"]').change(function() {
+    if ($(this).val() == 'laporan1') {
+      $('#dataperusahaan').show();
+    } else {
+      $('#dataperusahaan').hide();
+    }
+  });
 </script>
