@@ -79,7 +79,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 foreach ($pencaker_dokumen as $doc) : ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
-                                        <td><?php echo $doc->jenis_dokumen; ?></td>
+                                        <td <?php echo ($doc->id == '1' || $doc->id == '2' || $doc->id == '3') ? 'class="text-bold"' : '';?>>
+                                            <?php 
+                                                echo $doc->jenis_dokumen; 
+                                                echo ($doc->id == '1' || $doc->id == '2' || $doc->id == '3') ? ' <sup><span style="font-style:italic; color:red">(*)</span></sup>' : '';
+                                            ?>
+                                        </td>
                                         <td><?php echo $doc->namadokumen; ?></td>
                                         <td><?php echo $doc->tgl_upload; ?></td>
                                         <td>
@@ -98,8 +103,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
-
                         </table>
+                        <span style="font-style:italic; color:red">(*) Wajib diunggah.</span>
                     </div>
                     <!-- /.card-body -->
                 </div>
