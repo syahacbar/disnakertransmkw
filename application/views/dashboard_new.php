@@ -297,6 +297,40 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           </div>
         <?php } ?>
 
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="ion ion-stats-bars mr-1"></i>
+              <?php echo "Laporan Per 6 Bulan" ?>
+            </h3>
+          </div>
+          <div class="card-body">
+            <div class="row mt-3">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <label for="">Apakah Anda sudah memperoleh pekerjaan?</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="laporan" id="laporan1" value="laporan1">
+                  <label class="form-check-label" for="laporan1">
+                    Ya, saya sudah bekerja
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="laporan" id="laporan2" value="laporan2">
+                  <label class="form-check-label" for="laporan2">
+                    Belum bekerja
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <button type="button" id="simpanLaporan" value="button" class="btn btn-primary btn-sm" style="display:none">Simpan</button>
+            </div>
+          </div>
+        </div>
+
         <!-- TO DO List -->
         <div class="card">
           <div class="card-header">
@@ -399,50 +433,120 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
   </div>
 </section>
 
+<!-- Modal -->
+<div class="modal fade" id="modalLaporan" tabindex="-1" role="dialog" aria-labelledby="modalLaporanLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLaporanLabel">Data Perusahaan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-12">
+          <div class="form-group">
+            <label for="nama_perusahaan">Nama Perusahaan/Instansi/Badan Hukum</label>
+            <input type="text" class="form-control" name="nama_perusahaan" id="nama_perusahaan" />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="bidang_pekerjaan">Bidang Pekerjaan</label>
+            <input type="text" class="form-control" name="bidang_pekerjaan" id="bidang_pekerjaan" />
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-group">
+            <label for="alamat_perusahaan">Alamat</label>
+            <textarea type="text" class="form-control" name="alamat_perusahaan" id="alamat_perusahaan"></textarea>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-group">
+            <label for="notlp_perusahaan">Nomor Telepon</label>
+            <input type="text" class="form-control" name="notlp_perusahaan" id="notlp_perusahaan" />
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-group">
+            <label for="jabatan">Jabatan Anda</label>
+            <input type="text" class="form-control" name="jabatan" id="jabatan" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <button type="button" class="btn btn-primary">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
 <?php include viewPath('includes/footer'); ?>
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo $url->assets ?>js/pages/dashboard.js"></script>
 
 <script>
-  function modalVerifikasi(ket_status) {
-    Swal.fire({
-      title: 'Konfirmasi!',
-      text: "Apakah Anda yakin telah melengkapi data profil dan mengunggah semua dokumen yang diperlukan dengan benar?",
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonText: 'Tidak',
-      confirmButtonText: 'Ya, Saya Yakin!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        $.ajax({
-          url: "<?php echo site_url('pencaker/update_keterangan_status') ?>",
-          type: "POST",
-          data: {
-            keterangan_status: ket_status
-          },
-          success: function(data) {
-            var objData = jQuery.parseJSON(data);
-            if (objData.status) {
-              Swal.fire({
-                title: 'Selamat!',
-                text: 'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
-                icon: 'success',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Ya'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  location.reload();
-                }
-              });
-            }
-          }
-        });
+  $(document).ready(function() {
 
+    function modalVerifikasi(ket_status) {
+      Swal.fire({
+        title: 'Konfirmasi!',
+        text: "Apakah Anda yakin telah melengkapi data profil dan mengunggah semua dokumen yang diperlukan dengan benar?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Tidak',
+        confirmButtonText: 'Ya, Saya Yakin!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: "<?php echo site_url('pencaker/update_keterangan_status') ?>",
+            type: "POST",
+            data: {
+              keterangan_status: ket_status
+            },
+            success: function(data) {
+              var objData = jQuery.parseJSON(data);
+              if (objData.status) {
+                Swal.fire({
+                  title: 'Selamat!',
+                  text: 'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
+                  icon: 'success',
+                  confirmButtonColor: '#3085d6',
+                  confirmButtonText: 'Ya'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    location.reload();
+                  }
+                });
+              }
+            }
+          });
+
+
+        }
+      })
+    }
+
+    $('input[name="laporan"]').change(function() {
+      if ($(this).is(':checked') && $(this).val() == 'laporan1') {
+        $('#modalLaporan').modal('show');
+      }
+
+      if ($(this).attr("value") == "laporan1") {
+        $("#simpanLaporan").hide();
+      }
+
+      if ($(this).attr("value") == "laporan2") {
+        $("#simpanLaporan").show();
 
       }
-    })
-  }
+    });
+  });
 </script>
