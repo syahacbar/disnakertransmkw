@@ -112,11 +112,25 @@
                                     <td>Tempat, Tanggal Lahir</td>
                                     <td>:</td>
                                     <td class="fw-bold">
+<<<<<<< HEAD
+                                        <?php
+
+                                        if ($pencaker->tempatlahir != '') {
+                                            echo $pencaker->tempatlahir . ', ' . strtoupper(date_indo(substr($pencaker->tgllahir, 0, 10)));
+                                        } else {
+                                            echo '-';
+                                        }
+                                        ?>
+                                        <!-- echo strtoupper($pencaker->tempatlahir) . ", " . date_indo($pencaker->tgllahir);
+                                    
+                                    ?> -->
+=======
                                     <?php 
                                         echo strtoupper($pencaker->tempatlahir) . ", ";
                                         echo (!empty($pencaker->tgllahir)) ? strtoupper(date_indo($pencaker->tgllahir)) : ''; 
                                     ?>
                                         
+>>>>>>> 2929686941387cd0eca967fc67dcd840d01139ea
                                     </td>
                                 </tr>
                                 <tr>

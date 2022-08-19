@@ -670,6 +670,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     </div>
 </section>
 <!-- /.content -->
+<?php include viewPath('includes/footer'); ?>
 
 <script type="text/javascript">
     var tabelpendidikan = null;
@@ -1598,5 +1599,3 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
     recaptchKeysHideShow(<?php echo setting('google_recaptcha_enabled') ?>);
 </script>
-
-<?php include viewPath('includes/footer'); ?>
