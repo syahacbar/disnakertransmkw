@@ -376,7 +376,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <?php foreach ($ket_bahasa as $kb) : ?>
                                             <div class="col-12 col-sm-12 col-md-4 col-lg-3 mt-3">
                                                 <div class="form-check">
-                                                    <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="<?php echo "b_" . $kb->bahasa; ?>" value="<?php echo $kb->bahasa; ?>" <?php if (in_array($kb->bahasa, $arr_bhs)) { echo 'checked'; }; ?>>
+                                                    <input class="form-check-input ket_bahasa" type="checkbox" name="ket_bahasa[]" id="<?php echo "b_" . $kb->bahasa; ?>" value="<?php echo $kb->bahasa; ?>" <?php if (in_array($kb->bahasa, $arr_bhs)) {
+                                                                                                                                                                                                                    echo 'checked';
+                                                                                                                                                                                                                }; ?>>
                                                     <label class="form-check-label" for="<?php echo $kb->bahasa; ?>">
                                                         <?php echo $kb->bahasa; ?>
                                                     </label>
@@ -492,31 +494,30 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <!-- jabatan card -->
         <div class="card jabatanpencaker" style="display: none;">
             <div class="card-header with-border">
-                <h3 class="card-title">Jabatan Yang Diminati</h3>
+                <h3 class="card-title">Bidang Pekerjaan Yang Diminati</h3>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-card">
                             <div class="alert alert-success" role="alert">
-                                Silakan isi data terkait Jabatan yang diminati
+                                Silakan isi data terkait bidang pekerjaan yang diminati
                             </div>
                             <!-- form jabatan pencaker     -->
                             <form action="#" id="formjabatanpencaker">
                                 <div class="row">
-                                    <div class="col-12 col-sm-12 col-md-3 col-lg-9 ">
-                                        <div class="form-group">
-                                            <label for="minat_jabatan">Jabatan</label>
-                                            <input type="text" class="form-control" name="minat_jabatan" id="minat_jabatan" placeholder="" required />
+                                    <div class="col-12">
+                                        <label for="minat_jabatan">Bidang Pekerjaan</label>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 ">
+                                        <div class="form-group form-group-sm">
+                                            <input type="text" class="form-control form-control-sm" name="minat_jabatan" id="minat_jabatan" required />
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 ">
-                                        <div class="ml-auto">
-                                            <button type="button" id="btnSaveJabatan" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> <?php echo lang('save') ?></button>
-                                            <button type="button" id="btnUpdateJabatan" class="btn btn-primary btn-sm hide"><i class="fas fa-edit"></i> <?php echo lang('update') ?></button>
-                                            <!-- hiden form untuk id pendidikan saat proses update -->
-                                            <input type="hidden" name="idjabatan">
-                                        </div>
+                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+                                        <button type="button" id="btnSaveJabatan" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> <?php echo lang('save') ?></button>
+                                        <button type="button" id="btnUpdateJabatan" class="btn btn-primary btn-sm hide"><i class="fas fa-edit"></i> <?php echo lang('update') ?></button>
+                                        <input type="hidden" name="idjabatan">
                                     </div>
                                 </div>
                             </form>
@@ -528,7 +529,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <thead>
                                             <tr>
                                                 <th width="10px">No</th>
-                                                <th>Jabatan</th>
+                                                <th>Bidang Pekerjaan</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -580,7 +581,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <!-- perusahaan card -->
         <div class="card perusahaanpencaker" style="display: none;">
             <div class="card-header with-border">
-                <h3 class="card-title">Perusahaan Yang Dituju</h3>
+                <h3 class="card-title">Perusahaan/Instansi Yang Dituju</h3>
             </div>
             <form action="#" id="formtujuanperusahaan">
                 <div class="card-body">
@@ -588,15 +589,29 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         <div class="col-lg-12">
                             <div class="form-card">
                                 <div class="alert alert-success" role="alert">
-                                    Silakan tentukan tujuan Perusahan pilihan Anda!
+                                    Silakan tentukan tujuan perusahaan/instansi pilihan Anda!
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-9">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <label for="tujuan_perusahaan">Nama Perusahan/Instansi</label>
+                                <label for="tujuan_perusahaan">Nama Perusahaan/Instansi</label>
                                 <input type="text" class="form-control" name="tujuan_perusahaan" id="tujuan_perusahaan" placeholder="" required placeholder="" autofocus />
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="nohp_perusahaan">Nomor Telepon</label>
+                                <input type="text" class="form-control" name="nohp_perusahaan" id="nohp_perusahaan" placeholder="" required placeholder="" />
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label for="alamat_perusahaan">Alamat</label>
+                                <textarea class="form-control" name="alamat_perusahaan" id="alamat_perusahaan" placeholder="" required placeholder=""></textarea>
                             </div>
                         </div>
                     </div>
@@ -1287,7 +1302,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 } else if (data.tujuan == 'tujuan2') {
                     $("#tujuan2").prop("checked", true);
                     $('#perusahaanpencaker').removeClass("hide");
-                } 
+                }
                 // else {
                 //     $('#perusahaanpencaker').addClass("hide");
                 // }
@@ -1416,7 +1431,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             $('#perusahaanpencaker').addClass("hide");
                         } else if ($('input[name="tujuan"]:checked').val() == 'tujuan2') {
                             $('#perusahaanpencaker').removeClass("hide");
-                        } 
+                        }
                     }
 
                 },
@@ -1483,7 +1498,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             showdatatambahanpencaker();
                         } else if ($('input[name="tujuan"]:checked').val() == 'tujuan2') {
                             showperusahaanpencaker();
-                        } 
+                        }
                     }
 
                 },
