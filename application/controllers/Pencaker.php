@@ -644,11 +644,13 @@ class Pencaker extends MY_Controller
         $pencaker = $this->pencaker_model->get_by_users_id($users_id);
 
         if ($aksi == 2) {
+            // $jenis_dokumen = explode(",", $this->input->post('jenis_dokumen'));
             $data = array(
                 'tglwaktu'  => date("Y-m-d H:i:s"),
                 'pesan'  => $this->input->post('pesan'),
                 'status_pesan'  => '0',
                 'users_id'  => $users_id,
+                'revisi_dokumen' => $this->input->post('jenis_dokumen'),
             );
 
             $this->pencaker_model->add_verifikasi($data);

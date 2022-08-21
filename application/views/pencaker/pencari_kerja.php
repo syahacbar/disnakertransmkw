@@ -381,9 +381,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             var usersid = $("input[name='usersid']").val();
             var statusverifikasi = $("select[name='statusverifikasi']").val();
             var pesan = $("textarea[name='pesan']").val();
-            var jenis_dokumen = $("input[name='jenis_dokumen[]']:checked").map(function() {
-                return $(this).val();
-            }).get();
+            // var jenis_dokumen = $("input[name='jenis_dokumen[]']:checked").map(function() {
+            //     return $(this).val();
+            // }).get();
+
+            var jenis_dokumen = [];
+            $('.form-check-input').each(function() {
+                if ($(this).is(":checked")) {
+                    jenis_dokumen.push($(this).val());
+                }
+            });
+            jenis_dokumen = jenis_dokumen.toString();
+
+            // var jenis_dokumen = $("input[name='jenis_dokumen[]']:checked");
 
             if (statusverifikasi == 'ver_lengkap') {
                 var aksi = 1;
