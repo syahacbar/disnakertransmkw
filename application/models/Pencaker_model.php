@@ -247,7 +247,7 @@ class Pencaker_model extends MY_Model
 
 	function pencaker_doc_wajib($pencaker_id)
 	{
-		$query  = $this->db->query("SELECT * FROM pencaker_dokumen pd WHERE pd.dokumen_id <= 3");
+		$query  = $this->db->query("SELECT * FROM pencaker_dokumen pd WHERE pd.dokumen_id <= 3 AND pd.pencaker_id= $pencaker_id");
 		return $query;
 	}
 

@@ -79,10 +79,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 foreach ($pencaker_dokumen as $doc) : ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
-                                        <td <?php echo ($doc->id == '1' || $doc->id == '2' || $doc->id == '3') ? 'class="text-bold"' : '';?>>
-                                            <?php 
-                                                echo $doc->jenis_dokumen; 
-                                                echo ($doc->id == '1' || $doc->id == '2' || $doc->id == '3') ? ' <sup><span style="font-style:italic; color:red">(*)</span></sup>' : '';
+                                        <td <?php echo ($doc->id == '1' || $doc->id == '2' || $doc->id == '3') ? 'class="text-bold"' : ''; ?>>
+                                            <?php
+                                            echo $doc->jenis_dokumen;
+                                            echo ($doc->id == '1' || $doc->id == '2' || $doc->id == '3') ? ' <sup><span style="font-style:italic; color:red">(*)</span></sup>' : '';
                                             ?>
                                         </td>
                                         <td><?php echo $doc->namadokumen; ?></td>
@@ -90,7 +90,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         <td>
                                             <?php if ($doc->pencakerdokumen_id != NULL) { ?>
 
-                                                <a target="_blank" class="btn btn-sm btn-info btnViewDokumen" href="<?php echo base_url('uploads/pencaker/').$doc->nopendaftaran.'/'.$doc->namadokumen; ?>" data-id="<?php ?>" data-placement="left" title="Hapus Dokumen"><i class="fas fa-eye"></i></a>&nbsp;
+                                                <a target="_blank" class="btn btn-sm btn-info btnViewDokumen" href="<?php echo base_url('uploads/pencaker/') . $doc->nopendaftaran . '/' . $doc->namadokumen; ?>" data-id="<?php ?>" data-placement="left" title="Hapus Dokumen"><i class="fas fa-eye"></i></a>&nbsp;
 
                                                 <a href="javascript:void(0)" data-iddokumen="<?php echo $doc->id; ?>" data-idpencakerdokumen="<?php echo $doc->pencakerdokumen_id; ?>" data-jenisdokumen="<?php echo $doc->jenis_dokumen; ?>" class="btn btn-sm btn-primary btnEditDokumen" data-toggle="tooltip" data-placement="bottom" title="Perbarui Dokumen"><i class="fas fa-edit"></i></a>
 
@@ -209,27 +209,68 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         $('#formunggahdokumen').submit(function(e) {
             e.preventDefault();
             unggah_dokumen.processQueue();
-            //location.reload();
         });
 
         $('.btnAddDokumen').click(function() {
             var jenisdokumen = $(this).attr("data-jenisdokumen");
             var iddokumen = $(this).attr("data-iddokumen");
-            $('#unggahDokumen').modal('show')
-            $('[name="mode"]').val("add");
-            $('[name="jenisdokumen"]').val(jenisdokumen);
-            $('[name="iddokumen"]').val(iddokumen);
+            $.ajax({
+                url: "<?php echo site_url('pencaker/get_pencaker') ?>",
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.keterangan_status == 'Verifikasi') {
+                        Swal.fire({
+                            text: 'Status Anda saat ini sedang diverifikasi, Anda tidak dapat mengunggah/mengedit dokumen.',
+                            icon: 'warning',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'Tutup'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
+
+                    } else {
+                        $('#unggahDokumen').modal('show');
+                        $('[name="mode"]').val("add");
+                        $('[name="jenisdokumen"]').val(jenisdokumen);
+                        $('[name="iddokumen"]').val(iddokumen);
+                    }
+                }
+            });
         });
 
         $('.btnEditDokumen').click(function() {
             var idpencakerdokumen = $(this).attr("data-idpencakerdokumen");
             var jenisdokumen = $(this).attr("data-jenisdokumen");
             var iddokumen = $(this).attr("data-iddokumen");
-            $('#unggahDokumen').modal('show')
-            $('[name="mode"]').val("edit");
-            $('[name="jenisdokumen"]').val(jenisdokumen);
-            $('[name="idpencakerdokumen"]').val(idpencakerdokumen);
-            $('[name="iddokumen"]').val(iddokumen);
+            $.ajax({
+                url: "<?php echo site_url('pencaker/get_pencaker') ?>",
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    if (data.keterangan_status == 'Verifikasi') {
+                        Swal.fire({
+                            text: 'Status Anda saat ini sedang diverifikasi, Anda tidak dapat mengunggah/mengedit dokumen.',
+                            icon: 'warning',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'Tutup'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
+
+                    } else {
+                        $('#unggahDokumen').modal('show');
+                        $('[name="mode"]').val("edit");
+                        $('[name="jenisdokumen"]').val(jenisdokumen);
+                        $('[name="idpencakerdokumen"]').val(idpencakerdokumen);
+                        $('[name="iddokumen"]').val(iddokumen);
+                    }
+                }
+            });
         });
     });
 </script>
