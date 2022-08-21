@@ -66,7 +66,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         <table id="tabeldokumenpencaker" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>No.</th>
+                                    <th width="10px">No.</th>
                                     <th>Jenis Dokumen</th>
                                     <th>Nama Dokumen</th>
                                     <th>Tanggal Unggah</th>

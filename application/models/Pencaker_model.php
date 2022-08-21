@@ -245,6 +245,12 @@ class Pencaker_model extends MY_Model
 		return $query->result();
 	}
 
+	function pencaker_doc_wajib($pencaker_id)
+	{
+		$query  = $this->db->query("SELECT * FROM pencaker_dokumen pd WHERE pd.dokumen_id <= 3");
+		return $query;
+	}
+
 	function get_jenjang_pendidikan()
 	{
 		$q = $this->db->get('jenjang_pendidikan');

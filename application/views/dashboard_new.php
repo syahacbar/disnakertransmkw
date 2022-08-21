@@ -193,8 +193,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">
-              <i class="fas fa-bell mr-1"></i>
-              Laporan
+              <i class="fas fa-info-circle mr-1"></i>
+              Status
             </h3>
           </div>
 
@@ -280,7 +280,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="col-10 py-4 px-4">
                   <div class="inner">
                     <h3><strong>Verifikasi</strong></h3>
-                    <p>Silahkan menunggu maksimal 3x24 jam untuk proses verifikasi dan terus memantau linimasa untuk mendapatkan informasi terkait proses verifikasi bilamana didapati ada berkas/dokumen yang kurang lengkap. <br>Setelah dinyatakan lulus verifikasi, status ini akan berubah menjadi <strong>Validasi</strong></p>
+                    <p>Silahkan menunggu maksimal 3x24 jam untuk proses verifikasi dan terus memantau linimasa untuk mendapatkan informasi terkait proses verifikasi bilamana didapati ada berkas/dokumen yang kurang lengkap. <br>Setelah lulus verifikasi data dan berkas/dokumen, status ini akan berubah menjadi <strong>Validasi</strong></p>
                   </div>
                 </div>
                 <div class="col-2 d-flex justify-content-center align-items-center">
@@ -315,7 +315,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">
-              <i class="fas fa-chart-pie mr-1"></i>
+              <i class="fas fa-calendar-check mr-1"></i>
               Laporan Pencari Kerja
             </h3>
             <div class="card-tools">
@@ -331,34 +331,29 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Nomor Urut Laporan</th>
+                    <th scope="col">Periode Laporan</th>
                     <th scope="col">Tanggal Melapor</th>
                     <th scope="col">Status Pekerjaan</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
+                    <td>I</td>
                     <td>Otto</td>
                     <td>@mdo</td>
                   </tr>
                   <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
+                    <td>II</td>
                     <td>Thornton</td>
                     <td>@fat</td>
                   </tr>
                   <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
+                    <td>III</td>
                     <td>the Bird</td>
                     <td>@twitter</td>
                   </tr>
                   <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
+                    <td>IV</td>
                     <td>the Bird</td>
                     <td>@twitter</td>
                   </tr>
@@ -368,40 +363,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           </div><!-- /.card-body -->
         </div>
 
-        <!-- <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">
-              <i class="ion ion-stats-bars mr-1"></i>
-              <?php // echo "Laporan Per 6 Bulan" 
-              ?>
-            </h3>
-          </div>
-          <div class="card-body py-2">
-            <div class="row">
-              <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                <label for="">Apakah Anda sudah memperoleh pekerjaan?</label>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="laporan" id="laporan1" value="laporan1">
-                  <label class="form-check-label" for="laporan1">
-                    Ya, saya sudah bekerja
-                  </label>
-                </div>
-              </div>
-              <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="laporan" id="laporan2" value="laporan2">
-                  <label class="form-check-label" for="laporan2">
-                    Belum bekerja
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-footer">
-              <button type="button" id="simpanLaporan" value="button" class="btn btn-primary btn-sm" style="display:none">Simpan</button>
-            </div>
-          </div>
-        </div> -->
 
         <!-- TO DO List -->
         <div class="card">
@@ -436,10 +397,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <?php endforeach; ?>
             </ul>
           </div>
-
-
-
-          <!-- /.card-body -->
           <div class="card-footer clearfix">
           </div>
         </div>
@@ -447,73 +404,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       </div>
       <div class="col">
         <section>
-          <!-- <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">
-                <i class="ion-ios-calendar-outline mr-1"></i>
-                <?php // echo "Linimasa" 
-                ?>
-              </h3>
-            </div>
-
-            <div class="card-body">
-              <div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
-                <?php // foreach ($timeline as $tl) : 
-                ?>
-
-                  <div class="vertical-timeline-item vertical-timeline-element">
-                    <div>
-                      <span class="vertical-timeline-element-icon bounce-in">
-                        <i class="badge badge-dot badge-dot-xl badge-<?php // echo ($tl->description != null) ? 'info' : 'secondary'; 
-                                                                      ?>"> </i>
-                      </span>
-                      <div class="vertical-timeline-element-content bounce-in">
-                        <h4 class="timeline-title <?php // echo ($tl->description != null) ? 'text-info' : ''; 
-                                                  ?>"><?php // echo $tl->subject; 
-                                                      ?></h4>
-                        <p <?php // echo ($tl->description != null) ? 'class="text-info"' : ''; 
-                            ?>><?php // echo $tl->description; 
-                                ?></p>
-                        <?php //
-                        // if ($tl->subject == 'PROSES VERIFIKASI DATA') {
-                        //   if (!empty($verifikasi)) {
-                        // 
-                        ?>
-                            <p class="text-danger">Catatan:</p>
-                            <div id="pesan" style="border: 1px solid red;" class="text-danger py-1 px-1">
-                              <?php // foreach ($verifikasi as $v) :
-                              //   echo $v->pesan;
-                              // endforeach; 
-                              ?>
-                            </div>
-                        <?php // } 
-                        //} 
-                        ?>
-                        <div class="tanggal">
-                          <span class="vertical-timeline-element-date text-left">
-                            <?php
-                            // if (!empty($tl->tglwaktu)) {
-                            //   echo date_indo(substr($tl->tglwaktu, 0, 10));
-                            // } else {
-                            //   echo ('-');
-                            // }
-                            ?>
-                          </span><br>
-                          <span class="vertical-timeline-element-time text-left text-info">
-                            <?php // echo substr($tl->tglwaktu, 11, 5); 
-                            ?>
-                          </span>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                <?php // endforeach; 
-                ?>
-              </div>
-            </div>
-          </div> -->
-
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">
@@ -526,21 +416,21 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <div class="timeline">
                 <?php foreach ($timeline as $tl) : ?>
                   <div class="time-label">
-                    <span class="bg-green">
+                    <span class="bg-gray">
                       <small>
                         <?php
                         if (!empty($tl->tglwaktu)) {
                           echo date_indo(substr($tl->tglwaktu, 0, 10));
                         } else {
                           echo ('-');
-                        }
+                        } 
                         ?>
                       </small>
                     </span>
                   </div>
 
                   <div>
-                    <i class="fas fa-calendar-check text-white bg-red "></i>
+                    <i class="fas <?php echo $tl->icon;?>"></i>
                     <div class="timeline-item">
                       <span class="time"><i class="fas fa-clock"></i>
                         <?php
@@ -553,9 +443,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         ?>
                       </span>
                       <!-- <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3> -->
-                      <h3 class="timeline-header <?php echo ($tl->description != null) ? 'text-info' : ''; ?>"><?php echo $tl->subject; ?></h3>
+                      <h3 class="timeline-header <?php echo ($tl->description != null) ? 'text-default' : ''; ?>"><strong><?php echo $tl->subject; ?></strong></h3>
+
                       <div class="timeline-body">
-                        <p <?php echo ($tl->description != null) ? 'class="text-info mb-0"' : ''; ?>><?php echo $tl->description; ?></p>
+                        <p <?php echo ($tl->description != null) ? 'class="text-default mb-0"' : ''; ?>><?php echo $tl->description; ?></p>
                       </div>
                       <div class="timeline-footer py-0 mb-2">
                         <!-- <a class="btn btn-primary btn-sm">Read more</a>
@@ -579,30 +470,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </div>
                   </div>
 
-                  <!-- <div>
-                    <i class="fas fa-user bg-green"></i>
-                    <div class="timeline-item">
-                      <span class="time"><i class="fas fa-clock"></i> 5 mins ago</span>
-                      <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
-                    </div>
-                  </div>
-
-
-                  <div>
-                    <i class="fas fa-comments bg-yellow"></i>
-                    <div class="timeline-item">
-                      <span class="time"><i class="fas fa-clock"></i> 27 mins ago</span>
-                      <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-                      <div class="timeline-body">
-                        Take me to your leader!
-                        Switzerland is small and neutral!
-                        We are more like Germany, ambitious and misunderstood!
-                      </div>
-                      <div class="timeline-footer">
-                        <a class="btn btn-warning btn-sm">View comment</a>
-                      </div>
-                    </div>
-                  </div> -->
+                 
                 <?php endforeach; ?>
 
               </div>
@@ -698,7 +566,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
   function modalVerifikasi(ket_status) {
     Swal.fire({
       title: 'Konfirmasi!',
-      text: "Apakah Anda yakin telah melengkapi data profil dan mengunggah semua dokumen yang diperlukan dengan benar?",
+      text: "Pastikan kembali anda sudah mengisi formulir AK-1 dengan benar dan telah mengunggah dokumen (terutama Pas Foto, KTP dan Ijazah Terakhir). Selama proses verifikasi, anda tidak dapat mengubah/mengganti dokumen yang telah diunggah.",
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -708,18 +576,39 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     }).then((result) => {
       if (result.isConfirmed) {
         $.ajax({
-          url: "<?php echo site_url('pencaker/update_keterangan_status') ?>",
-          type: "POST",
-          data: {
-            keterangan_status: ket_status
-          },
+          url: "<?php echo site_url('pencaker/dok_pencaker_wajib') ?>",
+          type: "GET",
+          dataType: "JSON",
           success: function(data) {
-            var objData = jQuery.parseJSON(data);
-            if (objData.status) {
+            if(data.dokumenwajib == 3)
+            {
+              $.ajax({
+                url: "<?php echo site_url('pencaker/update_keterangan_status') ?>",
+                type: "POST",
+                data: {
+                  keterangan_status: ket_status
+                },
+                success: function(data) {
+                  var objData = jQuery.parseJSON(data);
+                  if (objData.status) {
+                    Swal.fire({
+                      title: 'Selamat!',
+                      text: 'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
+                      icon: 'success',
+                      confirmButtonColor: '#3085d6',
+                      confirmButtonText: 'Ya'
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        location.reload();
+                      }
+                    });
+                  }
+                }
+              });
+            } else {
               Swal.fire({
-                title: 'Selamat!',
-                text: 'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
-                icon: 'success',
+                text: 'Anda wajib mengunggah Pas Foto, KTP dan Ijazah Terakhir, silahkan klik menu Dokumen Pencari Kerja untuk mengunggah dokumen tersebut.',
+                icon: 'warning',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ya'
               }).then((result) => {
@@ -730,6 +619,45 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             }
           }
         });
+
+        //if()
+        //{
+        // $.ajax({
+        //   url: "<?php //echo site_url('pencaker/update_keterangan_status') ?>",
+        //   type: "POST",
+        //   data: {
+        //     keterangan_status: ket_status
+        //   },
+        //   success: function(data) {
+        //     var objData = jQuery.parseJSON(data);
+        //     if (objData.status) {
+        //       Swal.fire({
+        //         title: 'Selamat!',
+        //         text: 'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
+        //         icon: 'success',
+        //         confirmButtonColor: '#3085d6',
+        //         confirmButtonText: 'Ya'
+        //       }).then((result) => {
+        //         if (result.isConfirmed) {
+        //           location.reload();
+        //         }
+        //       });
+        //     }
+        //   }
+        // });
+        // } else {
+        //   Swal.fire({
+        //     title: 'Selamat!',
+        //     text: 'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
+        //     icon: 'success',
+        //     confirmButtonColor: '#3085d6',
+        //     confirmButtonText: 'Ya'
+        //   }).then((result) => {
+        //     if (result.isConfirmed) {
+        //       location.reload();
+        //     }
+        //   });
+        // }
 
 
       }

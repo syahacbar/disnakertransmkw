@@ -528,7 +528,7 @@ class Pencaker extends MY_Controller
     }
 
     function dok_pencaker()
-    {
+    { 
         ifPermissions('doc_pencaker');
 
         $users_id = logged('id');
@@ -543,8 +543,19 @@ class Pencaker extends MY_Controller
         $this->page_data['pencaker_dokumen'] = $pencaker_dokumen;
         $this->page_data['page']->title = 'Dokumen Pencari Kerja';
         $this->page_data['page']->menu = 'doc_pencaker';
-        $this->page_data['dokumen'] = $this->pencaker_model->get_dokumen();
+        // $this->page_data['dokumen'] = $this->pencaker_model->get_dokumen();
         $this->load->view('pencaker/dokumen', $this->page_data);
+    }
+
+    function dok_pencaker_wajib()
+    {
+        $users_id = logged('id');
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
+        $dokumenwajib = $this->pencaker_model->pencaker_doc_wajib($pencaker->id);
+        $res['dokumenwajib'] = $dokumenwajib->num_rows();
+
+        echo json_encode($res);
+
     }
 
     function upload_dokumen()
