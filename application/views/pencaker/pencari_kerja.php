@@ -258,8 +258,31 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </select>
 
                     <div id="pesanVerifikasi" class="form-group mt-3 hide">
-                        <label class="col-form-label" for="pesan">Catatan</label>
-                        <textarea type="text" class="form-control form-control-sm" name="pesan" id="pesan"></textarea>
+                        <div class="form-group">
+                            <label class="col-form-label w-100" for="dokumen">Dokumen</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="PAS FOTO" name="jenis_dokumen[]" id="d_pasfoto">
+                                <label class="form-check-label" for="pasfoto">
+                                    PAS FOTO
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="KTP" name="jenis_dokumen[]" id="d_ktp">
+                                <label class="form-check-label" for="ktp">
+                                    KTP
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="IJAZAH TERAKHIR" name="jenis_dokumen[]" id="d_ijazah">
+                                <label class="form-check-label" for="ijazah">
+                                    IJAZAH TERAKHIR
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label" for="pesan">Catatan</label>
+                            <textarea type="text" class="form-control form-control-sm" name="pesan" id="pesan"></textarea>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -358,12 +381,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             var usersid = $("input[name='usersid']").val();
             var statusverifikasi = $("select[name='statusverifikasi']").val();
             var pesan = $("textarea[name='pesan']").val();
+            var jenis_dokumen = $("input[name='jenis_dokumen[]']:checked").map(function() {
+                return $(this).val();
+            }).get();
+
             if (statusverifikasi == 'ver_lengkap') {
                 var aksi = 1;
+                var txtaksi = 'Verifikasi';
             } else if (statusverifikasi == 'ver_tidaklengkap') {
                 var aksi = 2;
+                var txtaksi = 'Verifikasi';
             } else if (statusverifikasi == 'ver_valid') {
                 var aksi = 3;
+                var txtaksi = 'Aktivasi';
             }
 
             $.ajax({
@@ -372,10 +402,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 data: {
                     usersid: usersid,
                     pesan: pesan,
+                    jenis_dokumen: jenis_dokumen,
                 },
                 success: function(data) {
                     Swal.fire({
-                        title: 'Verifikasi Berhasil',
+                        title: txtaksi + ' Berhasil',
                         icon: 'success',
                         showCancelButton: false,
                         confirmButtonColor: '#3085d6',

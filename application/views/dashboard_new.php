@@ -281,6 +281,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                   <div class="inner">
                     <h3><strong>Verifikasi</strong></h3>
                     <p>Silahkan menunggu maksimal 3x24 jam untuk proses verifikasi dan terus memantau linimasa untuk mendapatkan informasi terkait proses verifikasi bilamana didapati ada berkas/dokumen yang kurang lengkap. <br>Setelah lulus verifikasi data dan berkas/dokumen, status ini akan berubah menjadi <strong>Validasi</strong></p>
+                    <?php if (!empty($verifikasi)) { ?>
+                      <a href="#" onclick="modalVerifikasi('Verifikasi')" id="#modalVerifikasi" class="small-box-footer btn btn-primary btn-sm">Minta Verifikasi Ulang <i class="fas fa-arrow-circle-right"></i></a>
+                    <?php } ?>
+
                   </div>
                 </div>
                 <div class="col-2 d-flex justify-content-center align-items-center">
@@ -423,14 +427,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                           echo date_indo(substr($tl->tglwaktu, 0, 10));
                         } else {
                           echo ('-');
-                        } 
+                        }
                         ?>
                       </small>
                     </span>
                   </div>
 
                   <div>
-                    <i class="fas <?php echo $tl->icon;?>"></i>
+                    <i class="fas <?php echo $tl->icon; ?>"></i>
                     <div class="timeline-item">
                       <span class="time"><i class="fas fa-clock"></i>
                         <?php
@@ -457,7 +461,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         ?>
                             <div class="pb-2">
                               <p class="text-danger mb-0">Catatan:</p>
-                              <div id="pesan" style="border: 1px solid red;" class="text-danger py-1 px-1">
+                              <div id="pesan" class="text-danger py-1 px-1">
                                 <?php foreach ($verifikasi as $v) :
                                   echo $v->pesan;
                                 endforeach; ?>
@@ -470,7 +474,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </div>
                   </div>
 
-                 
+
                 <?php endforeach; ?>
 
               </div>
@@ -580,8 +584,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           type: "GET",
           dataType: "JSON",
           success: function(data) {
-            if(data.dokumenwajib == 3)
-            {
+            if (data.dokumenwajib == 3) {
               $.ajax({
                 url: "<?php echo site_url('pencaker/update_keterangan_status') ?>",
                 type: "POST",
@@ -596,7 +599,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                       text: 'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
                       icon: 'success',
                       confirmButtonColor: '#3085d6',
-                      confirmButtonText: 'Ya'
+                      confirmButtonText: 'Tutup'
                     }).then((result) => {
                       if (result.isConfirmed) {
                         location.reload();
@@ -610,7 +613,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 text: 'Anda wajib mengunggah Pas Foto, KTP dan Ijazah Terakhir, silahkan klik menu Dokumen Pencari Kerja untuk mengunggah dokumen tersebut.',
                 icon: 'warning',
                 confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Ya'
+                confirmButtonText: 'Tutup'
               }).then((result) => {
                 if (result.isConfirmed) {
                   location.reload();
@@ -619,47 +622,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             }
           }
         });
-
-        //if()
-        //{
-        // $.ajax({
-        //   url: "<?php //echo site_url('pencaker/update_keterangan_status') ?>",
-        //   type: "POST",
-        //   data: {
-        //     keterangan_status: ket_status
-        //   },
-        //   success: function(data) {
-        //     var objData = jQuery.parseJSON(data);
-        //     if (objData.status) {
-        //       Swal.fire({
-        //         title: 'Selamat!',
-        //         text: 'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
-        //         icon: 'success',
-        //         confirmButtonColor: '#3085d6',
-        //         confirmButtonText: 'Ya'
-        //       }).then((result) => {
-        //         if (result.isConfirmed) {
-        //           location.reload();
-        //         }
-        //       });
-        //     }
-        //   }
-        // });
-        // } else {
-        //   Swal.fire({
-        //     title: 'Selamat!',
-        //     text: 'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
-        //     icon: 'success',
-        //     confirmButtonColor: '#3085d6',
-        //     confirmButtonText: 'Ya'
-        //   }).then((result) => {
-        //     if (result.isConfirmed) {
-        //       location.reload();
-        //     }
-        //   });
-        // }
-
-
       }
     })
   }
