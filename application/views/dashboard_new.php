@@ -1,21 +1,18 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <style>
-  ::-webkit-scrollbar {
+  /* ::-webkit-scrollbar {
     width: 8px;
   }
 
-  /* Track */
   ::-webkit-scrollbar-track {
     background: #f1f1f1;
   }
 
-  /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #888;
   }
 
-  /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
@@ -163,6 +160,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     color: #adb5bd;
     font-size: .7619rem;
     white-space: nowrap;
+  } */
+
+  #pesan p {
+    margin-bottom: 0px;
   }
 </style>
 <?php include viewPath('includes/header'); ?>
@@ -189,113 +190,127 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <?php if ($keterangan_status == 'Aktif') { ?>
-          <div>
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>AKTIF</h3>
-
-                <p>Status Anda Saat Ini Aktif Sebagai Pencari Kerja</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-checked"></i>
-              </div>
-
-            </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-bell mr-1"></i>
+              Laporan
+            </h3>
           </div>
-        <?php } ?>
-        <!-- ./col -->
-        <?php if ($keterangan_status == 'Pekerja') { ?>
-          <div>
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>PEKERJA</h3>
 
-                <p>Status Anda Saat Ini Sudah Mendapatkan Pekerjaan</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-users"></i>
-              </div>
 
-            </div>
-          </div>
-        <?php } ?>
-        <!-- ./col -->
-        <?php if ($keterangan_status == 'Lapor') { ?>
-          <div>
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>LAPOR</h3>
-
-                <p>Anda terdaftar di sistem sudah lebih dari 6 bulan, wajib melaporkan apabila belum mendapatkan pekerjaan</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-users"></i>
-              </div>
-
-            </div>
-          </div>
-        <?php } ?>
-        <?php if ($keterangan_status == 'Registrasi') { ?>
-          <div>
-            <!-- small box -->
-            <div class="small-box bg-warning">
+          <?php if ($keterangan_status == 'Aktif') { ?>
+            <div class="col py-2">
               <div class="row">
                 <div class="col-10 py-4 px-4">
-                  <div class="inner">
-                    <h3>Registrasi</h3>
-                    <p>Silahkan lengkapi formulir AK-1 pada menu <strong>Profil Pencaker</strong> dan mengunggah dokumen pada menu <strong>Dokumen Pencaker</strong>. Jika sudah lengkap, klik tombol minta Verifikasi berikut ini</p>
-                  </div>
+                  <h3><strong>AKTIF</strong></h3>
+                  <p>Status Anda Saat Ini Aktif Sebagai Pencari Kerja</p>
                 </div>
-                <div class="col-2">
+                <div class="col-2 d-flex justify-content-center align-items-center">
                   <div class="icon">
-                    <i class="fa fa-user"></i>
+                    <i class="fa fa-check fa-5x"></i>
                   </div>
                 </div>
               </div>
-              <a href="#" onclick="modalVerifikasi('Verifikasi')" id="#modalVerifikasi" class="small-box-footer">Minta Verifikasi Data <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-          </div>
-        <?php } ?>
-        <!-- ./col -->
-        <?php if ($keterangan_status == 'Verifikasi') { ?>
-          <div>
-            <!-- small box -->
-            <div class="small-box bg-warning">
+          <?php } ?>
+          <!-- ./col -->
+          <?php if ($keterangan_status == 'Pekerja') { ?>
+            <div class="col py-2">
               <div class="row">
                 <div class="col-10 py-4 px-4">
                   <div class="inner">
-                    <h3>Verifikasi</h3>
+                    <h3><strong>PEKERJA</strong></h3>
+                    <p>Status Anda Saat Ini Sudah Mendapatkan Pekerjaan</p>
+                  </div>
+                </div>
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                  <div class="icon">
+                    <i class="fa fa-users fa-5x"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php } ?>
+          <!-- ./col -->
+          <?php if ($keterangan_status == 'Lapor') { ?>
+            <div class="col py-2">
+              <div class="row">
+                <div class="col-10 py-4 px-4">
+                  <div class="inner">
+                    <h3><strong>LAPOR</strong></h3>
+                    <p>Anda terdaftar di sistem sudah lebih dari 6 bulan, wajib melaporkan apabila belum mendapatkan pekerjaan</p>
+                  </div>
+                </div>
+
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                  <div class="icon">
+                    <i class="fa fa-users fa-5x"></i>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          <?php } ?>
+
+          <?php if ($keterangan_status == 'Registrasi') { ?>
+            <div class="col py-2">
+              <div class="row">
+                <div class="col-10 py-4 px-4">
+                  <div class="inner">
+                    <h3><strong>Registrasi</strong></h3>
+                    <p>Silahkan lengkapi formulir AK-1 pada menu <strong>Profil Pencaker</strong> dan mengunggah dokumen pada menu <strong>Dokumen Pencaker</strong>. Jika sudah lengkap, klik tombol minta Verifikasi berikut ini</p>
+                    <a href="#" onclick="modalVerifikasi('Verifikasi')" id="#modalVerifikasi" class="small-box-footer btn btn-primary btn-sm">Minta Verifikasi Data <i class="fas fa-arrow-circle-right"></i></a>
+                  </div>
+                </div>
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                  <div class="icon">
+                    <i class="fa fa-user fa-5x"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php } ?>
+          <!-- ./col -->
+
+          <?php if ($keterangan_status == 'Verifikasi') { ?>
+            <div class="col py-2">
+              <!-- small box -->
+              <div class="row">
+                <div class="col-10 py-4 px-4">
+                  <div class="inner">
+                    <h3><strong>Verifikasi</strong></h3>
                     <p>Silahkan menunggu maksimal 3x24 jam untuk proses verifikasi dan terus memantau linimasa untuk mendapatkan informasi terkait proses verifikasi bilamana didapati ada berkas/dokumen yang kurang lengkap. <br>Setelah dinyatakan lulus verifikasi, status ini akan berubah menjadi <strong>Validasi</strong></p>
                   </div>
                 </div>
-                <div class="col-2">
+                <div class="col-2 d-flex justify-content-center align-items-center">
                   <div class="icon">
-                    <i class="fa fa-check"></i>
+                    <i class="fa fa-check fa-5x"></i>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        <?php } ?>
-        <?php if ($keterangan_status == 'Validasi') { ?>
-          <div>
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>Validasi</h3>
+          <?php } ?>
 
-                <p>Silahkan ke Kantor Disnakertrans Kab. Manokwari dengan membawa berkas/dokumen asli untuk divalidasi. Bila dinyatakan berkas/dokumen anda valid, anda akan mendapatkan Kartu Pencari Kerja</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-list"></i>
+          <?php if ($keterangan_status == 'Validasi') { ?>
+            <div class="col py-2">
+              <div class="row">
+                <div class="col-10 py-4 px-4">
+                  <div class="inner">
+                    <h3><strong>Validasi</strong></h3>
+                    <p>Silahkan ke Kantor Disnakertrans Kab. Manokwari dengan membawa berkas/dokumen asli untuk divalidasi. Bila dinyatakan berkas/dokumen anda valid, anda akan mendapatkan Kartu Pencari Kerja</p>
+                  </div>
+                </div>
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                  <div class="icon">
+                    <i class="fa fa-list fa-5x"></i>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        <?php } ?>
+          <?php } ?>
+        </div>
+
 
         <div class="card">
           <div class="card-header">
@@ -432,6 +447,73 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       </div>
       <div class="col">
         <section>
+          <!-- <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="ion-ios-calendar-outline mr-1"></i>
+                <?php // echo "Linimasa" 
+                ?>
+              </h3>
+            </div>
+
+            <div class="card-body">
+              <div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                <?php // foreach ($timeline as $tl) : 
+                ?>
+
+                  <div class="vertical-timeline-item vertical-timeline-element">
+                    <div>
+                      <span class="vertical-timeline-element-icon bounce-in">
+                        <i class="badge badge-dot badge-dot-xl badge-<?php // echo ($tl->description != null) ? 'info' : 'secondary'; 
+                                                                      ?>"> </i>
+                      </span>
+                      <div class="vertical-timeline-element-content bounce-in">
+                        <h4 class="timeline-title <?php // echo ($tl->description != null) ? 'text-info' : ''; 
+                                                  ?>"><?php // echo $tl->subject; 
+                                                      ?></h4>
+                        <p <?php // echo ($tl->description != null) ? 'class="text-info"' : ''; 
+                            ?>><?php // echo $tl->description; 
+                                ?></p>
+                        <?php //
+                        // if ($tl->subject == 'PROSES VERIFIKASI DATA') {
+                        //   if (!empty($verifikasi)) {
+                        // 
+                        ?>
+                            <p class="text-danger">Catatan:</p>
+                            <div id="pesan" style="border: 1px solid red;" class="text-danger py-1 px-1">
+                              <?php // foreach ($verifikasi as $v) :
+                              //   echo $v->pesan;
+                              // endforeach; 
+                              ?>
+                            </div>
+                        <?php // } 
+                        //} 
+                        ?>
+                        <div class="tanggal">
+                          <span class="vertical-timeline-element-date text-left">
+                            <?php
+                            // if (!empty($tl->tglwaktu)) {
+                            //   echo date_indo(substr($tl->tglwaktu, 0, 10));
+                            // } else {
+                            //   echo ('-');
+                            // }
+                            ?>
+                          </span><br>
+                          <span class="vertical-timeline-element-time text-left text-info">
+                            <?php // echo substr($tl->tglwaktu, 11, 5); 
+                            ?>
+                          </span>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                <?php // endforeach; 
+                ?>
+              </div>
+            </div>
+          </div> -->
+
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">
@@ -441,48 +523,91 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
 
             <div class="card-body">
-              <div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+              <div class="timeline">
                 <?php foreach ($timeline as $tl) : ?>
+                  <div class="time-label">
+                    <span class="bg-green">
+                      <small>
+                        <?php
+                        if (!empty($tl->tglwaktu)) {
+                          echo date_indo(substr($tl->tglwaktu, 0, 10));
+                        } else {
+                          echo ('-');
+                        }
+                        ?>
+                      </small>
+                    </span>
+                  </div>
 
-                  <div class="vertical-timeline-item vertical-timeline-element">
-                    <div>
-                      <span class="vertical-timeline-element-icon bounce-in">
-                        <i class="badge badge-dot badge-dot-xl badge-<?php echo ($tl->description != null) ? 'info' : 'secondary'; ?>"> </i>
+                  <div>
+                    <i class="fas fa-calendar-check text-white bg-red "></i>
+                    <div class="timeline-item">
+                      <span class="time"><i class="fas fa-clock"></i>
+                        <?php
+                        if (!empty($tl->tglwaktu)) {
+                          echo substr($tl->tglwaktu, 11, 5);
+                        } else {
+                          echo ('-');
+                        }
+                        //  echo substr($tl->tglwaktu, 11, 5);
+                        ?>
                       </span>
-                      <div class="vertical-timeline-element-content bounce-in">
-                        <h4 class="timeline-title <?php echo ($tl->description != null) ? 'text-info' : ''; ?>"><?php echo $tl->subject; ?></h4>
-                        <p <?php echo ($tl->description != null) ? 'class="text-info"' : ''; ?>><?php echo $tl->description; ?></p>
+                      <!-- <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3> -->
+                      <h3 class="timeline-header <?php echo ($tl->description != null) ? 'text-info' : ''; ?>"><?php echo $tl->subject; ?></h3>
+                      <div class="timeline-body">
+                        <p <?php echo ($tl->description != null) ? 'class="text-info mb-0"' : ''; ?>><?php echo $tl->description; ?></p>
+                      </div>
+                      <div class="timeline-footer py-0 mb-2">
+                        <!-- <a class="btn btn-primary btn-sm">Read more</a>
+                        <a class="btn btn-danger btn-sm">Delete</a> -->
                         <?php
                         if ($tl->subject == 'PROSES VERIFIKASI DATA') {
                           if (!empty($verifikasi)) {
                         ?>
-                            <p class="text-danger">Catatan:</p>
-                            <div id="pesan" style="border: 1px solid red;" class="text-danger py-1 px-1">
-                              <?php foreach ($verifikasi as $v) :
-                                echo $v->pesan;
-                              endforeach; ?>
+                            <div class="pb-2">
+                              <p class="text-danger mb-0">Catatan:</p>
+                              <div id="pesan" style="border: 1px solid red;" class="text-danger py-1 px-1">
+                                <?php foreach ($verifikasi as $v) :
+                                  echo $v->pesan;
+                                endforeach; ?>
+                              </div>
                             </div>
+
                         <?php }
                         } ?>
-                        <div class="tanggal">
-                          <span class="vertical-timeline-element-date text-left">
-                            <?php
-                            if (!empty($tl->tglwaktu)) {
-                              echo date_indo(substr($tl->tglwaktu, 0, 10));
-                            }
-                            ?>
-                          </span><br>
-                          <span class="vertical-timeline-element-time text-left text-info">
-                            <?php echo substr($tl->tglwaktu, 11, 5); ?>
-                          </span>
-                        </div>
-
                       </div>
                     </div>
                   </div>
+
+                  <!-- <div>
+                    <i class="fas fa-user bg-green"></i>
+                    <div class="timeline-item">
+                      <span class="time"><i class="fas fa-clock"></i> 5 mins ago</span>
+                      <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
+                    </div>
+                  </div>
+
+
+                  <div>
+                    <i class="fas fa-comments bg-yellow"></i>
+                    <div class="timeline-item">
+                      <span class="time"><i class="fas fa-clock"></i> 27 mins ago</span>
+                      <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
+                      <div class="timeline-body">
+                        Take me to your leader!
+                        Switzerland is small and neutral!
+                        We are more like Germany, ambitious and misunderstood!
+                      </div>
+                      <div class="timeline-footer">
+                        <a class="btn btn-warning btn-sm">View comment</a>
+                      </div>
+                    </div>
+                  </div> -->
                 <?php endforeach; ?>
+
               </div>
             </div>
+
           </div>
         </section>
       </div>
