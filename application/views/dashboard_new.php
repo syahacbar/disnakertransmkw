@@ -568,115 +568,117 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     </div>
   </div>
 </div>
-
 <?php include viewPath('includes/footer'); ?>
 
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo $url->assets ?>js/pages/dashboard.js"></script>
 
 <script>
-  $(document).ready(function() {
-
-
-    function modalVerifikasi(ket_status) {
-      Swal.fire({
-        title: 'Konfirmasi!',
-        text: "Pastikan kembali anda sudah mengisi formulir AK-1 dengan benar dan telah mengunggah dokumen (terutama Pas Foto, KTP dan Ijazah Terakhir). Selama proses verifikasi, anda tidak dapat mengubah/mengganti dokumen yang telah diunggah.",
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Tidak',
-        confirmButtonText: 'Ya, Saya Yakin!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          $.ajax({
-            url: "<?php echo site_url('pencaker/dok_pencaker_wajib') ?>",
-            type: "GET",
-            dataType: "JSON",
-            success: function(data) {
-              if (data.dokumenwajib == 3) {
-                $.ajax({
-                  url: "<?php echo site_url('pencaker/update_keterangan_status') ?>",
-                  type: "POST",
-                  data: {
-                    keterangan_status: ket_status
-                  },
-                  success: function(data) {
-                    var objData = jQuery.parseJSON(data);
-                    if (objData.status) {
-                      Swal.fire({
-                        title: 'Selamat!',
-                        text: 'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
-                        icon: 'success',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'Tutup'
-                      }).then((result) => {
-                        if (result.isConfirmed) {
-                          location.reload();
-                        }
-                      });
-                    }
+  function modalVerifikasi(ket_status) {
+    Swal.fire({
+      title: 'Konfirmasi!',
+      text: "Pastikan kembali anda sudah mengisi formulir AK-1 dengan benar dan telah mengunggah dokumen (terutama Pas Foto, KTP dan Ijazah Terakhir). Selama proses verifikasi, anda tidak dapat mengubah/mengganti dokumen yang telah diunggah.",
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Tidak',
+      confirmButtonText: 'Ya, Saya Yakin!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          url: "<?php echo site_url('pencaker/dok_pencaker_wajib') ?>",
+          type: "GET",
+          dataType: "JSON",
+          success: function(data) {
+            if (data.dokumenwajib == 3) {
+              $.ajax({
+                url: "<?php echo site_url('pencaker/update_keterangan_status') ?>",
+                type: "POST",
+                data: {
+                  keterangan_status: ket_status
+                },
+                success: function(data) {
+                  var objData = jQuery.parseJSON(data);
+                  if (objData.status) {
+                    Swal.fire({
+                      title: 'Selamat!',
+                      text: 'Data Anda telah berhasil dikirim untuk selanjutnya diverifikasi. Silakan menunggu informasi selanjutnya!',
+                      icon: 'success',
+                      confirmButtonColor: '#3085d6',
+                      confirmButtonText: 'Tutup'
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        location.reload();
+                      }
+                    });
                   }
-                });
-              } else {
-                Swal.fire({
-                  text: 'Anda wajib mengunggah Pas Foto, KTP dan Ijazah Terakhir, silahkan klik menu Dokumen Pencari Kerja untuk mengunggah dokumen tersebut.',
-                  icon: 'warning',
-                  confirmButtonColor: '#3085d6',
-                  confirmButtonText: 'Tutup'
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    location.reload();
-                  }
-                });
-              }
+                }
+              });
+            } else {
+              Swal.fire({
+                text: 'Anda wajib mengunggah Pas Foto, KTP dan Ijazah Terakhir, silahkan klik menu Dokumen Pencari Kerja untuk mengunggah dokumen tersebut.',
+                icon: 'warning',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Tutup'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  location.reload();
+                }
+              });
             }
-          });
-        }
-      })
-    }
-
-    $("input[name='status_kerja'").change(function() {
-      if ($(this).val() == 'Sudah Bekerja') {
-        $('#dataperusahaan').show();
-      } else {
-        $('#dataperusahaan').hide();
+          }
+        });
       }
+    })
+  }
+
+  // $('input[name="laporan"]').change(function() {
+  //   if ($(this).val() == 'laporan1') {
+  //     $('#dataperusahaan').show();
+  //   } else {
+  //     $('#dataperusahaan').hide();
+  //   }
+  // });
+
+  $("input[name='status_kerja'").change(function() {
+    if ($(this).val() == 'Sudah Bekerja') {
+      $('#dataperusahaan').show();
+    } else {
+      $('#dataperusahaan').hide();
+    }
+  });
+
+  $('#btnLaporPencariKerja').on('click', function() {
+    var status_kerja = $("input[name='status_kerja']:checked").val();
+
+    $.ajax({
+      type: "POST",
+      url: "<?php echo site_url('pencaker/lapor_pencari_kerja') ?>",
+      dataType: "JSON",
+      data: {
+        status_kerja: status_kerja,
+      },
+
+      success: function(data) {
+        Swal.fire({
+          title: 'Berhasil',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Tutup',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $('#modalLaporan').modal('hide');
+            location.reload();
+          }
+        });
+
+      }
+
+
+
     });
-
-    $('#btnLaporPencariKerja').on('click', function() {
-      var status_kerja = $("input[name='status_kerja']:checked").val();
-
-      $.ajax({
-        type: "POST",
-        url: "<?php echo site_url('pencaker/lapor_pencari_kerja') ?>",
-        dataType: "JSON",
-        data: {
-          status_kerja: status_kerja,
-        },
-
-        success: function(data) {
-          Swal.fire({
-            title: 'Berhasil',
-            icon: 'success',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Tutup',
-          }).then((result) => {
-            if (result.isConfirmed) {
-              $('#modalLaporan').modal('hide');
-              location.reload();
-            }
-          });
-
-        }
-
-
-
-      });
-    });
-
-
   });
 </script>

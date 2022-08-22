@@ -789,6 +789,7 @@ class Pencaker extends MY_Controller
         $write->save('php://output');
     }
 
+
     function lapor_pencari_kerja()
     {
         $users_id = logged('id');
