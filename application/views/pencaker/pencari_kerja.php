@@ -381,9 +381,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             var usersid = $("input[name='usersid']").val();
             var statusverifikasi = $("select[name='statusverifikasi']").val();
             var pesan = $("textarea[name='pesan']").val();
-            var jenis_dokumen = $("input[name='jenis_dokumen[]']:checked").map(function() {
-                return $(this).val();
-            }).get();
+            // var jenis_dokumen = $("input[name='jenis_dokumen[]']:checked").map(function() {
+            //     return $(this).val();
+            // }).get();
+
+            var jenis_dokumen = [];
+            $('.form-check-input').each(function() {
+                if ($(this).is(":checked")) {
+                    jenis_dokumen.push($(this).val());
+                }
+            });
+            jenis_dokumen = jenis_dokumen.toString();
+
+            // var jenis_dokumen = $("input[name='jenis_dokumen[]']:checked");
 
             if (statusverifikasi == 'ver_lengkap') {
                 var aksi = 1;
@@ -391,6 +401,29 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             } else if (statusverifikasi == 'ver_tidaklengkap') {
                 var aksi = 2;
                 var txtaksi = 'Verifikasi';
+                const errorMsg = [];
+
+                if (jenis_dokumen == '') {
+                    errorMsg.push("Pilih Jenis Dokumen");
+                }
+
+                if (pesan == '') {
+                    errorMsg.push("Tulis Catatan");
+                }
+
+                if (errorMsg.length > 0) {
+                    var pesanError = errorMsg.map(function(item) {
+                        return "<span class='text-danger'>" + item + "</span><br>";
+                    }).join('');
+
+                    Swal.fire({
+                        icon: 'error',
+                        html: pesanError,
+                        confirmButtonText: 'Tutup',
+                    });
+                    return false;
+                }
+
             } else if (statusverifikasi == 'ver_valid') {
                 var aksi = 3;
                 var txtaksi = 'Aktivasi';
@@ -411,7 +444,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         showCancelButton: false,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Ya',
+                        confirmButtonText: 'Tutup',
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $('#modalVerifikasi').modal('hide');
