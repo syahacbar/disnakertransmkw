@@ -291,11 +291,15 @@ class Pencaker_model extends MY_Model
 		return $q->result();
 	}
 
+	function get_verifikasi_dokwajib($users_id)
+	{
+		$q = $this->db->query("SELECT * FROM verifikasi v WHERE v.users_id = $users_id");
+		return $q->row();
+	}
+
 	function add_verifikasi($data)
 	{
-		//PR nya supri sekalian belajar lah
 		$this->db->insert('verifikasi', $data);
-		// return TRUE;
 		return $this->db->insert_id();
 	}
 }

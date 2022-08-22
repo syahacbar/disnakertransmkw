@@ -109,6 +109,13 @@ class Pencaker extends MY_Controller
         echo json_encode($data);
     }
 
+    function get_pencaker_verifikasi()
+    {
+        $users_id = logged('id');
+        $data = $this->pencaker_model->get_verifikasi_dokwajib($users_id);
+        echo json_encode($data);
+    }
+
     function get_pendidikan()
     {
         $users_id = logged('id');
@@ -644,7 +651,6 @@ class Pencaker extends MY_Controller
         $pencaker = $this->pencaker_model->get_by_users_id($users_id);
 
         if ($aksi == 2) {
-            // $jenis_dokumen = explode(",", $this->input->post('jenis_dokumen'));
             $data = array(
                 'tglwaktu'  => date("Y-m-d H:i:s"),
                 'pesan'  => $this->input->post('pesan'),
@@ -654,6 +660,8 @@ class Pencaker extends MY_Controller
             );
 
             $this->pencaker_model->add_verifikasi($data);
+            $this->pencaker_model->update_keterangan_status($pencaker->idpencaker, 'Re-Verifikasi');
+
             $pesan = 'Hai...' . strtoupper($pencaker->namalengkap) . ',' . PHP_EOL . 'Data dan berkas anda telah kami verifikasi dan dinyatakan belum memenuhi syarat.' . PHP_EOL . 'Selanjutnya kami mohon untuk login di panel Pencaker disnakertransmkw.com dan melihat pemberitahuan pada bagian *linimasa* terkait data/berkas yang perlu diperbaiki.' . PHP_EOL . PHP_EOL . 'Terima Kasih...' . PHP_EOL . PHP_EOL . '<noreply>';
 
             notifWA($this->users_model->getById($users_id)->phone, $pesan);

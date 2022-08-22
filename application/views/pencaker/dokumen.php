@@ -261,7 +261,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 location.reload();
                             }
                         });
-
+                        
                     } else {
                         $('#unggahDokumen').modal('show');
                         $('[name="mode"]').val("edit");

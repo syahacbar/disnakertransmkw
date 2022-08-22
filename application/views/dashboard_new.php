@@ -281,9 +281,29 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                   <div class="inner">
                     <h3><strong>Verifikasi</strong></h3>
                     <p>Silahkan menunggu maksimal 3x24 jam untuk proses verifikasi dan terus memantau linimasa untuk mendapatkan informasi terkait proses verifikasi bilamana didapati ada berkas/dokumen yang kurang lengkap. <br>Setelah lulus verifikasi data dan berkas/dokumen, status ini akan berubah menjadi <strong>Validasi</strong></p>
-                    <?php if (!empty($verifikasi)) { ?>
+
+                  </div>
+                </div>
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                  <div class="icon">
+                    <i class="fa fa-check fa-5x"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php } ?>
+
+          <?php if ($keterangan_status == 'Re-Verifikasi') { ?>
+            <div class="col py-2">
+              <!-- small box -->
+              <div class="row">
+                <div class="col-10 py-4 px-4">
+                  <div class="inner">
+                    <h3><strong>Re-Verifikasi</strong></h3>
+                    <p>Setelah dilakukan proses verifikasi, terdapat kekurangan/tidak lengkap pada data maupun dokumen yang diunggah. <br>Bila anda sudah melakukan pengecekan, silahkan klik tombol <strong>Minta Verifikasi Ulang</strong> dibawah ini</p>
+                    
                       <a href="#" onclick="modalVerifikasi('Verifikasi')" id="#modalVerifikasi" class="small-box-footer btn btn-primary btn-sm">Minta Verifikasi Ulang <i class="fas fa-arrow-circle-right"></i></a>
-                    <?php } ?>
+                    
 
                   </div>
                 </div>
