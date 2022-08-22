@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Dashboard extends MY_Controller
 {
- 
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -19,10 +19,10 @@ class Dashboard extends MY_Controller
 
 			$this->page_data['keterangan_status'] = $pencaker_id->keterangan_status;
 			$this->page_data['dokumen'] = $this->pencaker_model->pencaker_doc($pencaker_id->id);
-			$this->page_data['timeline'] = $this->pencaker_model->get_timeline($users_id); 
+			$this->page_data['laporan_pencaker'] = $this->pencaker_model->get_lapor_pencari_kerja();
+			$this->page_data['timeline'] = $this->pencaker_model->get_timeline($users_id);
 			$this->page_data['verifikasi'] = $this->pencaker_model->get_verifikasi($users_id);
 			$this->load->view('dashboard_new', $this->page_data);
-
 		} elseif (hasPermissions('dash_admin')) {
 
 			$q_pendidikan_terakhir = $this->db->query("SELECT jp.jenjang, (SELECT COUNT(pd.id) FROM pendidikan_pencaker pd WHERE pd.jenjang_pendidikan_id=jp.id) AS total FROM jenjang_pendidikan jp");
@@ -45,7 +45,6 @@ class Dashboard extends MY_Controller
 
 
 			$this->load->view('dashboard', $this->page_data);
-
 		} else {
 			$this->load->view('errors/html/error_403_permission', $this->page_data);
 		}
