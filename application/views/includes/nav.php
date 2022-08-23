@@ -180,4 +180,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <?php endif ?>
 
 
+  <?php if (hasPermissions('manual_book')) : ?>
+    <li class="nav-item">
+      <a href="<?php echo url('manual_book') ?>" class="nav-link <?php echo ($page->menu == 'manual_book') ? 'active' : '' ?>">
+        <i class="nav-icon fas fa-book"></i>
+        <p>
+          Buku Panduan
+        </p>
+      </a>
+    </li>
+  <?php endif ?>
+
+
 </ul>
