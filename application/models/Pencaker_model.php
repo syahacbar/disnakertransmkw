@@ -23,6 +23,18 @@ class Pencaker_model extends MY_Model
 		return $nopendaftaran;
 	}
 
+	public function nomorurutlaporpencaker()
+	{
+		$query = $this->db->query("SELECT urut_lapor FROM lapor_pencaker ORDER BY urut_lapor DESC LIMIT 1 ");
+		if ($query->num_rows() <> 0) {
+			$data = $query->row();
+			$nourut = intval($data->urut_lapor) + 1;
+		} else {
+			$nourut = 1;  //cek jika kode belum terdapat pada table
+		}
+		return $nourut;
+	}
+
 	function get_kartu_kuning($iduser)
 	{
 		$query = $this->db->query("SELECT * FROM pencaker p WHERE p.users_id=$iduser");
@@ -303,13 +315,19 @@ class Pencaker_model extends MY_Model
 		return $this->db->insert_id();
 	}
 
-	function add_lapor_pencari_kerja($data)
+	function add_lapor_pencaker($data)
 	{
 		$this->db->insert('lapor_pencaker', $data);
 		return $this->db->insert_id();
 	}
 
-	function get_lapor_pencari_kerja()
+	function add_lapor_kerja($data)
+	{
+		$this->db->insert('lapor_kerja', $data);
+		return TRUE;
+	}
+
+	function get_lapor_pencaker()
 	{
 		$q = $this->db->get('lapor_pencaker');
 		return $q->result();

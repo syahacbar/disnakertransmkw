@@ -794,16 +794,30 @@ class Pencaker extends MY_Controller
     {
         $users_id = logged('id');
         $pencaker = $this->pencaker_model->get_by_users_id($users_id);
-        $data = array(
+        $nourutlapor = $this->pencaker_model->nomorurutlaporpencaker();
+        $status_kerja = $this->input->post('status_kerja');
+
+        $data1 = array(
             'tglwaktu'  => date("Y-m-d H:i:s"),
-            'status_kerja' => $this->input->post('status_kerja'),
-            'urut_lapor' => '1',
+            'status_kerja' => $status_kerja,
+            'urut_lapor' => $nourutlapor,
             'pencaker_id' => $pencaker->idpencaker,
         );
 
-        $laporan = $this->pencaker_model->add_lapor_pencari_kerja($data);
+        $idlaporanpencaker = $this->pencaker_model->add_lapor_pencaker($data1);
 
-        if ($laporan) {
+        if($status_kerja == 'Sudah Bekerja')
+        {
+            $data2 = array(
+                'nama_perusahaan'  => $this->input->post('nama_perusahaan'),
+                'no_telp' => $this->input->post('notelp_perusahaan'),
+                'alamat' => $this->input->post('alamat_perusahaan'),
+                'lapor_pencaker_id' => $idlaporanpencaker,
+            );
+            $this->pencaker_model->add_lapor_kerja($data2);
+        }
+
+        if ($idlaporanpencaker) {
             $res['hasil'] = 'sukses';
             $res['status'] = TRUE;
         } else {

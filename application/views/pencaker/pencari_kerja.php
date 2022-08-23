@@ -191,7 +191,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 foreach ($pencaker as $p) : ?>
                                     <tr>
                                         <td>
-                                            <a class="btn btn-sm btn-secondary btnVerifikasi <?php echo ($p->keterangan_status == 'Verifikasi' || $p->keterangan_status == 'Validasi') ? '' : 'disabled'; ?>" title="Verifikasi Pencaker" data-usersid="<?php echo $p->users_id; ?>" data-nopendaftaran="<?php echo $p->nopendaftaran; ?>" data-namapencaker="<?php echo strtoupper($p->namalengkap); ?>">
+                                            <a class="btn btn-sm btn-secondary btnVerifikasi <?php echo ($p->keterangan_status == 'Verifikasi' || $p->keterangan_status == 'Validasi' || $p->keterangan_status == 'Re-Verifikasi') ? '' : 'disabled'; ?>" title="Verifikasi Pencaker" data-usersid="<?php echo $p->users_id; ?>" data-nopendaftaran="<?php echo $p->nopendaftaran; ?>" data-namapencaker="<?php echo strtoupper($p->namalengkap); ?>">
                                                 <i class="fas fa-check"></i>
                                             </a>
                                         </td>

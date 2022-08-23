@@ -335,7 +335,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           <?php } ?>
         </div>
 
-
+        <?php if(is_aktifpencaker(logged('id')) == 'Aktif') { ?>
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">
@@ -365,7 +365,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <tr>
                       <td><?php echo $lp->urut_lapor; ?></td>
                       <td><?php echo date_indo(substr($lp->tglwaktu, 0, 10)); ?></td>
-                      <td><?php echo $lp->status_kerja; ?></td>
+                      <td><?php echo ($lp->status_kerja == 'Sudah Bekerja') ? '<a href="" data-target="#modalViewPerusahaan" data-toggle="modal">'.$lp->status_kerja.'</a>' : $lp->status_kerja; ?></td>
                     </tr>
                   <?php endforeach ?>
                 </tbody>
@@ -373,7 +373,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
           </div><!-- /.card-body -->
         </div>
-
+      <?php } ?>
 
         <!-- TO DO List -->
         <div class="card">
@@ -548,15 +548,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
           <div class="col-12">
             <div class="form-group">
-              <label for="notlp_perusahaan">Nomor Telepon</label>
-              <input type="text" class="form-control" name="notlp_perusahaan" id="notlp_perusahaan" />
+              <label for="notelp_perusahaan">Nomor Telepon</label>
+              <input type="text" class="form-control" name="notelp_perusahaan" id="notelp_perusahaan" />
             </div>
           </div>
 
           <div class="col-12">
             <div class="form-group">
-              <label for="jabatan">Jabatan Anda</label>
-              <input type="text" class="form-control" name="jabatan" id="jabatan" />
+              <label for="jabatan_perusahaan">Jabatan Anda</label>
+              <input type="text" class="form-control" name="jabatan_perusahaan" id="jabatan_perusahaan" />
             </div>
           </div>
         </div>
@@ -633,14 +633,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     })
   }
 
-  // $('input[name="laporan"]').change(function() {
-  //   if ($(this).val() == 'laporan1') {
-  //     $('#dataperusahaan').show();
-  //   } else {
-  //     $('#dataperusahaan').hide();
-  //   }
-  // });
-
   $("input[name='status_kerja'").change(function() {
     if ($(this).val() == 'Sudah Bekerja') {
       $('#dataperusahaan').show();
@@ -651,6 +643,23 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
   $('#btnLaporPencariKerja').on('click', function() {
     var status_kerja = $("input[name='status_kerja']:checked").val();
+    if(status_kerja == 'Sudah Bekerja')
+    {
+      var nama_perusahaan = $("input[name='nama_perusahaan']").val();
+      var alamat_perusahaan = $("textarea[name='alamat_perusahaan']").val();
+      var notelp_perusahaan = $("input[name='notelp_perusahaan']").val();
+      var jabatan_perusahaan = $("input[name='jabatan_perusahaan']").val();
+    } else if(status_kerja == 'Belum Bekerja') {
+      var nama_perusahaan = '';
+      var alamat_perusahaan = '';
+      var notelp_perusahaan = '';
+      var jabatan_perusahaan = '';
+    } else {
+      var nama_perusahaan = '';
+      var alamat_perusahaan = '';
+      var notelp_perusahaan = '';
+      var jabatan_perusahaan = '';
+    }
 
     $.ajax({
       type: "POST",
@@ -658,6 +667,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       dataType: "JSON",
       data: {
         status_kerja: status_kerja,
+        nama_perusahaan : nama_perusahaan,
+        alamat_perusahaan : alamat_perusahaan,
+        notelp_perusahaan : notelp_perusahaan,
+        jabatan_perusahaan : jabatan_perusahaan,
       },
 
       success: function(data) {
