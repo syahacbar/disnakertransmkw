@@ -301,9 +301,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                   <div class="inner">
                     <h3><strong>Re-Verifikasi</strong></h3>
                     <p>Setelah dilakukan proses verifikasi, terdapat kekurangan/tidak lengkap pada data maupun dokumen yang diunggah. <br>Bila anda sudah melakukan pengecekan, silahkan klik tombol <strong>Minta Verifikasi Ulang</strong> dibawah ini</p>
-                    
-                      <a href="#" onclick="modalVerifikasi('Verifikasi')" id="#modalVerifikasi" class="small-box-footer btn btn-primary btn-sm">Minta Verifikasi Ulang <i class="fas fa-arrow-circle-right"></i></a>
-                    
+
+                    <a href="#" onclick="modalVerifikasi('Verifikasi')" id="#modalVerifikasi" class="small-box-footer btn btn-primary btn-sm">Minta Verifikasi Ulang <i class="fas fa-arrow-circle-right"></i></a>
+
 
                   </div>
                 </div>
@@ -361,26 +361,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>I</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <td>II</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <td>III</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <td>IV</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                  <?php foreach ($laporan_pencaker as $lp) : ?>
+                    <tr>
+                      <td><?php echo $lp->urut_lapor; ?></td>
+                      <td><?php echo date_indo(substr($lp->tglwaktu, 0, 10)); ?></td>
+                      <td><?php echo $lp->status_kerja; ?></td>
+                    </tr>
+                  <?php endforeach ?>
                 </tbody>
               </table>
             </div>
@@ -507,6 +494,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
   </div>
 </section>
 
+
 <!-- Modal -->
 <div class="modal fade" id="modalLaporan" tabindex="-1" role="dialog" aria-labelledby="modalLaporanLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -521,8 +509,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
           <label for="">Apakah Anda sudah memperoleh pekerjaan?</label>
           <div class="form-check mb-1">
-            <input class="form-check-input" type="radio" name="laporan" id="laporan1" value="laporan1">
-            <label class="form-check-label" for="laporan1">
+            <input class="form-check-input" type="radio" name="status_kerja" id="status_kerja1" value="Sudah Bekerja">
+            <label class="form-check-label" for="status_kerja1">
               Ya, saya sudah bekerja
             </label>
           </div>
@@ -530,8 +518,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
           <div class="form-check mt-1">
-            <input class="form-check-input" type="radio" name="laporan" id="laporan2" value="laporan2">
-            <label class="form-check-label" for="laporan2">
+            <input class="form-check-input" type="radio" name="status_kerja" id="status_kerja2" value="Belum Bekerja">
+            <label class="form-check-label" for="status_kerja2">
               Belum bekerja
             </label>
           </div>
@@ -575,12 +563,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       </div>
       <div class="modal-footer ">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-        <button type="button" class="btn btn-primary">Simpan</button>
+        <button type="button" id="btnLaporPencariKerja" class="btn btn-primary">Simpan</button>
       </div>
     </div>
   </div>
 </div>
-
 <?php include viewPath('includes/footer'); ?>
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
@@ -646,11 +633,52 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     })
   }
 
-  $('input[name="laporan"]').change(function() {
-    if ($(this).val() == 'laporan1') {
+  // $('input[name="laporan"]').change(function() {
+  //   if ($(this).val() == 'laporan1') {
+  //     $('#dataperusahaan').show();
+  //   } else {
+  //     $('#dataperusahaan').hide();
+  //   }
+  // });
+
+  $("input[name='status_kerja'").change(function() {
+    if ($(this).val() == 'Sudah Bekerja') {
       $('#dataperusahaan').show();
     } else {
       $('#dataperusahaan').hide();
     }
+  });
+
+  $('#btnLaporPencariKerja').on('click', function() {
+    var status_kerja = $("input[name='status_kerja']:checked").val();
+
+    $.ajax({
+      type: "POST",
+      url: "<?php echo site_url('pencaker/lapor_pencari_kerja') ?>",
+      dataType: "JSON",
+      data: {
+        status_kerja: status_kerja,
+      },
+
+      success: function(data) {
+        Swal.fire({
+          title: 'Berhasil',
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Tutup',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $('#modalLaporan').modal('hide');
+            location.reload();
+          }
+        });
+
+      }
+
+
+
+    });
   });
 </script>

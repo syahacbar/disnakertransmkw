@@ -302,6 +302,18 @@ class Pencaker_model extends MY_Model
 		$this->db->insert('verifikasi', $data);
 		return $this->db->insert_id();
 	}
+
+	function add_lapor_pencari_kerja($data)
+	{
+		$this->db->insert('lapor_pencaker', $data);
+		return $this->db->insert_id();
+	}
+
+	function get_lapor_pencari_kerja()
+	{
+		$q = $this->db->get('lapor_pencaker');
+		return $q->result();
+	}
 }
 /* End of file Pencaker_model.php */
 /* Location: ./application/models/Pencaker_model.php */

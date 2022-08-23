@@ -788,4 +788,28 @@ class Pencaker extends MY_Controller
         $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
         $write->save('php://output');
     }
+
+
+    function lapor_pencari_kerja()
+    {
+        $users_id = logged('id');
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
+        $data = array(
+            'tglwaktu'  => date("Y-m-d H:i:s"),
+            'status_kerja' => $this->input->post('status_kerja'),
+            'urut_lapor' => '1',
+            'pencaker_id' => $pencaker->idpencaker,
+        );
+
+        $laporan = $this->pencaker_model->add_lapor_pencari_kerja($data);
+
+        if ($laporan) {
+            $res['hasil'] = 'sukses';
+            $res['status'] = TRUE;
+        } else {
+            $res['hasil'] = 'gagal';
+            $res['status'] = FALSE;
+        }
+        echo json_encode($res);
+    }
 }
