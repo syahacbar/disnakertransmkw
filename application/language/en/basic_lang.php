@@ -10,33 +10,53 @@ $lang['info'] = [
 /**
  * Login, Profile & Other Pages like password reset
  */
-$lang['sign_in_session'] = "Sign in to start your session";
-$lang['username_or_email'] = "Username or Email";
-$lang['remember_me'] = "Remember Me";
-$lang['signin'] = "Sign In";
-$lang['forget_password_?'] = "Forgot your password ?";
-$lang['message_how_forget_reset'] = "Home";
-$lang['message_how_forget_reset'] = "You forgot your password? Here you can easily retrieve a new password.";
-$lang['request_password'] = "Request new password";
+// $lang['sign_in_session'] = "Sign in to start your session";
+$lang['sign_in_session'] = "Silakan Login";
+// $lang['username_or_email'] = "Username or Email";
+$lang['username_or_email'] = "NIK atau Email";
+// $lang['remember_me'] = "Remember Me";
+$lang['remember_me'] = "Ingat Saya";
+// $lang['signin'] = "Sign In";
+$lang['signin'] = "Masuk";
+
+// $lang['forget_password_?'] = "Forgot your password ?";
+$lang['forget_password_?'] = "Lupa Kata Sandi?";
+// $lang['message_how_forget_reset'] = "Home";
+$lang['message_how_forget_reset'] = "Beranda";
+// $lang['message_how_forget_reset'] = "You forgot your password? Here you can easily retrieve a new password.";
+$lang['message_how_forget_reset'] = "Lupa kata sandi? Silakan masukkan email Anda dan sistem akan mengirimi Anda kata sandi baru.";
+// $lang['request_password'] = "Request new password";
+$lang['request_password'] = "Minta Kata Sandi Baru";
 $lang['mesasge_set_password_step'] = "You are only one step a way from your new password, recover your password now.";
-$lang['new_password'] = "New Password";
-$lang['confirm_new_password'] = "Confirm New Password";
-$lang['update_password'] = "Set Password";
-$lang['my_account'] = "My Account";
-$lang['member_since'] = "Member Since";
-$lang['change_profile_image'] = "Change Profile Image";
-$lang['change_password'] = "Change Password";
-$lang['message_login_again_after_password'] = "You will need to login again after password is changed !";
-$lang['message_password_atleast_long'] = "Password must be atleast 6 characters long !";
+// $lang['new_password'] = "New Password";
+$lang['new_password'] = "Kata Sandi Baru";
+// $lang['confirm_new_password'] = "Confirm New Password";
+$lang['confirm_new_password'] = "Konfirmasi Kata Sandi Baru";
+// $lang['update_password'] = "Set Password";
+$lang['update_password'] = "Atur Kata Sandi";
+// $lang['my_account'] = "My Account";
+$lang['my_account'] = "Akun Saya";
+// $lang['member_since'] = "Member Since";
+$lang['member_since'] = "Member Sejak";
+// $lang['change_profile_image'] = "Change Profile Image";
+$lang['change_profile_image'] = "Ubah gambar profil";
+$lang['change_password'] = "Ubah kata sandi";
+// $lang['message_login_again_after_password'] = "You will need to login again after password is changed !";
+$lang['message_login_again_after_password'] = "Anda akan login kembali setelah mengubah kata sandi!";
+// $lang['message_password_atleast_long'] = "Password must be atleast 6 characters long !";
+$lang['message_password_atleast_long'] = "Kata sandi minimal 6 karakter alfanumerik!";
 $lang['old_password'] = "Old Password";
+$lang['old_password'] = "Kata Sandi Lama";
 
 
 /**
  * Error Pages
  */
-$lang['not_allowed_403'] = "You are not allowed to access this page.";
-$lang['sorry_not_allowed_msg'] = "Sorry, you cannot access this section/webpage.
-Meanwhile, you may <a href='" . url('/') . "'>return to dashboard</a> or try using the search form.";
+// $lang['not_allowed_403'] = "You are not allowed to access this page.";
+$lang['not_allowed_403'] = "Anda tidak diizinkan untuk mengakses halaman ini.";
+// $lang['sorry_not_allowed_msg'] = "Sorry, you cannot access this section/webpage.
+// Meanwhile, you may <a href='" . url('/') . "'>return to dashboard</a> or try using the search form.";
+$lang['sorry_not_allowed_msg'] = "Maaf, Anda tidak dapat mengakses sesi/halaman web ini.Silakan kembali ke <a href='" . url('/') . "'>Dashboard</a> atau gunakan form pencarian untuk menemukan halaman yang diinginkan.";
 
 $lang['informasi'] = "Informasi";
 $lang['berita'] = "Berita";
@@ -110,8 +130,10 @@ $lang['contacts'] = "Contacts";
 $lang['extras'] = "Extras";
 $lang['login'] = "Login";
 $lang['register'] = "Register";
-$lang['forgot_password'] = "Forgot Password";
-$lang['recover_password'] = "Recover Password";
+// $lang['forgot_password'] = "Forgot Password";
+$lang['forgot_password'] = "Lupa Kata Sandi";
+// $lang['recover_password'] = "Recover Password";
+$lang['recover_password'] = "Pulihkan Kata Sandi";
 $lang['lockscreen'] = "Lockscreen";
 $lang['legacy_user_menu'] = "Legacy User Menu";
 $lang['language_menu'] = "Language Menu";
@@ -234,8 +256,10 @@ $lang['user_enter_username'] = "Enter Username";
 
 $lang['user_enter_email'] = "Enter Username";
 $lang['user_username_take'] = "Username Already taken";
-$lang['user_password'] = "Password";
-$lang['user_password_confirm'] = "Confirm Password";
+// $lang['user_password'] = "Password";
+$lang['user_password'] = "Kata Sandi";
+// $lang['user_password_confirm'] = "Confirm Password";
+$lang['user_password_confirm'] = "Konfirmasi Kata Sandi";
 $lang['user_password_leave_blank'] = "Leave Blank to remain unchanged !";
 
 $lang['user_other_details'] = "Other Details";

@@ -181,7 +181,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     <div class="modal-dialog modal-dialog-centered modal-lg modal-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Tambah Pelatihan</h5>
+                <h5 class="modal-title">Tambah Pelatihan Baru</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
