@@ -294,7 +294,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 ">
                                             <div class="form-group">
-                                                <label for="nama_sekolah">Nama Sekolah</label>
+                                                <label for="nama_sekolah">Nama Sekolah/Perguruan Tinggi</label>
                                                 <input type="text" class="form-control" name="nama_sekolah" id="nama_sekolah" required autofocus />
                                             </div>
                                         </div>
@@ -786,7 +786,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     {
                         "data": "id",
                         "render": function(data, type, row, meta) {
-                            return '<a href="javascript:void(0)" data-id="' + data + '" class="btn btn-sm btn-primary btnEditPendidikan"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger btnHapusPendidikan" href="javascript:void(0)" data-id="' + data + '"><i class="fas fa-trash"></i></a>';
+                            return '<a href="javascript:void(0)" data-id="' + data + '" class="btn btn-sm btn-primary btnEditPendidikan" title="Perbarui Data"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger btnHapusPendidikan" title="Hapus Data" href="javascript:void(0)" data-id="' + data + '"><i class="fas fa-trash"></i></a>';
                         }
                     },
                 ],
@@ -987,7 +987,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     {
                         "data": "id",
                         "render": function(data, type, row, meta) {
-                            return '<a href="javascript:void(0)" data-id="' + data + '" class="btn btn-sm btn-primary btnEditPekerjaan"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger btnHapusPekerjaan" href="javascript:void(0)" data-id="' + data + '"><i class="fas fa-trash"></i></a>';
+                            return '<a href="javascript:void(0)" data-id="' + data + '" class="btn btn-sm btn-primary btnEditPekerjaan" title="Perbarui Data"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger btnHapusPekerjaan" title="Hapus Data" href="javascript:void(0)" data-id="' + data + '"><i class="fas fa-trash"></i></a>';
                         }
                     },
                 ],
@@ -1144,7 +1144,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     {
                         "data": "id",
                         "render": function(data, type, row, meta) {
-                            return '<a href="javascript:void(0)" data-id="' + data + '" class="btn btn-sm btn-primary btnEditJabatan"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger btnHapusJabatan" href="javascript:void(0)" data-id="' + data + '"><i class="fas fa-trash"></i></a>';
+                            return '<a href="javascript:void(0)" data-id="' + data + '" class="btn btn-sm btn-primary btnEditJabatan" title="Perbarui Data"><i class="fas fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger btnHapusJabatan" title="Hapus Data"  href="javascript:void(0)" data-id="' + data + '"><i class="fas fa-trash"></i></a>';
                         }
                     },
                 ],
