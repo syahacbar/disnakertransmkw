@@ -182,8 +182,8 @@ $lang['notifications'] = "Notifications";
 $lang['see_all_notifications'] = "See all Notifications";
 $lang['followers'] = "Followers";
 $lang['friends'] = "Friends";
-$lang['profile'] = "Profile";
-$lang['signout'] = "Sign out";
+$lang['profile'] = "Profil";
+$lang['signout'] = "Keluar";
 
 
 
@@ -234,62 +234,105 @@ $lang['dashboard_view_calendar'] = "View calendar";
 /**
  * Users
  */
-$lang['users'] = "Users";
-$lang['user'] = "User";
-$lang['new_user'] = "New User";
-$lang['edit_user'] = "Edit User";
-$lang['view_user'] = "View User";
-$lang['delete_user'] = "Delete User";
-$lang['delete_user_cannot'] = "You cannot Delete this User";
-$lang['user_unable_change_status'] = "Unable to change Status ! Try Again";
-$lang['user_basic'] = "Basic Details";
-$lang['user_name'] = "Name";
-$lang['user_enter_name'] = "Enter Name";
-$lang['user_contact'] = "Contact Number";
-$lang['user_enter_contact'] = "Enter Contact Number";
+// $lang['users'] = "Users";
+// $lang['user'] = "User";
+// $lang['new_user'] = "New User";
+// $lang['edit_user'] = "Edit User";
+// $lang['view_user'] = "View User";
+// $lang['delete_user'] = "Delete User";
+// $lang['delete_user_cannot'] = "You cannot Delete this User";
+// $lang['user_unable_change_status'] = "Unable to change Status ! Try Again";
+// $lang['user_basic'] = "Basic Details";
+// $lang['user_name'] = "Name";
+// $lang['user_enter_name'] = "Enter Name";
+// $lang['user_contact'] = "Contact Number";
+// $lang['user_enter_contact'] = "Enter Contact Number";
 
-$lang['user_login_details'] = "Login Details";
-$lang['user_email'] = "Email";
-$lang['user_username'] = "Username";
-$lang['user_email_exists'] = "Email Already Exists";
-$lang['user_enter_username'] = "Enter Username";
+// $lang['user_login_details'] = "Login Details";
+// $lang['user_email'] = "Email";
+// $lang['user_username'] = "Username";
+// $lang['user_email_exists'] = "Email Already Exists";
+// $lang['user_enter_username'] = "Enter Username";
 
-$lang['user_enter_email'] = "Enter Username";
-$lang['user_username_take'] = "Username Already taken";
+// $lang['user_enter_email'] = "Enter Username";
+// $lang['user_username_take'] = "Username Already taken";
 // $lang['user_password'] = "Password";
-$lang['user_password'] = "Kata Sandi";
 // $lang['user_password_confirm'] = "Confirm Password";
+// $lang['user_password_leave_blank'] = "Leave Blank to remain unchanged !";
+
+// $lang['user_other_details'] = "Other Details";
+// $lang['user_address'] = "Address";
+// $lang['user_enter_address'] = "Enter Address";
+// $lang['user_role'] = "Role";
+// $lang['user_select_role'] = "Select Role";
+// $lang['user_status'] = "Status";
+// $lang['user_active'] = "Active";
+// $lang['user_inactive'] = "InActive";
+// $lang['user_profile_image'] = "Profile Image";
+// $lang['user_image'] = "Image";
+// $lang['user_upload_image'] = "Upload Image";
+// $lang['user_upload_image_preview'] = "Uploaded Image Preview";
+// $lang['user_last_login'] = "Last Login";
+
+// $lang['overview'] = "Overview";
+
+// Bahasa Indonesia
+/**
+ * Users
+ */
+$lang['users'] = "Semua User";
+$lang['user'] = "User";
+$lang['new_user'] = "User Baru";
+$lang['edit_user'] = "Ubah User";
+$lang['view_user'] = "Lihat User";
+$lang['delete_user'] = "Hapus User";
+$lang['delete_user_cannot'] = "Anda tidak dapat menghapus User ini";
+$lang['user_unable_change_status'] = "Status gagal diubah! Coba lagi!";
+$lang['user_basic'] = "Detail";
+$lang['user_name'] = "Nama";
+$lang['user_enter_name'] = "Masukkan Nama";
+$lang['user_contact'] = "Nomor Telepon";
+$lang['user_enter_contact'] = "Masukkan Nomor Telepon";
+
+$lang['user_login_details'] = "Detail Login";
+$lang['user_email'] = "Email";
+$lang['user_username'] = "Nama Pengguna";
+$lang['user_email_exists'] = "Email sudah ada";
+$lang['user_enter_username'] = "Masukkan Nama Pengguna";
+
+$lang['user_enter_email'] = "Masukkan Nama Pengguna";
+$lang['user_username_take'] = "Nama Pengguna Telah Digunakan";
+$lang['user_password'] = "Kata Sandi";
 $lang['user_password_confirm'] = "Konfirmasi Kata Sandi";
-$lang['user_password_leave_blank'] = "Leave Blank to remain unchanged !";
+$lang['user_password_leave_blank'] = "Biarkan kosong jika tidak ingin diubah!";
 
-$lang['user_other_details'] = "Other Details";
-$lang['user_address'] = "Address";
-$lang['user_enter_address'] = "Enter Address";
-$lang['user_role'] = "Role";
-$lang['user_select_role'] = "Select Role";
+$lang['user_other_details'] = "Detail Lainnya";
+$lang['user_address'] = "Alamat";
+$lang['user_enter_address'] = "Masukkan Alamat";
+$lang['user_role'] = "Level";
+$lang['user_select_role'] = "Pilih Level";
 $lang['user_status'] = "Status";
-$lang['user_active'] = "Active";
-$lang['user_inactive'] = "InActive";
-$lang['user_profile_image'] = "Profile Image";
-$lang['user_image'] = "Image";
-$lang['user_upload_image'] = "Upload Image";
-$lang['user_upload_image_preview'] = "Uploaded Image Preview";
-$lang['user_last_login'] = "Last Login";
+$lang['user_active'] = "Aktif";
+$lang['user_inactive'] = "Tidak Aktif";
+$lang['user_profile_image'] = "Foto Profil";
+$lang['user_image'] = "Gambar";
+$lang['user_upload_image'] = "Unggah Gambar";
+$lang['user_upload_image_preview'] = "Lihat Gambar Yang Diunggah";
+$lang['user_last_login'] = "Login Terakhir";
 
-$lang['overview'] = "Overview";
-
+$lang['overview'] = "Gambaran";
 
 /**
  * Activity
  */
-$lang['activity'] = "Activity";
-$lang['view_activity'] = "View Activity";
-$lang['activity_logs'] = "Activity Logs";
-$lang['activity_ip_address'] = "IP Address";
-$lang['activity_message'] = "Message";
-$lang['activity_datetime'] = "Date Time";
-$lang['list_all_activities'] = "List of All Activites";
-$lang['select_user'] = "Select User";
+$lang['activity'] = "Aktivitas";
+$lang['view_activity'] = "Lihat Aktivitas";
+$lang['activity_logs'] = "Catatan Aktivitas";
+$lang['activity_ip_address'] = "Alamat IP";
+$lang['activity_message'] = "Pesan";
+$lang['activity_datetime'] = "Tanggal Waktu";
+$lang['list_all_activities'] = "Daftar Semua Aktivitas";
+$lang['select_user'] = "Pilih User";
 $lang['filter'] = "Filter";
 $lang['reset'] = "Reset";
 
