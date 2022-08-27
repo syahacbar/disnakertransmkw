@@ -117,7 +117,10 @@
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
-            <h1 class="logo me-auto"><a href="<?php echo site_url(); ?>">Disnakertrans Manokwari</a></h1>
+            <h1 class="logo me-auto">
+                <a href="<?php echo site_url(); ?>">
+                    <img class="logo me-auto text-white w-100" src="<?php echo base_url(); ?>/assets/frontend/assets/img/disnaker_logo.png"></a>
+            </h1>
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto <?php echo ($page->menu == 'beranda') ? 'active' : '' ?>" href="<?php echo site_url(); ?>">Beranda</a></li>
