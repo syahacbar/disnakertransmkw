@@ -15,13 +15,13 @@ class Dashboard extends MY_Controller
 	{
 		if (hasPermissions('dash_user')) {
 			$users_id = logged('id');
-			$pencaker_id = $this->pencaker_model->get_pencaker_id($users_id);
+			$pencaker = $this->pencaker_model->get_by_users_id($users_id);
 
-			$this->page_data['keterangan_status'] = $pencaker_id->keterangan_status;
-			$this->page_data['dokumen'] = $this->pencaker_model->pencaker_doc($pencaker_id->id);
+			$this->page_data['keterangan_status'] = $pencaker->keterangan_status;
+			$this->page_data['dokumen'] = $this->pencaker_model->pencaker_doc($pencaker->idpencaker);
 			$this->page_data['timeline'] = $this->pencaker_model->get_timeline($users_id);
 			$this->page_data['verifikasi'] = $this->pencaker_model->get_verifikasi($users_id);
-			$this->page_data['laporan_pencaker'] = $this->pencaker_model->get_lapor_pencaker();
+			$this->page_data['laporan_pencaker'] = $this->pencaker_model->get_lapor_pencaker($pencaker->idpencaker);
 
 			$this->load->view('dashboard_new', $this->page_data);
 		} elseif (hasPermissions('dash_admin')) {

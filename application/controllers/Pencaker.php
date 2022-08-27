@@ -494,21 +494,53 @@ class Pencaker extends MY_Controller
     function update7()
     {
         $users_id = logged('id');
-        $data = array(
-            'tujuan_perusahaan' => $this->input->post('tujuan_perusahaan'),
-        );
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
 
-        $update = $this->pencaker_model->update_by_users_id($users_id, $data);
-        if ($update) {
-            $res['hasil'] = 'sukses';
-            $res['status'] = TRUE;
+        $gettujuanperusahaan = $this->pencaker_model->get_tujuanperusahaan($pencaker->idpencaker);
+        if ($gettujuanperusahaan->num_rows() > 0) {
+            $dataupdate = array(
+                'nama_perusahaan' => $this->input->post('tujuan_namaperusahaan'),
+                'alamat_perusahaan' => $this->input->post('tujuan_alamatperusahaan'),
+                'notelp_perusahaan' => $this->input->post('tujuan_nohpperusahaan'),
+                'pencaker_id' => $pencaker->idpencaker,
+            );
+            $update = $this->pencaker_model->update_tujuanperusahaan($pencaker->idpencaker, $dataupdate);
+            if ($update) {
+                $res['hasil'] = 'sukses';
+                $res['status'] = TRUE;
+            } else {
+                $res['hasil'] = 'gagal';
+                $res['status'] = FALSE;
+            }
         } else {
-            $res['hasil'] = 'gagal';
-            $res['status'] = FALSE;
+            $datainsert = array(
+                'nama_perusahaan' => $this->input->post('tujuan_namaperusahaan'),
+                'alamat_perusahaan' => $this->input->post('tujuan_alamatperusahaan'),
+                'notelp_perusahaan' => $this->input->post('tujuan_nohpperusahaan'),
+                'pencaker_id' => $pencaker->idpencaker,
+            );
+
+            $insert = $this->pencaker_model->add_tujuanperusahaan($datainsert);
+            if ($insert) {
+                $res['hasil'] = 'sukses';
+                $res['status'] = TRUE;
+            } else {
+                $res['hasil'] = 'gagal';
+                $res['status'] = FALSE;
+            }
         }
 
         $this->activity_model->add("User #$users_id memperbarui data tujuan perusahaan");
         echo json_encode($res);
+    }
+
+    function get_tujuanperusahaan()
+    {
+        $users_id = logged('id');
+        $pencaker = $this->pencaker_model->get_by_users_id($users_id);
+        $gettujuanperusahaan = $this->pencaker_model->get_tujuanperusahaan($pencaker->idpencaker)->row();
+
+        echo json_encode($gettujuanperusahaan);
     }
 
     function update8()
@@ -806,8 +838,7 @@ class Pencaker extends MY_Controller
 
         $idlaporanpencaker = $this->pencaker_model->add_lapor_pencaker($data1);
 
-        if($status_kerja == 'Sudah Bekerja')
-        {
+        if ($status_kerja == 'Sudah Bekerja') {
             $data2 = array(
                 'nama_perusahaan'  => $this->input->post('nama_perusahaan'),
                 'no_telp' => $this->input->post('notelp_perusahaan'),
@@ -825,5 +856,11 @@ class Pencaker extends MY_Controller
             $res['status'] = FALSE;
         }
         echo json_encode($res);
+    }
+
+    function get_laporpekerjaan($idlaporpencaker)
+    {
+        $getlaporpekerjaan = $this->pencaker_model->get_laporpekerjaan($idlaporpencaker)->row();
+        echo json_encode($getlaporpekerjaan);
     }
 }
