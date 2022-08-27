@@ -335,45 +335,45 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           <?php } ?>
         </div>
 
-        <?php if(is_aktifpencaker(logged('id')) == 'Aktif') { ?>
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">
-              <i class="fas fa-calendar-check mr-1"></i>
-              Laporan Pencari Kerja
-            </h3>
-            <div class="card-tools">
-              <ul class="nav nav-pills ml-auto">
-                <li class="nav-item">
-                  <button class="nav-link active btn btn-sm" data-toggle="modal" data-target="#modalLaporan" data-toggle="tab">Lapor</button>
-                </li>
-              </ul>
-            </div>
-          </div><!-- /.card-header -->
-          <div class="card-body">
-            <div class="tab-content p-0">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Periode Laporan</th>
-                    <th scope="col">Tanggal Melapor</th>
-                    <th scope="col">Status Pekerjaan</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach ($laporan_pencaker as $lp) : ?>
+        <?php if (is_aktifpencaker(logged('id')) == 'Aktif') { ?>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-calendar-check mr-1"></i>
+                Laporan Pencari Kerja
+              </h3>
+              <div class="card-tools">
+                <ul class="nav nav-pills ml-auto">
+                  <li class="nav-item">
+                    <button class="nav-link active btn btn-sm" data-toggle="modal" data-target="#modalLaporan" data-toggle="tab">Lapor</button>
+                  </li>
+                </ul>
+              </div>
+            </div><!-- /.card-header -->
+            <div class="card-body">
+              <div class="tab-content p-0">
+                <table class="table">
+                  <thead>
                     <tr>
-                      <td><?php echo $lp->urut_lapor; ?></td>
-                      <td><?php echo date_indo(substr($lp->tglwaktu, 0, 10)); ?></td>
-                      <td><?php echo ($lp->status_kerja == 'Sudah Bekerja') ? '<a href="" data-target="#modalViewPerusahaan" data-toggle="modal">'.$lp->status_kerja.'</a>' : $lp->status_kerja; ?></td>
+                      <th scope="col">Periode Laporan</th>
+                      <th scope="col">Tanggal Melapor</th>
+                      <th scope="col">Status Pekerjaan</th>
                     </tr>
-                  <?php endforeach ?>
-                </tbody>
-              </table>
-            </div>
-          </div><!-- /.card-body -->
-        </div>
-      <?php } ?>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($laporan_pencaker as $lp) : ?>
+                      <tr>
+                        <td><?php echo $lp->urut_lapor; ?></td>
+                        <td><?php echo date_indo(substr($lp->tglwaktu, 0, 10)); ?></td>
+                        <td><?php echo ($lp->status_kerja == 'Sudah Bekerja') ? '<a href="" data-target="#modalViewPerusahaan" data-toggle="modal">' . $lp->status_kerja . '</a>' : $lp->status_kerja; ?></td>
+                      </tr>
+                    <?php endforeach ?>
+                  </tbody>
+                </table>
+              </div>
+            </div><!-- /.card-body -->
+          </div>
+        <?php } ?>
 
         <!-- TO DO List -->
         <div class="card">
@@ -568,9 +568,134 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     </div>
   </div>
 </div>
+
+<!-- Modal LaporanPencaker -->
+<div class="modal fade" id="modalLaporan" tabindex="-1" role="dialog" aria-labelledby="modalLaporanLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLaporanLabel">Laporan Pencari Kerja</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <label for="">Apakah Anda sudah memperoleh pekerjaan?</label>
+          <div class="form-check mb-1">
+            <input class="form-check-input" type="radio" name="status_kerja" id="status_kerja1" value="Sudah Bekerja">
+            <label class="form-check-label" for="status_kerja1">
+              Ya, saya sudah bekerja
+            </label>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="form-check mt-1">
+            <input class="form-check-input" type="radio" name="status_kerja" id="status_kerja2" value="Belum Bekerja">
+            <label class="form-check-label" for="status_kerja2">
+              Belum bekerja
+            </label>
+          </div>
+        </div>
+
+        <div id="dataperusahaan" class="row mt-3 modal-footer" style="display: none">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="nama_perusahaan">Nama Perusahaan/Instansi/Badan Hukum</label>
+              <input type="text" class="form-control" name="nama_perusahaan" id="nama_perusahaan" />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <label for="bidang_pekerjaan">Bidang Pekerjaan</label>
+              <input type="text" class="form-control" name="bidang_pekerjaan" id="bidang_pekerjaan" />
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group">
+              <label for="alamat_perusahaan">Alamat</label>
+              <textarea type="text" class="form-control" name="alamat_perusahaan" id="alamat_perusahaan"></textarea>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group">
+              <label for="notelp_perusahaan">Nomor Telepon</label>
+              <input type="text" class="form-control" name="notelp_perusahaan" id="notelp_perusahaan" />
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group">
+              <label for="jabatan_perusahaan">Jabatan Anda</label>
+              <input type="text" class="form-control" name="jabatan_perusahaan" id="jabatan_perusahaan" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer ">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <button type="button" id="btnLaporPencariKerja" class="btn btn-primary">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal modalViewPerusahaan -->
+<div class="modal fade" id="modalViewPerusahaan" tabindex="-1" role="dialog" aria-labelledby="modalViewPerusahaanLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalViewPerusahaanLabel">Detail Perusahaan Pencaker</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-12">
+          <div class="form-group">
+            <label for="view_nama_perusahaan">Nama Perusahaan/Instansi/Badan Hukum</label>
+            <input type="text" class="form-control" name="view_nama_perusahaan" id="view_nama_perusahaan" />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="view_bidang_pekerjaan">Bidang Pekerjaan</label>
+            <input type="text" class="form-control" name="view_bidang_pekerjaan" id="view_bidang_pekerjaan" />
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-group">
+            <label for="view_alamat_perusahaan">Alamat</label>
+            <textarea type="text" class="form-control" name="view_alamat_perusahaan" id="view_alamat_perusahaan"></textarea>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-group">
+            <label for="view_notelp_perusahaan">Nomor Telepon</label>
+            <input type="text" class="form-control" name="view_notelp_perusahaan" id="view_notelp_perusahaan" />
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-group">
+            <label for="view_jabatan_perusahaan">Jabatan Anda</label>
+            <input type="text" class="form-control" name="view_jabatan_perusahaan" id="view_jabatan_perusahaan" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer ">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
 <?php include viewPath('includes/footer'); ?>
 
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo $url->assets ?>js/pages/dashboard.js"></script>
 
 <script>
@@ -643,13 +768,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
   $('#btnLaporPencariKerja').on('click', function() {
     var status_kerja = $("input[name='status_kerja']:checked").val();
-    if(status_kerja == 'Sudah Bekerja')
-    {
+    if (status_kerja == 'Sudah Bekerja') {
       var nama_perusahaan = $("input[name='nama_perusahaan']").val();
       var alamat_perusahaan = $("textarea[name='alamat_perusahaan']").val();
       var notelp_perusahaan = $("input[name='notelp_perusahaan']").val();
       var jabatan_perusahaan = $("input[name='jabatan_perusahaan']").val();
-    } else if(status_kerja == 'Belum Bekerja') {
+    } else if (status_kerja == 'Belum Bekerja') {
       var nama_perusahaan = '';
       var alamat_perusahaan = '';
       var notelp_perusahaan = '';
@@ -667,10 +791,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       dataType: "JSON",
       data: {
         status_kerja: status_kerja,
-        nama_perusahaan : nama_perusahaan,
-        alamat_perusahaan : alamat_perusahaan,
-        notelp_perusahaan : notelp_perusahaan,
-        jabatan_perusahaan : jabatan_perusahaan,
+        nama_perusahaan: nama_perusahaan,
+        alamat_perusahaan: alamat_perusahaan,
+        notelp_perusahaan: notelp_perusahaan,
+        jabatan_perusahaan: jabatan_perusahaan,
       },
 
       success: function(data) {
@@ -689,9 +813,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         });
 
       }
-
-
-
     });
   });
 </script>

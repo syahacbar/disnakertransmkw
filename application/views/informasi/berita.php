@@ -183,7 +183,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     <div class="modal-dialog modal-dialog-centered modal-lg modal-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Tambah Berita</h5>
+                <h5 class="modal-title">Tambah Berita Baru</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -193,13 +193,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
-                                <label for="judul">Judul Artikel</label>
+                                <label for="judul">Judul Berita</label>
                                 <input type="text" class="form-control" name="judul" id="judul" required autofocus />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
-                                <label for="isi">Isi</label>
+                                <label for="isi">Isi Berita</label>
                                 <textarea name="isi" id="summernote" cols="20" rows="20"></textarea>
                             </div>
                         </div>
@@ -245,19 +245,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
-                                <label for="editjudul">Judul Artikel</label>
+                                <label for="editjudul">Judul Berita</label>
                                 <input type="text" class="form-control" name="editjudul" id="editjudul" value="" />
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
-                                <label for="editisi">Isi</label>
+                                <label for="editisi">Isi Berita</label>
                                 <textarea name="editisi" id="editberitasummernote" rows="20"></textarea>
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
-                                <label for="edittags">Tag</label>
+                                <label for="edittags">Tags</label>
                                 <input type="text" class="form-control" name="edittags" id="edittags" value="" />
                             </div>
                         </div>
@@ -288,7 +288,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     Dropzone.autoDiscover = false;
 
     function updateStatusberita(id, status) {
-        //var id = $(this).data("id");
         $.ajax({
             url: "<?php echo site_url(); ?>informasi/updatestatus_berita",
             type: "POST",

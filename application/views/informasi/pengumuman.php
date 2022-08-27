@@ -204,7 +204,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
-                                <label for="tag">Tag</label>
+                                <label for="tag">Tags</label>
                                 <input type="text" class="form-control" name="tag" id="tag" required aria-autocomplete="both" />
                             </div>
                         </div>
