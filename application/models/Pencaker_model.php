@@ -211,8 +211,6 @@ class Pencaker_model extends MY_Model
 	}
 
 
-
-
 	function add_berita($data)
 	{
 		$this->db->insert('informasi', $data);
@@ -327,10 +325,37 @@ class Pencaker_model extends MY_Model
 		return TRUE;
 	}
 
-	function get_lapor_pencaker()
+	function get_lapor_pencaker($pencaker_id)
 	{
+		$this->db->where('pencaker_id', $pencaker_id);
 		$q = $this->db->get('lapor_pencaker');
 		return $q->result();
+	}
+
+
+	function add_tujuanperusahaan($data)
+	{
+		$this->db->insert('tujuanperusahaan', $data);
+		return $this->db->insert_id();
+	}
+
+	function update_tujuanperusahaan($pencaker_id, $data)
+	{
+		$this->db->where('pencaker_id', $pencaker_id);
+		$this->db->update('tujuanperusahaan', $data);
+		return true;
+	}
+
+	function get_tujuanperusahaan($pencaker_id)
+	{
+		$this->db->where('pencaker_id', $pencaker_id);
+		return $this->db->get('tujuanperusahaan');
+	}
+
+	function get_laporpekerjaan($idlaporpencaker)
+	{
+		$this->db->where('lapor_pencaker_id', $idlaporpencaker);
+		return $this->db->get('lapor_kerja');
 	}
 }
 /* End of file Pencaker_model.php */

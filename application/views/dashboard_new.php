@@ -365,7 +365,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                       <tr>
                         <td><?php echo $lp->urut_lapor; ?></td>
                         <td><?php echo date_indo(substr($lp->tglwaktu, 0, 10)); ?></td>
-                        <td><?php echo ($lp->status_kerja == 'Sudah Bekerja') ? '<a href="" data-target="#modalViewPerusahaan" data-toggle="modal">' . $lp->status_kerja . '</a>' : $lp->status_kerja; ?></td>
+                        <td><?php echo ($lp->status_kerja == 'Sudah Bekerja') ? '<a href="javascript:void(0)"  data-idlaporpencaker="' . $lp->id . '" class="btnSudahBekerja">' . $lp->status_kerja . '</a>' : $lp->status_kerja; ?></td>
                       </tr>
                     <?php endforeach ?>
                   </tbody>
@@ -534,8 +534,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           </div>
           <div class="col-12">
             <div class="form-group">
-              <label for="bidang_pekerjaan">Bidang Pekerjaan</label>
-              <input type="text" class="form-control" name="bidang_pekerjaan" id="bidang_pekerjaan" />
+              <label for="bidang_perusahaan">Bidang Perusahaan</label>
+              <input type="text" class="form-control" name="bidang_perusahaan" id="bidang_perusahaan" />
             </div>
           </div>
 
@@ -662,8 +662,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         </div>
         <div class="col-12">
           <div class="form-group">
-            <label for="view_bidang_pekerjaan">Bidang Pekerjaan</label>
-            <input type="text" class="form-control" name="view_bidang_pekerjaan" id="view_bidang_pekerjaan" />
+            <label for="view_bidang_perusahaan">Bidang Perusahaan</label>
+            <input type="text" class="form-control" name="view_bidang_perusahaan" id="view_bidang_perusahaan" />
           </div>
         </div>
 
@@ -814,5 +814,26 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
       }
     });
+  });
+
+  $('.btnSudahBekerja').on('click', function() {
+    var idlaporpencaker = $(this).attr("data-idlaporpencaker");
+    $('#modalViewPerusahaan').modal('show');
+
+    $.ajax({
+      url: "<?php echo site_url('pencaker/get_laporpekerjaan/') ?>" + idlaporpencaker,
+      type: "GET",
+      dataType: "JSON",
+      success: function(data) {
+        $('[name="view_nama_perusahaan"]').val(data.nama_perusahaan);
+        $('[name="view_bidang_perusahaan"]').val(data.bidang_perusahaan);
+        $('[name="view_alamat_perusahaan"]').val(data.alamat);
+        $('[name="view_notelp_perusahaan"]').val(data.no_telp);
+        $('[name="view_jabatan_perusahaan"]').val(data.jabatan);
+
+      }
+
+    });
+
   });
 </script>

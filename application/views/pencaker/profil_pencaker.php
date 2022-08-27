@@ -596,22 +596,22 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <label for="tujuan_perusahaan">Nama Perusahaan/Instansi</label>
-                                <input type="text" class="form-control" name="tujuan_perusahaan" id="tujuan_perusahaan" placeholder="" required placeholder="" autofocus />
+                                <label for="tujuan_namaperusahaan">Nama Perusahaan/Instansi</label>
+                                <input type="text" class="form-control" name="tujuan_namaperusahaan" id="tujuan_namaperusahaan" placeholder="" required placeholder="" autofocus />
                             </div>
                         </div>
 
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                             <div class="form-group">
-                                <label for="nohp_perusahaan">Nomor Telepon</label>
-                                <input type="text" class="form-control" name="nohp_perusahaan" id="nohp_perusahaan" placeholder="" required placeholder="" />
+                                <label for="tujuan_nohpperusahaan">Nomor Telepon</label>
+                                <input type="text" class="form-control" name="tujuan_nohpperusahaan" id="tujuan_nohpperusahaan" placeholder="" required placeholder="" />
                             </div>
                         </div>
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
-                                <label for="alamat_perusahaan">Alamat</label>
-                                <textarea class="form-control" name="alamat_perusahaan" id="alamat_perusahaan" placeholder="" required placeholder=""></textarea>
+                                <label for="tujuan_alamatperusahaan">Alamat</label>
+                                <textarea class="form-control" name="tujuan_alamatperusahaan" id="tujuan_alamatperusahaan" placeholder="" required placeholder=""></textarea>
                             </div>
                         </div>
                     </div>
@@ -1267,7 +1267,23 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             $('#perusahaanpencaker').addClass("active");
             $('#bahasapencaker').removeClass("active");
             $('#datatambahanpencaker').removeClass("active");
+
+            $.ajax({
+                url: "<?php echo site_url('pencaker/get_tujuanperusahaan') ?>",
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    $('[name="tujuan_namaperusahaan"]').val(data.nama_perusahaan);
+                    $('[name="tujuan_alamatperusahaan"]').val(data.alamat_perusahaan);
+                    $('[name="tujuan_nohpperusahaan"]').val(data.notelp_perusahaan);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error Get Data Tujuan Perusahaan');
+                }
+            });
         }
+
+
 
         function showdatatambahanpencaker() {
             $('.tujuanpencaker').hide();
@@ -1508,6 +1524,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             });
         });
 
+
         $('#btnSave7').click(function() {
             $.ajax({
                 url: "<?php echo site_url('pencaker/update7') ?>",
@@ -1521,7 +1538,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    alert('Error update data');
+                    alert('Error update data tujuan perusahaan');
                 }
             });
         });
