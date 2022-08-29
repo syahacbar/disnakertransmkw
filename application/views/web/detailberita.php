@@ -215,7 +215,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     }
 
     .isiberita {
-        padding: 0 50px !important;
+        padding: 0 20px !important;
     }
 
     .row.tagsidebar ul {
