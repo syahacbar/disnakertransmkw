@@ -35,8 +35,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           </div>
 
           <!-- /.card-header -->
-          <div class="card-body">
-            <iframe src="<?php echo base_url('assets/').'manual_book_disnakertransmkw.pdf'; ?>" frameborder="0" style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;position:absolute;top:0px;left:0px;right:0px;bottom:0px" height="100%" width="100%"></iframe>
+          <div class="card-body" style="height: 100vh; ">
+            <iframe id="iframe" src="<?php echo base_url('assets/') . 'manual_book_disnakertransmkw.pdf'; ?>" frameborder="0" style="overflow:hidden;height:100%;width:100%" min-height="100%" width="100%"></iframe>
           </div>
           <!-- /.card-body -->
         </div>
@@ -53,3 +53,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 
 <?php include viewPath('includes/footer'); ?>
+
+<script>
+  function changeHeight() {
+    var x = document.getElementById('iframe');
+    x.style.height = "100%";
+  }
+</script>
