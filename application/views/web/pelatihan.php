@@ -16,6 +16,20 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         height: 150px;
         object-fit: cover;
     }
+
+    .portfolio #portfolio-flters {
+        list-style: none;
+        padding: 0;
+        display: flex !important;
+        margin-bottom: 20px;
+        overflow: visible;
+        width: 100% !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        white-space: nowrap !important;
+        -webkit-overflow-scrolling: touch !important;
+        justify-content: flex-start !important;
+    }
 </style>
 <main id="main" class="mt-3 py-3">
     <!-- ======= Cta Section ======= -->
@@ -26,24 +40,24 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
             <ul id="portfolio-flters" class="d-flex justify-content-center">
                 <li data-filter="*" class="filter-active">Semua Kejuruan</li>
-                <?php foreach($jenis_pelatihan AS $jp) : ?>
-                <li data-filter="<?php echo ".kode".$jp->kode;?>"><?php echo $jp->pelatihan;?></li>
-                <?php endforeach;?>
-                
+                <?php foreach ($jenis_pelatihan as $jp) : ?>
+                    <li data-filter="<?php echo ".kode" . $jp->kode; ?>"><?php echo $jp->pelatihan; ?></li>
+                <?php endforeach; ?>
+
             </ul>
 
             <div class="row portfolio-container">
-                <?php foreach ($listpelatihan as $pelatihan) : ?>              
-                    <div class="col-sm-12 col-md-4 col-lg-3 portfolio-item <?php echo "kode".$pelatihan->jenis_pelatihan_kode;?>">
+                <?php foreach ($listpelatihan as $pelatihan) : ?>
+                    <div class="col-sm-12 col-md-4 col-lg-3 portfolio-item <?php echo "kode" . $pelatihan->jenis_pelatihan_kode; ?>">
                         <div class="card">
                             <a href="<?php echo site_url('pelatihan/') . $pelatihan->slug; ?>">
-                            <img src="<?php echo base_url('uploads/informasi/pelatihan/') . $pelatihan->gambar; ?>" class="card-img-top">
-                            <div class="card-body">                                
-                            <h5 class="card-title"><?php echo $pelatihan->judul; ?></h5>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted"><em><?php echo $pelatihan->pelatihan;?></em></small>
-                            </div>
+                                <img src="<?php echo base_url('uploads/informasi/pelatihan/') . $pelatihan->gambar; ?>" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $pelatihan->judul; ?></h5>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted"><em><?php echo $pelatihan->pelatihan; ?></em></small>
+                                </div>
                             </a>
                         </div>
                     </div>

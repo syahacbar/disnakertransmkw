@@ -52,7 +52,30 @@
 
   <?php include viewPath('web/template/header'); ?>
   <!-- End Header -->
+  <style>
+    .portfolio #portfolio-flters {
+      list-style: none;
+      padding: 0;
+      display: flex !important;
+      margin-bottom: 20px;
+      overflow: visible;
+      white-space: nowrap !important;
+      width: 100% !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      -webkit-overflow-scrolling: touch !important;
+      justify-content: flex-start !important;
+    }
 
+    .faq-list .collapse {
+      padding: 0 30px;
+    }
+
+    .faq-list .collapse a {
+      padding: 0;
+      margin-top: 10px;
+    }
+  </style>
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
 

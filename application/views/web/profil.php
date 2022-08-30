@@ -24,7 +24,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="col-lg-6">
                     <h4 class="text-center">Visi</h4>
                     <i class="fa fa-quote-left"></i>
-                    <p class="text-center blockquote text-right mt-4"><strong><em>"Mempersiapkan Tenaga Kerja Mandiri dan Membangun Permukiman Layak Huni Menuju Masyarakat Manokwari Sejahtera"</em></strong>
+                    <p class="text-center blockquote text-right mt-4 mb-5"><strong><em>"Mempersiapkan Tenaga Kerja Mandiri dan Membangun Permukiman Layak Huni Menuju Masyarakat Manokwari Sejahtera"</em></strong>
                     </p>
 
                 </div>
@@ -63,7 +63,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     </p>
 
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 mt-5">
                     <h4>Fungsi</h4>
                     <ul>
                         <li><i class="ri-check-double-line"></i> Perumusan kebijakan teknis dibidang Tenaga Kerja dan Transmigrasi;</li>

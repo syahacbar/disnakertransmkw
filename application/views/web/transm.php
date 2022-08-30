@@ -66,13 +66,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         overflow: hidden;
     }
 
-    .why-us .content {
+    /* .why-us .content {
         padding: 20px 10px 0 100px;
-    }
+    } */
 
-    .why-us .accordion-list {
+    /* .why-us .accordion-list {
         padding: 0 100px 19px 100px;
-    }
+    } */
 
     .bpkt,
     .pkt {
@@ -98,6 +98,20 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         padding: 10px 20px;
         -webkit-clip-path: polygon(0% 0%, 95% 0, 100% 50%, 100% 100%, 0% 100%);
         clip-path: polygon(0% 0%, 95% 0, 100% 50%, 100% 100%, 0% 100%);
+    }
+
+    .portfolio #portfolio-flters {
+        list-style: none;
+        padding: 0;
+        display: flex !important;
+        margin-bottom: 20px;
+        overflow: visible;
+        width: 100% !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        white-space: nowrap !important;
+        -webkit-overflow-scrolling: touch !important;
+        justify-content: flex-start !important;
     }
 </style>
 </head>
@@ -240,11 +254,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
                     <div class="accordion-list">
                         <?php
-                            $transp2kt = directory_map('./assets/frontend/assets/img/transmigrasi/p2kt/', 1);
-                            $x = 1;
-                            $y = 1;
-                            $z = 0;
-                            $w = 0;
+                        $transp2kt = directory_map('./assets/frontend/assets/img/transmigrasi/p2kt/', 1);
+                        $x = 1;
+                        $y = 1;
+                        $z = 0;
+                        $w = 0;
                         ?>
                         <ul>
                             <li>
@@ -252,17 +266,17 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 <div id="p2kt-1" class="collapse show" data-bs-parent=".accordion-list">
                                     <div id="p2kt" class="carousel carousel-dark slide mt-3" data-bs-ride="carousel">
                                         <div class="carousel-indicators">
-                                        <?php foreach ($transp2kt as $tp) : $z++?>
-                                            <button type="button" data-bs-target="#p2kt" data-bs-slide-to="<?php echo $x++;?>" <?php echo ($z=='1') ? 'class="active" aria-current="true"' : '';?> aria-label="Slide <?php echo $y++ ;?>"></button>
-                                        <?php endforeach; ?>
+                                            <?php foreach ($transp2kt as $tp) : $z++ ?>
+                                                <button type="button" data-bs-target="#p2kt" data-bs-slide-to="<?php echo $x++; ?>" <?php echo ($z == '1') ? 'class="active" aria-current="true"' : ''; ?> aria-label="Slide <?php echo $y++; ?>"></button>
+                                            <?php endforeach; ?>
                                         </div>
                                         <div class="carousel-inner">
-                                            <?php foreach ($transp2kt as $tp) : $w++?>
-                                            <div class="carousel-item <?php echo ($w=='1') ? 'active':'';?>" data-bs-interval="2000">
-                                                <a class="lsb-preview" href="#">
-                                                    <img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/p2kt/').$tp; ?>" class="d-block w-100">
-                                                </a>
-                                            </div>
+                                            <?php foreach ($transp2kt as $tp) : $w++ ?>
+                                                <div class="carousel-item <?php echo ($w == '1') ? 'active' : ''; ?>" data-bs-interval="2000">
+                                                    <a class="lsb-preview" href="#">
+                                                        <img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/p2kt/') . $tp; ?>" class="d-block w-100">
+                                                    </a>
+                                                </div>
                                             <?php endforeach; ?>
 
                                         </div>
@@ -446,8 +460,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </ul>
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-               
-                 <?php foreach ($teknis as $tek) : ?>
+
+                <?php foreach ($teknis as $tek) : ?>
                     <div class="col-lg-4 col-md-6 portfolio-item rapatteknis">
                         <div class="portfolio-img"><img src="<?php echo base_url('assets/frontend/assets/img/transmigrasi/rapatteknis/') . $tek; ?>" class="img-fluid" alt=""></div>
                         <div class="portfolio-info">
