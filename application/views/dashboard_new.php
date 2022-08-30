@@ -608,8 +608,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           </div>
           <div class="col-12">
             <div class="form-group">
-              <label for="bidang_pekerjaan">Bidang Pekerjaan</label>
-              <input type="text" class="form-control" name="bidang_pekerjaan" id="bidang_pekerjaan" />
+              <label for="bidang_perusahaan">Bidang Perusahaan</label>
+              <input type="text" class="form-control" name="bidang_perusahaan" id="bidang_perusahaan" />
             </div>
           </div>
 
@@ -657,34 +657,34 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <div class="col-12">
           <div class="form-group">
             <label for="view_nama_perusahaan">Nama Perusahaan/Instansi/Badan Hukum</label>
-            <input type="text" class="form-control" name="view_nama_perusahaan" id="view_nama_perusahaan" />
+            <input type="text" class="form-control" name="view_nama_perusahaan" id="view_nama_perusahaan" readonly />
           </div>
         </div>
         <div class="col-12">
           <div class="form-group">
             <label for="view_bidang_perusahaan">Bidang Perusahaan</label>
-            <input type="text" class="form-control" name="view_bidang_perusahaan" id="view_bidang_perusahaan" />
+            <input type="text" class="form-control" name="view_bidang_perusahaan" id="view_bidang_perusahaan" readonly/>
           </div>
         </div>
 
         <div class="col-12">
           <div class="form-group">
             <label for="view_alamat_perusahaan">Alamat</label>
-            <textarea type="text" class="form-control" name="view_alamat_perusahaan" id="view_alamat_perusahaan"></textarea>
+            <textarea type="text" class="form-control" name="view_alamat_perusahaan" id="view_alamat_perusahaan" readonly></textarea>
           </div>
         </div>
 
         <div class="col-12">
           <div class="form-group">
             <label for="view_notelp_perusahaan">Nomor Telepon</label>
-            <input type="text" class="form-control" name="view_notelp_perusahaan" id="view_notelp_perusahaan" />
+            <input type="text" class="form-control" name="view_notelp_perusahaan" id="view_notelp_perusahaan" readonly/>
           </div>
         </div>
 
         <div class="col-12">
           <div class="form-group">
             <label for="view_jabatan_perusahaan">Jabatan Anda</label>
-            <input type="text" class="form-control" name="view_jabatan_perusahaan" id="view_jabatan_perusahaan" />
+            <input type="text" class="form-control" name="view_jabatan_perusahaan" id="view_jabatan_perusahaan" readonly/>
           </div>
         </div>
       </div>
@@ -770,16 +770,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     var status_kerja = $("input[name='status_kerja']:checked").val();
     if (status_kerja == 'Sudah Bekerja') {
       var nama_perusahaan = $("input[name='nama_perusahaan']").val();
+      var bidang_perusahaan = $("input[name='bidang_perusahaan']").val();
       var alamat_perusahaan = $("textarea[name='alamat_perusahaan']").val();
       var notelp_perusahaan = $("input[name='notelp_perusahaan']").val();
       var jabatan_perusahaan = $("input[name='jabatan_perusahaan']").val();
     } else if (status_kerja == 'Belum Bekerja') {
       var nama_perusahaan = '';
+      var bidang_perusahaan = '';
       var alamat_perusahaan = '';
       var notelp_perusahaan = '';
       var jabatan_perusahaan = '';
     } else {
       var nama_perusahaan = '';
+      var bidang_perusahaan = '';
       var alamat_perusahaan = '';
       var notelp_perusahaan = '';
       var jabatan_perusahaan = '';
@@ -792,6 +795,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
       data: {
         status_kerja: status_kerja,
         nama_perusahaan: nama_perusahaan,
+        bidang_perusahaan: bidang_perusahaan,
         alamat_perusahaan: alamat_perusahaan,
         notelp_perusahaan: notelp_perusahaan,
         jabatan_perusahaan: jabatan_perusahaan,

@@ -841,6 +841,8 @@ class Pencaker extends MY_Controller
         if ($status_kerja == 'Sudah Bekerja') {
             $data2 = array(
                 'nama_perusahaan'  => $this->input->post('nama_perusahaan'),
+                'bidang_perusahaan' => $this->input->post('bidang_perusahaan'),
+                'jabatan' => $this->input->post('jabatan_perusahaan'),
                 'no_telp' => $this->input->post('notelp_perusahaan'),
                 'alamat' => $this->input->post('alamat_perusahaan'),
                 'lapor_pencaker_id' => $idlaporanpencaker,
