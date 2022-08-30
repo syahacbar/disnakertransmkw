@@ -30,7 +30,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           <div class="card-header d-flex p-0">
             <h3 class="card-title p-3">Buku Panduan Penggunaan dan Pengoperasian Website www.disnakertransmkw.com</h3>
             <div class="ml-auto p-2">
-              <a href="#" class="btn btn-primary btn-sm">Download</a>
+              <a href="<?php echo base_url('assets/') . 'manual_book_disnakertransmkw.pdf'; ?>" class="btn btn-primary btn-sm">Download</a>
             </div>
           </div>
 
