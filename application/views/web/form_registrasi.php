@@ -82,9 +82,19 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 </div>
                                 <span id="error-password_confirm" class="errormsg"></span>
                             </div>
+                             <?php if (setting('google_recaptcha_enabled') == '1') : ?>
+
+                                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+                                <div class="form-group">
+                                  <div class="g-recaptcha" data-sitekey="<?php echo setting('google_recaptcha_sitekey') ?>"></div>
+                                  <?php echo form_error('g-recaptcha-response', '<span style="display:block" class="error invalid-feedback">', '</span>'); ?>
+                                </div>
+
+                              <?php endif ?>
                         </div>
-                        <div class="d-flex justify-content-center align-items-center mt-4">
-                            <button type="submit" id="btnRegistrasiPencaker" class="btn btn-primary text-center w-50">Daftar</button>
+                        <div class="d-flex mt-4">
+                            <button type="submit" id="btnRegistrasiPencaker" class="btn btn-primary w-50">Daftar</button>
                         </div>
                     </form>
 
@@ -108,7 +118,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 <script type="text/javascript">
     $(document).ready(function() {
-
         $("#formRegistrasi").validate({
             rules: {
                 namalengkap: {
@@ -134,7 +143,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     required: true,
                     minlength: 6,
                     equalTo: "#password"
-                }
+                },
+
             },
 
             messages: {
@@ -165,40 +175,49 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             },
 
             submitHandler: function(form) {
-                $.ajax({
-                    url: "<?php echo site_url('web/account_registration') ?>",
-                    type: "POST",
-                    data: $('#formRegistrasi').serialize(),
-                    dataType: "JSON",
-                    success: function(data) {
-                        if (data.status) //if success close modal and reload ajax table
-                        {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Berhasil',
-                                text: 'Anda berhasil melakukan registrasi akun Pencaker',
-                                confirmButtonColor: '#3085d6',
-                                confirmButtonText: 'OK'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location.href = "<?php echo site_url('login'); ?>";
-                                }
-                                return false;
-                            })
-                        } else {
-                            Swal.fire({
-                                icon: 'warning',
-                                html: data.msg,
-                                confirmButtonColor: '#3085d6',
-                                confirmButtonText: 'OK'
-                            })
-                        }
+                if (grecaptcha.getResponse() == ""){
+                    Swal.fire({
+                        icon: 'warning',
+                        text: 'Anda wajib mencentang Captcha',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK'
+                    })
+                } else {
+                    $.ajax({
+                        url: "<?php echo site_url('web/account_registration') ?>",
+                        type: "POST",
+                        data: $('#formRegistrasi').serialize(),
+                        dataType: "JSON",
+                        success: function(data) {
+                            if (data.status) //if success close modal and reload ajax table
+                            {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Berhasil',
+                                    text: 'Anda berhasil melakukan registrasi akun Pencaker',
+                                    confirmButtonColor: '#3085d6',
+                                    confirmButtonText: 'OK'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location.href = "<?php echo site_url('login'); ?>";
+                                    }
+                                    return false;
+                                })
+                            } else {
+                                Swal.fire({
+                                    icon: 'warning',
+                                    html: data.msg,
+                                    confirmButtonColor: '#3085d6',
+                                    confirmButtonText: 'OK'
+                                })
+                            }
 
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        alert('Error registration account');
-                    }
-                });
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            alert('Error registration account');
+                        }
+                    });
+                }
             }
 
         });

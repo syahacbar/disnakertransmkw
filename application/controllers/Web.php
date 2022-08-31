@@ -293,6 +293,16 @@ class Web extends CI_Controller
 
 	public function account_registration()
 	{
+		// $this->load->library('form_validation');
+		// $is_recaptcha_enabled = (setting('google_recaptcha_enabled') == '1');
+
+		// if ($is_recaptcha_enabled)
+		// 	$this->form_validation->set_rules('g-recaptcha-response', 'Google Recaptcha', 'callback_validate_recaptcha');
+		// if ($this->form_validation->run() == FALSE) {
+		// 	$this->registrasi();
+		// 	return;
+		// }
+		
 		$nik = $this->input->post('nik');
 		$email = $this->input->post('email');
 
