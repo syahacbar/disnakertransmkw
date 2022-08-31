@@ -85,8 +85,6 @@
           <h1>Selamat Datang</h1>
           <h2> di Website Resmi Dinas Tenaga Kerja dan Transmigrasi Kabupaten Manokwari</h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <!-- <a href="#about" class="btn-get-started scrollto">Buat Kartu Kuning</a>
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Selayang Pandang</span></a> -->
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
@@ -204,8 +202,8 @@
 
         <div class="row">
           <div class="col-lg-9 text-center text-lg-start">
-            <h3>Kartu Pencari Kerja (Kartu Kuning)</h3>
-            <p>Proses pembuatan kartu kuning dimulai dengan pendaftaran akun untuk selanjutnya mengisi formulir AK-1 dan mengunggah dokumen. Adapun dokumen yang dibutuhkan diantaranya: Pas Foto, KTP, Ijazah Terakhir, Transkrip Nilai, Riwayat Hidup, SKCK dan Suket. Sehat</p>
+            <h3>Kartu Pencari Kerja (Kartu Ak/1)</h3>
+            <p>Proses pembuatan kartu kuning dimulai dengan pendaftaran akun untuk selanjutnya mengisi formulir Ak/1 dan mengunggah dokumen. Adapun dokumen yang dibutuhkan diantaranya: Pas Foto, KTP, Ijazah Terakhir, Transkrip Nilai, Riwayat Hidup, SKCK dan Suket. Sehat</p>
           </div>
           <div class="col-lg-3 cta-btn-container text-center">
             <a class="cta-btn align-middle" href="<?php echo site_url('web/registrasi'); ?>">Buat Akun</a>
@@ -337,7 +335,7 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-id-card"></i></div>
               <h4>Kartu Pencari Kerja</h4>
-              <p>Kartu AK1 adalah kartu tanda pencari kerja yang sering disebut pula dengan kartu kuning. Kartu ini dikeluarkan oleh lembaga pemerintah, Dinas Ketenagakerjaan atau Disnaker, yang dibuat dengan tujuan untuk pendataan para pencari kerja.</p>
+              <p>Kartu Ak/1 adalah kartu tanda pencari kerja yang sering disebut pula dengan kartu kuning. Kartu ini dikeluarkan oleh lembaga pemerintah, Dinas Ketenagakerjaan atau Disnaker, yang dibuat dengan tujuan untuk pendataan para pencari kerja.</p>
             </div>
           </div>
 
@@ -534,10 +532,10 @@
         <div class="faq-list">
           <ul>
             <li data-aos="fade-up" data-aos-delay="100">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Bagaimana caranya membuat kartu pencari kerja (Kartu Kuning)? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Bagaimana caranya membuat kartu pencari kerja (Kartu Ak/1)? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
                 <p>
-                  Kunjungi website disnakertransmkw.com, lalu masuk pada menu Layanan-Kartu Kuning, kemudian membuat akun dan menyiapkan berkas berupa file Ijazah terakhir, KTP, Riwayat Hidup, SKCK, Suket. Sehat<br><a href="#">Selengkapnya...</a>
+                  Pada website disnakertransmkw.com, pilih menu Layanan - Kartu Pencari Kerja (Kartu Ak/1), kemudian membuat akun dan menyiapkan berkas berupa file Ijazah terakhir, KTP, Riwayat Hidup, SKCK, Suket. Sehat<br><a href="#">Selengkapnya...</a>
                 </p>
               </div>
             </li>

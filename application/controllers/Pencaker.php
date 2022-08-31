@@ -666,7 +666,7 @@ class Pencaker extends MY_Controller
 
             $pesan = 'Notifikasi disnakertransmkw.com' . PHP_EOL . PHP_EOL . 'Pencari Kerja a.n. *' . strtoupper($pencaker->namalengkap) . '* telah melengkapi formulir dan dokumen pembuatan Kartu Pencari Kerja.' . PHP_EOL . PHP_EOL . 'Silahkan login di dashboard admin untuk meninjau dan memverifikasi pengajuan tersebut.' . PHP_EOL . PHP_EOL . '<noreply>';
 
-            notifWA(setting('whatsapp_admin'), $pesan);
+            notifAdminWA($pesan);
 
             $res['status'] = TRUE;
         } else {

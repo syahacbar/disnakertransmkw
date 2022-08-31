@@ -125,10 +125,10 @@
                 <ul>
                     <li><a class="nav-link scrollto <?php echo ($page->menu == 'beranda') ? 'active' : '' ?>" href="<?php echo site_url(); ?>">Beranda</a></li>
                     <li class="dropdown"><a class="<?php echo ($page->menu == 'profil') ? 'active' : '' ?>" href="<?php echo site_url(); ?>web/profil"><span>Profil</span></a></li>
-                    <li class="dropdown"><a class="<?php echo ($page->menu == 'bidang') ? 'active' : '' ?>" href="#"><span>Bidang-Bidang</span> <i class="bi bi-chevron-down"></i></a>
+                    <li class="dropdown"><a class="<?php echo ($page->menu == 'bidang') ? 'active' : '' ?>" href="#"><span>Urusan-urusan</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="<?php echo site_url(); ?>web/transmigrasi">Bidang Transmigrasi</a></li>
-                            <li><a href="<?php echo site_url(); ?>web/tenagakerja">Bidang Tenaga Kerja</a></li>
+                            <li><a href="<?php echo site_url(); ?>web/transmigrasi">Urusan Transmigrasi</a></li>
+                            <li><a href="<?php echo site_url(); ?>web/tenagakerja">Urusan Tenaga Kerja</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="<?php echo ($page->menu == 'informasi') ? 'active' : '' ?>" href="#"><span>Informasi</span> <i class="bi bi-chevron-down"></i></a>
@@ -140,7 +140,7 @@
                     </li>
                     <li class="dropdown"><a class="<?php echo ($page->menu == 'layanan') ? 'active' : '' ?>" href="#"><span>Layanan</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="<?php echo site_url(); ?>web/kartupencaker">Kartu Pencari Kerja (Kartu Kuning)</a></li>
+                            <li><a href="<?php echo site_url(); ?>web/kartupencaker">Kartu Pencari Kerja (Kartu Ak/1)</a></li>
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto <?php echo ($page->menu == 'kontak') ? 'active' : '' ?>" href="<?php echo site_url('kontak'); ?>">Kontak</a></li>

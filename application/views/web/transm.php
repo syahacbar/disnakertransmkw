@@ -120,7 +120,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     <section id="visimisi" class="about mt-10">
         <div class="container">
             <div class="section-title">
-                <h2>Bidang Transmigrasi</h2>
+                <h2>Urusan Transmigrasi</h2>
                 <p>
                     Informasi mengenai dasar hukum, bidang-bidang, seksi-seksi, dan informasi lainnya terkait bidang transmigrasi.
                 </p>

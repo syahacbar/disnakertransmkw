@@ -137,7 +137,6 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
                 <div class="col-sm-10">
                   <input type="email" name="email" required 
-                   data-rule-remote="<?php echo url('users/check?notId='.$user->id) ?>" data-msg-remote="<?php echo lang('user_email_exists') ?>"
                    class="form-control" id="inputEmail" placeholder="<?php echo lang('user_email') ?>" value="<?php echo $user->email ?>">
                 </div>
               </div>

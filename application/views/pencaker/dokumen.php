@@ -74,9 +74,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
+                                <?php 
                                 $no = 1;
                                 foreach ($pencaker_dokumen as $doc) : ?>
+                                    <?php if($doc->id <= 3) { ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
                                         <td <?php echo ($doc->id == '1' || $doc->id == '2' || $doc->id == '3') ? 'class="text-bold"' : ''; ?>>
@@ -101,6 +102,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                                             <?php } ?>
                                         </td>
                                     </tr>
+                                <?php } ?>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>

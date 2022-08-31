@@ -172,7 +172,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0 text-dark"> <?php echo lang('dashboard'); ?>
+        <h1 class="m-0 text-dark"> <?php echo lang('dashboard');?>
         </h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
@@ -396,6 +396,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                   $datediff = '0';
                 }
               ?>
+
+              <?php if($dok->id <= 3) { ?>
                 <li style="display: inline-block;">
                   <div class="icheck-primary d-inline ml-2">
                     <input type="checkbox" value="" name="todo2" id="todoCheck2" <?php echo ($dok->pencakerdokumen_id != NULL) ? 'checked' : ''; ?> disabled>
@@ -405,6 +407,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                   <small class="badge badge-info"><i class="far fa-clock"></i> <?php echo $datediff . " days"; ?></small>
 
                 </li>
+              <?php } ?>
               <?php endforeach; ?>
             </ul>
           </div>

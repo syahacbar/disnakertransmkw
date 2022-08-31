@@ -17,8 +17,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
             <div class="row mb-5">
                 <div class="section-title">
-                    <h3>3 Langkah mudah membuat Kartu Pencari Kerja (Kartu Kuning)</h3>
-                    <p>Yuk, hanya dengan 3 langkah berikut ini Anda dapat dengan mudah membuat Kartu Pencari Kerja (Kartu Kuning).</p>
+                    <h3>3 Langkah mudah membuat Kartu Pencari Kerja (Kartu Ak/1)</h3>
+                    <p>Yuk, hanya dengan 3 langkah berikut ini Anda dapat dengan mudah membuat Kartu Pencari Kerja (Kartu Ak/1).</p>
                 </div>
             </div>
 
@@ -39,7 +39,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <img class="w-100" src="https://cdni.iconscout.com/illustration/premium/thumb/online-form-filling-4488741-3757136.png" alt="">
                         </div>
                         <h4>2. Isi Aplikasi</h4>
-                        <p class="text-dark">Lengkapi form AK-1 dan unggah dokumen kelengkapan persyaratan pencari kerja, diantaranya: Pas Foto, KTP, Ijazah Terakhir, Transkrip Nilai, Riwayat Hidup, SKCK, dan Surat Keterangan Kesehatan.</p>
+                        <p class="text-dark">Lengkapi form Ak/1 dan unggah dokumen kelengkapan persyaratan pencari kerja, diantaranya: Pas Foto, KTP, Ijazah Terakhir, Transkrip Nilai, Riwayat Hidup, SKCK, dan Surat Keterangan Kesehatan.</p>
                     </div>
                 </div>
 
@@ -49,7 +49,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <img class="w-100" src="<?php echo base_url('assets/frontend/assets/img/office.jpg');?>" alt="">
                         </div>
                         <h4>3. Datang Ke Kantor</h4>
-                        <p class="text-dark">Mendatangi kantor Disnakertrans Kab. Manokwari untuk mengambil Kartu Pencari Kerja (Kartu Kuning) dengan syarat menunjukkan dokumen asli yang telah diunggah di sistem.</p>
+                        <p class="text-dark">Mendatangi kantor Disnakertrans Kab. Manokwari untuk mengambil Kartu Pencari Kerja (Kartu Ak/1) dengan syarat menunjukkan dokumen asli yang telah diunggah di sistem.</p>
                     </div>
                 </div>
 

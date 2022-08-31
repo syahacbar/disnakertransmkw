@@ -119,7 +119,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     <section id="visimisi" class="about mt-10">
         <div class="container">
             <div class="section-title">
-                <h2>Bidang Tenaga Kerja</h2>
+                <h2>Urusan Tenaga Kerja</h2>
                 <p>
                     Informasi mengenai dasar hukum, bidang-bidang, seksi-seksi, dan informasi lainnya terkait bidang tenaga kerja.
                 </p>
